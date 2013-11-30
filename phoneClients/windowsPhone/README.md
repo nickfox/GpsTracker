@@ -1,1 +1,1 @@
-this is the windows phone client for gpstracker.
+this is the windows phone client for gpstracker. momo.
