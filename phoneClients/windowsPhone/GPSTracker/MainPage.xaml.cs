@@ -85,7 +85,7 @@ namespace GPSTracker
                     new KeyValuePair<string, string>("dir", direction),
                     new KeyValuePair<string, string>("dt", DateTime.Now.ToString(@"yyyy-MM-dd\%20HH:mm:ss")), // formatted for mysql datetime format),
                     new KeyValuePair<string, string>("lm", locationMethod),
-                    new KeyValuePair<string, string>("dis", (totalDistanceInMeters / 1609).ToString()), // in miles
+                    new KeyValuePair<string, string>("dis", (totalDistanceInMeters / 1609).ToString("0.0")), // in miles
                     new KeyValuePair<string, string>("pn", "momo1"), //Windows.Phone.System.Analytics.HostInformation.PublisherHostId),
                     new KeyValuePair<string, string>("sid", sessionID),
                     new KeyValuePair<string, string>("acc", accuracy),
