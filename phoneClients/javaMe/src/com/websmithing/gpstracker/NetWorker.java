@@ -2,7 +2,7 @@
 //  NetWorker.java
 //  GpsTracker
 //
-//  Created by Nick Fox on 12/1/13.
+//  Created by Nick Fox on 11/7/13.
 //  Copyright (c) 2013 Nick Fox. All rights reserved.
 //
 
