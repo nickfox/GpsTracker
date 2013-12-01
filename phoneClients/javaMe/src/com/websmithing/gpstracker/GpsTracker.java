@@ -12,10 +12,9 @@ import javax.microedition.midlet.*;
 import javax.microedition.lcdui.*;
 import java.util.Calendar;
 
-public class GpsTracker extends MIDlet implements CommandListener, ItemStateListener {
+public class GpsTracker extends MIDlet implements CommandListener {
     private Display display;
     private Form form;
-    private Form zoomScreen;
     private Form settingsScreen;
     private Command exitCmd;
     private Command saveCmd;
@@ -24,8 +23,6 @@ public class GpsTracker extends MIDlet implements CommandListener, ItemStateList
     private Command backCmd;
     private TextField phoneNumberTextField;
     private TextField uploadWebsiteTextField;
-    private Gauge zoomGauge;
-    private StringItem zoomStringItem;
     private ChoiceGroup updateIntervalCG;
     private String updateInterval;
     private int[] iTimes = {60, 300, 900};
@@ -41,17 +38,14 @@ public class GpsTracker extends MIDlet implements CommandListener, ItemStateList
     protected int height, width;   
     protected Calendar currentTime;    
     protected long sessionID;
-    protected Image im = null;
-    
+
     public GpsTracker(){
         form = new Form("GpsTracker");
         display = Display.getDisplay(this);
         exitCmd = new Command("Exit", Command.EXIT, 1); 
-        zoomCmd = new Command("Zoom", Command.SCREEN, 2);
-        settingsCmd = new Command("Settings", Command.SCREEN, 3);
+        settingsCmd = new Command("Settings", Command.SCREEN, 2);
         
         form.addCommand(exitCmd);
-        form.addCommand(zoomCmd);
         form.addCommand(settingsCmd);
         form.setCommandListener(this);        
         
@@ -95,39 +89,6 @@ public class GpsTracker extends MIDlet implements CommandListener, ItemStateList
         else {
            log("Getting map every " + String.valueOf(tempTime) + " minutes..."); 
         }       
-    }    
-    
-    private void loadZoomScreen() {
-        zoomScreen = new Form("Zoom");
-        zoomGauge = new Gauge("Google Map Zoom", true, 17, Integer.parseInt(zoomLevel));
-        zoomStringItem = new StringItem(null, "");
-        zoomStringItem.setText("Zoom level: " + zoomGauge.getValue());
-        backCmd = new Command("Back", Command.SCREEN, 1);
-
-        zoomScreen.append(zoomGauge);
-        zoomScreen.append(zoomStringItem);
-        zoomScreen.addCommand(backCmd);
-        zoomScreen.setItemStateListener(this);
-        zoomScreen.setCommandListener(this);
-
-        display.setCurrent(zoomScreen);
-    }
- 
-    // this method is called every time the zoom guage changes value. the zoom level is 
-    // reset and saved
-    public void itemStateChanged(Item item) {
-        if (item == zoomGauge) {
-            zoomStringItem.setText("Zoom level: " + zoomGauge.getValue());
-            zoomLevel = String.valueOf(zoomGauge.getValue());
-
-            try { 
-                rms.put("zoomLevel", zoomLevel);
-                rms.save(); 
-            }
-            catch (Exception e) {
-                log("GPSTracker.itemStateChanged: " + e);
-            } 
-        }
     }    
 
     private void loadSettingsScreen() {
@@ -223,25 +184,7 @@ public class GpsTracker extends MIDlet implements CommandListener, ItemStateList
         } 
         display.setCurrent(form);
     }
-
-    // this method displays the map image, it is called from the networker object
-    public void showMap(boolean flag)
-    {
-        if (flag == false) {
-            log("Map could not be downloaded.");
-        }
-        else {
-            ImageItem imageitem = new ImageItem(null, im, ImageItem.LAYOUT_DEFAULT, null);
-
-            if(form.size()!= 0) {
-                form.set(0, imageitem);
-            }
-            else {
-                form.append(imageitem);
-            }
-        }
-    }   
-        
+    
     public void log(String text) {
         StringItem si = new StringItem(null, text);
         si.setLayout(Item.LAYOUT_NEWLINE_AFTER);
@@ -262,10 +205,7 @@ public class GpsTracker extends MIDlet implements CommandListener, ItemStateList
         }
         else if (cmd == settingsCmd) {
             loadSettingsScreen(); 
-        }
-        else if (cmd == zoomCmd) {
-            loadZoomScreen(); 
-        }        
+        }      
         else if (cmd == backCmd) {
             displayInterval();
         }

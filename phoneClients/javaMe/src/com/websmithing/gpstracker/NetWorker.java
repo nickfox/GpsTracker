@@ -55,9 +55,6 @@ public class NetWorker {
              }
             catch(Exception e){}
         }
-
-        // if we have successfully gotten a map image, then we want to display it 
-           midlet.showMap(false);
     }    
   
 
