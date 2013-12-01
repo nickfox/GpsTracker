@@ -34,7 +34,7 @@ public class GpsTracker extends MIDlet implements CommandListener, ItemStateList
     private GpsHelper gps;
     
     private String uploadWebsite;    
-    private String defaultUploadWebsite = "http://www.websmithing.com/gpstracker/GetGoogleMap2.php";
+    private String defaultUploadWebsite = "http://www.websmithing.com/gpstracker2/getgooglemap3.php";
 
     protected String phoneNumber;
     protected String zoomLevel;

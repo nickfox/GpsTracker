@@ -10,7 +10,6 @@ package com.websmithing.gpstracker;
 
 import javax.microedition.io.*;
 import java.io.*;
-import javax.microedition.lcdui.Image;
 
 public class NetWorker {
     private GpsTracker midlet;
@@ -22,75 +21,47 @@ public class NetWorker {
         this.uploadWebsite = UploadWebsite;
     }   
 
-  public void getUrl(String queryString) { 
-        queryString = URLencodeSpaces(queryString);
-        String url = uploadWebsite + queryString;
-        HttpConnection httpConn = null;
-        InputStream inputStream = null;
-        DataInputStream iStrm = null;
-        ByteArrayOutputStream bStrm = null;        
-        Image im = null;        
-        
+  public void postGpsData(String queryString) { 
+        queryString = urlEncodeString(queryString);
+        HttpConnection httpConnection = null;
+        DataOutputStream dataOutputStream = null;
+
         try{
-            httpConn = (HttpConnection)Connector.open(url);
-    
-            if(httpConn.getResponseCode() == HttpConnection.HTTP_OK){
-                inputStream = httpConn.openInputStream();
-                iStrm = new DataInputStream(inputStream);
+            httpConnection = (HttpConnection)Connector.open(uploadWebsite);
+            httpConnection.setRequestMethod(HttpConnection.POST);
+            httpConnection.setRequestProperty("User-Agent", "Profile/MIDP-1.0 Configuration/CLDC-1.0");
+            httpConnection.setRequestProperty("Content-Language", "en-US");
+            httpConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            httpConnection.setRequestProperty("Content-Length", String.valueOf(queryString.length())); 
+            
+            dataOutputStream = new DataOutputStream(httpConnection.openOutputStream());
+            dataOutputStream.write(queryString.getBytes());
+            
+            // some mobile devices have unexpected behavior with flush(), test before using
+            //dataOutputStream.flush();
 
-                byte imageData[];
-                int length = (int)httpConn.getLength();
-
-                if(length != -1) {
-                    imageData = new byte[length];
-                    iStrm.readFully(imageData);
-                }
-                else { //Length not available
-                    bStrm = new ByteArrayOutputStream();
-                    int ch;
-    
-                    while((ch = iStrm.read())!= -1) {
-                        bStrm.write(ch);
-                    }
-                    imageData = bStrm.toByteArray();
-                       
-                }
-                im = Image.createImage(imageData, 0, imageData.length);                
+            if(httpConnection.getResponseCode() != HttpConnection.HTTP_OK){
+                 midlet.log("NetWorker.postGpsData responseCode: " + httpConnection.getResponseCode());
             }
-            else {
-                 midlet.log("NetWorker.getUrl responseCode: " + httpConn.getResponseCode());
-            }
-
         } catch (Exception e) {
-           midlet.log("NetWorker.getUrl: " + e);
+           midlet.log("NetWorker.postGpsData error: " + e);
         }
-        finally{ // Clean up
+        finally{ // clean up
             try{
-                if(bStrm != null)
-                     bStrm.close();
-                if(iStrm != null)
-                     iStrm.close();
-                if(inputStream != null)
-                    inputStream.close();
-                if(httpConn != null)
-                    httpConn.close();
+                if(httpConnection != null)
+                    httpConnection.close();
+                if(dataOutputStream != null)
+                    dataOutputStream.close();
              }
             catch(Exception e){}
         }
 
         // if we have successfully gotten a map image, then we want to display it 
-        if( im == null) {
-            midlet.showMap(false);
-        }
-        else {
-            midlet.im = im;
-            midlet.showMap(true);
-        }       
-
+           midlet.showMap(false);
     }    
   
-    // http://forum.java.sun.com/thread.jspa?threadID=341790&messageID=1408555
-    private String URLencodeSpaces(String s)
+
+    private String urlEncodeString(String s)
     {
         if (s != null) {
             StringBuffer tmp = new StringBuffer();

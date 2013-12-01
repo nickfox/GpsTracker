@@ -2,7 +2,7 @@
 //  GpsHelper.java
 //  GpsTracker
 //
-//  Created by Nick Fox on 12/1/13.
+//  Created by Nick Fox on 11/7/13.
 //  Copyright (c) 2013 Nick Fox. All rights reserved.
 //
 
@@ -20,7 +20,6 @@ public class GpsHelper implements LocationListener  {
     private float distance = 0;
     private int azimuth = 0;
     private String uploadWebsite;
-    private String queryString;
     private GpsTracker midlet;
     private int interval;       
     protected Calendar currentTime;    
@@ -131,27 +130,43 @@ public class GpsHelper implements LocationListener  {
                     speed = location.getSpeed();
                 }
 
-                queryString = "?lat=" + String.valueOf(qualifiedCoordinates.getLatitude()) 
+                /* example url
+                 http://www.websmithing.com/gpstracker2/getgooglemap2.php?lat=47.473349&lng=-122.025035&mph=137&dir=0&mi=0&
+                 dt=2008-04-17%2012:07:02&lm=0&h=291&w=240&zm=12&dis=25&pn=momosity&sid=11137&acc=95&iv=yes&info=momostuff
+
+                string defaultUploadWebsite = "http://www.websmithing.com/gpstracker2/getgooglemap3.php";
+
+                    new KeyValuePair<string, string>("lat", latitude),
+                    new KeyValuePair<string, string>("lng", longitude),
+                    new KeyValuePair<string, string>("mph", speed),
+                    new KeyValuePair<string, string>("dir", direction),
+                    new KeyValuePair<string, string>("dt", DateTime.Now.ToString(@"yyyy-MM-dd\%20HH:mm:ss")), // formatted for mysql datetime format),
+                    new KeyValuePair<string, string>("lm", locationMethod),
+                    new KeyValuePair<string, string>("dis", (totalDistanceInMeters / 1609).ToString("0.0")), // in miles
+                    new KeyValuePair<string, string>("pn", "momo1"), //Windows.Phone.System.Analytics.HostInformation.PublisherHostId),
+                    new KeyValuePair<string, string>("sid", sessionID),
+                    new KeyValuePair<string, string>("acc", accuracy),
+                    new KeyValuePair<string, string>("iv", "yes"),
+                    new KeyValuePair<string, string>("info",  "windowsphone-" + httpCount.ToString())
+                    */
+               
+                String gpsData = "lat=" + String.valueOf(qualifiedCoordinates.getLatitude()) 
                         + "&lng=" + String.valueOf(qualifiedCoordinates.getLongitude())
-                        + "&mph=" + String.valueOf((int)(speed/1609*3600))
+                        + "&mph=" + String.valueOf((int)(speed/1609*3600)) // in miles per hour
                         + "&dir=" + String.valueOf(azimuth) 
-                        + "&dis=" + String.valueOf((int)(distance/1609))
-                        + "&dt=" + d.toString()
+                        + "&dt=2008-04-17%2012:07:02" // + d.toString()
                         + "&lm=" + location.getLocationMethod()
+                        + "&dis=" + String.valueOf((int)(distance/1609)) // in miles
                         + "&pn=" + midlet.phoneNumber
-                        + "&sid=" + String.valueOf(sessionID)
-                        + "&acc=" + String.valueOf((int)(qualifiedCoordinates.getHorizontalAccuracy()*3.28))
-                        + "&iv=" + String.valueOf(location.isValid())
-                        + "&info=" + location.getExtraInfo("text/plain")
-                        + "&zm=" + midlet.zoomLevel
-                        + "&h=" + midlet.height
-                        + "&w=" + midlet.width;
+                        + "&sid=" + String.valueOf(sessionID) // guid?
+                        + "&acc=" + String.valueOf((int)(qualifiedCoordinates.getHorizontalAccuracy()*3.28)) // in feet
+                        + "&iv=yes"
+                        + "&info=javaMe-" + location.getExtraInfo("text/plain");
                
                 // with our query string built, we create a networker object to send the 
-                // query to our website and get the map image and update the DB
-                NetWorker worker = new NetWorker(midlet, uploadWebsite);
-                worker.getUrl(queryString);
-
+                // gps data to our website and update the DB
+                NetWorker netWorker = new NetWorker(midlet, uploadWebsite);
+                netWorker.postGpsData(gpsData);
             }
 
         } catch (Exception e) {

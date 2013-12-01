@@ -81,14 +81,14 @@ namespace GPSTracker
                 {
                     new KeyValuePair<string, string>("lat", latitude),
                     new KeyValuePair<string, string>("lng", longitude),
-                    new KeyValuePair<string, string>("mph", speed),
+                    new KeyValuePair<string, string>("mph", speed), // in miles per hour
                     new KeyValuePair<string, string>("dir", direction),
                     new KeyValuePair<string, string>("dt", DateTime.Now.ToString(@"yyyy-MM-dd\%20HH:mm:ss")), // formatted for mysql datetime format),
                     new KeyValuePair<string, string>("lm", locationMethod),
                     new KeyValuePair<string, string>("dis", (totalDistanceInMeters / 1609).ToString("0.0")), // in miles
                     new KeyValuePair<string, string>("pn", "momo1"), //Windows.Phone.System.Analytics.HostInformation.PublisherHostId),
-                    new KeyValuePair<string, string>("sid", sessionID),
-                    new KeyValuePair<string, string>("acc", accuracy),
+                    new KeyValuePair<string, string>("sid", sessionID), // guid
+                    new KeyValuePair<string, string>("acc", accuracy), // in meters
                     new KeyValuePair<string, string>("iv", "yes"),
                     new KeyValuePair<string, string>("info",  "windowsphone-" + httpCount.ToString())
                 });
