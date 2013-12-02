@@ -79,18 +79,19 @@ namespace GPSTracker
                 string defaultUploadWebsite = "http://www.websmithing.com/gpstracker2/getgooglemap3.php";
                 HttpContent httpContent = new FormUrlEncodedContent(new[]
                 {
-                    new KeyValuePair<string, string>("lat", latitude),
-                    new KeyValuePair<string, string>("lng", longitude),
-                    new KeyValuePair<string, string>("mph", speed), // in miles per hour
-                    new KeyValuePair<string, string>("dir", direction),
-                    new KeyValuePair<string, string>("dt", DateTime.Now.ToString(@"yyyy-MM-dd\%20HH:mm:ss")), // formatted for mysql datetime format),
-                    new KeyValuePair<string, string>("lm", locationMethod),
-                    new KeyValuePair<string, string>("dis", (totalDistanceInMeters / 1609).ToString("0.0")), // in miles
-                    new KeyValuePair<string, string>("pn", "momo1"), //Windows.Phone.System.Analytics.HostInformation.PublisherHostId),
-                    new KeyValuePair<string, string>("sid", sessionID), // guid
-                    new KeyValuePair<string, string>("acc", accuracy), // in meters
-                    new KeyValuePair<string, string>("iv", "yes"),
-                    new KeyValuePair<string, string>("info",  "windowsphone-" + httpCount.ToString())
+                    new KeyValuePair<string, string>("latitude", latitude),
+                    new KeyValuePair<string, string>("longitude", longitude),
+                    new KeyValuePair<string, string>("speed", speed), // in miles per hour
+                    new KeyValuePair<string, string>("direction", direction),
+                    new KeyValuePair<string, string>("date", DateTime.Now.ToString(@"yyyy-MM-dd\%20HH:mm:ss")), // formatted for mysql datetime format),
+                    new KeyValuePair<string, string>("locationmethod", locationMethod),
+                    new KeyValuePair<string, string>("distance", (totalDistanceInMeters / 1609).ToString("0.0")), // in miles
+                    new KeyValuePair<string, string>("phonenumber", "momo1"), //Windows.Phone.System.Analytics.HostInformation.PublisherHostId),
+                    new KeyValuePair<string, string>("sessionid", sessionID), // guid
+                    new KeyValuePair<string, string>("accuracy", accuracy), // in meters
+                    new KeyValuePair<string, string>("locationisvalid", "yes"),
+                    new KeyValuePair<string, string>("extrainfo",  "httpCount-" + httpCount.ToString()),
+                    new KeyValuePair<string, string>("eventtype", "windowsPhone")
                 });
 
                 HttpClient httpClient = new HttpClient();

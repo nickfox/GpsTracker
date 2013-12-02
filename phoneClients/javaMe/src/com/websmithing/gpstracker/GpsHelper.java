@@ -141,18 +141,19 @@ public class GpsHelper implements LocationListener  {
                  dt=2008-04-17%2012:07:02&lm=0&h=291&w=240&zm=12&dis=25&pn=momosity&sid=11137&acc=95&iv=yes&info=momostuff
                  */
                
-                String gpsData = "lat=" + String.valueOf(qualifiedCoordinates.getLatitude()) 
-                        + "&lng=" + String.valueOf(qualifiedCoordinates.getLongitude())
-                        + "&mph=" + String.valueOf((int)(speed/1609*3600)) // in miles per hour
-                        + "&dir=" + String.valueOf(azimuth) 
-                        + "&dt=" + mySqlDateTimeString
-                        + "&lm=" + location.getLocationMethod()
-                        + "&dis=" + String.valueOf((int)(distance/1609)) // in miles
-                        + "&pn=" + midlet.phoneNumber
-                        + "&sid=" + String.valueOf(sessionID) // guid?
-                        + "&acc=" + String.valueOf((int)(qualifiedCoordinates.getHorizontalAccuracy()*3.28)) // in feet
-                        + "&iv=yes"
-                        + "&info=javaMe-" + location.getExtraInfo("text/plain");
+                String gpsData = "latitude=" + String.valueOf(qualifiedCoordinates.getLatitude()) 
+                        + "&longitude=" + String.valueOf(qualifiedCoordinates.getLongitude())
+                        + "&speed=" + String.valueOf((int)(speed/1609*3600)) // in miles per hour
+                        + "&direction=" + String.valueOf(azimuth) 
+                        + "&date=" + mySqlDateTimeString
+                        + "&locationmethod=" + location.getLocationMethod()
+                        + "&distance=" + String.valueOf((int)(distance/1609)) // in miles
+                        + "&phonenumber=" + midlet.phoneNumber
+                        + "&sessionid=" + String.valueOf(sessionID) // System.currentTimeMillis();
+                        + "&accuracy=" + String.valueOf((int)(qualifiedCoordinates.getHorizontalAccuracy())) // in meters
+                        + "&locationisvalid=yes"
+                        + "&extrainfo=" + location.getExtraInfo("text/plain")
+                        + "&eventtype=javaMe";
                
                 // with our query string built, we create a networker object to send the 
                 // gps data to our website and update the DB
