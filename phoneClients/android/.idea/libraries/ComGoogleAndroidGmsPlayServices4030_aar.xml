@@ -2,7 +2,6 @@
   <library name="ComGoogleAndroidGmsPlayServices4030.aar">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/GpsTracker/build/exploded-bundles/ComGoogleAndroidGmsPlayServices4030.aar/classes.jar!/" />
-      <root url="file://$PROJECT_DIR$/GpsTracker/build/exploded-bundles/ComGoogleAndroidGmsPlayServices4030.aar/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

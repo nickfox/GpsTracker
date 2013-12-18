@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/gradle/gradle.iml" filepath="$PROJECT_DIR$/gradle/gradle.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GpsTracker/GpsTracker.iml" filepath="$PROJECT_DIR$/GpsTracker/GpsTracker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GpsTrackerProject.iml" filepath="$PROJECT_DIR$/GpsTrackerProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android.iml" filepath="$PROJECT_DIR$/android.iml" />
     </modules>
   </component>
 </project>
