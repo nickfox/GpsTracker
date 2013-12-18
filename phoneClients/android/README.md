@@ -1,1 +1,1 @@
-this is the android client for gpstracker.
+This is using android studio.
