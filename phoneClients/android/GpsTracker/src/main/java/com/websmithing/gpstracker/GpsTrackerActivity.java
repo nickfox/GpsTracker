@@ -20,18 +20,25 @@ import com.google.android.gms.location.LocationClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 
+import java.text.SimpleDateFormat;
+import java.util.TimeZone;
+import java.util.Date;
+import java.text.DateFormat;
+
+
 
 public class GpsTrackerActivity extends ActionBarActivity implements LocationListener, GooglePlayServicesClient.ConnectionCallbacks,
         GooglePlayServicesClient.OnConnectionFailedListener {
 
-    private LocationRequest locationRequest;
-    private LocationClient locationClient;
-
+    private static String TAG = "GpsTrackerActivity";
     private static TextView longitudeTextView;
     private static TextView latitudeTextView;
     private static TextView accuracyTextView;
     private static TextView providerTextView;
     private static TextView timeStampTextView;
+
+    private LocationRequest locationRequest;
+    private LocationClient locationClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,48 +51,67 @@ public class GpsTrackerActivity extends ActionBarActivity implements LocationLis
                     .commit();
         }
 
-/*
-        // create a new global location parameters object
-        locationRequest = LocationRequest.create();
-        locationRequest.setInterval(5 * 1000);
-        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-        locationRequest.setFastestInterval(60 * 1000); // interval ceiling
-*/
         int response = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
         if(response == ConnectionResult.SUCCESS){
             locationClient = new LocationClient(this,this,this);
             locationClient.connect();
         }
         else{
-            Log.e("GpsTrackerActivity", "google play service error: " + response);
+            Log.e(TAG, "google play service error: " + response);
         }
     }
 
     // called when startTrackingButton is tapped
     public void startTracking(View v) {
-        Log.e("GpsTrackerActivity", "startTracking");
         ((Button) v).setText("stop tracking");
+
+        locationRequest = LocationRequest.create();
+        locationRequest.setInterval(60 * 1000);
+        locationRequest.setFastestInterval(60 * 1000); // the fastest rate in milliseconds at which your app can handle location updates
+        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        locationClient.requestLocationUpdates(locationRequest, this);
+
+        //oneTimeLocationUpdate();
+    }
+
+    protected void oneTimeLocationUpdate() {
+        Log.e(TAG, "oneTimeLocationUpdate");
 
         if (locationClient != null && locationClient.isConnected()) {
             Location location = locationClient.getLastLocation();
-            longitudeTextView.setText("longitude: " + location.getLongitude());
-            latitudeTextView.setText("latitude: " + location.getLatitude());
-
-            accuracyTextView.setText("accuracy: " + location.getAccuracy());
-            providerTextView.setText("provider: " + location.getProvider());
-            timeStampTextView.setText("timeStamp: " + location.getTime());
+            displayLocationData(location);
         }
     }
 
-    // called when startTrackingButton is tapped
-    public void stopTracking(View v) {
-        Log.e("GpsTrackerActivity", "stopTracking");
-        ((Button) v).setText("start tracking");
+    @Override
+    public void onLocationChanged(Location location) {
+        Log.e(TAG, "onLocationChanged");
 
+        if (location != null) {
+            displayLocationData(location);
+        }
+    }
+
+    protected void displayLocationData(Location location) {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        dateFormat.setTimeZone(TimeZone.getDefault());
+        Date date = new Date(location.getTime());
+
+        longitudeTextView.setText("longitude: " + location.getLongitude());
+        latitudeTextView.setText("latitude: " + location.getLatitude());
+        accuracyTextView.setText("accuracy: " + location.getAccuracy());
+        providerTextView.setText("provider: " + location.getProvider());
+        timeStampTextView.setText("timeStamp: " + dateFormat.format(date));
+    }
+
+    public void stopTracking(View v) {
+        Log.e(TAG, "stopTracking");
+        ((Button) v).setText("start tracking");
     }
 
     @Override
     protected void onStart() {
+        Log.e(TAG, "onStart");
         super.onStart();
         // Connect the client.
         //mLocationClient.connect();
@@ -93,15 +119,14 @@ public class GpsTrackerActivity extends ActionBarActivity implements LocationLis
 
     @Override
     protected void onStop() {
-        // Disconnecting the client invalidates it.
-        //mLocationClient.disconnect();
+        Log.e(TAG, "onStop");
+
+        if (locationClient != null && locationClient.isConnected()) {
+            locationClient.removeLocationUpdates(this);
+            locationClient.disconnect();
+        }
+
         super.onStop();
-    }
-
-    @Override
-    public void onLocationChanged(Location location) {
-
-        //  LocationUtils.getLatLng(this, location);
     }
 
     /**
@@ -111,6 +136,7 @@ public class GpsTrackerActivity extends ActionBarActivity implements LocationLis
      */
     @Override
     public void onConnected(Bundle bundle) {
+        Log.e(TAG, "onConnected");
 
     }
 
@@ -120,18 +146,18 @@ public class GpsTrackerActivity extends ActionBarActivity implements LocationLis
      */
     @Override
     public void onDisconnected() {
+        Log.e(TAG, "onDisconnected");
 
     }
 
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
+        Log.e(TAG, "onConnectionFailed");
 
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.gps_tracker, menu);
         return true;
     }
@@ -148,9 +174,6 @@ public class GpsTrackerActivity extends ActionBarActivity implements LocationLis
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * A placeholder fragment containing a simple view.
-     */
     public static class PlaceholderFragment extends Fragment {
 
         public PlaceholderFragment() {
@@ -160,13 +183,11 @@ public class GpsTrackerActivity extends ActionBarActivity implements LocationLis
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_gpstracker, container, false);
-
             longitudeTextView = (TextView)rootView.findViewById(R.id.longitudeTextView);
             latitudeTextView = (TextView)rootView.findViewById(R.id.latitudeTextView);
             accuracyTextView = (TextView)rootView.findViewById(R.id.accuracyTextView);
             providerTextView = (TextView)rootView.findViewById(R.id.providerTextView);
             timeStampTextView = (TextView)rootView.findViewById(R.id.timeStampTextView);
-
             return rootView;
         }
     }
