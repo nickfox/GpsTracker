@@ -19,13 +19,16 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.location.LocationClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 
-import java.text.SimpleDateFormat;
-import java.util.TimeZone;
-import java.util.Date;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.text.DateFormat;
-
-
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
+import java.util.UUID;
 
 public class GpsTrackerActivity extends ActionBarActivity implements LocationListener, GooglePlayServicesClient.ConnectionCallbacks,
         GooglePlayServicesClient.OnConnectionFailedListener {
@@ -39,6 +42,10 @@ public class GpsTrackerActivity extends ActionBarActivity implements LocationLis
 
     private LocationRequest locationRequest;
     private LocationClient locationClient;
+    private Location previousLocation;
+    private float totalDistanceInMeters = 0.0f;
+    private boolean firstTimeGettingPosition = true;
+    private UUID sessionID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,13 +72,25 @@ public class GpsTrackerActivity extends ActionBarActivity implements LocationLis
     public void startTracking(View v) {
         ((Button) v).setText("stop tracking");
 
+        System.setProperty("org.apache.commons.logging.simplelog.log.httpclient.wire.header", "debug");
+        System.setProperty("org.apache.commons.logging.simplelog.log.httpclient.wire", "debug");
+
+
+        sessionID = UUID.randomUUID();
+        totalDistanceInMeters = 0.0f;
+
         locationRequest = LocationRequest.create();
         locationRequest.setInterval(60 * 1000);
         locationRequest.setFastestInterval(60 * 1000); // the fastest rate in milliseconds at which your app can handle location updates
-        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        locationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
         locationClient.requestLocationUpdates(locationRequest, this);
 
         //oneTimeLocationUpdate();
+    }
+
+    protected void changeInterval(int intervalInMinutes) {
+        locationRequest.setInterval(intervalInMinutes * 1000);
+        locationRequest.setFastestInterval(intervalInMinutes * 1000);
     }
 
     protected void oneTimeLocationUpdate() {
@@ -85,15 +104,65 @@ public class GpsTrackerActivity extends ActionBarActivity implements LocationLis
 
     @Override
     public void onLocationChanged(Location location) {
-        Log.e(TAG, "onLocationChanged");
-
         if (location != null) {
             displayLocationData(location);
+            sendLocationDataToWebsite(location);
         }
     }
 
-    protected void displayLocationData(Location location) {
+    protected void  sendLocationDataToWebsite(Location location) {
+        // formatted for mysql datetime format
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        dateFormat.setTimeZone(TimeZone.getDefault());
+        Date date = new Date(location.getTime());
+
+        if (firstTimeGettingPosition) {
+            firstTimeGettingPosition = false;
+        } else {
+            float distance = location.distanceTo(previousLocation);
+            totalDistanceInMeters += distance;
+        }
+
+        previousLocation = location;
+
+        RequestParams requestParams = new RequestParams();
+            requestParams.put("latitude", location.getLatitude());
+            requestParams.put("longitude", location.getLongitude());
+            requestParams.put("speed", location.getSpeed()); // in miles per hour
+
+        try {
+            requestParams.put("date", URLEncoder.encode(dateFormat.format(date), "UTF-8"));
+        } catch (UnsupportedEncodingException e) {}
+
+            requestParams.put("locationmethod", location.getProvider());
+
+            if ( totalDistanceInMeters > 0) {
+                requestParams.put("distance", totalDistanceInMeters / 1609); // in miles
+            } else {
+                requestParams.put("distance", 0); // in miles
+            }
+
+            requestParams.put("phonenumber", "momo25");
+            requestParams.put("sessionid", sessionID); // uuid
+            requestParams.put("accuracy", location.getAccuracy()); // in meters
+            requestParams.put("locationisvalid", "yes");
+            requestParams.put("extrainfo",  location.getAltitude());
+            requestParams.put("eventtype", "android");
+
+        MyHttpClient.post(null, requestParams, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, org.apache.http.Header[] headers, byte[] responseBody) {
+                Log.e(TAG, "onSuccess statusCode: " + statusCode);
+            }
+            @Override
+            public void onFailure(int statusCode, org.apache.http.Header[] headers, byte[] errorResponse, Throwable e) {
+                Log.e(TAG, "onFailure statusCode: " + statusCode + " errorResponse: " + errorResponse);
+             }
+        });
+    }
+
+    protected void displayLocationData(Location location) {
+        DateFormat dateFormat = new SimpleDateFormat("hh:mm:ss");
         dateFormat.setTimeZone(TimeZone.getDefault());
         Date date = new Date(location.getTime());
 
@@ -102,6 +171,8 @@ public class GpsTrackerActivity extends ActionBarActivity implements LocationLis
         accuracyTextView.setText("accuracy: " + location.getAccuracy());
         providerTextView.setText("provider: " + location.getProvider());
         timeStampTextView.setText("timeStamp: " + dateFormat.format(date));
+
+        Log.e(TAG, dateFormat.format(date) +  " accuracy: " + location.getAccuracy());
     }
 
     public void stopTracking(View v) {
@@ -191,5 +262,4 @@ public class GpsTrackerActivity extends ActionBarActivity implements LocationLis
             return rootView;
         }
     }
-
 }
