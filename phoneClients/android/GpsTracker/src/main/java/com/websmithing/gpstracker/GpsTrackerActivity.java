@@ -33,7 +33,7 @@ import java.util.UUID;
 public class GpsTrackerActivity extends ActionBarActivity implements LocationListener, GooglePlayServicesClient.ConnectionCallbacks,
         GooglePlayServicesClient.OnConnectionFailedListener {
 
-    private static String TAG = "GpsTrackerActivity";
+    private static final String TAG = "GpsTrackerActivity";
     private static TextView longitudeTextView;
     private static TextView latitudeTextView;
     private static TextView accuracyTextView;
@@ -45,7 +45,7 @@ public class GpsTrackerActivity extends ActionBarActivity implements LocationLis
     private Location previousLocation;
     private float totalDistanceInMeters = 0.0f;
     private boolean firstTimeGettingPosition = true;
-    private UUID sessionID;
+    private String sessionID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,11 +72,7 @@ public class GpsTrackerActivity extends ActionBarActivity implements LocationLis
     public void startTracking(View v) {
         ((Button) v).setText("stop tracking");
 
-        System.setProperty("org.apache.commons.logging.simplelog.log.httpclient.wire.header", "debug");
-        System.setProperty("org.apache.commons.logging.simplelog.log.httpclient.wire", "debug");
-
-
-        sessionID = UUID.randomUUID();
+        sessionID = UUID.randomUUID().toString();
         totalDistanceInMeters = 0.0f;
 
         locationRequest = LocationRequest.create();
@@ -126,9 +122,9 @@ public class GpsTrackerActivity extends ActionBarActivity implements LocationLis
         previousLocation = location;
 
         RequestParams requestParams = new RequestParams();
-            requestParams.put("latitude", location.getLatitude());
-            requestParams.put("longitude", location.getLongitude());
-            requestParams.put("speed", location.getSpeed()); // in miles per hour
+            requestParams.put("latitude", Double.toString(location.getLatitude()));
+            requestParams.put("longitude", Double.toString(location.getLongitude()));
+            requestParams.put("speed", Double.toString(location.getSpeed())); // in miles per hour
 
         try {
             requestParams.put("date", URLEncoder.encode(dateFormat.format(date), "UTF-8"));
@@ -144,15 +140,19 @@ public class GpsTrackerActivity extends ActionBarActivity implements LocationLis
 
             requestParams.put("phonenumber", "momo25");
             requestParams.put("sessionid", sessionID); // uuid
-            requestParams.put("accuracy", location.getAccuracy()); // in meters
+            requestParams.put("accuracy", Float.toString(location.getAccuracy())); // in meters
             requestParams.put("locationisvalid", "yes");
-            requestParams.put("extrainfo",  location.getAltitude());
+            requestParams.put("extrainfo",  Double.toString(location.getAltitude()));
             requestParams.put("eventtype", "android");
+            requestParams.put("direction", Float.toString(location.getBearing()));
 
         MyHttpClient.post(null, requestParams, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, org.apache.http.Header[] headers, byte[] responseBody) {
-                Log.e(TAG, "onSuccess statusCode: " + statusCode);
+                try {
+                     String response = new String(responseBody, "UTF-8");
+                    Log.e(TAG, "onSuccess statusCode: " + statusCode + " responseBody: " + response);
+                } catch (UnsupportedEncodingException e) {}
             }
             @Override
             public void onFailure(int statusCode, org.apache.http.Header[] headers, byte[] errorResponse, Throwable e) {
