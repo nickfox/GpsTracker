@@ -108,7 +108,7 @@
       <file leaf-file-name="GpsTrackerActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GpsTracker/src/main/java/com/websmithing/gpstracker/GpsTrackerActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="122" column="0" selection-start="4477" selection-end="4477" vertical-scroll-proportion="0.578" vertical-offset="1309" max-vertical-offset="4131">
+            <state line="146" column="82" selection-start="5773" selection-end="5773" vertical-scroll-proportion="0.816" vertical-offset="1598" max-vertical-offset="4131">
               <folding />
             </state>
           </provider>
@@ -538,8 +538,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="53" />
-    <option name="y" value="54" />
+    <option name="x" value="48" />
+    <option name="y" value="74" />
     <option name="width" value="1612" />
     <option name="height" value="1008" />
   </component>
@@ -876,7 +876,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="53" y="54" width="1612" height="1008" extended-state="0" />
+    <frame x="48" y="74" width="1612" height="1008" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1198,7 +1198,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/GpsTracker/src/main/java/com/websmithing/gpstracker/GpsTrackerActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="122" column="0" selection-start="4477" selection-end="4477" vertical-scroll-proportion="0.578" vertical-offset="1309" max-vertical-offset="4131">
+        <state line="146" column="82" selection-start="5773" selection-end="5773" vertical-scroll-proportion="0.816" vertical-offset="1598" max-vertical-offset="4131">
           <folding />
         </state>
       </provider>

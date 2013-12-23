@@ -148,7 +148,7 @@ public class GpsHelper implements LocationListener  {
                         + "&date=" + mySqlDateTimeString
                         + "&locationmethod=" + location.getLocationMethod()
                         + "&distance=" + String.valueOf((int)(distance/1609)) // in miles
-                        + "&phonenumber=" + midlet.phoneNumber
+                        + "&phonenumber=javaMeUser"
                         + "&sessionid=" + String.valueOf(sessionID) // System.currentTimeMillis();
                         + "&accuracy=" + String.valueOf((int)(qualifiedCoordinates.getHorizontalAccuracy())) // in meters
                         + "&locationisvalid=yes"
