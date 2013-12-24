@@ -141,7 +141,6 @@ public class GpsTrackerActivity extends ActionBarActivity implements LocationLis
             requestParams.put("phonenumber", "androidUser");
             requestParams.put("sessionid", sessionID); // uuid
             requestParams.put("accuracy", Float.toString(location.getAccuracy())); // in meters
-            requestParams.put("locationisvalid", "yes");
             requestParams.put("extrainfo",  Double.toString(location.getAltitude()));
             requestParams.put("eventtype", "android");
             requestParams.put("direction", Float.toString(location.getBearing()));

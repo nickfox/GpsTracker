@@ -89,7 +89,6 @@ namespace GPSTracker
                     new KeyValuePair<string, string>("phonenumber", "windowsPhoneUser"), //Windows.Phone.System.Analytics.HostInformation.PublisherHostId),
                     new KeyValuePair<string, string>("sessionid", sessionID), // guid
                     new KeyValuePair<string, string>("accuracy", accuracy), // in meters
-                    new KeyValuePair<string, string>("locationisvalid", "yes"),
                     new KeyValuePair<string, string>("extrainfo",  "httpCount-" + httpCount.ToString()),
                     new KeyValuePair<string, string>("eventtype", "windowsPhone")
                 });

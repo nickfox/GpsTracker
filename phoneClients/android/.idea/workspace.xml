@@ -108,7 +108,7 @@
       <file leaf-file-name="GpsTrackerActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GpsTracker/src/main/java/com/websmithing/gpstracker/GpsTrackerActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="146" column="82" selection-start="5773" selection-end="5773" vertical-scroll-proportion="0.816" vertical-offset="1598" max-vertical-offset="4131">
+            <state line="134" column="19" selection-start="5059" selection-end="5059" vertical-scroll-proportion="0.442" vertical-offset="1581" max-vertical-offset="4114">
               <folding />
             </state>
           </provider>
@@ -117,8 +117,10 @@
       <file leaf-file-name="MyHttpClient.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GpsTracker/src/main/java/com/websmithing/gpstracker/MyHttpClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="36" selection-start="67" selection-end="82" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
-              <folding />
+            <state line="14" column="0" selection-start="593" selection-end="593" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -538,8 +540,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="48" />
-    <option name="y" value="74" />
+    <option name="x" value="27" />
+    <option name="y" value="84" />
     <option name="width" value="1612" />
     <option name="height" value="1008" />
   </component>
@@ -876,8 +878,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="48" y="74" width="1612" height="1008" extended-state="0" />
-    <editor active="true" />
+    <frame x="27" y="84" width="1612" height="1008" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -891,7 +893,7 @@
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32921347" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.40674156" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.40674156" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -967,7 +969,9 @@
     <entry file="file://$PROJECT_DIR$/GpsTracker/src/main/java/com/websmithing/gpstracker/MyHttpClient.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="0" selection-start="593" selection-end="593" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="340">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1182,13 +1186,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GpsTracker/src/main/java/com/websmithing/gpstracker/MyHttpClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="36" selection-start="67" selection-end="82" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/sdk/platforms/android-19/android.jar!/java/util/UUID.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="19" selection-start="158" selection-end="158" vertical-scroll-proportion="0.17" vertical-offset="0" max-vertical-offset="697">
@@ -1196,9 +1193,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/GpsTracker/src/main/java/com/websmithing/gpstracker/MyHttpClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="0" selection-start="593" selection-end="593" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/GpsTracker/src/main/java/com/websmithing/gpstracker/GpsTrackerActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="146" column="82" selection-start="5773" selection-end="5773" vertical-scroll-proportion="0.816" vertical-offset="1598" max-vertical-offset="4131">
+        <state line="134" column="19" selection-start="5059" selection-end="5059" vertical-scroll-proportion="0.442" vertical-offset="1581" max-vertical-offset="4114">
           <folding />
         </state>
       </provider>

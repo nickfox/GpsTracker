@@ -151,7 +151,6 @@ public class GpsHelper implements LocationListener  {
                         + "&phonenumber=javaMeUser"
                         + "&sessionid=" + String.valueOf(sessionID) // System.currentTimeMillis();
                         + "&accuracy=" + String.valueOf((int)(qualifiedCoordinates.getHorizontalAccuracy())) // in meters
-                        + "&locationisvalid=yes"
                         + "&extrainfo=" + location.getExtraInfo("text/plain")
                         + "&eventtype=javaMe";
                
