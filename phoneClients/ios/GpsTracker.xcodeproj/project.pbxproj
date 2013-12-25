@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		882C391C186A5FB300FF2664 /* WSMHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 882C391B186A5FB300FF2664 /* WSMHttpClient.m */; };
+		882C3920186A662400FF2664 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 882C391F186A662400FF2664 /* CoreLocation.framework */; };
 		88B1AAD518697121005276D4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B1AAD418697121005276D4 /* Foundation.framework */; };
 		88B1AAD718697121005276D4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B1AAD618697121005276D4 /* CoreGraphics.framework */; };
 		88B1AAD918697121005276D4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B1AAD818697121005276D4 /* UIKit.framework */; };
@@ -19,6 +21,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		882C391A186A5FB300FF2664 /* WSMHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSMHttpClient.h; sourceTree = "<group>"; };
+		882C391B186A5FB300FF2664 /* WSMHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSMHttpClient.m; sourceTree = "<group>"; };
+		882C391F186A662400FF2664 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		88B1AAD118697121005276D4 /* GpsTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GpsTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88B1AAD418697121005276D4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		88B1AAD618697121005276D4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -41,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				882C3920186A662400FF2664 /* CoreLocation.framework in Frameworks */,
 				88B1AAD718697121005276D4 /* CoreGraphics.framework in Frameworks */,
 				88B1AAD918697121005276D4 /* UIKit.framework in Frameworks */,
 				88B1AAD518697121005276D4 /* Foundation.framework in Frameworks */,
@@ -70,6 +76,7 @@
 		88B1AAD318697121005276D4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				882C391F186A662400FF2664 /* CoreLocation.framework */,
 				88B1AAD418697121005276D4 /* Foundation.framework */,
 				88B1AAD618697121005276D4 /* CoreGraphics.framework */,
 				88B1AAD818697121005276D4 /* UIKit.framework */,
@@ -86,6 +93,8 @@
 				88B1AAE618697121005276D4 /* Main.storyboard */,
 				88B1AAE918697121005276D4 /* WSMViewController.h */,
 				88B1AAEA18697121005276D4 /* WSMViewController.m */,
+				882C391A186A5FB300FF2664 /* WSMHttpClient.h */,
+				882C391B186A5FB300FF2664 /* WSMHttpClient.m */,
 				88B1AAEC18697121005276D4 /* Images.xcassets */,
 				88B1AADB18697121005276D4 /* Supporting Files */,
 			);
@@ -178,6 +187,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				882C391C186A5FB300FF2664 /* WSMHttpClient.m in Sources */,
 				88B1AAE518697121005276D4 /* WSMAppDelegate.m in Sources */,
 				88B1AAE118697121005276D4 /* main.m in Sources */,
 				88B1AAEB18697121005276D4 /* WSMViewController.m in Sources */,
