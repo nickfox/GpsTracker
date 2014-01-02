@@ -7,107 +7,130 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		882C391C186A5FB300FF2664 /* WSMHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 882C391B186A5FB300FF2664 /* WSMHttpClient.m */; };
-		882C3920186A662400FF2664 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 882C391F186A662400FF2664 /* CoreLocation.framework */; };
-		88B1AAD518697121005276D4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B1AAD418697121005276D4 /* Foundation.framework */; };
-		88B1AAD718697121005276D4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B1AAD618697121005276D4 /* CoreGraphics.framework */; };
-		88B1AAD918697121005276D4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B1AAD818697121005276D4 /* UIKit.framework */; };
-		88B1AADF18697121005276D4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 88B1AADD18697121005276D4 /* InfoPlist.strings */; };
-		88B1AAE118697121005276D4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B1AAE018697121005276D4 /* main.m */; };
-		88B1AAE518697121005276D4 /* WSMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B1AAE418697121005276D4 /* WSMAppDelegate.m */; };
-		88B1AAE818697121005276D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88B1AAE618697121005276D4 /* Main.storyboard */; };
-		88B1AAEB18697121005276D4 /* WSMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B1AAEA18697121005276D4 /* WSMViewController.m */; };
-		88B1AAED18697121005276D4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88B1AAEC18697121005276D4 /* Images.xcassets */; };
+		8884704B1874EB9400867228 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8884704A1874EB9400867228 /* Foundation.framework */; };
+		8884704D1874EB9400867228 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8884704C1874EB9400867228 /* CoreGraphics.framework */; };
+		8884704F1874EB9400867228 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8884704E1874EB9400867228 /* UIKit.framework */; };
+		888470551874EB9400867228 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 888470531874EB9400867228 /* InfoPlist.strings */; };
+		888470571874EB9400867228 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 888470561874EB9400867228 /* main.m */; };
+		8884705B1874EB9400867228 /* WSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8884705A1874EB9400867228 /* WSAppDelegate.m */; };
+		8884705E1874EB9400867228 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8884705C1874EB9400867228 /* Main.storyboard */; };
+		888470611874EB9400867228 /* WSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 888470601874EB9400867228 /* WSViewController.m */; };
+		888470631874EB9400867228 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 888470621874EB9400867228 /* Images.xcassets */; };
+		888470801875826600867228 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8884707F1875826600867228 /* CoreLocation.framework */; };
+		C2EA24936B40417481CBD07D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C8880B2EE17432CA6FDD050 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		882C391A186A5FB300FF2664 /* WSMHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSMHttpClient.h; sourceTree = "<group>"; };
-		882C391B186A5FB300FF2664 /* WSMHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSMHttpClient.m; sourceTree = "<group>"; };
-		882C391F186A662400FF2664 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		88B1AAD118697121005276D4 /* GpsTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GpsTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		88B1AAD418697121005276D4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		88B1AAD618697121005276D4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		88B1AAD818697121005276D4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		88B1AADC18697121005276D4 /* GpsTracker-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GpsTracker-Info.plist"; sourceTree = "<group>"; };
-		88B1AADE18697121005276D4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		88B1AAE018697121005276D4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		88B1AAE218697121005276D4 /* GpsTracker-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GpsTracker-Prefix.pch"; sourceTree = "<group>"; };
-		88B1AAE318697121005276D4 /* WSMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WSMAppDelegate.h; sourceTree = "<group>"; };
-		88B1AAE418697121005276D4 /* WSMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WSMAppDelegate.m; sourceTree = "<group>"; };
-		88B1AAE718697121005276D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		88B1AAE918697121005276D4 /* WSMViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WSMViewController.h; sourceTree = "<group>"; };
-		88B1AAEA18697121005276D4 /* WSMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WSMViewController.m; sourceTree = "<group>"; };
-		88B1AAEC18697121005276D4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		88B1AAF318697121005276D4 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		6C8880B2EE17432CA6FDD050 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		888470471874EB9400867228 /* GpsTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GpsTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8884704A1874EB9400867228 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		8884704C1874EB9400867228 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		8884704E1874EB9400867228 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		888470521874EB9400867228 /* GpsTracker-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GpsTracker-Info.plist"; sourceTree = "<group>"; };
+		888470541874EB9400867228 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		888470561874EB9400867228 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		888470581874EB9400867228 /* GpsTracker-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GpsTracker-Prefix.pch"; sourceTree = "<group>"; };
+		888470591874EB9400867228 /* WSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WSAppDelegate.h; sourceTree = "<group>"; };
+		8884705A1874EB9400867228 /* WSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WSAppDelegate.m; sourceTree = "<group>"; };
+		8884705D1874EB9400867228 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8884705F1874EB9400867228 /* WSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WSViewController.h; sourceTree = "<group>"; };
+		888470601874EB9400867228 /* WSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WSViewController.m; sourceTree = "<group>"; };
+		888470621874EB9400867228 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		888470691874EB9400867228 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		888470711874EB9400867228 /* GpsTrackerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GpsTrackerTests-Info.plist"; sourceTree = "<group>"; };
+		888470731874EB9400867228 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		888470751874EB9400867228 /* GpsTrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GpsTrackerTests.m; sourceTree = "<group>"; };
+		8884707F1875826600867228 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		BE3B3497D30F48C2ADC3BCE7 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		88B1AACE18697121005276D4 /* Frameworks */ = {
+		888470441874EB9400867228 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				882C3920186A662400FF2664 /* CoreLocation.framework in Frameworks */,
-				88B1AAD718697121005276D4 /* CoreGraphics.framework in Frameworks */,
-				88B1AAD918697121005276D4 /* UIKit.framework in Frameworks */,
-				88B1AAD518697121005276D4 /* Foundation.framework in Frameworks */,
+				888470801875826600867228 /* CoreLocation.framework in Frameworks */,
+				8884704D1874EB9400867228 /* CoreGraphics.framework in Frameworks */,
+				8884704F1874EB9400867228 /* UIKit.framework in Frameworks */,
+				8884704B1874EB9400867228 /* Foundation.framework in Frameworks */,
+				C2EA24936B40417481CBD07D /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		88B1AAC818697121005276D4 = {
+		8884703E1874EB9400867228 = {
 			isa = PBXGroup;
 			children = (
-				88B1AADA18697121005276D4 /* GpsTracker */,
-				88B1AAD318697121005276D4 /* Frameworks */,
-				88B1AAD218697121005276D4 /* Products */,
+				888470501874EB9400867228 /* GpsTracker */,
+				8884706F1874EB9400867228 /* GpsTrackerTests */,
+				888470491874EB9400867228 /* Frameworks */,
+				888470481874EB9400867228 /* Products */,
+				BE3B3497D30F48C2ADC3BCE7 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
-		88B1AAD218697121005276D4 /* Products */ = {
+		888470481874EB9400867228 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				88B1AAD118697121005276D4 /* GpsTracker.app */,
+				888470471874EB9400867228 /* GpsTracker.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		88B1AAD318697121005276D4 /* Frameworks */ = {
+		888470491874EB9400867228 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				882C391F186A662400FF2664 /* CoreLocation.framework */,
-				88B1AAD418697121005276D4 /* Foundation.framework */,
-				88B1AAD618697121005276D4 /* CoreGraphics.framework */,
-				88B1AAD818697121005276D4 /* UIKit.framework */,
-				88B1AAF318697121005276D4 /* XCTest.framework */,
+				8884707F1875826600867228 /* CoreLocation.framework */,
+				8884704A1874EB9400867228 /* Foundation.framework */,
+				8884704C1874EB9400867228 /* CoreGraphics.framework */,
+				8884704E1874EB9400867228 /* UIKit.framework */,
+				888470691874EB9400867228 /* XCTest.framework */,
+				6C8880B2EE17432CA6FDD050 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		88B1AADA18697121005276D4 /* GpsTracker */ = {
+		888470501874EB9400867228 /* GpsTracker */ = {
 			isa = PBXGroup;
 			children = (
-				88B1AAE318697121005276D4 /* WSMAppDelegate.h */,
-				88B1AAE418697121005276D4 /* WSMAppDelegate.m */,
-				88B1AAE618697121005276D4 /* Main.storyboard */,
-				88B1AAE918697121005276D4 /* WSMViewController.h */,
-				88B1AAEA18697121005276D4 /* WSMViewController.m */,
-				882C391A186A5FB300FF2664 /* WSMHttpClient.h */,
-				882C391B186A5FB300FF2664 /* WSMHttpClient.m */,
-				88B1AAEC18697121005276D4 /* Images.xcassets */,
-				88B1AADB18697121005276D4 /* Supporting Files */,
+				888470591874EB9400867228 /* WSAppDelegate.h */,
+				8884705A1874EB9400867228 /* WSAppDelegate.m */,
+				8884705C1874EB9400867228 /* Main.storyboard */,
+				8884705F1874EB9400867228 /* WSViewController.h */,
+				888470601874EB9400867228 /* WSViewController.m */,
+				888470621874EB9400867228 /* Images.xcassets */,
+				888470511874EB9400867228 /* Supporting Files */,
 			);
 			path = GpsTracker;
 			sourceTree = "<group>";
 		};
-		88B1AADB18697121005276D4 /* Supporting Files */ = {
+		888470511874EB9400867228 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				88B1AADC18697121005276D4 /* GpsTracker-Info.plist */,
-				88B1AADD18697121005276D4 /* InfoPlist.strings */,
-				88B1AAE018697121005276D4 /* main.m */,
-				88B1AAE218697121005276D4 /* GpsTracker-Prefix.pch */,
+				888470521874EB9400867228 /* GpsTracker-Info.plist */,
+				888470531874EB9400867228 /* InfoPlist.strings */,
+				888470561874EB9400867228 /* main.m */,
+				888470581874EB9400867228 /* GpsTracker-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8884706F1874EB9400867228 /* GpsTrackerTests */ = {
+			isa = PBXGroup;
+			children = (
+				888470751874EB9400867228 /* GpsTrackerTests.m */,
+				888470701874EB9400867228 /* Supporting Files */,
+			);
+			path = GpsTrackerTests;
+			sourceTree = "<group>";
+		};
+		888470701874EB9400867228 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				888470711874EB9400867228 /* GpsTrackerTests-Info.plist */,
+				888470721874EB9400867228 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -115,13 +138,15 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		88B1AAD018697121005276D4 /* GpsTracker */ = {
+		888470461874EB9400867228 /* GpsTracker */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 88B1AB0318697122005276D4 /* Build configuration list for PBXNativeTarget "GpsTracker" */;
+			buildConfigurationList = 888470791874EB9400867228 /* Build configuration list for PBXNativeTarget "GpsTracker" */;
 			buildPhases = (
-				88B1AACD18697121005276D4 /* Sources */,
-				88B1AACE18697121005276D4 /* Frameworks */,
-				88B1AACF18697121005276D4 /* Resources */,
+				7112F83FD248433F80295246 /* Check Pods Manifest.lock */,
+				888470431874EB9400867228 /* Sources */,
+				888470441874EB9400867228 /* Frameworks */,
+				888470451874EB9400867228 /* Resources */,
+				2991F302B84B4A3AA863CB6A /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -129,20 +154,20 @@
 			);
 			name = GpsTracker;
 			productName = GpsTracker;
-			productReference = 88B1AAD118697121005276D4 /* GpsTracker.app */;
+			productReference = 888470471874EB9400867228 /* GpsTracker.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		88B1AAC918697121005276D4 /* Project object */ = {
+		8884703F1874EB9400867228 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = WSM;
+				CLASSPREFIX = WS;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Nick Fox";
 				TargetAttributes = {
-					88B1AAD018697121005276D4 = {
+					888470461874EB9400867228 = {
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -151,7 +176,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 88B1AACC18697121005276D4 /* Build configuration list for PBXProject "GpsTracker" */;
+			buildConfigurationList = 888470421874EB9400867228 /* Build configuration list for PBXProject "GpsTracker" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -159,64 +184,104 @@
 				en,
 				Base,
 			);
-			mainGroup = 88B1AAC818697121005276D4;
-			productRefGroup = 88B1AAD218697121005276D4 /* Products */;
+			mainGroup = 8884703E1874EB9400867228;
+			productRefGroup = 888470481874EB9400867228 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				88B1AAD018697121005276D4 /* GpsTracker */,
+				888470461874EB9400867228 /* GpsTracker */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		88B1AACF18697121005276D4 /* Resources */ = {
+		888470451874EB9400867228 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88B1AAED18697121005276D4 /* Images.xcassets in Resources */,
-				88B1AADF18697121005276D4 /* InfoPlist.strings in Resources */,
-				88B1AAE818697121005276D4 /* Main.storyboard in Resources */,
+				888470631874EB9400867228 /* Images.xcassets in Resources */,
+				888470551874EB9400867228 /* InfoPlist.strings in Resources */,
+				8884705E1874EB9400867228 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2991F302B84B4A3AA863CB6A /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7112F83FD248433F80295246 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		88B1AACD18697121005276D4 /* Sources */ = {
+		888470431874EB9400867228 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				882C391C186A5FB300FF2664 /* WSMHttpClient.m in Sources */,
-				88B1AAE518697121005276D4 /* WSMAppDelegate.m in Sources */,
-				88B1AAE118697121005276D4 /* main.m in Sources */,
-				88B1AAEB18697121005276D4 /* WSMViewController.m in Sources */,
+				8884705B1874EB9400867228 /* WSAppDelegate.m in Sources */,
+				888470571874EB9400867228 /* main.m in Sources */,
+				888470611874EB9400867228 /* WSViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		88B1AADD18697121005276D4 /* InfoPlist.strings */ = {
+		888470531874EB9400867228 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				88B1AADE18697121005276D4 /* en */,
+				888470541874EB9400867228 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		88B1AAE618697121005276D4 /* Main.storyboard */ = {
+		8884705C1874EB9400867228 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				88B1AAE718697121005276D4 /* Base */,
+				8884705D1874EB9400867228 /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		888470721874EB9400867228 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				888470731874EB9400867228 /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		88B1AB0118697122005276D4 /* Debug */ = {
+		888470771874EB9400867228 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -249,13 +314,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
-		88B1AB0218697122005276D4 /* Release */ = {
+		888470781874EB9400867228 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -282,35 +347,35 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		88B1AB0418697122005276D4 /* Debug */ = {
+		8884707A1874EB9400867228 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BE3B3497D30F48C2ADC3BCE7 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GpsTracker/GpsTracker-Prefix.pch";
 				INFOPLIST_FILE = "GpsTracker/GpsTracker-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
-		88B1AB0518697122005276D4 /* Release */ = {
+		8884707B1874EB9400867228 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BE3B3497D30F48C2ADC3BCE7 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GpsTracker/GpsTracker-Prefix.pch";
 				INFOPLIST_FILE = "GpsTracker/GpsTracker-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -319,25 +384,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		88B1AACC18697121005276D4 /* Build configuration list for PBXProject "GpsTracker" */ = {
+		888470421874EB9400867228 /* Build configuration list for PBXProject "GpsTracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				88B1AB0118697122005276D4 /* Debug */,
-				88B1AB0218697122005276D4 /* Release */,
+				888470771874EB9400867228 /* Debug */,
+				888470781874EB9400867228 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		88B1AB0318697122005276D4 /* Build configuration list for PBXNativeTarget "GpsTracker" */ = {
+		888470791874EB9400867228 /* Build configuration list for PBXNativeTarget "GpsTracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				88B1AB0418697122005276D4 /* Debug */,
-				88B1AB0518697122005276D4 /* Release */,
+				8884707A1874EB9400867228 /* Debug */,
+				8884707B1874EB9400867228 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 88B1AAC918697121005276D4 /* Project object */;
+	rootObject = 8884703F1874EB9400867228 /* Project object */;
 }

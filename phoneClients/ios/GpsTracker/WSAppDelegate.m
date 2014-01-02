@@ -1,14 +1,14 @@
 //
-//  WSMAppDelegate.m
+//  WSAppDelegate.m
 //  GpsTracker
 //
-//  Created by Nick Fox on 12/23/13.
-//  Copyright (c) 2013 Nick Fox. All rights reserved.
+//  Created by Nick Fox on 1/1/14.
+//  Copyright (c) 2014 Nick Fox. All rights reserved.
 //
 
-#import "WSMAppDelegate.h"
+#import "WSAppDelegate.h"
 
-@implementation WSMAppDelegate
+@implementation WSAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
