@@ -26,6 +26,8 @@
     bool currentlyTracking;
     bool firstTimeGettingPosition;
     NSUUID *guid;
+    NSDate *lastWebsiteUpdateTime;
+    int timeIntervalInSeconds;
 }
 
 - (void)viewDidLoad
@@ -33,21 +35,21 @@
     [super viewDidLoad];
     currentlyTracking = NO;
 
+    timeIntervalInSeconds = 60;
 }
 
 - (void)startTracking
 {
-    NSLog(@"start tracking ");
+    NSLog(@"start tracking");
     locationManager = [[CLLocationManager alloc] init];
     locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
-    locationManager.delegate = self;
-    // locationManager.activityType = CLActivityTypeAutomotiveNavigation;
     locationManager.distanceFilter = 0; // meters
-    
-    totalDistanceInMeters = 0;
-    firstTimeGettingPosition = YES;
+    locationManager.delegate = self;
     
     guid = [NSUUID UUID];
+    totalDistanceInMeters = 0;
+    firstTimeGettingPosition = YES;
+    lastWebsiteUpdateTime = [NSDate date]; // new timestamp
     
     [locationManager startUpdatingLocation];
 }
@@ -95,23 +97,30 @@
             totalDistanceInMeters += distance;
         }
         
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"]; // mysql format
-        NSString *timeStamp = [dateFormatter stringFromDate:location.timestamp];
-    
-        NSString *latitude = [NSString stringWithFormat:@"%f", location.coordinate.latitude];
-        NSString *longitude = [NSString stringWithFormat:@"%f", location.coordinate.longitude];
-        NSString *speed = [NSString stringWithFormat:@"%f", location.speed];
-        NSString *accuracy = [NSString stringWithFormat:@"%f", location.horizontalAccuracy];
-        NSString *direction = [NSString stringWithFormat:@"%f", location.course];
-        NSString *altitude = [NSString stringWithFormat:@"%f", location.altitude];
-        NSString *totalDistanceString = [NSString stringWithFormat:@"%d", totalDistanceInMeters];
+        NSTimeInterval secondsSinceLastWebsiteUpdate = fabs([lastWebsiteUpdateTime timeIntervalSinceNow]);
+        if (secondsSinceLastWebsiteUpdate > timeIntervalInSeconds) // one minute
+        {
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"]; // mysql format
+            NSString *timeStamp = [dateFormatter stringFromDate:location.timestamp];
+            NSString *latitude = [NSString stringWithFormat:@"%f", location.coordinate.latitude];
+            NSString *longitude = [NSString stringWithFormat:@"%f", location.coordinate.longitude];
+            NSString *speed = [NSString stringWithFormat:@"%f", location.speed];
+            NSString *accuracy = [NSString stringWithFormat:@"%f", location.horizontalAccuracy];
+            NSString *direction = [NSString stringWithFormat:@"%f", location.course];
+            NSString *altitude = [NSString stringWithFormat:@"%f", location.altitude];
+            NSString *totalDistanceString = [NSString stringWithFormat:@"%d", totalDistanceInMeters];
+            
+            // note that the guid is created in startTracking method above
+            [self updateWebsiteWithLatitde:latitude longitude:longitude speed:speed date:timeStamp distance:totalDistanceString sessionID:[guid UUIDString] accuracy:accuracy extraInfo:altitude direction:direction];
+            
+            lastWebsiteUpdateTime = [NSDate date]; // new timestamp
+        }
         
-        // note that the guid is created in startTracking method above
-        [self updateWebsiteWithLatitde:latitude longitude:longitude speed:speed date:timeStamp distance:totalDistanceString sessionID:[guid UUIDString] accuracy:accuracy extraInfo:altitude direction:direction];
+
     }
     
-    NSLog(@"lat/lng: %f/%f accuracy: %f", location.coordinate.latitude, location.coordinate.longitude, location.horizontalAccuracy);
+    NSLog(@"count: %lu lat/lng: %f/%f accuracy: %f", [locations count], location.coordinate.latitude, location.coordinate.longitude, location.horizontalAccuracy);
     
     previousLocation = location;
 }
@@ -139,9 +148,9 @@
                                  @"direction": direction};
     
     [manager POST:@"http://www.websmithing.com/gpstracker2/getgooglemap3.php" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"Response: %@", responseObject);
+        NSLog(@"location sent to website");
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"AFHTTPRequestOperation Error: %@", error);
+        NSLog(@"AFHTTPRequestOperation Error: %@", [error description]);
     }];
 }
 
