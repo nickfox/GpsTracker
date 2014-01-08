@@ -22,12 +22,13 @@
 {
     CLLocationManager *locationManager;
     CLLocation *previousLocation;
-    int totalDistanceInMeters;
+    double totalDistanceInMeters;
     bool currentlyTracking;
     bool firstTimeGettingPosition;
     NSUUID *guid;
     NSDate *lastWebsiteUpdateTime;
     int timeIntervalInSeconds;
+    bool increasedAccuracy;
 }
 
 - (void)viewDidLoad
@@ -35,28 +36,33 @@
     [super viewDidLoad];
     currentlyTracking = NO;
 
-    timeIntervalInSeconds = 60;
+    timeIntervalInSeconds = 60; // change this to the time interval you want
 }
 
 - (void)startTracking
 {
     NSLog(@"start tracking");
+    
     locationManager = [[CLLocationManager alloc] init];
     locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
     locationManager.distanceFilter = 0; // meters
+    locationManager.pausesLocationUpdatesAutomatically = YES; // YES is default
+    locationManager.activityType = CLActivityTypeAutomotiveNavigation;
     locationManager.delegate = self;
     
     guid = [NSUUID UUID];
     totalDistanceInMeters = 0;
+    increasedAccuracy = YES;
     firstTimeGettingPosition = YES;
     lastWebsiteUpdateTime = [NSDate date]; // new timestamp
-    
+
     [locationManager startUpdatingLocation];
 }
 
 - (void)stopTracking
 {
     NSLog(@"stop tracking");
+    
     [locationManager stopUpdatingLocation];
     locationManager = nil;
 }
@@ -76,53 +82,76 @@
 {
    locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers;
     locationManager.distanceFilter = 9999;
+    increasedAccuracy = NO;
 }
 
 - (void)increaseTrackingAccuracy
 {
     locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
     locationManager.distanceFilter = 0;
+    increasedAccuracy = YES;
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
     CLLocation *location = [locations lastObject];
     
-    if (location.horizontalAccuracy < 100.0 && location.coordinate.latitude != 0 && location.coordinate.longitude != 0) {
-        
-        if (firstTimeGettingPosition) {
-            firstTimeGettingPosition = NO;
-        } else {
-            CLLocationDistance distance = [location distanceFromLocation:previousLocation];
-            totalDistanceInMeters += distance;
-        }
-        
-        NSTimeInterval secondsSinceLastWebsiteUpdate = fabs([lastWebsiteUpdateTime timeIntervalSinceNow]);
-        if (secondsSinceLastWebsiteUpdate > timeIntervalInSeconds) // one minute
-        {
+    NSTimeInterval secondsSinceLastWebsiteUpdate = fabs([lastWebsiteUpdateTime timeIntervalSinceNow]);
+    if (firstTimeGettingPosition || (secondsSinceLastWebsiteUpdate > timeIntervalInSeconds)) // currently one minute
+    {
+        if (location.horizontalAccuracy < 100.0 && location.coordinate.latitude != 0 && location.coordinate.longitude != 0) {
+            
+            if (increasedAccuracy) {
+                [self reduceTrackingAccuracy];
+            }
+            
+            if (firstTimeGettingPosition) {
+                firstTimeGettingPosition = NO;
+            } else {
+                CLLocationDistance distance = [location distanceFromLocation:previousLocation];
+                totalDistanceInMeters += distance;
+            }
+            
             NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-            [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"]; // mysql format
+            [dateFormatter setDateFormat:@"yyyy-MM-dd%20HH:mm:ss"]; // mysql format
             NSString *timeStamp = [dateFormatter stringFromDate:location.timestamp];
             NSString *latitude = [NSString stringWithFormat:@"%f", location.coordinate.latitude];
             NSString *longitude = [NSString stringWithFormat:@"%f", location.coordinate.longitude];
-            NSString *speed = [NSString stringWithFormat:@"%f", location.speed];
-            NSString *accuracy = [NSString stringWithFormat:@"%f", location.horizontalAccuracy];
-            NSString *direction = [NSString stringWithFormat:@"%f", location.course];
-            NSString *altitude = [NSString stringWithFormat:@"%f", location.altitude];
-            NSString *totalDistanceString = [NSString stringWithFormat:@"%d", totalDistanceInMeters];
+            NSString *speed = [NSString stringWithFormat:@"%d", (int)location.speed];
+            NSString *accuracy = [NSString stringWithFormat:@"%d", (int)location.horizontalAccuracy];
+            NSString *direction = [NSString stringWithFormat:@"%d", (int)location.course];
+            NSString *altitude = [NSString stringWithFormat:@"altitude: %dm", (int)location.altitude];
+            NSString *totalDistanceString = [NSString stringWithFormat:@"%d", (int)totalDistanceInMeters];
             
             // note that the guid is created in startTracking method above
             [self updateWebsiteWithLatitde:latitude longitude:longitude speed:speed date:timeStamp distance:totalDistanceString sessionID:[guid UUIDString] accuracy:accuracy extraInfo:altitude direction:direction];
             
             lastWebsiteUpdateTime = [NSDate date]; // new timestamp
+            
+            previousLocation = location;
+            
+        } else if (!increasedAccuracy) {
+            [self increaseTrackingAccuracy];
         }
-        
-
     }
     
-    NSLog(@"count: %lu lat/lng: %f/%f accuracy: %f", [locations count], location.coordinate.latitude, location.coordinate.longitude, location.horizontalAccuracy);
+    NSString *trackingAccuracy = (increasedAccuracy) ? @"high" : @"low";
     
-    previousLocation = location;
+    NSLog(@"tracking accuracy: %@ lat/lng: %f/%f accuracy: %dm", trackingAccuracy, location.coordinate.latitude, location.coordinate.longitude, (int)location.horizontalAccuracy);
+    
+    if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
+        [self updateUIWithLocationData:location];
+    }
+}
+
+- (void)updateUIWithLocationData:(CLLocation *)location
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd/MM/yyyy HH:mm"];
+    [self timestampLabel].text = [NSString stringWithFormat:@"timestamp: %@",[dateFormatter stringFromDate:location.timestamp]];
+    [self latitudeLabel].text = [NSString stringWithFormat:@"latitude: %f", location.coordinate.latitude];
+    [self longitudeLabel].text = [NSString stringWithFormat:@"longitude: %f", location.coordinate.longitude];
+    [self accuracyLabel].text= [NSString stringWithFormat:@"accuracy: %dm", (int)location.horizontalAccuracy];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
@@ -133,6 +162,7 @@
 - (void)updateWebsiteWithLatitde:(NSString *)latitude longitude:(NSString *)longitude speed:(NSString *)speed date:(NSString *)date distance:(NSString *)distance sessionID:(NSString *)sessionID accuracy:(NSString *)accuracy extraInfo:(NSString *)extraInfo direction:(NSString *)direction
 {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
     NSDictionary *parameters = @{@"latitude": latitude,
                                  @"longitude": longitude,
@@ -148,7 +178,7 @@
                                  @"direction": direction};
     
     [manager POST:@"http://www.websmithing.com/gpstracker2/getgooglemap3.php" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"location sent to website");
+        NSLog(@"location sent to website.");
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"AFHTTPRequestOperation Error: %@", [error description]);
     }];
