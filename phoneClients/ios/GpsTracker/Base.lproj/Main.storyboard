@@ -46,7 +46,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="timestamp: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhg-HS-tbU">
-                                <rect key="frame" x="20" y="185" width="281" height="21"/>
+                                <rect key="frame" x="19" y="214" width="281" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -58,7 +58,7 @@
                                 <color key="backgroundColor" red="0.074509806931018829" green="0.80000007152557373" blue="0.7882353663444519" alpha="1" colorSpace="deviceRGB"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zal-ts-Jff">
-                                <rect key="frame" x="20" y="241" width="99" height="30"/>
+                                <rect key="frame" x="20" y="269" width="99" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="start tracking">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -67,11 +67,19 @@
                                     <action selector="handleTrackingButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="7rm-GB-ibz"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="accuracy level:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P5w-7W-Tf6">
+                                <rect key="frame" x="20" y="185" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="accuracyLabel" destination="tcw-5s-aHp" id="udN-uO-HI2"/>
+                        <outlet property="accuracyLevelLabel" destination="P5w-7W-Tf6" id="hPH-ij-AsN"/>
                         <outlet property="latitudeLabel" destination="Qc5-WS-ycH" id="Ftr-eu-W2D"/>
                         <outlet property="longitudeLabel" destination="tT8-VX-pS4" id="OKg-CP-4Um"/>
                         <outlet property="timestampLabel" destination="xhg-HS-tbU" id="52S-ku-1v2"/>

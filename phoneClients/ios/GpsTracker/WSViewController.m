@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *accuracyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timestampLabel;
 @property (weak, nonatomic) IBOutlet UIButton *trackingButton;
+@property (weak, nonatomic) IBOutlet UILabel *accuracyLevelLabel;
 @end
 
 @implementation WSViewController
@@ -46,8 +47,8 @@
     locationManager = [[CLLocationManager alloc] init];
     locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
     locationManager.distanceFilter = 0; // meters
-    locationManager.pausesLocationUpdatesAutomatically = YES; // YES is default
-    locationManager.activityType = CLActivityTypeAutomotiveNavigation;
+    locationManager.pausesLocationUpdatesAutomatically = NO; // YES is default
+    //locationManager.activityType = CLActivityTypeAutomotiveNavigation;
     locationManager.delegate = self;
     
     guid = [NSUUID UUID];
@@ -55,6 +56,7 @@
     increasedAccuracy = YES;
     firstTimeGettingPosition = YES;
     lastWebsiteUpdateTime = [NSDate date]; // new timestamp
+    [self updateAccuracyLevel:@"high"];
 
     [locationManager startUpdatingLocation];
 }
@@ -81,8 +83,9 @@
 - (void)reduceTrackingAccuracy
 {
    locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers;
-    locationManager.distanceFilter = 9999;
+    locationManager.distanceFilter = 5;
     increasedAccuracy = NO;
+    [self updateAccuracyLevel:@"low"];
 }
 
 - (void)increaseTrackingAccuracy
@@ -90,6 +93,7 @@
     locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
     locationManager.distanceFilter = 0;
     increasedAccuracy = YES;
+    [self updateAccuracyLevel:@"high"];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
@@ -136,12 +140,16 @@
     }
     
     NSString *trackingAccuracy = (increasedAccuracy) ? @"high" : @"low";
-    
     NSLog(@"tracking accuracy: %@ lat/lng: %f/%f accuracy: %dm", trackingAccuracy, location.coordinate.latitude, location.coordinate.longitude, (int)location.horizontalAccuracy);
     
     if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
         [self updateUIWithLocationData:location];
     }
+}
+
+- (void)updateAccuracyLevel:(NSString *)accuracyLevel
+{
+    [self accuracyLevelLabel].text= [NSString stringWithFormat:@"accuracy level: %@", accuracyLevel];
 }
 
 - (void)updateUIWithLocationData:(CLLocation *)location
