@@ -48,7 +48,7 @@
     locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
     locationManager.distanceFilter = 0; // meters
     locationManager.pausesLocationUpdatesAutomatically = NO; // YES is default
-    //locationManager.activityType = CLActivityTypeAutomotiveNavigation;
+    // locationManager.activityType = CLActivityTypeAutomotiveNavigation;
     locationManager.delegate = self;
     
     guid = [NSUUID UUID];
