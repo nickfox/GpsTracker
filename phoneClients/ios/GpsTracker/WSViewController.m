@@ -47,8 +47,8 @@
     locationManager = [[CLLocationManager alloc] init];
     locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
     locationManager.distanceFilter = 0; // meters
-    locationManager.pausesLocationUpdatesAutomatically = NO; // YES is default
-    // locationManager.activityType = CLActivityTypeAutomotiveNavigation;
+    //locationManager.pausesLocationUpdatesAutomatically = NO; // YES is default
+    locationManager.activityType = CLActivityTypeAutomotiveNavigation;
     locationManager.delegate = self;
     
     guid = [NSUUID UUID];
@@ -114,7 +114,11 @@
             } else {
                 CLLocationDistance distance = [location distanceFromLocation:previousLocation];
                 totalDistanceInMeters += distance;
+                
+                
             }
+ 
+            previousLocation = location;
             
             NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
             [dateFormatter setDateFormat:@"yyyy-MM-dd%20HH:mm:ss"]; // mysql format
@@ -131,8 +135,6 @@
             [self updateWebsiteWithLatitde:latitude longitude:longitude speed:speed date:timeStamp distance:totalDistanceString sessionID:[guid UUIDString] accuracy:accuracy extraInfo:altitude direction:direction];
             
             lastWebsiteUpdateTime = [NSDate date]; // new timestamp
-            
-            previousLocation = location;
             
         } else if (!increasedAccuracy) {
             [self increaseTrackingAccuracy];
@@ -169,6 +171,9 @@
 
 - (void)updateWebsiteWithLatitde:(NSString *)latitude longitude:(NSString *)longitude speed:(NSString *)speed date:(NSString *)date distance:(NSString *)distance sessionID:(NSString *)sessionID accuracy:(NSString *)accuracy extraInfo:(NSString *)extraInfo direction:(NSString *)direction
 {
+    // NSString *defaultWebSite = @"http://www.websmithing.com/gpstracker2/getgooglemap3.php";
+    NSString *defaultWebSite = @"http://192.168.1.19/GpsTracker/UpdateLocation.aspx";
+    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
@@ -178,14 +183,14 @@
                                  @"date": date,
                                  @"locationmethod": @"n/a",
                                  @"distance": distance,
-                                 @"phonenumber": @"iosUser",
+                                 @"phonenumber": @"iosUser1",
                                  @"sessionid": sessionID,
                                  @"extrainfo": extraInfo,
                                  @"accuracy": accuracy,
                                  @"eventtype": @"ios",
                                  @"direction": direction};
     
-    [manager POST:@"http://www.websmithing.com/gpstracker2/getgooglemap3.php" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:defaultWebSite parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"location sent to website.");
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"AFHTTPRequestOperation Error: %@", [error description]);
