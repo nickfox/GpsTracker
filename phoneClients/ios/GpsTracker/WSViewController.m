@@ -171,8 +171,9 @@
 
 - (void)updateWebsiteWithLatitde:(NSString *)latitude longitude:(NSString *)longitude speed:(NSString *)speed date:(NSString *)date distance:(NSString *)distance sessionID:(NSString *)sessionID accuracy:(NSString *)accuracy extraInfo:(NSString *)extraInfo direction:(NSString *)direction
 {
-    // NSString *defaultWebSite = @"http://www.websmithing.com/gpstracker2/getgooglemap3.php";
-    NSString *defaultWebSite = @"http://192.168.1.19/GpsTracker/UpdateLocation.aspx";
+    // the second was used for testing the .net site on local network
+    NSString *defaultWebSite = @"http://www.websmithing.com/gpstracker2/getgooglemap3.php";
+    // NSString *defaultWebSite = @"http://192.168.1.19/GpsTracker/UpdateLocation.aspx";
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
