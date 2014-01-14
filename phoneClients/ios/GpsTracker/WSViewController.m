@@ -183,7 +183,7 @@
                                  @"date": date,
                                  @"locationmethod": @"n/a",
                                  @"distance": distance,
-                                 @"phonenumber": @"iosUser1",
+                                 @"phonenumber": @"iosUser",
                                  @"sessionid": sessionID,
                                  @"extrainfo": extraInfo,
                                  @"accuracy": accuracy,
