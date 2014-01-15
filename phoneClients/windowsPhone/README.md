@@ -1,1 +1,1 @@
-this is the version 1.0 windows phone client for gpstracker.
+This version of the windows phone client works fine with both servers. 
