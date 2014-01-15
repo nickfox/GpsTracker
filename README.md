@@ -3,7 +3,7 @@ GpsTracker
 
 Google Map GPS Cell Phone Tracker
 
-Status update for Jan 14, 2014. Version 3 of GpsTracker is complete. This was a very big change from the last version. It's been updated with ios, android, windowsPhone clients and the servers have all been updated as well. Please let me know how it works, good or bad and create an issue if you find a problem. Thanks and enjoy the software, Nick.
+Status update for Jan 14, 2014. Version 3 of GpsTracker is complete. This was a very big change from the last version. It's been updated with ios, android, windowsPhone and java me/j2me phone clients and the servers have all been updated as well. Please let me know how it works, good or bad and create an issue if you find a problem. Thanks and enjoy the software, Nick.
 
 If you need help, please go to:
 
