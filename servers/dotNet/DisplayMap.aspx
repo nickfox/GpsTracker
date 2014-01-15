@@ -1,12 +1,15 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="DisplayMap.aspx.cs" Inherits="DisplayMap" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" >
+<!DOCTYPE html">
+<html>
 <head>
     <title>Google Map GPS Cell Phone Tracker</title>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta charset="utf-8"/>
+
+    <!-- will keep v2 until i have time to update to json -->
+    <script src=" http://maps.google.com/maps?file=api&v=2&sensor=false"></script>
+   	<script src="javascript/maps.js""></script>
 	<link href="styles/styles.css" rel="stylesheet" type="text/css" />
-   	<script src="javascript/maps.js" type="text/javascript"></script>
 
     <script type="text/javascript">
   	//<![CDATA[
@@ -22,8 +25,7 @@
         var zoomLevel;
         
 		function load() {
-		    // the code to process the data is in the javascript/maps2.js file
-		  
+		    // the code to process the data is in the javascript/maps.js file
 		    routeSelect = document.getElementById('selectRoute');
 		    refreshSelect = document.getElementById('selectRefresh');
 		    zoomLevelSelect = document.getElementById('selectZoomLevel');
@@ -48,8 +50,6 @@
 
 </head>
 <body  onload="load()" onunload="GUnload()">
-<!-- this form is needed for RegisterClientScriptBlock to run correctly. -->
-<form id="form1" runat="server"></form>
     <div id="messages">GPS Tracker</div>
     <div id="map"></div>
     
