@@ -1,1 +1,1 @@
-using android studio for the project. it is not yet ready for testing with the website.
+This project was built with android studio and is completed and works fine with both servers.
