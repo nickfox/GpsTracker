@@ -172,7 +172,7 @@
 - (void)updateWebsiteWithLatitde:(NSString *)latitude longitude:(NSString *)longitude speed:(NSString *)speed date:(NSString *)date distance:(NSString *)distance sessionID:(NSString *)sessionID accuracy:(NSString *)accuracy extraInfo:(NSString *)extraInfo direction:(NSString *)direction
 {
     // the second was used for testing the .net site on local network
-    NSString *defaultWebSite = @"http://www.websmithing.com/gpstracker/updatelocation.php";
+    NSString *defaultUploadWebsite = @"http://www.websmithing.com/gpstracker/updatelocation.php";
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
@@ -190,7 +190,7 @@
                                  @"eventtype": @"ios",
                                  @"direction": direction};
     
-    [manager POST:defaultWebSite parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:defaultUploadWebsite parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"location sent to website.");
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"AFHTTPRequestOperation Error: %@", [error description]);

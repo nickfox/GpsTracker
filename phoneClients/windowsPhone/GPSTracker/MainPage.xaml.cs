@@ -76,7 +76,7 @@ namespace GPSTracker
 
                 httpCount++;
 
-                string defaultUploadWebsite = "http://www.websmithing.com/gpstracker2/getgooglemap3.php";
+                string defaultUploadWebsite = "http://www.websmithing.com/gpstracker/updatelocation.php";
                 HttpContent httpContent = new FormUrlEncodedContent(new[]
                 {
                     new KeyValuePair<string, string>("latitude", latitude),
