@@ -171,6 +171,9 @@
 
 - (void)updateWebsiteWithLatitde:(NSString *)latitude longitude:(NSString *)longitude speed:(NSString *)speed date:(NSString *)date distance:(NSString *)distance sessionID:(NSString *)sessionID accuracy:(NSString *)accuracy extraInfo:(NSString *)extraInfo direction:(NSString *)direction
 {
+	// use the websmithing defaultUploadWebsite for testing, change the *phoneNumber* form variable to something you
+	// know and then check your location with your browser here: http://www.websmithing.com/gpstracker/displaymap.php
+	
     NSString *defaultUploadWebsite = @"http://www.websmithing.com/gpstracker/updatelocation.php";
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
