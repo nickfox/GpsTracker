@@ -1,4 +1,4 @@
-GpsTracker
+![gpstracker](https://raw2.github.com/nickfox/GpsTracker/master/gpstracker_small.png)GpsTracker
 ==========
 
 Google Map GPS Cell Phone Tracker
