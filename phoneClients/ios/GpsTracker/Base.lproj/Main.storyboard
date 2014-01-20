@@ -52,13 +52,27 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="sessionID: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MI9-OR-MA2">
+                                <rect key="frame" x="19" y="243" width="281" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="281" translatesAutoresizingMaskIntoConstraints="NO" id="irF-up-ge3">
+                                <rect key="frame" x="20" y="272" width="281" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W2k-Xb-pE0">
                                 <rect key="frame" x="20" y="48" width="280" height="1"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.074509806931018829" green="0.80000007152557373" blue="0.7882353663444519" alpha="1" colorSpace="deviceRGB"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zal-ts-Jff">
-                                <rect key="frame" x="20" y="269" width="99" height="30"/>
+                                <rect key="frame" x="20" y="315" width="99" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="start tracking">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -82,6 +96,7 @@
                         <outlet property="accuracyLevelLabel" destination="P5w-7W-Tf6" id="hPH-ij-AsN"/>
                         <outlet property="latitudeLabel" destination="Qc5-WS-ycH" id="Ftr-eu-W2D"/>
                         <outlet property="longitudeLabel" destination="tT8-VX-pS4" id="OKg-CP-4Um"/>
+                        <outlet property="sessionIDLabel" destination="irF-up-ge3" id="IP0-xA-BWY"/>
                         <outlet property="timestampLabel" destination="xhg-HS-tbU" id="52S-ku-1v2"/>
                         <outlet property="trackingButton" destination="Zal-ts-Jff" id="pSl-lV-fY5"/>
                     </connections>

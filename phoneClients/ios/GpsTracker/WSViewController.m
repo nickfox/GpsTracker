@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *timestampLabel;
 @property (weak, nonatomic) IBOutlet UIButton *trackingButton;
 @property (weak, nonatomic) IBOutlet UILabel *accuracyLevelLabel;
+@property (weak, nonatomic) IBOutlet UILabel *sessionIDLabel;
 @end
 
 @implementation WSViewController
@@ -57,6 +58,8 @@
     firstTimeGettingPosition = YES;
     lastWebsiteUpdateTime = [NSDate date]; // new timestamp
     [self updateAccuracyLevel:@"high"];
+    
+    [self sessionIDLabel].text = [guid UUIDString];
 
     [locationManager startUpdatingLocation];
 }
@@ -65,6 +68,7 @@
 {
     NSLog(@"stop tracking");
     
+    [self sessionIDLabel].text = @"";
     [locationManager stopUpdatingLocation];
     locationManager = nil;
 }
