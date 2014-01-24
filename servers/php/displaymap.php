@@ -58,7 +58,7 @@
         <option value ="120">Auto Refresh - 2 minutes</option>
         <option value ="180">Auto Refresh - 3 minutes</option>
         <option value ="300">Auto Refresh - 5 minutes</option>
-        <option value ="6000">Auto Refresh - 10 minutes</option>
+        <option value ="600">Auto Refresh - 10 minutes</option>
     </select>
 
 	<select id="selectZoomLevel" onchange="changeZoomLevel();" tabindex="3">
