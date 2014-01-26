@@ -51,13 +51,22 @@
         android:layout_marginBottom="5dp"
         android:text="@string/timeStamp" />
 
-    <Button
-        android:id="@+id/startTrackingButton"
+    <TextView
+        android:id="@+id/sessionIDTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/timeStampTextView"
         android:layout_alignLeft="@+id/latitudeTextView"
-        android:onClick="startTracking"
+        android:layout_below="@+id/timeStampTextView"
+        android:layout_marginBottom="5dp"
+        android:text="@string/sessionID" />
+
+    <Button
+        android:id="@+id/trackingButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sessionIDTextView"
+        android:layout_alignLeft="@+id/latitudeTextView"
+        android:onClick="startOrStopTracking"
         android:layout_marginTop="10dp"
         android:text="@string/start_tracking" />
 

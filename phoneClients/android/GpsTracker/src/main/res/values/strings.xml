@@ -8,6 +8,7 @@
     <string name="provider">provider: </string>
     <string name="timeStamp">timeStamp: </string>
     <string name="accuracy">accuracy: </string>
+    <string name="sessionID">sessionID: </string>
     <string name="start_tracking">start tracking</string>
 
     <!-- User interface labels and strings -->

@@ -39,7 +39,12 @@
     </layouts>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fe415d5-9929-47d9-9a7a-de7d3ea04176" name="Default" comment="" />
+    <list default="true" id="9fe415d5-9929-47d9-9a7a-de7d3ea04176" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GpsTracker/src/main/java/com/websmithing/gpstracker/GpsTrackerActivity.java" afterPath="$PROJECT_DIR$/GpsTracker/src/main/java/com/websmithing/gpstracker/GpsTrackerActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GpsTracker/src/main/res/layout/fragment_gpstracker.xml" afterPath="$PROJECT_DIR$/GpsTracker/src/main/res/layout/fragment_gpstracker.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GpsTracker/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/GpsTracker/src/main/res/values/strings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="GpsTracker.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -106,7 +111,28 @@
       <file leaf-file-name="GpsTrackerActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GpsTracker/src/main/java/com/websmithing/gpstracker/GpsTrackerActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="134" column="19" selection-start="5059" selection-end="5059" vertical-scroll-proportion="0.442" vertical-offset="1581" max-vertical-offset="4114">
+            <state line="14" column="0" selection-start="422" selection-end="422" vertical-scroll-proportion="0.33663365" vertical-offset="0" max-vertical-offset="4845">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fragment_gpstracker.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GpsTracker/src/main/res/layout/fragment_gpstracker.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="65" column="36" selection-start="2590" selection-end="2590" vertical-scroll-proportion="-16.37037" vertical-offset="663" max-vertical-offset="1343">
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="strings.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GpsTracker/src/main/res/values/strings.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="38" selection-start="437" selection-end="437" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="1547">
               <folding />
             </state>
           </provider>
@@ -115,7 +141,7 @@
       <file leaf-file-name="MyHttpClient.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GpsTracker/src/main/java/com/websmithing/gpstracker/MyHttpClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="0" selection-start="593" selection-end="593" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
+            <state line="18" column="0" selection-start="826" selection-end="826" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="408">
               <folding />
             </state>
           </provider>
@@ -524,20 +550,20 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/GpsTracker/src/main/res/layout/activity_gpstracker.xml" />
-        <option value="$PROJECT_DIR$/GpsTracker/src/main/res/layout/fragment_gpstracker.xml" />
-        <option value="$PROJECT_DIR$/GpsTracker/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/GpsTracker/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/GpsTracker/build.gradle" />
         <option value="$PROJECT_DIR$/GpsTracker/src/main/java/MyHttpClient.java" />
         <option value="$PROJECT_DIR$/GpsTracker/src/main/java/com/websmithing/gpstracker/MyHttpClient.java" />
         <option value="$PROJECT_DIR$/GpsTracker/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/GpsTracker/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/GpsTracker/src/main/res/layout/fragment_gpstracker.xml" />
         <option value="$PROJECT_DIR$/GpsTracker/src/main/java/com/websmithing/gpstracker/GpsTrackerActivity.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="27" />
-    <option name="y" value="84" />
+    <option name="x" value="41" />
+    <option name="y" value="34" />
     <option name="width" value="1612" />
     <option name="height" value="1008" />
   </component>
@@ -583,6 +609,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -659,6 +687,92 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GpsTracker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GpsTracker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="values" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GpsTracker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GpsTracker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layout" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GpsTracker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GpsTracker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -669,8 +783,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -685,7 +797,7 @@
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
     <property name="recentsLimit" value="5" />
-    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="HT117P800542" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="038bc97a09478f59" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="Nexus-4" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/GpsTracker/libs/android-async-http-1.4.4.jar" />
     <property name="FullScreen" value="false" />
@@ -722,6 +834,19 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -747,19 +872,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -874,12 +986,13 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="27" y="84" width="1612" height="1008" extended-state="1" />
-    <editor active="false" />
+    <frame x="41" y="34" width="1612" height="1008" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28516623" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -889,20 +1002,19 @@
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32921347" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.40674156" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1741573" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21839081" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21264368" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3280899" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28516623" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32921347" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -911,15 +1023,15 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="true" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21839081" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3280899" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -932,8 +1044,8 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32921347" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3280899" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -955,6 +1067,103 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/GpsTracker/src/main/java/com/websmithing/gpstracker/GpsTrackerActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="25" selection-start="328" selection-end="328" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="4845">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GpsTracker/src/main/res/layout/fragment_gpstracker.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="65" column="36" selection-start="2590" selection-end="2590" vertical-scroll-proportion="0.0" vertical-offset="663" max-vertical-offset="1343">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GpsTracker/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="38" selection-start="437" selection-end="437" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="1547">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GpsTracker/src/main/java/com/websmithing/gpstracker/MyHttpClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="0" selection-start="826" selection-end="826" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="408">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GpsTracker/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="66" selection-start="527" selection-end="527" vertical-scroll-proportion="0.0" vertical-offset="23" max-vertical-offset="697">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GpsTracker/src/main/java/com/websmithing/gpstracker/GpsTrackerActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="75" column="27" selection-start="2766" selection-end="2766" vertical-scroll-proportion="0.0" vertical-offset="1275" max-vertical-offset="4199">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GpsTracker/src/main/res/layout/fragment_gpstracker.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="74" column="44" selection-start="2943" selection-end="2943" vertical-scroll-proportion="0.0" vertical-offset="855" max-vertical-offset="1496">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GpsTracker/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="38" selection-start="437" selection-end="437" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="1547">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GpsTracker/src/main/java/com/websmithing/gpstracker/MyHttpClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="0" selection-start="826" selection-end="826" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="408">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GpsTracker/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="66" selection-start="527" selection-end="527" vertical-scroll-proportion="0.0" vertical-offset="23" max-vertical-offset="697">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GpsTracker/src/main/java/com/websmithing/gpstracker/GpsTrackerActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="134" column="19" selection-start="5059" selection-end="5059" vertical-scroll-proportion="0.0" vertical-offset="2278" max-vertical-offset="4114">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GpsTracker/src/main/java/com/websmithing/gpstracker/MyHttpClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="0" selection-start="593" selection-end="593" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="340">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GpsTracker/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="66" selection-start="527" selection-end="527" vertical-scroll-proportion="0.0" vertical-offset="23" max-vertical-offset="697">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/GpsTracker/src/main/java/com/websmithing/gpstracker/GpsTrackerActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="144" column="32" selection-start="4856" selection-end="4856" vertical-scroll-proportion="0.0" vertical-offset="2448" max-vertical-offset="3417">
@@ -991,13 +1200,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GpsTracker/src/main/res/layout/fragment_gpstracker.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="0" selection-start="506" selection-end="506" vertical-scroll-proportion="0.0" vertical-offset="135" max-vertical-offset="1050">
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GpsTracker/src/main/java/com/websmithing/gpstracker/GpsTrackerActivity.java">
@@ -1022,13 +1231,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GpsTracker/src/main/res/layout/fragment_gpstracker.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="0" selection-start="506" selection-end="506" vertical-scroll-proportion="0.0" vertical-offset="135" max-vertical-offset="1050">
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GpsTracker/src/main/java/com/websmithing/gpstracker/GpsTrackerActivity.java">
@@ -1046,13 +1255,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GpsTracker/src/main/res/layout/fragment_gpstracker.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="0" selection-start="506" selection-end="506" vertical-scroll-proportion="0.0" vertical-offset="135" max-vertical-offset="1050">
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GpsTracker/src/main/res/values/styles.xml">
@@ -1070,13 +1279,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GpsTracker/src/main/res/layout/fragment_gpstracker.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1050">
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GpsTracker/src/main/java/com/websmithing/gpstracker/GpsTrackerActivity.java">
@@ -1101,20 +1310,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GpsTracker/src/main/res/layout/fragment_gpstracker.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1050">
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GpsTracker/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="12" selection-start="4647" selection-end="4647" vertical-scroll-proportion="1.4630282" vertical-offset="429" max-vertical-offset="1350">
-          <folding />
-        </state>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GpsTracker/src/main/res/values/dimens.xml">
@@ -1125,13 +1327,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GpsTracker/src/main/res/layout/activity_gpstracker.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="834">
           <folding />
         </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GpsTracker/src/main/res/values/styles.xml">
@@ -1163,16 +1365,6 @@
         <state line="6" column="13" selection-start="165" selection-end="165" vertical-scroll-proportion="0.15124555" vertical-offset="0" max-vertical-offset="1292" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GpsTracker/src/main/res/layout/fragment_gpstracker.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="506" selection-end="506" vertical-scroll-proportion="0.03141361" vertical-offset="135" max-vertical-offset="1190">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/GpsTracker/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="66" selection-start="527" selection-end="527" vertical-scroll-proportion="0.0" vertical-offset="23" max-vertical-offset="697">
@@ -1182,21 +1374,36 @@
     </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/sdk/platforms/android-19/android.jar!/java/util/UUID.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="19" selection-start="158" selection-end="158" vertical-scroll-proportion="0.17" vertical-offset="0" max-vertical-offset="697">
-          <folding />
-        </state>
+        <state line="6" column="19" selection-start="158" selection-end="158" vertical-scroll-proportion="0.17" vertical-offset="0" max-vertical-offset="697" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GpsTracker/src/main/java/com/websmithing/gpstracker/MyHttpClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="593" selection-end="593" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
+        <state line="18" column="0" selection-start="826" selection-end="826" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="408">
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/GpsTracker/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="38" selection-start="437" selection-end="437" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1547">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GpsTracker/src/main/res/layout/fragment_gpstracker.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="65" column="36" selection-start="2590" selection-end="2590" vertical-scroll-proportion="-16.37037" vertical-offset="663" max-vertical-offset="1343">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/GpsTracker/src/main/java/com/websmithing/gpstracker/GpsTrackerActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="134" column="19" selection-start="5059" selection-end="5059" vertical-scroll-proportion="0.442" vertical-offset="1581" max-vertical-offset="4114">
+        <state line="14" column="0" selection-start="422" selection-end="422" vertical-scroll-proportion="0.33663365" vertical-offset="0" max-vertical-offset="4845">
           <folding />
         </state>
       </provider>
