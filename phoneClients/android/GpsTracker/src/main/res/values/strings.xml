@@ -11,8 +11,6 @@
     <string name="sessionID">sessionID: </string>
     <string name="start_tracking">start tracking</string>
 
-    <!-- User interface labels and strings -->
-
     <!-- Address format -->
     <string name="address_output_string">%1$s %2$s %3$s</string>
 

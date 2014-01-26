@@ -52,11 +52,11 @@ public class GpsTrackerActivity extends ActionBarActivity implements LocationLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(android.R.layout.activity_gpstracker);
+        setContentView(R.layout.activity_gpstracker);
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .add(android.R.id.container, new PlaceholderFragment())
+                    .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
 
@@ -70,50 +70,38 @@ public class GpsTrackerActivity extends ActionBarActivity implements LocationLis
         }
     }
 
-    // called when trackingButton is tapped
-    public void startOrStopTracking(View v) {
+    // called when startTrackingButton is tapped
+    public void trackLocation(View v) {
         if (currentlyTracking) {
+            ((Button) v).setText("start tracking");
             stopTracking();
             currentlyTracking = false;
         } else {
+            ((Button) v).setText("stop tracking");
             startTracking();
             currentlyTracking = true;
         }
     }
 
-    public void startTracking() {
-        Log.e(TAG, "startTracking");
-        ((Button) v).setText("stop tracking");
-
+    protected void startTracking() {
         sessionID = UUID.randomUUID().toString();
         sessionIDTextView.setText("sessionID: " + sessionID);
-        totalDistanceInMeters = 0.0f;
 
+        totalDistanceInMeters = 0.0f;
+        int intervalInSeconds = 60; // one minute
         locationRequest = LocationRequest.create();
-        locationRequest.setInterval(60 * 1000);
-        locationRequest.setFastestInterval(60 * 1000); // the fastest rate in milliseconds at which your app can handle location updates
+        locationRequest.setInterval(intervalInSeconds * 1000);
+        locationRequest.setFastestInterval(intervalInSeconds * 1000); // the fastest rate in milliseconds at which your app can handle location updates
         locationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
         locationClient.requestLocationUpdates(locationRequest, this);
     }
 
-    public void stopTracking() {
-        Log.e(TAG, "stopTracking");
-        ((Button) v).setText("start tracking");
-
-        sessionIDTextView.setText("sessionID:");
-    }
-
-    protected void changeInterval(int intervalInMinutes) {
-        locationRequest.setInterval(intervalInMinutes * 1000);
-        locationRequest.setFastestInterval(intervalInMinutes * 1000);
-    }
-
-    protected void oneTimeLocationUpdate() {
-        Log.e(TAG, "oneTimeLocationUpdate");
+    protected void stopTracking() {
+        sessionIDTextView.setText("sessionID: ");
 
         if (locationClient != null && locationClient.isConnected()) {
-            Location location = locationClient.getLastLocation();
-            displayLocationData(location);
+            locationClient.removeLocationUpdates(this);
+            locationClient.disconnect();
         }
     }
 
@@ -221,7 +209,6 @@ public class GpsTrackerActivity extends ActionBarActivity implements LocationLis
     @Override
     public void onConnected(Bundle bundle) {
         Log.e(TAG, "onConnected");
-
     }
 
     /**
@@ -231,18 +218,16 @@ public class GpsTrackerActivity extends ActionBarActivity implements LocationLis
     @Override
     public void onDisconnected() {
         Log.e(TAG, "onDisconnected");
-
     }
 
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
         Log.e(TAG, "onConnectionFailed");
-
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(android.R.menu.gps_tracker, menu);
+        getMenuInflater().inflate(R.menu.gps_tracker, menu);
         return true;
     }
 
@@ -252,27 +237,26 @@ public class GpsTrackerActivity extends ActionBarActivity implements LocationLis
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()) {
-            case android.R.id.action_settings:
+            case R.id.action_settings:
                 return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
     public static class PlaceholderFragment extends Fragment {
-
         public PlaceholderFragment() {
         }
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(android.R.layout.fragment_gpstracker, container, false);
-            longitudeTextView = (TextView)rootView.findViewById(android.R.id.longitudeTextView);
-            latitudeTextView = (TextView)rootView.findViewById(android.R.id.latitudeTextView);
-            accuracyTextView = (TextView)rootView.findViewById(android.R.id.accuracyTextView);
-            providerTextView = (TextView)rootView.findViewById(android.R.id.providerTextView);
-            timeStampTextView = (TextView)rootView.findViewById(android.R.id.timeStampTextView);
-            sessionIDTextView = (TextView)rootView.findViewById(android.R.id.sessionIDTextView);
+            View rootView = inflater.inflate(R.layout.fragment_gpstracker, container, false);
+            longitudeTextView = (TextView)rootView.findViewById(R.id.longitudeTextView);
+            latitudeTextView = (TextView)rootView.findViewById(R.id.latitudeTextView);
+            accuracyTextView = (TextView)rootView.findViewById(R.id.accuracyTextView);
+            providerTextView = (TextView)rootView.findViewById(R.id.providerTextView);
+            timeStampTextView = (TextView)rootView.findViewById(R.id.timeStampTextView);
+            sessionIDTextView = (TextView)rootView.findViewById(R.id.sessionIDTextView);
             return rootView;
         }
     }
