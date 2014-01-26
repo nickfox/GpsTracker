@@ -11,7 +11,7 @@ If you need help, please go to:
 
 http://www.websmithing.com/gps-tracker/
 
-Here is a quick start guide to help you set up GpsTracker
+Here is a quick start guide to help you set up GpsTracker:
 
 http://www.websmithing.com/2014/01/20/quick-start-guide-for-gpstracker-3/
 
