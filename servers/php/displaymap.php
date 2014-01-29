@@ -2,12 +2,12 @@
 <html>
 <head>
     <title>Google Map GPS Cell Phone Tracker</title>
-	<meta charset="utf-8">
+    <meta charset="utf-8">
 	
-	<!-- will keep v2 until i have time to update to json --> 
-    <script src="http://maps.google.com/maps?file=api&v=2&sensor=false"></script>
-   	<script src="javascript/maps.js"></script>	
-	<link href="styles/styles.css" rel="stylesheet" type="text/css" />
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=adsense"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="javascript/maps.js"></script>
+    <link href="styles/styles.css" rel="stylesheet" type="text/css" />
 
     <script type="text/javascript">
   	//<![CDATA[
@@ -38,16 +38,24 @@
 	        zoomLevelSelect.selectedIndex = 11;
 			refreshSelect.selectedIndex = 0;
 		    showWait('Loading routes...');
+			var i = 0;
 
-		    // when the page first loads, get the routes from the DB and load them into the dropdown box.
-		    GDownloadUrl('getroutes.php', loadRoutes);
+		    // when the page first loads, get the routes from the DB and load them into the dropdown box.			
+		    $.ajax({
+		           url: 'getroutes.php',
+		           type: 'GET',
+		           dataType: 'xml',
+		           success: function(data) {
+		              loadRoutes(data);
+		           }
+		       });
 		}
 	 //]]>
      </script>
 
 </head>
-<body  onload="load()" onunload="GUnload()">    
-    <div id="messages">GPS Tracker</div>
+<body  onload="load()">    
+    <div id="messages">GpsTracker</div>
     <div id="map"></div>
 
 	<select id="selectRoute" onchange="getRouteForMap();" tabindex="1"></select>
@@ -84,10 +92,7 @@
 	<input type="button" id="delete" value="Delete" onclick="deleteRoute()" tabindex="4">
 	<input type="button" id="refresh" value="Refresh" onclick="getRouteForMap()" tabindex="5">
 
-    <!-- preload images to speed up loading in IE -->
-    <img src="images/coolred_small.png" alt="" style="display:none" />
-    <img src="images/coolblue_small.png" alt="" style="display:none" />
-    <img src="images/coolshadow_small.png" alt="" style="display:none" />
+	 <div id="test">Please note that phoneNumber (ie. androidUser) and sessionID are being displayed in the dropdown box below the map. You can change phoneNumber to anything you want. It will make it easier to identify your route during testing.</div>
 </body>
 </html>
 
