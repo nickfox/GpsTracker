@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.7.0
+Created-By: 1.6.0_01-b06 (Sun Microsystems Inc.)
+

@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "http://localhost/GPSTracker/", "http://localhost/GPSTracker", "{B2CAFC54-B8D3-410B-8B22-667496F2C862}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.VirtualPath = "/GPSTracker"
+		Debug.AspNetCompiler.PhysicalPath = "inetpub\wwwroot\GPSTracker\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\GPSTracker\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/GPSTracker"
+		Release.AspNetCompiler.PhysicalPath = "inetpub\wwwroot\GPSTracker\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\GPSTracker\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "inetpub\wwwroot\GPSTracker\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|.NET = Debug|.NET
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B2CAFC54-B8D3-410B-8B22-667496F2C862}.Debug|.NET.ActiveCfg = Debug|.NET
+		{B2CAFC54-B8D3-410B-8B22-667496F2C862}.Debug|.NET.Build.0 = Debug|.NET
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

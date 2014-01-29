@@ -1,0 +1,9 @@
+MIDlet-1: GPSTracker,/res/gps32.png,GPSTracker
+MIDlet-Permissions: javax.microedition.io.Connector.http, javax.microedition.location.Location
+MIDlet-Vendor: Websmithing
+MIDlet-Info-URL: www.websmithing.com
+MIDlet-Name: GPSTracker2.0
+MIDlet-Icon: /res/gps32.png
+MIDlet-Version: 2.0
+MicroEdition-Configuration: CLDC-1.1
+MicroEdition-Profile: MIDP-2.0
