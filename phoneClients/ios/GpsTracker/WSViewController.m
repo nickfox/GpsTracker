@@ -104,6 +104,9 @@
 {
     CLLocation *location = [locations lastObject];
     
+    // I learned this method of getting a time interval from xs2bush on stackoverflow and wanted to give that person
+    // credit for this, thanks. http://stackoverflow.com/a/6466152/125615
+    
     NSTimeInterval secondsSinceLastWebsiteUpdate = fabs([lastWebsiteUpdateTime timeIntervalSinceNow]);
     if (firstTimeGettingPosition || (secondsSinceLastWebsiteUpdate > timeIntervalInSeconds)) // currently one minute
     {
