@@ -16,7 +16,9 @@ function loadRoutes(xml) {
 			var option = document.createElement('option');
 			option.setAttribute('value', '?sessionID=' + $(this).attr('sessionID')
 		                    + '&phoneNumber=' + $(this).attr('phoneNumber'));
-			option.innerHTML = $(this).attr('phoneNumber') + "  " + $(this).attr('sessionID') + "  " + $(this).attr('times');
+							
+			var shortSessionID = $(this).attr('sessionID').substring(0,5);				
+			option.innerHTML = $(this).attr('phoneNumber') + "-" + shortSessionID + "  " + $(this).attr('times');
 			routeSelect.appendChild(option);
 		});
 		

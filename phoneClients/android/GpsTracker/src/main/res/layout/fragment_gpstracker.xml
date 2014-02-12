@@ -52,19 +52,19 @@
         android:text="@string/timeStamp" />
 
     <TextView
-        android:id="@+id/sessionIDTextView"
+        android:id="@+id/phoneNumberTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/latitudeTextView"
         android:layout_below="@+id/timeStampTextView"
         android:layout_marginBottom="5dp"
-        android:text="@string/sessionID" />
+        android:text="@string/phoneNumber" />
 
     <Button
         android:id="@+id/startTrackingButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/sessionIDTextView"
+        android:layout_below="@+id/phoneNumberTextView"
         android:layout_alignLeft="@+id/latitudeTextView"
         android:onClick="trackLocation"
         android:layout_marginTop="10dp"

@@ -92,19 +92,12 @@
 	<input type="button" id="delete" value="Delete" onclick="deleteRoute()" tabindex="4">
 	<input type="button" id="refresh" value="Refresh" onclick="getRouteForMap()" tabindex="5">
 
-	 <div id="test"><p>Please note that phoneNumber (ie. androidUser) and sessionID are being displayed in the dropdown box below the map. <strong>You can change "androidUser" to anything you want</strong>. It will make it easier to identify your route during testing.</p>
-	&nbsp;<br>
-<p>It's line 148 in GpsTrackerActivity.java of the Android Studio project. This is the line:<br>
-	&nbsp;<br>
- requestParams.put("phonenumber", "<strong>androidUser</strong>");<br>
-&nbsp;<br>
-change it to:
-&nbsp;<br>
-&nbsp;<br>
-requestParams.put("phonenumber", "<strong>anythingElse</strong>");<br>
-&nbsp;<br>
-please. :o)
-</p>		 	 
+	 <div id="test"><p>Please note that routes in the dropdown box are a concatenation of phoneNumber (ie. androidUser) and the first five characters of the sessionID. Start and end times for the routes are in parentheses. Routes will be deleted after 3 days, there were getting to be to many.
+		 <br>&nbsp;<br>
+		 The routes in the dropdown box are sorted by date so your route should be near the bottom.
+		 <br>&nbsp;<br>
+		 Feb 12, 2014
+		 
 	 </div>
 </body>
 </html>

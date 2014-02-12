@@ -39,7 +39,7 @@ public class GpsTrackerActivity extends ActionBarActivity implements LocationLis
     private static TextView accuracyTextView;
     private static TextView providerTextView;
     private static TextView timeStampTextView;
-    private static TextView sessionIDTextView;
+    private static TextView phoneNumberTextView;
 
     private LocationRequest locationRequest;
     private LocationClient locationClient;
@@ -48,6 +48,8 @@ public class GpsTrackerActivity extends ActionBarActivity implements LocationLis
     private boolean firstTimeGettingPosition = true;
     private boolean currentlyTracking = false;
     private String sessionID;
+    private String shortSessionID;
+    private String phoneNumber = "androidUser";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,7 +87,8 @@ public class GpsTrackerActivity extends ActionBarActivity implements LocationLis
 
     protected void startTracking() {
         sessionID = UUID.randomUUID().toString();
-        sessionIDTextView.setText("sessionID: " + sessionID);
+        shortSessionID = sessionID.substring(0,5);
+        phoneNumberTextView.setText("phoneNumber: " + phoneNumber + "-" + shortSessionID);
 
         totalDistanceInMeters = 0.0f;
         int intervalInSeconds = 60; // one minute
@@ -97,7 +100,7 @@ public class GpsTrackerActivity extends ActionBarActivity implements LocationLis
     }
 
     protected void stopTracking() {
-        sessionIDTextView.setText("sessionID: ");
+        phoneNumberTextView.setText("phoneNumber: ");
 
         if (locationClient != null && locationClient.isConnected()) {
             locationClient.removeLocationUpdates(this);
@@ -145,6 +148,8 @@ public class GpsTrackerActivity extends ActionBarActivity implements LocationLis
                 requestParams.put("distance", 0); // in miles
             }
 
+            String shortSessionID = sessionID.substring(0,5);
+
             requestParams.put("phonenumber", "androidUser");
             requestParams.put("sessionid", sessionID); // uuid
             requestParams.put("accuracy", Float.toString(location.getAccuracy())); // in meters
@@ -178,7 +183,7 @@ public class GpsTrackerActivity extends ActionBarActivity implements LocationLis
         providerTextView.setText("provider: " + location.getProvider());
         timeStampTextView.setText("timeStamp: " + dateFormat.format(date));
 
-        Log.e(TAG, dateFormat.format(date) +  " accuracy: " + location.getAccuracy());
+        Log.e(TAG, dateFormat.format(date) + " accuracy: " + location.getAccuracy());
     }
 
     @Override
@@ -256,7 +261,7 @@ public class GpsTrackerActivity extends ActionBarActivity implements LocationLis
             accuracyTextView = (TextView)rootView.findViewById(R.id.accuracyTextView);
             providerTextView = (TextView)rootView.findViewById(R.id.providerTextView);
             timeStampTextView = (TextView)rootView.findViewById(R.id.timeStampTextView);
-            sessionIDTextView = (TextView)rootView.findViewById(R.id.sessionIDTextView);
+            phoneNumberTextView = (TextView)rootView.findViewById(R.id.phoneNumberTextView);
             return rootView;
         }
     }
