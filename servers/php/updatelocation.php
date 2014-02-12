@@ -6,20 +6,23 @@
 	//die();
 
 	// from the phone
-	$latitude = $_POST['latitude'];
-	$longitude = $_POST['longitude'];
-	$speed = $_POST['speed'];
-	$direction = $_POST['direction'];
-	$distance = $_POST['distance'];
-	$date = urldecode($_POST['date']);
-	$locationMethod = urldecode($_POST['locationmethod']);
-	$phoneNumber = $_POST['phonenumber'];
-	$sessionID = $_POST['sessionid'];
-	$accuracy = $_POST['accuracy'];
-	$extraInfo = $_POST['extrainfo'];
-	$eventType = $_POST['eventtype'];
+	isset($_POST['latitude']) ? $latitude = $_POST['latitude'] : $latitude = '0';
+	isset($_POST['longitude']) ? $longitude = $_POST['longitude'] : $longitude = '0';
+	isset($_POST['speed']) ? $speed = $_POST['speed'] : $speed = '0';
+	isset($_POST['direction']) ? $direction = $_POST['direction'] : $direction = '0';
+	isset($_POST['distance']) ? $distance = $_POST['distance'] : $distance = '0';
+	isset($_POST['date']) ? $date = $_POST['date'] : $date = $_POST['date'];
+	$date = urldecode($date);
+	isset($_POST['locationmethod']) ? $locationMethod = $_POST['locationmethod'] : $locationMethod = '0';
+	$locationMethod = urldecode($locationMethod);
+	isset($_POST['phonenumber']) ? $phoneNumber = $_POST['phonenumber'] : $phoneNumber = '0';
+	isset($_POST['sessionid']) ? $sessionID = $_POST['sessionid'] : $sessionID = '0';
+	isset($_POST['accuracy']) ? $accuracy = $_POST['accuracy'] : $accuracy = '0';
+	isset($_POST['extrainfo']) ? $extraInfo = $_POST['extrainfo'] : $extraInfo = '0';
+	isset($_POST['eventtype']) ? $eventType = $_POST['eventtype'] : $eventType = '0';
 
 	// save the gps location to the database
+	// i'm not to worried about sql injection here since i'm calling a stored procedure here
 	$query = 'CALL prcSaveGPSLocation(\''
 	  . $latitude  . '\',\''
 	  . $longitude  . '\',\''

@@ -1,37 +1,31 @@
 ﻿
-function loadRoutes(data, responseCode) {
-    if (data.length == 0) {
+function loadRoutes(xml) {
+    if (xml.length == 0) {
         showMessage('There are no routes available to view.');
         map.innerHTML = '';
     }
     else {
-        // get list of routes
-        var xml = GXml.parse(data);
-
-        var routes = xml.getElementsByTagName("route");
-
         // create the first option of the dropdown box
 		var option = document.createElement('option');
 		option.setAttribute('value', '0');
 		option.innerHTML = 'Select Route...';
 		routeSelect.appendChild(option);
 
-        // iterate through the routes and load them into the dropdwon box.
-        for (i = 0; i < routes.length; i++) {
+		// iterate through the routes and load them into the dropdwon box.
+		$(xml).find('route').each(function(){
 			var option = document.createElement('option');
-			option.setAttribute('value', '?sessionID=' + routes[i].getAttribute("sessionID")
-			                    + '&phoneNumber=' + routes[i].getAttribute("phoneNumber"));
-			option.innerHTML = routes[i].getAttribute("phoneNumber") + "  " + routes[i].getAttribute("times");
+			option.setAttribute('value', '?sessionID=' + $(this).attr('sessionID')
+		                    + '&phoneNumber=' + $(this).attr('phoneNumber'));
+			option.innerHTML = $(this).attr('phoneNumber') + "  " + $(this).attr('sessionID') + "  " + $(this).attr('times');
 			routeSelect.appendChild(option);
-        }
-
+		});
+		
         // need to reset this for firefox
         routeSelect.selectedIndex = 0;
 
         hideWait();
         showMessage('<span style="color:#F00;">Please select a route below.</span>');
     }
-
 }
 
 // this will get the map and route, the route is selected from the dropdown box
@@ -41,8 +35,15 @@ function getRouteForMap() {
 	    var url = 'getgpslocations.php' + routeSelect.options[routeSelect.selectedIndex].value;
 		
 		//alert("testing route: " + routeSelect.options[routeSelect.selectedIndex].value);
-		
-	    GDownloadUrl(url, loadGPSLocations);
+
+	    $.ajax({
+	           url: url,
+	           type: 'GET',
+	           dataType: 'xml',
+	           success: function(data) {
+	              loadGPSLocations(data);
+	           }
+	       });
 	}
 	else {
 	    alert("Please select a route before trying to refresh map.");
@@ -59,135 +60,123 @@ function hasMap() {
     }
 }
 
-function loadGPSLocations(data, responseCode) {
-    if (data.length == 0) {
+function loadGPSLocations(xml) {
+    if (xml.length == 0) {
         showMessage('There is no tracking data to view.');
         map.innerHTML = '';
     }
     else {
-        if (GBrowserIsCompatible()) {
+        // get rid of the wait gif
+        hideWait();
 			
-        	// create list of GPS data locations from our XML
-            var xml = GXml.parse(data);
+		var map = new google.maps.Map(
+			      document.getElementById('map'), {
+			        zoom: zoomLevel,
+			        mapTypeId: google.maps.MapTypeId.ROADMAP
+				  });
 
-            // markers that we will display on Google map
-            var markers = xml.getElementsByTagName("locations");
-
-            // get rid of the wait gif
-            hideWait();
-
-            // create new map and add zoom control and type of map control
-	        var map = new GMap2(document.getElementById("map"));
-	        map.setUIToDefault();
-
-
-      		// note: replace this publisher ID with your own.
+      		// note: replace this adsense publisher ID and channel with your own.
       		var publisherID = 'pub-7095775186404141';
+			var channel = '6961715451';		
+		    var adUnitDiv = document.createElement('div');
+		    var adUnitOptions = {
+		      format: google.maps.adsense.AdFormat.HALF_BANNER,
+		      position: google.maps.ControlPosition.TOP_CENTER,
+		      backgroundColor: '#c4d4f3',
+		      borderColor: '#e5ecf9',
+		      titleColor: '#0000cc',
+		      textColor: '#000000',
+		      urlColor: '#009900',
+		      publisherId: publisherID,
+			  channelNumber: channel,
+		      map: map,
+		      visible: true
+		    };
+		    var adUnit = new google.maps.adsense.AdUnit(adUnitDiv, adUnitOptions);			
 
-      		var adsManagerOptions = {
-        		maxAdsOnMap : 2,
-        		style: 'adunit',
-        		// The channel field is optional - replace this field with a channel number 
-        		// of your own for Google AdSense tracking
-        		channel: '2332912476'  
-      		};
+		   var finalLocation = false;
 
-      		adsManager = new GAdsManager(map, publisherID, adsManagerOptions);
-      		adsManager.enable();
+			// iterate through the locations and create map markers for each location
+			$(xml).find('locations').each(function(){
+				
+				// want to set the map center on the last location
+				if ($(this).is(':last-child')) {
+					map.setCenter(new google.maps.LatLng($(this).attr('latitude'),$(this).attr('longitude')));
+					finalLocation = true;
+				}
 
-            var length = markers.length;
-
-	        // center map on last marker so we can see progress during refreshes
-	        map.setCenter(new GLatLng(parseFloat(markers[length-1].getAttribute("latitude")),
-	                                  parseFloat(markers[length-1].getAttribute("longitude"))), zoomLevel);
-
-     		// interate through all our GPS data, create markers and add them to map
-	        for (var i = 0; i < length; i++) {
-		        var point = new GLatLng(parseFloat(markers[i].getAttribute("latitude")),
-	                                    parseFloat(markers[i].getAttribute("longitude")));
-
-		        var marker = createMarker(i, length, point,
-		                     markers[i].getAttribute("speed"),
-		                     markers[i].getAttribute("direction"),
-		                     markers[i].getAttribute("distance"),
-		                     markers[i].getAttribute("locationMethod"),
-		                     markers[i].getAttribute("gpsTime"),
-		                     markers[i].getAttribute("phoneNumber"),
-		                     markers[i].getAttribute("sessionID"),
-		                     markers[i].getAttribute("accuracy"),
-		                     markers[i].getAttribute("extraInfo"));
-
-				// add markers to map
-		        map.addOverlay(marker);
-	        }
+		        var marker = createMarker(
+					$(this).attr('latitude'),
+					$(this).attr('longitude'),
+		            $(this).attr('speed'),
+		            $(this).attr('direction'),
+		            $(this).attr('distance'),
+		            $(this).attr('locationMethod'),
+		            $(this).attr('gpsTime'),
+		            $(this).attr('phoneNumber'),
+		            $(this).attr('sessionID'),
+		            $(this).attr('accuracy'),
+		            $(this).attr('extraInfo'),
+					map, finalLocation);
+			});
         }
 
-        // show route name
+        // display route name above map
         showMessage(routeSelect.options[routeSelect.selectedIndex].innerHTML);
-    }
 }
 
-function createMarker(i, length, point, speed, direction, distance, locationMethod, gpsTime,
-                      phoneNumber, sessionID, accuracy, extraInfo) {
-    var icon = new GIcon();
+function createMarker(latitude, longitude, speed, direction, distance, locationMethod, gpsTime,
+                      phoneNumber, sessionID, accuracy, extraInfo, map, finalLocation) {			  			 						  	
+	var iconUrl;					  
 
-    // make the most current marker red
-    if (i == length - 1) {
-        icon.image = "images/coolred_small.png";
-    }
-    else {
-        icon.image = "images/coolblue_small.png";
-    }
-
-    icon.shadow = "images/coolshadow_small.png";
-    icon.iconSize = new GSize(12, 20);
-    icon.shadowSize = new GSize(22, 20);
-    icon.iconAnchor = new GPoint(6, 20);
-    icon.infoWindowAnchor = new GPoint(5, 1);
-
-    var marker = new GMarker(point,icon);
-
-	// this describes how we got our location data, either by satellite or by cell phone tower
-    var lm = "";
-    if (locationMethod == "8") {
-        lm = "Cell Tower";
-    } else if (locationMethod == "327681") {
-        lm = "Satellite";
+    if (finalLocation) {
+    	iconUrl = 'images/coolred_small.png';
     } else {
-        lm = locationMethod;
+    	iconUrl = 'images/coolblue_small.png';
     }
+						  
+	var markerImage = {
+	    url: iconUrl,
+	    size: new google.maps.Size(12, 20),
+	    origin: new google.maps.Point(0,0),
+	    anchor: new google.maps.Point(6, 30)
+	  };
+	
+	var marker = new google.maps.Marker({
+	    position: new google.maps.LatLng(latitude, longitude),
+	    map: map,
+	    icon: markerImage
+	});
 
     var lastMarker = "</td></tr>";
 
     // when a user clicks on last marker, let them know it's final one
-    if (i == length - 1) {
+    if (finalLocation) {
         lastMarker = "</td></tr><tr><td align=left>&nbsp;</td><td><b>Final location</b></td></tr>";
     }
 	
 	// convert from meters to feet
 	accuracy = parseInt(accuracy * 3.28);
-
-	// this creates the pop up bubble that displays info when a user clicks on a marker
-    GEvent.addListener(marker, "click", function() {
-        marker.openInfoWindowHtml(
-        "<table border=0 style=\"font-size:95%;font-family:arial,helvetica,sans-serif;\">"
+	
+	var contentString = "<table border=0 style=\"font-size:95%;font-family:arial,helvetica,sans-serif;\">"
         + "<tr><td align=right>&nbsp;</td><td>&nbsp;</td><td rowspan=2 align=right>"
-        + "<img src=images/" + getCompassImage(direction) + ".jpg alt= />"
-        + lastMarker
+        + "<img src=images/" + getCompassImage(direction) + ".jpg alt= />" + lastMarker
         + "<tr><td align=right>Speed:</td><td>" + speed +  " mph</td></tr>"
         + "<tr><td align=right>Distance:</td><td>" + distance +  " mi</td><td>&nbsp;</td></tr>"
         + "<tr><td align=right>Time:</td><td colspan=2>" + gpsTime +  "</td></tr>"
-        + "<tr><td align=right>Method:</td><td>" + lm + "</td><td>&nbsp;</td></tr>"
+        + "<tr><td align=right>Method:</td><td>" + locationMethod + "</td><td>&nbsp;</td></tr>"
         + "<tr><td align=right>Phone #:</td><td>" + phoneNumber + "</td><td>&nbsp;</td></tr>"
         + "<tr><td align=right>Session ID:</td><td>" + sessionID + "</td><td>&nbsp;</td></tr>"
         + "<tr><td align=right>Accuracy:</td><td>" + accuracy + " ft</td><td>&nbsp;</td></tr>"
-        + "<tr><td align=right>Extra Info:</td><td>" + extraInfo + "</td><td>&nbsp;</td></tr>"
-
-        + "</table>"
-        );
-    });
-
-    return marker;
+        + "<tr><td align=right>Extra Info:</td><td>" + extraInfo + "</td><td>&nbsp;</td></tr></table>";
+		
+    var infowindow = new google.maps.InfoWindow({
+	    content: contentString
+	});
+				
+	google.maps.event.addListener(marker, 'click', function() {
+	    infowindow.open(map, marker);
+	});
 }
 
 // this chooses the proper image for our litte compass in the popup window
@@ -218,7 +207,14 @@ function deleteRoute() {
 	    if (answer){
             showWait('Deleting route...');
             var url = 'deleteroute.php' + routeSelect.options[routeSelect.selectedIndex].value;
-            GDownloadUrl(url, deleteRouteResponse);
+
+		    $.ajax({
+		           url: url,
+		           type: 'GET',
+		           success: function() {
+		              deleteRouteResponse();
+		           }
+		       });	
 	    }
 	    else {
 		    return false;
@@ -229,10 +225,17 @@ function deleteRoute() {
 	}
 }
 
-function deleteRouteResponse(data, responseCode) {
+function deleteRouteResponse() {
     map.innerHTML = '';
     routeSelect.length = 0;
-    GDownloadUrl('getroutes.php', loadRoutes);
+
+    $.ajax({
+           url: 'getroutes.php',
+           type: 'GET',
+           success: function(data) {
+              loadRoutes(data);
+           }
+       });
 }
 
 // auto refresh the map. there are 3 transitions (shown below). transitions happen when a user
@@ -297,7 +300,7 @@ function changeZoomLevel() {
 }
 
 function showMessage(message) {
-     messages.innerHTML = 'GPS Tracker: <b>' + message + '</b>';
+     messages.innerHTML = 'GpsTracker: <strong>' + message + '</strong>';
 }
 
 function showRouteName() {
@@ -305,13 +308,12 @@ function showRouteName() {
 }
 
 function showWait(theMessage) {
-    map.innerHTML = '<img src="images/ajax-loader.gif"' +
-                    'style="position:absolute;top:225px;left:325px;">';
+    map.innerHTML = '<img src="images/ajax-loader.gif" style="position:absolute;top:225px;left:325px;">';
     showMessage(theMessage);
 }
 
 function hideWait() {
     map.innerHTML = '';
-    messages.innerHTML = 'GPS Tracker';
+    messages.innerHTML = 'GpsTracker';
 }
 

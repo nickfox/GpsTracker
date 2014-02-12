@@ -1,8 +1,11 @@
 <?php
 
 	include 'dbconnect.php';
+	
+	isset($_GET['sessionID']) ? $sessionID = $_GET['sessionID'] : $sessionID = '0';
+	isset($_GET['phoneNumber']) ? $phoneNumber = $_GET['phoneNumber'] : $phoneNumber = '0';
 
-	$query = 'CALL prcGetRouteForMap(\'' . $_GET["sessionID"] . '\',\''  . $_GET["phoneNumber"]  . '\')';
+	$query = 'CALL prcGetRouteForMap(\'' . $sessionID . '\',\''  . $phoneNumber  . '\')';
 	
 	$xml = '<gps>';
 
