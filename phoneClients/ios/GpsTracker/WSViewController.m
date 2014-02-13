@@ -37,7 +37,6 @@
 {
     [super viewDidLoad];
     currentlyTracking = NO;
-
     timeIntervalInSeconds = 60; // change this to the time interval you want
 }
 
@@ -58,9 +57,10 @@
     firstTimeGettingPosition = YES;
     lastWebsiteUpdateTime = [NSDate date]; // new timestamp
     [self updateAccuracyLevel:@"high"];
-    
-    [self sessionIDLabel].text = [guid UUIDString];
 
+    NSString *shortSessionID = [[guid UUIDString] substringToIndex:5];
+    [self sessionIDLabel].text = [NSString stringWithFormat:@"phoneNumber: iosUser-%@", shortSessionID];
+    
     [locationManager startUpdatingLocation];
 }
 
@@ -68,11 +68,13 @@
 {
     NSLog(@"stop tracking");
     
-    [self sessionIDLabel].text = @"";
+    [self sessionIDLabel].text = @"phoneNumber:";
     [locationManager stopUpdatingLocation];
     locationManager = nil;
 }
-- (IBAction)handleTrackingButton:(id)sender {
+
+- (IBAction)handleTrackingButton:(id)sender
+{
     if (currentlyTracking) {
         [self stopTracking];
         currentlyTracking = NO;
@@ -108,8 +110,8 @@
     // credit for this, thanks. http://stackoverflow.com/a/6466152/125615
     
     NSTimeInterval secondsSinceLastWebsiteUpdate = fabs([lastWebsiteUpdateTime timeIntervalSinceNow]);
-    if (firstTimeGettingPosition || (secondsSinceLastWebsiteUpdate > timeIntervalInSeconds)) // currently one minute
-    {
+    if (firstTimeGettingPosition || (secondsSinceLastWebsiteUpdate > timeIntervalInSeconds)) { // currently one minute
+        
         if (location.horizontalAccuracy < 100.0 && location.coordinate.latitude != 0 && location.coordinate.longitude != 0) {
             
             if (increasedAccuracy) {
@@ -120,9 +122,7 @@
                 firstTimeGettingPosition = NO;
             } else {
                 CLLocationDistance distance = [location distanceFromLocation:previousLocation];
-                totalDistanceInMeters += distance;
-                
-                
+                totalDistanceInMeters += distance; 
             }
  
             previousLocation = location;
