@@ -40,7 +40,7 @@ CREATE TABLE `gpslocations` (
   PRIMARY KEY (`GPSLocationID`),
   KEY `sessionIDIndex` (`sessionID`),
   KEY `phoneNumberIndex` (`phoneNumber`)
-) ENGINE=InnoDB AUTO_INCREMENT=2094 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2312 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -135,7 +135,6 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 ALTER DATABASE `gpstracker` CHARACTER SET latin1 COLLATE latin1_swedish_ci ;
 /*!50003 DROP PROCEDURE IF EXISTS `prcGetRoutes` */;
-ALTER DATABASE `gpstracker` CHARACTER SET utf8 COLLATE utf8_general_ci ;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -145,7 +144,7 @@ ALTER DATABASE `gpstracker` CHARACTER SET utf8 COLLATE utf8_general_ci ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`gpstracker_user`@`localhost` PROCEDURE `prcGetRoutes`()
+CREATE DEFINER=`root`@`localhost` PROCEDURE `prcGetRoutes`()
 BEGIN
   CREATE TEMPORARY TABLE tempRoutes (
     sessionID VARCHAR(50),
@@ -173,7 +172,7 @@ BEGIN
   '" times="(', DATE_FORMAT(startTime, '%b %e %Y %h:%i%p'), ' - ',
   DATE_FORMAT(endTime, '%b %e %Y %h:%i%p'), ')" />')
   FROM tempRoutes
-  ORDER BY phoneNumber;
+  ORDER BY startTime DESC;
 
   DROP TABLE tempRoutes;
 END ;;
@@ -182,7 +181,6 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-ALTER DATABASE `gpstracker` CHARACTER SET latin1 COLLATE latin1_swedish_ci ;
 /*!50003 DROP PROCEDURE IF EXISTS `prcGetUUID` */;
 ALTER DATABASE `gpstracker` CHARACTER SET utf8 COLLATE utf8_general_ci ;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -249,4 +247,4 @@ ALTER DATABASE `gpstracker` CHARACTER SET latin1 COLLATE latin1_swedish_ci ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-02-10 17:50:05
+-- Dump completed on 2014-02-13  3:53:13

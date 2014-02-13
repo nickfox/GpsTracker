@@ -92,9 +92,9 @@
 	<input type="button" id="delete" value="Delete" onclick="deleteRoute()" tabindex="4">
 	<input type="button" id="refresh" value="Refresh" onclick="getRouteForMap()" tabindex="5">
 
-	 <div id="test"><p>Please note that routes in the dropdown box are a concatenation of phoneNumber (ie. androidUser) and the first five characters of the sessionID. Start and end times for the routes are in parentheses. Routes will be deleted after 3 days, there were getting to be to many.
+	 <div id="test"><p>Please note that routes in the dropdown box are a concatenation of phoneNumber (ie. androidUser) and the first five characters of the sessionID. Start times and end times for the routes are in parentheses. Routes will be deleted after 3 days, there were getting to be to many.
 		 <br>&nbsp;<br>
-		 The routes in the dropdown box are sorted by date so your route should be near the bottom.
+		 The routes in the dropdown box are sorted in descending order by startTime so your route should be near the top.
 		 <br>&nbsp;<br>
 		 Feb 12, 2014
 		 
