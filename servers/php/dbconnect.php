@@ -3,7 +3,7 @@
 $dbhost = 'localhost';
 $dbuser = 'gpstracker_user';
 $dbpass = 'gpstracker';
-$dbname = 'gpstracker';
+$dbname = 'gpstracker2';
 
 $mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
 

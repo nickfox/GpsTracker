@@ -1,6 +1,6 @@
 ﻿
-function loadRoutes(xml) {
-    if (xml.length == 0) {
+function loadRoutes(json) {
+    if (json.length == 0) {
         showMessage('There are no routes available to view.');
         map.innerHTML = '';
     }
@@ -12,7 +12,7 @@ function loadRoutes(xml) {
 		routeSelect.appendChild(option);
 
 		// iterate through the routes and load them into the dropdwon box.
-		$(xml).find('route').each(function(){
+		$(json.routes).each(function(key, value){
 			var option = document.createElement('option');
 			option.setAttribute('value', '?sessionID=' + $(this).attr('sessionID')
 		                    + '&phoneNumber=' + $(this).attr('phoneNumber'));
@@ -36,15 +36,21 @@ function getRouteForMap() {
         showWait('Getting map...');
 	    var url = 'getgpslocations.php' + routeSelect.options[routeSelect.selectedIndex].value;
 		
-		//alert("testing route: " + routeSelect.options[routeSelect.selectedIndex].value);
+		//console.log("testing route: " + routeSelect.options[routeSelect.selectedIndex].value);
 
 	    $.ajax({
 	           url: url,
 	           type: 'GET',
-	           dataType: 'xml',
+	           dataType: 'json',
 	           success: function(data) {
+				  //console.log("success getRouteForMap");
 	              loadGPSLocations(data);
-	           }
+	           },
+			   error: function (xhr, status, errorThrown) {
+				   console.log("responseText: " + xhr.responseText);
+				   console.log("status: " + xhr.status);
+				   console.log("errorThrown: " + errorThrown);
+				}
 	       });
 	}
 	else {
@@ -62,8 +68,8 @@ function hasMap() {
     }
 }
 
-function loadGPSLocations(xml) {
-    if (xml.length == 0) {
+function loadGPSLocations(json) {
+    if (json.length == 0) {
         showMessage('There is no tracking data to view.');
         map.innerHTML = '';
     }
@@ -96,17 +102,19 @@ function loadGPSLocations(xml) {
 		    };
 		    var adUnit = new google.maps.adsense.AdUnit(adUnitDiv, adUnitOptions);			
 
-		   var finalLocation = false;
-
+		    var finalLocation = false;
+			var counter = 0;
+			
 			// iterate through the locations and create map markers for each location
-			$(xml).find('locations').each(function(){
-				
+			$(json.locations).each(function(key, value){
+				counter++;
+	
 				// want to set the map center on the last location
-				if ($(this).is(':last-child')) {
+				if (counter == $(json.locations).length) {
 					map.setCenter(new google.maps.LatLng($(this).attr('latitude'),$(this).attr('longitude')));
 					finalLocation = true;
 				}
-
+				
 		        var marker = createMarker(
 					$(this).attr('latitude'),
 					$(this).attr('longitude'),

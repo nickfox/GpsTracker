@@ -4,8 +4,8 @@
     <title>Google Map GPS Cell Phone Tracker</title>
     <meta charset="utf-8">
 	
-    <script src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=adsense"></script>
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false&libraries=adsense"></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
     <script src="javascript/maps.js"></script>
     <link href="styles/styles.css" rel="stylesheet" type="text/css" />
 
@@ -44,10 +44,16 @@
 		    $.ajax({
 		           url: 'getroutes.php',
 		           type: 'GET',
-		           dataType: 'xml',
+		           dataType: 'json',
 		           success: function(data) {
+					  //console.log("success loadRoutes"); 
 		              loadRoutes(data);
-		           }
+		           },
+				   error: function (xhr, status, errorThrown) {
+					   console.log("responseText: " + xhr.responseText);
+					   console.log("status: " + xhr.status);
+					   console.log("errorThrown: " + errorThrown);
+					}
 		       });
 		}
 	 //]]>
@@ -94,10 +100,7 @@
 
 	 <div id="test"><p>Please note that routes in the dropdown box are a concatenation of phoneNumber (ie. androidUser) and the first five characters of the sessionID. Start times and end times for the routes are in parentheses. Routes will be deleted after 3 days, there were getting to be to many.
 		 <br>&nbsp;<br>
-		 The routes in the dropdown box are sorted in descending order by startTime so your route should be near the top.
-		 <br>&nbsp;<br>
-		 Feb 12, 2014
-		 
+		 The routes in the dropdown box are sorted in descending order by startTime so your route should be near the top.		 
 	 </div>
 </body>
 </html>

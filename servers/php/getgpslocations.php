@@ -7,28 +7,30 @@
 
 	$query = 'CALL prcGetRouteForMap(\'' . $sessionID . '\',\''  . $phoneNumber  . '\')';
 	
-	$xml = '<gps>';
+	$json = '{ "locations": [';
 
 	// execute query
 	if ($mysqli->multi_query($query)) {
 
-	    do {
+	    do {  // build our json array
 	        if ($result = $mysqli->store_result()) {
 	            while ($row = $result->fetch_row()) {
-	                $xml .= $row[0];
+	                $json .= $row[0];
+					$json .= ',';
 	            }
 	            $result->close();
 	        }
 	    } while ($mysqli->next_result());
 	}
 	else {
-		die('$mysqli->multi_query: '  . $mysqli->error);
+		die('error: '  . $mysqli->error);
 	}
 
-	$xml .= '</gps>';
+	$json = rtrim($json, ",");
+	$json .= '] }';
 
-	header('Content-Type: text/xml');
-	echo $xml;
+	header('Content-Type: application/json');
+	echo $json;
 
 	$mysqli->close();
 ?>

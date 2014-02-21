@@ -81,7 +81,6 @@ DELIMITER ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `prcGetAllGpsLocations` */;
-ALTER DATABASE `gpstracker` CHARACTER SET utf8 COLLATE utf8_general_ci ;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -102,9 +101,7 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-ALTER DATABASE `gpstracker` CHARACTER SET latin1 COLLATE latin1_swedish_ci ;
 /*!50003 DROP PROCEDURE IF EXISTS `prcGetRouteForMap` */;
-ALTER DATABASE `gpstracker` CHARACTER SET utf8 COLLATE utf8_general_ci ;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -114,15 +111,12 @@ ALTER DATABASE `gpstracker` CHARACTER SET utf8 COLLATE utf8_general_ci ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`gpstracker_user`@`localhost` PROCEDURE `prcGetRouteForMap`(
+CREATE DEFINER=`root`@`localhost` PROCEDURE `prcGetRouteForMap`(
 _sessionID VARCHAR(50),
 _phoneNumber VARCHAR(50))
 BEGIN
   SELECT
-  CONCAT('<locations latitude="', CAST(latitude AS CHAR),'" longitude="', CAST(longitude AS CHAR),
-  '" speed="', CAST(speed AS CHAR), '" direction="', CAST(direction AS CHAR), '" distance="', CAST(distance AS CHAR),
-  '" locationMethod="', locationMethod, '" gpsTime="', DATE_FORMAT(gpsTime, '%b %e %Y %h:%i%p'), '" phoneNumber="', phoneNumber,
-  '" sessionID="', CAST(sessionID AS CHAR), '" accuracy="', CAST(accuracy AS CHAR), '" extraInfo="', extraInfo, '" />') xml
+  CONCAT('{ "latitude":"', CAST(latitude AS CHAR),'", "longitude":"', CAST(longitude AS CHAR), '", "speed":"', CAST(speed AS CHAR), '", "direction":"', CAST(direction AS CHAR), '", "distance":"', CAST(distance AS CHAR), '", "locationMethod":"', locationMethod, '", "gpsTime":"', DATE_FORMAT(gpsTime, '%b %e %Y %h:%i%p'), '", "phoneNumber":"', phoneNumber, '", "sessionID":"', CAST(sessionID AS CHAR), '", "accuracy":"', CAST(accuracy AS CHAR), '", "extraInfo":"', extraInfo, '" }') json
   FROM gpslocations
   WHERE sessionID = _sessionID
   AND phoneNumber = _phoneNumber
@@ -133,7 +127,6 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-ALTER DATABASE `gpstracker` CHARACTER SET latin1 COLLATE latin1_swedish_ci ;
 /*!50003 DROP PROCEDURE IF EXISTS `prcGetRoutes` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -168,9 +161,8 @@ BEGIN
   AND gl.phoneNumber = tr.phoneNumber);
 
   SELECT
-  CONCAT('<route sessionID="', CAST(sessionID AS CHAR),  '" phoneNumber="', phoneNumber,
-  '" times="(', DATE_FORMAT(startTime, '%b %e %Y %h:%i%p'), ' - ',
-  DATE_FORMAT(endTime, '%b %e %Y %h:%i%p'), ')" />')
+
+  CONCAT('{ "sessionID": "', CAST(sessionID AS CHAR),  '", "phoneNumber": "', phoneNumber, '", "times": "(', DATE_FORMAT(startTime, '%b %e %Y %h:%i%p'), ' - ', DATE_FORMAT(endTime, '%b %e %Y %h:%i%p'), ')" }') json
   FROM tempRoutes
   ORDER BY startTime DESC;
 
@@ -182,7 +174,6 @@ DELIMITER ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `prcGetUUID` */;
-ALTER DATABASE `gpstracker` CHARACTER SET utf8 COLLATE utf8_general_ci ;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -201,9 +192,7 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-ALTER DATABASE `gpstracker` CHARACTER SET latin1 COLLATE latin1_swedish_ci ;
 /*!50003 DROP PROCEDURE IF EXISTS `prcSaveGPSLocation` */;
-ALTER DATABASE `gpstracker` CHARACTER SET utf8 COLLATE utf8_general_ci ;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -236,7 +225,6 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-ALTER DATABASE `gpstracker` CHARACTER SET latin1 COLLATE latin1_swedish_ci ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -247,4 +235,4 @@ ALTER DATABASE `gpstracker` CHARACTER SET latin1 COLLATE latin1_swedish_ci ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-02-13  3:53:13
+-- Dump completed on 2014-02-20 17:19:29
