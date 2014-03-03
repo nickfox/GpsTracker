@@ -9,11 +9,11 @@ You have the choice of two server stacks. Either using asp.net and sql server or
 
 If you need help, please go to:
 
-http://www.websmithing.com/gps-tracker/
+https://www.websmithing.com/gps-tracker/
 
 Here is a quick start guide to help you set up GpsTracker:
 
-http://www.websmithing.com/2014/01/20/quick-start-guide-for-gpstracker-3/
+https://www.websmithing.com/2014/01/20/quick-start-guide-for-gpstracker-3/
 
 *************
 
