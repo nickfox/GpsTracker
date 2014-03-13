@@ -33,9 +33,9 @@ public class GpsTracker extends MIDlet implements CommandListener {
     private String uploadWebsite;
 	
 	// use the websmithing defaultUploadWebsite for testing, change the *phoneNumber* form variable to something you
-	// know and then check your location with your browser here: http://www.websmithing.com/gpstracker/displaymap.php
+	// know and then check your location with your browser here: https://www.websmithing.com/gpstracker/displaymap.php
 	    
-    private String defaultUploadWebsite = "http://www.websmithing.com/gpstracker/updatelocation.php";
+    private String defaultUploadWebsite = "https://www.websmithing.com/gpstracker/updatelocation.php";
 
     protected String phoneNumber;
     protected String zoomLevel;

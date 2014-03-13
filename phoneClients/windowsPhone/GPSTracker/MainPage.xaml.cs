@@ -72,9 +72,9 @@ namespace GPSTracker
                 httpCount++;
 				
 				// use the websmithing defaultUploadWebsite for testing, change the *phoneNumber* form variable to something you
-				// know and then check your location with your browser here: http://www.websmithing.com/gpstracker/displaymap.php
+				// know and then check your location with your browser here: https://www.websmithing.com/gpstracker/displaymap.php
 
-                string defaultUploadWebsite = "http://www.websmithing.com/gpstracker/updatelocation.php";
+                string defaultUploadWebsite = "https://www.websmithing.com/gpstracker/updatelocation.php";
                 HttpContent httpContent = new FormUrlEncodedContent(new[]
                 {
                     new KeyValuePair<string, string>("latitude", latitude),

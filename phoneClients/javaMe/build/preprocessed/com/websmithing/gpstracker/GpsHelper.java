@@ -130,11 +130,6 @@ public class GpsHelper implements LocationListener  {
                     speed = location.getSpeed();
                 }
 
-                /* example url
-                 http://www.websmithing.com/gpstracker2/getgooglemap3.php?lat=47.473349&lng=-122.025035&mph=137&dir=0&mi=0&
-                 dt=2008-04-17%2012:07:02&lm=0&h=291&w=240&zm=12&dis=25&pn=momosity&sid=11137&acc=95&iv=yes&info=momostuff
-                 */
-               
                 String gpsData = "lat=" + String.valueOf(qualifiedCoordinates.getLatitude()) 
                         + "&lng=" + String.valueOf(qualifiedCoordinates.getLongitude())
                         + "&mph=" + String.valueOf((int)(speed/1609*3600)) // in miles per hour
