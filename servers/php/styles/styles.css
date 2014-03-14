@@ -1,11 +1,11 @@
 ﻿
 * {
-	margin: 0;
-	padding: 0;
+    margin: 0;
+    padding: 0;
 }
 body {
     font-family: arial, helvetica, sans-serif;
-	 font-size: 17px;
+     font-size: 17px;
 }
 #test {
     position:absolute;
@@ -33,19 +33,19 @@ body {
     position:absolute;
     left: 10px;
     top: 510px;
-	width: 600px;
+    width: 600px;
 }
 #selectRefresh {
     position:absolute;
     left: 10px;
     top: 550px;
-	width: 250px;
+    width: 250px;
 }
 #selectZoomLevel {
     position:absolute;
     left: 360px;
     top: 550px;
-	width: 250px;
+    width: 250px;
 }
 #delete {
     position:absolute;

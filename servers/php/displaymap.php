@@ -2,15 +2,29 @@
 <html>
 <head>
     <title>Google Map GPS Cell Phone Tracker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
-	
-    <script src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false&libraries=adsense"></script>
-    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    
+    <script type="text/javascript">
+        // just making sure we hit the https google maps site if we are running on https ourselves
+        var googleMapsUrl = ('https:' == document.location.protocol ? 'https://' : 'http://') +
+        'maps.googleapis.com/maps/api/js?v=3&sensor=false&libraries=adsense';
+        document.write(unescape("%3Cscript src='" + googleMapsUrl + " type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    
+    <!-- use this if not on https, <script src="http://code.jquery.com/jquery-latest.min.js"></script> -->
+    <script src="javascript/jquery-1.11.0.min.js"></script>
+    
+    <script src="javascript/leaflet-0.7.2/leaflet.js"></script>
+    <link href="javascript/leaflet-0.7.2/leaflet.css" rel="stylesheet" type="text/css" />
+    
     <script src="javascript/maps.js"></script>
+    <script src="javascript/google.js"></script>
+    <script src="javascript/bing.js"></script>
     <link href="styles/styles.css" rel="stylesheet" type="text/css" />
 
     <script type="text/javascript">
-  	//<![CDATA[
+    //<![CDATA[
         var routeSelect;
         var refreshSelect;
         var messages;
@@ -21,42 +35,42 @@
         var zoomLevelSelect;
         var zoomLevel;
 
-		function load() {
-		    // the code to process the data is in the /javascript/maps.js file
+        function load() {
+            // the code to process the data is in the javascript/maps.js file
 
-		    routeSelect = document.getElementById('selectRoute');
-		    refreshSelect = document.getElementById('selectRefresh');
-		    zoomLevelSelect = document.getElementById('selectZoomLevel');
-     	    messages = document.getElementById('messages');
-		    map = document.getElementById('map');
+            routeSelect = document.getElementById('selectRoute');
+            refreshSelect = document.getElementById('selectRefresh');
+            zoomLevelSelect = document.getElementById('selectZoomLevel');
+            messages = document.getElementById('messages');
+            map = document.getElementById('map');
 
             intervalID = 0;
             newInterval = 0;
             currentInterval = 0;
             zoomLevel = 12;
 
-	        zoomLevelSelect.selectedIndex = 11;
-			refreshSelect.selectedIndex = 0;
-		    showWait('Loading routes...');
-			var i = 0;
+            zoomLevelSelect.selectedIndex = 11;
+            refreshSelect.selectedIndex = 0;
+            showWaitImage('Loading routes...');
+            var i = 0;
 
-		    // when the page first loads, get the routes from the DB and load them into the dropdown box.			
-		    $.ajax({
-		           url: 'getroutes.php',
-		           type: 'GET',
-		           dataType: 'json',
-		           success: function(data) {
-					  //console.log("success loadRoutes"); 
-		              loadRoutes(data);
-		           },
-				   error: function (xhr, status, errorThrown) {
-					   console.log("responseText: " + xhr.responseText);
-					   console.log("status: " + xhr.status);
-					   console.log("errorThrown: " + errorThrown);
-					}
-		       });
-		}
-	 //]]>
+            // when the page first loads, get the routes from the DB and load them into the dropdown box.           
+            $.ajax({
+                url: 'getroutes.php',
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                //console.log("success loadRoutes"); 
+                loadRoutes(data);
+            },
+            error: function (xhr, status, errorThrown) {
+                console.log("responseText: " + xhr.responseText);
+                console.log("status: " + xhr.status);
+                console.log("errorThrown: " + errorThrown);
+            }
+          });
+        }
+     //]]>
      </script>
 
 </head>
@@ -64,9 +78,9 @@
     <div id="messages">GpsTracker</div>
     <div id="map"></div>
 
-	<select id="selectRoute" onchange="getRouteForMap();" tabindex="1"></select>
+    <select id="selectRoute" onchange="getRouteForMap();" tabindex="1"></select>
 
-	<select id="selectRefresh" onchange="autoRefresh();" tabindex="2">
+    <select id="selectRefresh" onchange="autoRefresh();" tabindex="2">
         <option value ="0">Auto Refresh - Off</option>
         <option value ="60">Auto Refresh - 1 minute</option>
         <option value ="120">Auto Refresh - 2 minutes</option>
@@ -75,7 +89,7 @@
         <option value ="600">Auto Refresh - 10 minutes</option>
     </select>
 
-	<select id="selectZoomLevel" onchange="changeZoomLevel();" tabindex="3">
+    <select id="selectZoomLevel" onchange="changeZoomLevel();" tabindex="3">
         <option value ="1">Zoom Level - 1</option>
         <option value ="2">Zoom Level - 2</option>
         <option value ="3">Zoom Level - 3</option>
@@ -95,13 +109,21 @@
         <option value ="17">Zoom Level - 17</option>
     </select>
 
-	<input type="button" id="delete" value="Delete" onclick="deleteRoute()" tabindex="4">
-	<input type="button" id="refresh" value="Refresh" onclick="getRouteForMap()" tabindex="5">
+    <input type="button" id="delete" value="Delete" onclick="deleteRoute()" tabindex="4">
+    <input type="button" id="refresh" value="Refresh" onclick="getRouteForMap()" tabindex="5">
 
-	 <div id="test"><p>Please note that routes in the dropdown box are a concatenation of phoneNumber (ie. androidUser) and the first five characters of the sessionID. Start times and end times for the routes are in parentheses. Routes will be deleted after 3 days, there were getting to be to many.
-		 <br>&nbsp;<br>
-		 The routes in the dropdown box are sorted in descending order by startTime so your route should be near the top.		 
-	 </div>
+    <div id="test">
+    </div>
+	
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-3068771-1', 'websmithing.com');
+	  ga('send', 'pageview');
+	</script>
 </body>
 </html>
 
