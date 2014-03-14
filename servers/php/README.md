@@ -1,1 +1,3 @@
 The php version of GpsTracker is now updated to v3 of google maps and jquery. Please note that this is a __breaking change__ since xml has been updated to json. Changes have been made to the prcGetRoutes, prcGetRouteForMap and prcDeleteRoute in the mysql database and in the client side javascript.
+
+Also please note that the websmithing.com website is now using https.
