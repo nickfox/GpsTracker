@@ -126,8 +126,8 @@ public class GpsHelper implements LocationListener  {
                 Calendar currentTime = Calendar.getInstance();
                 StringBuffer mySqlDateTimeString = new StringBuffer();
                 mySqlDateTimeString.append(currentTime.get(Calendar.YEAR)).append("-");
-                mySqlDateTimeString.append(currentTime.get(Calendar.DATE)).append("-");
-                mySqlDateTimeString.append(currentTime.get(Calendar.MONTH)+1).append("%20");
+                mySqlDateTimeString.append(currentTime.get(Calendar.MONTH)+1).append("-");
+                mySqlDateTimeString.append(currentTime.get(Calendar.DATE)).append("%20");
                 mySqlDateTimeString.append(currentTime.get(Calendar.HOUR_OF_DAY)).append(':');
                 mySqlDateTimeString.append(currentTime.get(Calendar.MINUTE)).append(':');
                 mySqlDateTimeString.append(currentTime.get(Calendar.SECOND));
