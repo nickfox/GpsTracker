@@ -1,7 +1,10 @@
 /*
- * Google layer using Google Maps API
- * https://github.com/shramov/leaflet-plugins
- */
+Copyright (c) 2011-2012, Pavel Shramov
+All rights reserved. 
+https://github.com/robertharm/leaflet-plugins
+License in same folder as this file
+*/
+
 //(function (google, L) {
 
 L.Google = L.Class.extend({
