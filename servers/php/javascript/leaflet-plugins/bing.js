@@ -5,7 +5,6 @@ https://github.com/robertharm/leaflet-plugins
 License in same folder as this file
 */
 
-
 L.BingLayer = L.TileLayer.extend({
 	options: {
 		subdomains: [0, 1, 2, 3],

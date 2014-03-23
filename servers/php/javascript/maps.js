@@ -86,18 +86,16 @@ function loadGPSLocations(json) {
             var openStreetMapsLayer = new L.TileLayer(openStreetMapsURL,
             {attribution:'&copy;2014 <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'});
 
-            // need to get your own free bing maps key, http://www.microsoft.com/maps/create-a-bing-maps-key.aspx
-			// and then un-comment this line and line 99 below that says 'Bing Maps' to enable bing
-            // var bingMapsLayer = new L.BingLayer("NEED_TO_GET_YOUR_OWN_BING_MAPS_KEY");
-            
-			var googleMapsLayer = new L.Google('ROADMAP', {mapOptions:{styles:{}}});
+            // need to get your own bing maps key, http://www.microsoft.com/maps/create-a-bing-maps-key.aspx
+            var bingMapsLayer = new L.BingLayer("AnH1IKGCBwAiBWfYAHMtIfIhMVybHFx2GxsReNP5W0z6P8kRa67_QwhM4PglI9yL");
+            var googleMapsLayer = new L.Google('ROADMAP', {mapOptions:{styles:{}}});
 
             // this sets which map layer will first be displayed, go ahead and change it to bingMapsLayer or openStreetMapsLayer to see
             map.addLayer(googleMapsLayer);
 
             // this is the switcher control to switch between map types (upper right hand corner of map)
             map.addControl(new L.Control.Layers({
-                // 'Bing Maps':bingMapsLayer,
+                'Bing Maps':bingMapsLayer,
                 'Google Maps':googleMapsLayer,
                 'OpenStreetMaps':openStreetMapsLayer
             }, {}));
@@ -226,7 +224,12 @@ function getCompassImage(azimuth) {
 
 function deleteRoute() {
     if (hasMap()) {
-        var answer = confirm("This will permanently delete this route\n from the database. Do you want to delete?")
+		
+		// comment out these two lines to get delete working
+		var answer = confirm("Disabled here on test website, this works fine.");
+		return false;
+		
+        var answer = confirm("This will permanently delete this route\n from the database. Do you want to delete?");
         if (answer){
             showWaitImage('Deleting route...');
             var url = 'deleteroute.php' + routeSelect.options[routeSelect.selectedIndex].value;

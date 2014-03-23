@@ -5,14 +5,17 @@ https://github.com/robertharm/leaflet-plugins
 License in same folder as this file
 */
 
-//(function (google, L) {
+var adsense_status = 'enabled';
 
+google.load("maps", "3", {
+    other_params: "sensor=false&libraries=adsense"
+}),
 L.Google = L.Class.extend({
 	includes: L.Mixin.Events,
 
 	options: {
 		minZoom: 0,
-		maxZoom: 18,
+		maxZoom: 22,
 		tileSize: 256,
 		subdomains: 'abc',
 		errorTileUrl: '',
@@ -40,16 +43,25 @@ L.Google = L.Class.extend({
 		this._initContainer();
 		this._initMapObject();
 
+		if (adsense_status == 'enabled') { 
+			this._initAdSense(); 
+		}
+
 		// set up events
 		map.on('viewreset', this._resetCallback, this);
 
 		this._limitedUpdate = L.Util.limitExecByInterval(this._update, 150, this);
 		map.on('move', this._update, this);
 
-		map.on('zoomanim', this._handleZoomAnim, this);
+		map.on('zoomanim', function (e) {
+			var center = e.center;
+			var _center = new google.maps.LatLng(center.lat, center.lng);
 
-		//20px instead of 1em to avoid a slight overlap with google's attribution
-		map._controlCorners['bottomright'].style.marginBottom = "20px";
+			this._google.setCenter(_center);
+			this._google.setZoom(e.zoom);
+		}, this);
+
+		map._controlCorners['bottomright'].style.marginBottom = "1em";
 
 		this._reset();
 		this._update();
@@ -62,9 +74,6 @@ L.Google = L.Class.extend({
 		this._map.off('viewreset', this._resetCallback, this);
 
 		this._map.off('move', this._update, this);
-
-		this._map.off('zoomanim', this._handleZoomAnim, this);
-
 		map._controlCorners['bottomright'].style.marginBottom = "0em";
 		//this._map.off('moveend', this._update, this);
 	},
@@ -95,10 +104,12 @@ L.Google = L.Class.extend({
 			this._container.style.zIndex = "auto";
 		}
 
-		tilePane.insertBefore(this._container, first);
+		if (true) {
+			tilePane.insertBefore(this._container, first);
 
-		this.setOpacity(this.options.opacity);
-		this.setElementSize(this._container, this._map.getSize());
+			this.setOpacity(this.options.opacity);
+			this.setElementSize(this._container, this._map.getSize());
+		}
 	},
 
 	_initMapObject: function() {
@@ -114,28 +125,15 @@ L.Google = L.Class.extend({
 		    draggable: false,
 		    disableDoubleClickZoom: true,
 		    scrollwheel: false,
-		    streetViewControl: false,
-		    styles: this.options.mapOptions.styles,
-		    backgroundColor: this.options.mapOptions.backgroundColor
+		    streetViewControl: false
 		});
 
 		var _this = this;
 		this._reposition = google.maps.event.addListenerOnce(map, "center_changed",
 			function() { _this.onReposition(); });
+
+		map.backgroundColor = '#ff0000';
 		this._google = map;
-
-		google.maps.event.addListenerOnce(map, "idle",
-			function() { _this._checkZoomLevels(); });
-	},
-
-	_checkZoomLevels: function() {
-		//setting the zoom level on the Google map may result in a different zoom level than the one requested
-		//(it won't go beyond the level for which they have data).
-		// verify and make sure the zoom levels on both Leaflet and Google maps are consistent
-		if (this._google.getZoom() !== this._map.getZoom()) {
-			//zoom levels are out of sync. Set the leaflet zoom level to match the google one
-			this._map.setZoom( this._google.getZoom() );
-		}
 	},
 
 	_resetCallback: function(e) {
@@ -155,8 +153,6 @@ L.Google = L.Class.extend({
 
 		this._google.setCenter(_center);
 		this._google.setZoom(this._map.getZoom());
-
-		this._checkZoomLevels();
 		//this._google.fitBounds(google_bounds);
 	},
 
@@ -169,20 +165,46 @@ L.Google = L.Class.extend({
 		this.onReposition();
 	},
 
-
-	_handleZoomAnim: function (e) {
-		var center = e.center;
-		var _center = new google.maps.LatLng(center.lat, center.lng);
-
-		this._google.setCenter(_center);
-		this._google.setZoom(e.zoom);
-	},
-
-
 	onReposition: function() {
 		if (!this._google) return;
 		google.maps.event.trigger(this._google, "resize");
-	}
+	},
+	_initAdSense: function() {
+	  var adUnitDiv = document.createElement('div');
+	  adUnitDiv.className = "leaflet-control";
+	  adUnitDiv.style.margin = "0";
+	  adUnitDiv.style.clear = "none";
+	  var user_adsense = new String;
+	  user_adsense.format = google.maps.adsense.AdFormat["HALF_BANNER"];
+	  user_adsense.position = google.maps.ControlPosition["TOP_CENTER"];
+	  user_adsense.cposition = "TOP_CENTER";
+	  user_adsense.backgroundColor = "#c4d4f3";
+	  user_adsense.borderColor = "#e5ecf9";
+	  user_adsense.titleColor = "#0000cc";
+	  user_adsense.textColor = "#000000";
+	  user_adsense.urlColor = "#009900";
+	  user_adsense.channelNumber = "6961715451";
+	  user_adsense.publisherID = "pub-7095775186404141";
+
+	  var adUnitOptions = {
+	    format: user_adsense.format,
+	    position: user_adsense.position,
+	    backgroundColor: user_adsense.backgroundColor,
+	    borderColor: user_adsense.borderColor,
+	    titleColor: user_adsense.titleColor,
+	    textColor: user_adsense.textColor,
+	    urlColor: user_adsense.urlColor,
+	    map: this._google,
+	    visible: true,
+		channelNumber: user_adsense.channelNumber,
+	    publisherId: user_adsense.publisherID
+	  }
+	  //info: dont load ads on minimaps  
+	  var size = this._map.getSize();
+	  if (size.x > 150) {
+		this._adUnit = new google.maps.adsense.AdUnit(adUnitDiv, adUnitOptions);
+	  }
+    }	  
 });
 
 L.Google.asyncWait = [];
@@ -193,9 +215,9 @@ L.Google.asyncInitialize = function() {
 		o._ready = true;
 		if (o._container) {
 			o._initMapObject();
+			if (adsense_status == 'enabled') { o._initAdSense(); }
 			o._update();
 		}
 	}
 	L.Google.asyncWait = [];
-};
-//})(window.google, L)
+}

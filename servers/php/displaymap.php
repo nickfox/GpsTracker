@@ -4,24 +4,30 @@
     <title>Google Map GPS Cell Phone Tracker</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
-    
+ 
+ <!--   
     <script type="text/javascript">
         // just making sure we hit the https google maps site if we are running on https ourselves
         var googleMapsUrl = ('https:' == document.location.protocol ? 'https://' : 'http://') +
         'maps.googleapis.com/maps/api/js?v=3&sensor=false&libraries=adsense';
         document.write(unescape("%3Cscript src='" + googleMapsUrl + " type='text/javascript'%3E%3C/script%3E"));
     </script>
-    
+-->    
+
+	<script type='text/javascript' src='https://www.google.com/jsapi?key&#038;ver=3.7'></script>
+	
     <!-- use this if not on https, <script src="http://code.jquery.com/jquery-latest.min.js"></script> -->
     <script src="javascript/jquery-1.11.0.min.js"></script>
     
     <script src="javascript/leaflet-0.7.2/leaflet.js"></script>
+    <script src="javascript/leaflet-plugins/google.js"></script>
+    <script src="javascript/leaflet-plugins/bing.js"></script>
     <link href="javascript/leaflet-0.7.2/leaflet.css" rel="stylesheet" type="text/css" />
     
     <script src="javascript/maps.js"></script>
-    <script src="javascript/google.js"></script>
-    <script src="javascript/bing.js"></script>
     <link href="styles/styles.css" rel="stylesheet" type="text/css" />
+	
+
 
     <script type="text/javascript">
     //<![CDATA[
@@ -112,8 +118,30 @@
     <input type="button" id="delete" value="Delete" onclick="deleteRoute()" tabindex="4">
     <input type="button" id="refresh" value="Refresh" onclick="getRouteForMap()" tabindex="5">
 
-    <div id="test">
+     <div id="test">
+		<p><== now supports different map providers, Google, Bing or OpenStreetMaps. Select a route below the map
+		and then click on the selector just to the left.</p>
+	    <br>&nbsp;<br>
+		<p>Please note that routes in the dropdown box are a concatenation of phoneNumber (ie. androidUser) and the first five characters of the sessionID. Start times and end times for the routes are in parentheses
+   	 <br>&nbsp;<br><!-- i know you love my adept handling of whitespace, don't lie... :o) -->
+   	 The routes in the dropdown box are sorted in descending order by startTime so your route should be near the top.	
+   	 <br>&nbsp;<br>
+   	 Also note that you must use <strong>https</strong> now in this string:
+   	  <br>&nbsp;<br>
+   	 <span style="color:#f00;">https</span>://www.websmithing.com/gpstracker/updatelocation.php	
+   	 <br>&nbsp;<br>
+   	 <strong>If you do not change this now in the client phone app you will probably not see your route here.</strong>	 	 
     </div>
+	
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-3068771-1', 'websmithing.com');
+	  ga('send', 'pageview');
+	</script>
 </body>
 </html>
 

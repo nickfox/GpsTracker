@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.5.35, for debian-linux-gnu (i686)
 --
--- Host: localhost    Database: gpstracker
+-- Host: localhost    Database: gpstracker2
 -- ------------------------------------------------------
 -- Server version	5.5.35-0ubuntu0.12.04.2
 
@@ -54,7 +54,7 @@ INSERT INTO `gpslocations` VALUES (45,'2014-03-03 13:22:10',47.475931,-122.02111
 UNLOCK TABLES;
 
 --
--- Dumping routines for database 'gpstracker'
+-- Dumping routines for database 'gpstracker2'
 --
 /*!50003 DROP PROCEDURE IF EXISTS `prcDeleteRoute` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
