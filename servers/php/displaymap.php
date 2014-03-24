@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
  
-	<script src="javascript/custom-google-loader-1.0.0.min.js"></script>
+    <script src="javascript/custom-google-loader-1.0.0.min.js"></script>
     <script src="javascript/maps.js"></script>
     <script src="javascript/leaflet-0.7.2/leaflet.js"></script>
     <script src="javascript/leaflet-plugins/google.js"></script>
@@ -16,7 +16,7 @@
     <script type="text/javascript">
     //<![CDATA[
 	
-		google.load('jquery', '1.11.0');
+        google.load('jquery', '1.11.0');
 	
         var routeSelect;
         var refreshSelect;
