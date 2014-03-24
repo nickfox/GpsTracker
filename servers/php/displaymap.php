@@ -5,32 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
  
- <!--   
-    <script type="text/javascript">
-        // just making sure we hit the https google maps site if we are running on https ourselves
-        var googleMapsUrl = ('https:' == document.location.protocol ? 'https://' : 'http://') +
-        'maps.googleapis.com/maps/api/js?v=3&sensor=false&libraries=adsense';
-        document.write(unescape("%3Cscript src='" + googleMapsUrl + " type='text/javascript'%3E%3C/script%3E"));
-    </script>
--->    
-
-	<script type='text/javascript' src='https://www.google.com/jsapi?key&#038;ver=3.7'></script>
-	
-    <!-- use this if not on https, <script src="http://code.jquery.com/jquery-latest.min.js"></script> -->
-    <script src="javascript/jquery-1.11.0.min.js"></script>
-    
+	<script src="javascript/custom-google-loader-1.0.0.min.js"></script>
+    <script src="javascript/maps.js"></script>
     <script src="javascript/leaflet-0.7.2/leaflet.js"></script>
     <script src="javascript/leaflet-plugins/google.js"></script>
     <script src="javascript/leaflet-plugins/bing.js"></script>
     <link href="javascript/leaflet-0.7.2/leaflet.css" rel="stylesheet" type="text/css" />
-    
-    <script src="javascript/maps.js"></script>
     <link href="styles/styles.css" rel="stylesheet" type="text/css" />
 	
-
-
     <script type="text/javascript">
     //<![CDATA[
+	
+		google.load('jquery', '1.11.0');
+	
         var routeSelect;
         var refreshSelect;
         var messages;

@@ -7,8 +7,8 @@ License in same folder as this file
 
 var adsense_status = 'enabled';
 
-google.load("maps", "3", {
-    other_params: "sensor=false&libraries=adsense"
+google.load('maps', '3', {
+    other_params: 'sensor=false&libraries=adsense'
 }),
 L.Google = L.Class.extend({
 	includes: L.Mixin.Events,
@@ -179,7 +179,7 @@ L.Google = L.Class.extend({
 	  user_adsense.position = google.maps.ControlPosition["TOP_CENTER"];
 	  user_adsense.cposition = "TOP_CENTER";
 	  user_adsense.backgroundColor = "#c4d4f3";
-	  user_adsense.borderColor = "#e5ecf9";
+	  user_adsense.borderColor = "#aaa";
 	  user_adsense.titleColor = "#0000cc";
 	  user_adsense.textColor = "#000000";
 	  user_adsense.urlColor = "#009900";
