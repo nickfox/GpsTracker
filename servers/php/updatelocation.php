@@ -11,7 +11,7 @@
     isset($_POST['speed']) ? $speed = $_POST['speed'] : $speed = '0';
     isset($_POST['direction']) ? $direction = $_POST['direction'] : $direction = '0';
     isset($_POST['distance']) ? $distance = $_POST['distance'] : $distance = '0';
-    isset($_POST['date']) ? $date = $_POST['date'] : $date = $_POST['date'];
+    isset($_POST['date']) ? $date = $_POST['date'] : $date = '0000-00-00 00:00:00';
     $date = urldecode($date);
     isset($_POST['locationmethod']) ? $locationMethod = $_POST['locationmethod'] : $locationMethod = '0';
     $locationMethod = urldecode($locationMethod);
