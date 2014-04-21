@@ -191,7 +191,7 @@ public class GpsTrackerActivity extends ActionBarActivity {
     }
 
     private boolean hasSpaces(String str) {
-        return (str.split(" ").length > 1) ? true : false;
+        return ((str.split(" ").length > 1) ? true : false);
     }
 
     private void displayUserSettings() {

@@ -1,44 +1,57 @@
-﻿function loadRoutes(data, responseCode) {
-    if (data.length == 0) {
+﻿
+function loadRoutes(json) {
+    if (json.length == 0) {
         showMessage('There are no routes available to view.');
         map.innerHTML = '';
     }
     else {
-        // get list of routes
-        var xml = GXml.parse(data);
-
-        var routes = xml.getElementsByTagName("route");
-
         // create the first option of the dropdown box
         var option = document.createElement('option');
         option.setAttribute('value', '0');
         option.innerHTML = 'Select Route...';
         routeSelect.appendChild(option);
 
-        // iterate through the routes and load them into the dropdwon box. 
-        for (i = 0; i < routes.length; i++) {
+        // iterate through the routes and load them into the dropdwon box.
+        $(json.routes).each(function(key, value){
             var option = document.createElement('option');
-            option.setAttribute('value', '?sessionID=' + routes[i].getAttribute("sessionID")
-			                    + '&phoneNumber=' + routes[i].getAttribute("phoneNumber"));
-            option.innerHTML = routes[i].getAttribute("phoneNumber") + "  " + routes[i].getAttribute("times");
+            option.setAttribute('value', '?sessionID=' + $(this).attr('sessionID')
+                            + '&phoneNumber=' + $(this).attr('phoneNumber'));
+
+            var shortSessionID = $(this).attr('sessionID').substring(0,5);
+            option.innerHTML = $(this).attr('phoneNumber') + "-" + shortSessionID + "  " + $(this).attr('times');
             routeSelect.appendChild(option);
-        }
+        });
 
         // need to reset this for firefox
         routeSelect.selectedIndex = 0;
 
-        hideWait();
-        showMessage('Please select a route below.');
+        hideWaitImage();
+        showMessage('<span style="color:#F00;">Please select a route below.</span>');
     }
-
 }
 
 // this will get the map and route, the route is selected from the dropdown box
 function getRouteForMap() {
     if (hasMap()) {
-        showWait('Getting map...');
+        showWaitImage('Getting map...');
         var url = 'GetRouteForMap.aspx' + routeSelect.options[routeSelect.selectedIndex].value;
-        GDownloadUrl(url, loadGPSLocations);
+
+        //console.log("testing route: " + routeSelect.options[routeSelect.selectedIndex].value);
+
+        $.ajax({
+               url: url,
+               type: 'GET',
+               dataType: 'json',
+               success: function(data) {
+                  //console.log("success getRouteForMap");
+                  loadGPSLocations(data);
+               },
+               error: function (xhr, status, errorThrown) {
+                   console.log("responseText: " + xhr.responseText);
+                   console.log("status: " + xhr.status);
+                   console.log("errorThrown: " + errorThrown);
+                }
+           });
     }
     else {
         alert("Please select a route before trying to refresh map.");
@@ -55,151 +68,179 @@ function hasMap() {
     }
 }
 
-function loadGPSLocations(data, responseCode) {
-    if (data.length == 0) {
+function loadGPSLocations(json) {
+    if (json.length == 0) {
         showMessage('There is no tracking data to view.');
         map.innerHTML = '';
     }
     else {
-        if (GBrowserIsCompatible()) {
+        hideWaitImage();
 
-            // create list of GPS data locations from our XML
-            var xml = GXml.parse(data);
+        // make sure we only create map object once
+        if (map.id == 'map') {
+            // use leaflet (http://leafletjs.com/) to create our map and map layers
+            map = new L.map('map');
 
-            // markers that we will display on Google map
-            var markers = xml.getElementsByTagName("locations");
+            var openStreetMapsURL = ('https:' == document.location.protocol ? 'https://' : 'http://') +
+             '{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+            var openStreetMapsLayer = new L.TileLayer(openStreetMapsURL,
+            {attribution:'&copy;2014 <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'});
 
-            // get rid of the wait gif
-            hideWait();
+            // need to get your own bing maps key, http://www.microsoft.com/maps/create-a-bing-maps-key.aspx
+            var bingMapsLayer = new L.BingLayer("AnH1IKGCBwAiBWfYAHMtIfIhMVybHFx2GxsReNP5W0z6P8kRa67_QwhM4PglI9yL");
+            var googleMapsLayer = new L.Google('ROADMAP', {mapOptions:{styles:{}}});
 
-            // create new map and add zoom control and type of map control
-            var map = new GMap2(document.getElementById("map"));
-            map.addControl(new GSmallMapControl());
-            map.addControl(new GMapTypeControl());
+            // this sets which map layer will first be displayed, go ahead and change it to bingMapsLayer or openStreetMapsLayer to see
+            map.addLayer(googleMapsLayer);
 
-            var length = markers.length;
+            // this is the switcher control to switch between map types (upper right hand corner of map)
+            map.addControl(new L.Control.Layers({
+                'Bing Maps':bingMapsLayer,
+                'Google Maps':googleMapsLayer,
+                'OpenStreetMaps':openStreetMapsLayer
+            }, {}));
+        }
+        /*
 
-            // center map on last marker so we can see progress during refreshes
-            map.setCenter(new GLatLng(parseFloat(markers[length - 1].getAttribute("latitude")),
-	                                  parseFloat(markers[length - 1].getAttribute("longitude"))), zoomLevel);
+            // note: replace this adsense publisher ID and channel with your own.
+            var publisherID = 'pub-7095775186404141';
+            var channel = '6961715451';
+            var adUnitDiv = document.createElement('div');
+            var adUnitOptions = {
+              format: google.maps.adsense.AdFormat.HALF_BANNER,
+              position: google.maps.ControlPosition.TOP_CENTER,
+              backgroundColor: '#c4d4f3',
+              borderColor: '#e5ecf9',
+              titleColor: '#0000cc',
+              textColor: '#000000',
+              urlColor: '#009900',
+              publisherId: publisherID,
+              channelNumber: channel,
+              map: map,
+              visible: true
+            };
+            var adUnit = new google.maps.adsense.AdUnit(adUnitDiv, adUnitOptions);
 
-            // interate through all our GPS data, create markers and add them to map
-            for (var i = 0; i < length; i++) {
-                var point = new GLatLng(parseFloat(markers[i].getAttribute("latitude")),
-	                                    parseFloat(markers[i].getAttribute("longitude")));
+        */
+            var finalLocation = false;
+            var counter = 0;
 
-                var marker = createMarker(i, length, point,
-		                     markers[i].getAttribute("speed"),
-		                     markers[i].getAttribute("direction"),
-		                     markers[i].getAttribute("distance"),
-		                     markers[i].getAttribute("locationMethod"),
-		                     markers[i].getAttribute("gpsTime"),
-		                     markers[i].getAttribute("phoneNumber"),
-		                     markers[i].getAttribute("sessionID"),
-		                     markers[i].getAttribute("accuracy"),
-		                     markers[i].getAttribute("eventType"),
-		                     markers[i].getAttribute("extraInfo"));
+            // iterate through the locations and create map markers for each location
+            $(json.locations).each(function(key, value){
+                counter++;
 
-                // add markers to map
-                map.addOverlay(marker);
-            }
+                // want to set the map center on the last location
+                if (counter == $(json.locations).length) {
+                    map.setView(new L.LatLng($(this).attr('latitude'),$(this).attr('longitude')), zoomLevel);
+                    finalLocation = true;
+                }
+
+                var marker = createMarker(
+                    $(this).attr('latitude'),
+                    $(this).attr('longitude'),
+                    $(this).attr('speed'),
+                    $(this).attr('direction'),
+                    $(this).attr('distance'),
+                    $(this).attr('locationMethod'),
+                    $(this).attr('gpsTime'),
+                    $(this).attr('phoneNumber'),
+                    $(this).attr('sessionID'),
+                    $(this).attr('accuracy'),
+                    $(this).attr('extraInfo'),
+                    map, finalLocation);
+            });
         }
 
-        // show route name
+        // display route name above map
         showMessage(routeSelect.options[routeSelect.selectedIndex].innerHTML);
-    }
 }
 
-function createMarker(i, length, point, speed, direction, distance, locationMethod, gpsTime,
-                      phoneNumber, sessionID, accuracy, eventType, extraInfo) {
-    var icon = new GIcon();
+function createMarker(latitude, longitude, speed, direction, distance, locationMethod, gpsTime,
+                      phoneNumber, sessionID, accuracy, extraInfo, map, finalLocation) {
+    var iconUrl;
 
-    // make the most current marker red
-    if (i == length - 1) {
-        icon.image = "images/coolred_small.png";
-    }
-    else {
-        icon.image = "images/coolblue_small.png";
-    }
-
-    icon.shadow = "images/coolshadow_small.png";
-    icon.iconSize = new GSize(12, 20);
-    icon.shadowSize = new GSize(22, 20);
-    icon.iconAnchor = new GPoint(6, 20);
-    icon.infoWindowAnchor = new GPoint(5, 1);
-
-    var marker = new GMarker(point, icon);
-
-    // this describes how we got our location data, either by satellite or by cell phone tower
-    var lm = "";
-    if (locationMethod == "8") {
-        lm = "Cell Tower";
-    } else if (locationMethod == "327681") {
-        lm = "Satellite";
+    if (finalLocation) {
+        iconUrl = 'images/coolred_small.png';
     } else {
-        lm = locationMethod;
+        iconUrl = 'images/coolblue_small.png';
     }
 
-    var str = "</td></tr>";
+    var markerIcon = new L.Icon({
+            iconUrl:      iconUrl,
+            shadowUrl:    'images/coolshadow_small.png',
+            iconSize:     [12, 20],
+            shadowSize:   [22, 20],
+            iconAnchor:   [6, 20],
+            shadowAnchor: [6, 20],
+            popupAnchor:  [-3, -76]
+    });
+
+    var lastMarker = "</td></tr>";
 
     // when a user clicks on last marker, let them know it's final one
-    if (i == length - 1) {
-        str = "</td></tr><tr><td align=left>&nbsp;</td><td><b>Final location</b></td></tr>";
+    if (finalLocation) {
+        lastMarker = "</td></tr><tr><td align=left>&nbsp;</td><td><b>Final location</b></td></tr>";
     }
 
-    // this creates the pop up bubble that displays info when a user clicks on a marker
-    GEvent.addListener(marker, "click", function () {
-        marker.openInfoWindowHtml(
-        "<table border=0 style=\"font-size:95%;font-family:arial,helvetica,sans-serif;\">"
+    // convert from meters to feet
+    accuracy = parseInt(accuracy * 3.28);
+
+    var popupWindowText = "<table border=0 style=\"font-size:95%;font-family:arial,helvetica,sans-serif;\">"
         + "<tr><td align=right>&nbsp;</td><td>&nbsp;</td><td rowspan=2 align=right>"
-        + "<img src=images/" + getCompassImage(direction) + ".jpg alt= />"
-        + str
-        + "<tr><td align=right>Speed:</td><td>" + speed + " mph</td></tr>"
-        + "<tr><td align=right>Distance:</td><td>" + distance + " mi</td><td>&nbsp;</td></tr>"
-        + "<tr><td align=right>Time:</td><td colspan=2>" + gpsTime + "</td></tr>"
-        + "<tr><td align=right>Method:</td><td>" + lm + "</td><td>&nbsp;</td></tr>"
+        + "<img src=images/" + getCompassImage(direction) + ".jpg alt= />" + lastMarker
+        + "<tr><td align=right>Speed:</td><td>" + speed +  " mph</td></tr>"
+        + "<tr><td align=right>Distance:</td><td>" + distance +  " mi</td><td>&nbsp;</td></tr>"
+        + "<tr><td align=right>Time:</td><td colspan=2>" + gpsTime +  "</td></tr>"
+        + "<tr><td align=right>Method:</td><td>" + locationMethod + "</td><td>&nbsp;</td></tr>"
         + "<tr><td align=right>Phone #:</td><td>" + phoneNumber + "</td><td>&nbsp;</td></tr>"
         + "<tr><td align=right>Session ID:</td><td>" + sessionID + "</td><td>&nbsp;</td></tr>"
         + "<tr><td align=right>Accuracy:</td><td>" + accuracy + " ft</td><td>&nbsp;</td></tr>"
-        + "<tr><td align=right>Event Type:</td><td>" + eventType + "</td><td>&nbsp;</td></tr>"
-        + "<tr><td align=right>Extra Info:</td><td>" + extraInfo + "</td><td>&nbsp;</td></tr>"
+        + "<tr><td align=right>Extra Info:</td><td>" + extraInfo + "</td><td>&nbsp;</td></tr></table>";
 
-        + "</table>"
-        );
-    });
-
-    return marker;
+    L.marker(new L.LatLng(latitude, longitude), {icon: markerIcon}).bindPopup(popupWindowText).addTo(map);
 }
 
 // this chooses the proper image for our litte compass in the popup window
 function getCompassImage(azimuth) {
     if ((azimuth >= 337 && azimuth <= 360) || (azimuth >= 0 && azimuth < 23))
-        return "compassN";
+            return "compassN";
     if (azimuth >= 23 && azimuth < 68)
-        return "compassNE";
+            return "compassNE";
     if (azimuth >= 68 && azimuth < 113)
-        return "compassE";
+            return "compassE";
     if (azimuth >= 113 && azimuth < 158)
-        return "compassSE";
+            return "compassSE";
     if (azimuth >= 158 && azimuth < 203)
-        return "compassS";
+            return "compassS";
     if (azimuth >= 203 && azimuth < 248)
-        return "compassSW";
+            return "compassSW";
     if (azimuth >= 248 && azimuth < 293)
-        return "compassW";
+            return "compassW";
     if (azimuth >= 293 && azimuth < 337)
-        return "compassNW";
+            return "compassNW";
 
     return "";
 }
 
 function deleteRoute() {
     if (hasMap()) {
-        var answer = confirm("This will permanently delete this route\n from the database. Do you want to delete?")
-        if (answer) {
-            showWait('Deleting route...');
+		
+		// comment out these two lines to get delete working
+		var answer = confirm("Disabled here on test website, this works fine.");
+		return false;
+		
+        var answer = confirm("This will permanently delete this route\n from the database. Do you want to delete?");
+        if (answer){
+            showWaitImage('Deleting route...');
             var url = 'DeleteRoute.aspx' + routeSelect.options[routeSelect.selectedIndex].value;
-            GDownloadUrl(url, deleteRouteResponse);
+
+            $.ajax({
+                   url: url,
+                   type: 'GET',
+                   success: function() {
+                      deleteRouteResponse();
+                   }
+               });
         }
         else {
             return false;
@@ -210,19 +251,26 @@ function deleteRoute() {
     }
 }
 
-function deleteRouteResponse(data, responseCode) {
+function deleteRouteResponse() {
     map.innerHTML = '';
     routeSelect.length = 0;
-    GDownloadUrl('GetRoutes.aspx', loadRoutes);
+
+    $.ajax({
+           url: 'GetRoutes.aspx',
+           type: 'GET',
+           success: function(data) {
+              loadRoutes(data);
+           }
+       });
 }
 
 // auto refresh the map. there are 3 transitions (shown below). transitions happen when a user
 // selects an option in the auto refresh dropdown box. an interval is an amount of time in between
 // refreshes of the map. for instance, auto refresh once a minute. in the method below, the 3 numbers
-// in the code show where the 3 transitions are handled. setInterval turns on a timer that calls 
-// the getRouteForMap() method every so many seconds based on the value of newInterval. 
-// clearInterval turns off the timer. if newInterval is 5, then the value passed to setInterval is 
-// 5000 milliseconds or 5 seconds. 
+// in the code show where the 3 transitions are handled. setInterval turns on a timer that calls
+// the getRouteForMap() method every so many seconds based on the value of newInterval.
+// clearInterval turns off the timer. if newInterval is 5, then the value passed to setInterval is
+// 5000 milliseconds or 5 seconds.
 function autoRefresh() {
     /*
         1) going from off to any interval
@@ -278,21 +326,20 @@ function changeZoomLevel() {
 }
 
 function showMessage(message) {
-    messages.innerHTML = 'Gps Tracker: <b>' + message + '</b>';
+     messages.innerHTML = 'GpsTracker: <strong>' + message + '</strong>';
 }
 
 function showRouteName() {
     showMessage(routeSelect.options[routeSelect.selectedIndex].innerHTML);
 }
 
-function showWait(theMessage) {
-    map.innerHTML = '<img src="images/ajax-loader.gif"' +
-                    'style="position:absolute;top:225px;left:325px;">';
+function showWaitImage(theMessage) {
+    map.innerHTML = '<img src="images/ajax-loader.gif" style="position:absolute;top:225px;left:325px;">';
     showMessage(theMessage);
 }
 
-function hideWait() {
+function hideWaitImage() {
     map.innerHTML = '';
-    messages.innerHTML = 'Gps Tracker';
+    messages.innerHTML = 'GpsTracker';
 }
 

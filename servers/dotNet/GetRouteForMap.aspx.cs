@@ -10,14 +10,11 @@ public partial class GetRouteForMap : System.Web.UI.Page
         string phoneNumber = Request.QueryString["phoneNumber"];
 
         // our helper class to get data
-        DbXmlReader reader = new DbXmlReader();
+        DbJsonReader reader = new DbJsonReader();
 
-        Response.AppendHeader("Content-Type", "text/xml");
+        Response.AppendHeader("Content-Type", "application/json");
 
-        // sessionID and phoneNumber are the unique identifiers for routes if the phoneNumber is unique. 
-        // the phoneNumber field is a string field and anything can be put in that field, but for 
-        // uniqueness, the actual phone number should be used
-        Response.Write(reader.getXmlString("prcGetRouteForMap", 
+        Response.Write(reader.getJsonString("prcGetRouteForMap", "locations", 
             new SqlParameter("@sessionID", sessionID),
             new SqlParameter("@phoneNumber", phoneNumber)));
     }

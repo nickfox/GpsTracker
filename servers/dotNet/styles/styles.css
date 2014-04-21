@@ -1,24 +1,25 @@
-﻿/*
-Please leave the link below with the source code, thank you.
-http://www.websmithing.com/portal/Programming/tabid/55/articleType/ArticleView/articleId/6/Google-Map-GPS-Cell-Phone-Tracker-Version-2.aspx
-*/
-
+﻿
 * {
-	margin: 0;
-	padding: 0;
+    margin: 0;
+    padding: 0;
 }
 body {
     font-family: arial, helvetica, sans-serif;
+     font-size: 17px;
 }
-#messages 
-{
+#test {
+    position:absolute;
+    left: 750px;
+    top: 50px;
+    width:400px;
+}
+#messages {
     position:absolute;
     left: 10px;
     top: 10px;
-    width:700px;
+    width:950px;
 }
-#map 
-{
+#map {
     position:absolute;
     left: 10px;
     top: 40px;
@@ -28,43 +29,33 @@ body {
     border-style:solid;
     background-color:#FFF;
 }
-
-#selectRoute
-{
+#selectRoute {
     position:absolute;
     left: 10px;
     top: 510px;
-	width: 575px;
+    width: 600px;
 }
-
-#selectRefresh
-{
+#selectRefresh {
     position:absolute;
     left: 10px;
     top: 550px;
-	width: 250px;
+    width: 250px;
 }
-
-#selectZoomLevel
-{
+#selectZoomLevel {
     position:absolute;
-    left: 335px;
+    left: 360px;
     top: 550px;
-	width: 250px;
+    width: 250px;
 }
-
-#delete
-{
+#delete {
     position:absolute;
-    left: 625px;
+    left: 637px;
     top: 510px;
     width: 75px;
 }
-
-#refresh
-{
+#refresh {
     position:absolute;
-    left: 625px;
+    left: 637px;
     top: 550px;
     width: 75px;    
 }

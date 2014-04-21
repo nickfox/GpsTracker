@@ -93,16 +93,12 @@
         android:layout_height="wrap_content"
         android:text="@string/save"
         android:id="@+id/saveButton"
-        android:layout_weight="1"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_weight="1" />
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/start_tracking"
         android:id="@+id/trackingButton"
-        android:layout_weight="1"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_weight="1" />
     </LinearLayout>
 </RelativeLayout>

@@ -2,9 +2,6 @@
 <resources>
 
     <string name="app_name">GpsTracker</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-
     <string name="default_upload_website">https://www.websmithing.com/gpstracker/updatelocation.php</string>
 
     <string name="start_tracking">Start Tracking</string>
