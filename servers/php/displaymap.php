@@ -105,30 +105,8 @@
     <input type="button" id="delete" value="Delete" onclick="deleteRoute()" tabindex="4">
     <input type="button" id="refresh" value="Refresh" onclick="getRouteForMap()" tabindex="5">
 
-     <div id="test">
-		<p><== now supports different map providers, Google, Bing or OpenStreetMaps. Select a route below the map
-		and then click on the selector just to the left.</p>
-	    <br>&nbsp;<br>
-		<p>Please note that routes in the dropdown box are a concatenation of phoneNumber (ie. androidUser) and the first five characters of the sessionID. Start times and end times for the routes are in parentheses
-   	 <br>&nbsp;<br><!-- i know you love my adept handling of whitespace, don't lie... :o) -->
-   	 The routes in the dropdown box are sorted in descending order by startTime so your route should be near the top.	
-   	 <br>&nbsp;<br>
-   	 Also note that you must use <strong>https</strong> now in this string:
-   	  <br>&nbsp;<br>
-   	 <span style="color:#f00;">https</span>://www.websmithing.com/gpstracker/updatelocation.php	
-   	 <br>&nbsp;<br>
-   	 <strong>If you do not change this now in the client phone app you will probably not see your route here.</strong>	 	 
+     <div id="test"> 	 
     </div>
-	
-	<script>
-	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-	  ga('create', 'UA-3068771-1', 'websmithing.com');
-	  ga('send', 'pageview');
-	</script>
 </body>
 </html>
 

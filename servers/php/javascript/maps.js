@@ -34,7 +34,7 @@ function loadRoutes(json) {
 function getRouteForMap() {
     if (hasMap()) {
         showWaitImage('Getting map...');
-        var url = 'getgpslocations.php' + routeSelect.options[routeSelect.selectedIndex].value;
+        var url = 'getrouteformap.php' + routeSelect.options[routeSelect.selectedIndex].value;
 
         //console.log("testing route: " + routeSelect.options[routeSelect.selectedIndex].value);
 
