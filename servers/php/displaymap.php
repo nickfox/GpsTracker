@@ -105,7 +105,7 @@
     <input type="button" id="delete" value="Delete" onclick="deleteRoute()" tabindex="4">
     <input type="button" id="refresh" value="Refresh" onclick="getRouteForMap()" tabindex="5">
 
-     <div id="test"> 	 
+     <div id="test"><== after you select a route below, check out the different map providers here. I'm using google maps, bing maps and OpenStreetMaps but there are many more providers. 	 
     </div>
 </body>
 </html>
