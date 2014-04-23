@@ -42,7 +42,6 @@ public class LocationService extends Service implements
     private Location previousLocation;
     private float totalDistanceInMeters = 0.0f;
     private boolean firstTimeGettingPosition = true;
-    //private boolean currentlyTracking = false;
 
     @Override
     public void onCreate() {
