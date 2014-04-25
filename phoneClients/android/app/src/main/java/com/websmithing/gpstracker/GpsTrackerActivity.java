@@ -5,7 +5,6 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.location.Location;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.v7.app.ActionBarActivity;
@@ -19,8 +18,6 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.google.android.gms.location.LocationClient;
-import com.google.android.gms.location.LocationRequest;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
 import java.util.UUID;
@@ -38,13 +35,7 @@ public class GpsTrackerActivity extends ActionBarActivity {
     private static Button trackingButton;
     private static Button saveButton;
 
-    private LocationRequest locationRequest;
-    private LocationClient locationClient;
-    private Location previousLocation;
-    private float totalDistanceInMeters = 0.0f;
-    private boolean firstTimeGettingPosition = true;
     private boolean currentlyTracking;
-    private String sessionID;
     private RadioGroup intervalRadioGroup;
     private int intervalInMinutes = 1;
     private AlarmManager alarmManager;
