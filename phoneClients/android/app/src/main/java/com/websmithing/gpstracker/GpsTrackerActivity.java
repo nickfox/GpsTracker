@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.v7.app.ActionBarActivity;
@@ -33,7 +34,6 @@ public class GpsTrackerActivity extends ActionBarActivity {
     private static EditText txtUserName;
     private static EditText txtWebsite;
     private static Button trackingButton;
-    private static Button saveButton;
 
     private boolean currentlyTracking;
     private RadioGroup intervalRadioGroup;
@@ -53,7 +53,6 @@ public class GpsTrackerActivity extends ActionBarActivity {
         txtWebsite = (EditText)findViewById(R.id.txtWebsite);
         txtUserName = (EditText)findViewById(R.id.txtUserName);
         trackingButton = (Button)findViewById(R.id.trackingButton);
-        saveButton = (Button)findViewById(R.id.saveButton);
         txtUserName.setImeOptions(EditorInfo.IME_ACTION_DONE);
 
         SharedPreferences sharedPreferences = this.getSharedPreferences("com.websmithing.gpstracker.prefs", Context.MODE_PRIVATE);
@@ -62,12 +61,6 @@ public class GpsTrackerActivity extends ActionBarActivity {
         trackingButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 trackLocation(v);
-            }
-        });
-
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                saveUserSettings();
             }
         });
     }
@@ -97,15 +90,8 @@ public class GpsTrackerActivity extends ActionBarActivity {
         SharedPreferences sharedPreferences = this.getSharedPreferences("com.websmithing.gpstracker.prefs", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
-        if (textFieldsAreEmptyOrHaveSpaces()) {
+        if (!saveUserSettings()) {
             return;
-        } else {
-            // just in case user forgets to save username
-            String tempUser = sharedPreferences.getString("userName", "");
-            if (tempUser.trim().length() == 0) {
-                editor.putString("userName", txtUserName.getText().toString().trim());
-                editor.commit();
-            }
         }
 
         if (!checkIfGooglePlayEnabled()) {
@@ -113,7 +99,7 @@ public class GpsTrackerActivity extends ActionBarActivity {
         }
 
         if (currentlyTracking) {
-            ((Button) v).setText(getText(R.string.start_tracking));
+            Toast.makeText(getApplicationContext(), R.string.tracking_has_now_stopped, Toast.LENGTH_LONG).show();
 
             cancelAlarm();
 
@@ -121,7 +107,7 @@ public class GpsTrackerActivity extends ActionBarActivity {
             editor.putBoolean("currentlyTracking", false);
             editor.putString("sessionID", "");
         } else {
-            ((Button) v).setText(getText(R.string.stop_tracking));
+            Toast.makeText(getApplicationContext(), R.string.tracking_has_now_started, Toast.LENGTH_LONG).show();
 
             startAlarmManager(getBaseContext());
 
@@ -131,11 +117,12 @@ public class GpsTrackerActivity extends ActionBarActivity {
         }
 
         editor.commit();
+        setTrackingButtonState();
     }
 
-    private void saveUserSettings() {
+    private boolean saveUserSettings() {
         if (textFieldsAreEmptyOrHaveSpaces()) {
-            return;
+            return false;
         }
 
         checkIfWebsiteIsReachable();
@@ -166,7 +153,7 @@ public class GpsTrackerActivity extends ActionBarActivity {
 
         editor.commit();
 
-        Toast.makeText(this, R.string.setting_saved, Toast.LENGTH_SHORT).show();
+        return true;
     }
 
     private boolean textFieldsAreEmptyOrHaveSpaces() {
@@ -211,12 +198,6 @@ public class GpsTrackerActivity extends ActionBarActivity {
 
         txtWebsite.setText(sharedPreferences.getString("defaultUploadWebsite", defaultUploadWebsite));
         txtUserName.setText(sharedPreferences.getString("userName", ""));
-
-        if (currentlyTracking) {
-            trackingButton.setText(getText(R.string.stop_tracking));
-        } else {
-            trackingButton.setText(getText(R.string.start_tracking));
-        }
     }
 
     private boolean checkIfGooglePlayEnabled() {
@@ -243,12 +224,25 @@ public class GpsTrackerActivity extends ActionBarActivity {
         });
     }
 
+    private void setTrackingButtonState() {
+        if (currentlyTracking) {
+            trackingButton.setBackgroundResource(R.drawable.green_tracking_button);
+            trackingButton.setTextColor(Color.BLACK);
+            trackingButton.setText(R.string.tracking_is_on);
+        } else {
+            trackingButton.setBackgroundResource(R.drawable.red_tracking_button);
+            trackingButton.setTextColor(Color.WHITE);
+            trackingButton.setText(R.string.tracking_is_off);
+        }
+    }
+
     @Override
     public void onResume() {
         Log.d(TAG, "onResume");
         super.onResume();  // Always call the superclass method first
 
         displayUserSettings();
+        setTrackingButtonState();
     }
 
     @Override

@@ -88,16 +88,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal" >
-    <Button
+
+        <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/save"
-        android:id="@+id/saveButton"
-        android:layout_weight="1" />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/start_tracking"
+        android:background="@drawable/red_tracking_button"
+        android:text="@string/tracking_is_off"
         android:id="@+id/trackingButton"
         android:layout_weight="1" />
     </LinearLayout>
