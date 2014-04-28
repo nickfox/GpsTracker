@@ -163,7 +163,12 @@ public class LocationService extends Service implements
             // we have our desired accuracy of 100 meters so lets quit this service,
             // onDestroy will be called and stop our location uodates
             if (location.getAccuracy() < 100.0f) {
-                sendLocationDataToWebsite(location);
+                SharedPreferences sharedPreferences = this.getSharedPreferences("com.websmithing.gpstracker.prefs", Context.MODE_PRIVATE);
+                String sessionID = sharedPreferences.getString("userName", "");
+
+                if (sessionID.trim().length() != 0) {
+                    sendLocationDataToWebsite(location);
+                }
             }
         }
     }

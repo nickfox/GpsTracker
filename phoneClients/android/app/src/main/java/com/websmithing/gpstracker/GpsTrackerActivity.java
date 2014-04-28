@@ -52,21 +52,61 @@ public class GpsTrackerActivity extends ActionBarActivity {
 
         txtWebsite = (EditText)findViewById(R.id.txtWebsite);
         txtUserName = (EditText)findViewById(R.id.txtUserName);
+        intervalRadioGroup = (RadioGroup)findViewById(R.id.intervalRadioGroup);
         trackingButton = (Button)findViewById(R.id.trackingButton);
         txtUserName.setImeOptions(EditorInfo.IME_ACTION_DONE);
 
         SharedPreferences sharedPreferences = this.getSharedPreferences("com.websmithing.gpstracker.prefs", Context.MODE_PRIVATE);
         currentlyTracking = sharedPreferences.getBoolean("currentlyTracking", false);
 
+        intervalRadioGroup.setOnCheckedChangeListener(
+                new RadioGroup.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                        saveInterval();
+                    }
+                });
+
         trackingButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                trackLocation(v);
+            public void onClick(View view) {
+                trackLocation(view);
             }
         });
     }
 
-    private void startAlarmManager(Context context) {
+    private void saveInterval() {
+        if (currentlyTracking) {
+            Toast.makeText(getApplicationContext(), R.string.user_needs_to_restart_tracking, Toast.LENGTH_LONG).show();
+        }
+
+        SharedPreferences sharedPreferences = this.getSharedPreferences("com.websmithing.gpstracker.prefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        switch (intervalRadioGroup.getCheckedRadioButtonId()) {
+            case R.id.i1:
+                editor.putInt("intervalInMinutes", 1);
+                break;
+            case R.id.i5:
+                editor.putInt("intervalInMinutes", 5);
+                break;
+            case R.id.i15:
+                editor.putInt("intervalInMinutes", 15);
+                break;
+            case R.id.i30:
+                editor.putInt("intervalInMinutes", 30);
+                break;
+            case R.id.i60:
+                editor.putInt("intervalInMinutes", 60);
+                break;
+        }
+
+        editor.commit();
+    }
+
+    private void startAlarmManager() {
         Log.d(TAG, "startAlarmManager");
+
+        Context context = getBaseContext();
         alarmManager = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
         gpsTrackerIntent = new Intent(context, GpsTrackerAlarmReceiver.class);
         pendingIntent = PendingIntent.getBroadcast(context, 0, gpsTrackerIntent, 0);
@@ -77,8 +117,9 @@ public class GpsTrackerActivity extends ActionBarActivity {
                 pendingIntent);
     }
 
-    private void cancelAlarm() {
-        Log.d(TAG, "cancelAlarm");
+    private void cancelAlarmManager() {
+        Log.d(TAG, "cancelAlarmManager");
+
         if (alarmManager != null) {
             alarmManager.cancel(pendingIntent);
             alarmManager = null;
@@ -101,7 +142,7 @@ public class GpsTrackerActivity extends ActionBarActivity {
         if (currentlyTracking) {
             Toast.makeText(getApplicationContext(), R.string.tracking_has_now_stopped, Toast.LENGTH_LONG).show();
 
-            cancelAlarm();
+            cancelAlarmManager();
 
             currentlyTracking = false;
             editor.putBoolean("currentlyTracking", false);
@@ -109,7 +150,7 @@ public class GpsTrackerActivity extends ActionBarActivity {
         } else {
             Toast.makeText(getApplicationContext(), R.string.tracking_has_now_started, Toast.LENGTH_LONG).show();
 
-            startAlarmManager(getBaseContext());
+            startAlarmManager();
 
             currentlyTracking = true;
             editor.putBoolean("currentlyTracking", true);
@@ -175,8 +216,6 @@ public class GpsTrackerActivity extends ActionBarActivity {
     private void displayUserSettings() {
         SharedPreferences sharedPreferences = this.getSharedPreferences("com.websmithing.gpstracker.prefs", Context.MODE_PRIVATE);
         int interval = sharedPreferences.getInt("intervalInMinutes", 1);
-
-        intervalRadioGroup = (RadioGroup)findViewById(R.id.intervalRadioGroup);
 
         switch (intervalInMinutes) {
             case 1:

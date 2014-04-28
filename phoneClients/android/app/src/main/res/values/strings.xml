@@ -7,6 +7,7 @@
     <string name="tracking_is_on">Tracking is On</string>
     <string name="tracking_has_now_started">Tracking has now started.</string>
     <string name="tracking_has_now_stopped">Tracking has now stopped.</string>
+    <string name="user_needs_to_restart_tracking">Please restart tracking to change the time interval.</string>
     <string name="reachability_error">Cannot reach the website that you have entered. Did you spell it correctly? Does your website use http or https?</string>
     <string name="textfields_empty_or_spaces">Please fill in both fields. User names cannot have a space.</string>
     <string name="google_play_services_unavailable">Please go into Settings > Apps > All and enable Google Play Services.</string>
