@@ -164,7 +164,7 @@ public class LocationService extends Service implements
             // onDestroy will be called and stop our location uodates
             if (location.getAccuracy() < 100.0f) {
                 SharedPreferences sharedPreferences = this.getSharedPreferences("com.websmithing.gpstracker.prefs", Context.MODE_PRIVATE);
-                String sessionID = sharedPreferences.getString("userName", "");
+                String sessionID = sharedPreferences.getString("sessionID", "");
 
                 if (sessionID.trim().length() != 0) {
                     sendLocationDataToWebsite(location);

@@ -41,9 +41,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9fe415d5-9929-47d9-9a7a-de7d3ea04176" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/websmithing/gpstracker/GpsTrackerActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/websmithing/gpstracker/GpsTrackerActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/websmithing/gpstracker/LocationService.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/websmithing/gpstracker/LocationService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
     </list>
     <ignored path="GpsTracker.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -106,15 +104,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="GpsTrackerActivity.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="GpsTrackerActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/websmithing/gpstracker/GpsTrackerActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3923077" vertical-offset="1054" max-vertical-offset="5032">
-              <caret line="77" column="32" selection-start-line="77" selection-start-column="32" selection-end-line="77" selection-end-column="32" />
+            <state vertical-scroll-proportion="-0.65384614" vertical-offset="1054" max-vertical-offset="5032">
+              <caret line="63" column="29" selection-start-line="63" selection-start-column="29" selection-end-line="63" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1667#1709#0" expanded="true" />
-                <element signature="e#2339#2572#0" expanded="true" />
                 <element signature="e#2553#2554#0" expanded="true" />
                 <element signature="e#2618#2752#0" expanded="true" />
                 <element signature="e#2741#2742#0" expanded="true" />
@@ -131,29 +128,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activity_gpstracker.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_gpstracker.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.6666667" vertical-offset="642" max-vertical-offset="1802">
-              <caret line="42" column="46" selection-start-line="42" selection-start-column="46" selection-end-line="42" selection-end-column="46" />
-              <folding>
-                <element signature="e#3890#3915#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LocationService.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="LocationService.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/websmithing/gpstracker/LocationService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2014" max-vertical-offset="3094">
-              <caret line="164" column="50" selection-start-line="164" selection-start-column="50" selection-end-line="164" selection-end-column="50" />
+            <state vertical-scroll-proportion="0.65665233" vertical-offset="1938" max-vertical-offset="3094">
+              <caret line="166" column="73" selection-start-line="166" selection-start-column="73" selection-end-line="166" selection-end-column="73" />
               <folding>
-                <element signature="e#7546#7547#0" expanded="true" />
-                <element signature="e#7590#7591#0" expanded="true" />
+                <element signature="e#7547#7548#0" expanded="true" />
+                <element signature="e#7591#7592#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -948,9 +930,9 @@
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/green_tracking_button.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/red_tracking_button.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_gpstracker.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/websmithing/gpstracker/LocationService.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/websmithing/gpstracker/GpsTrackerActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/websmithing/gpstracker/LocationService.java" />
       </list>
     </option>
   </component>
@@ -1421,7 +1403,7 @@
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32777777" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2246696" sideWeight="0.49968886" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18502203" sideWeight="0.49968886" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2495333" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1496,7 +1478,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1667#1709#0" expanded="true" />
-            <element signature="e#2339#2572#0" expanded="true" />
             <element signature="e#2553#2554#0" expanded="true" />
             <element signature="e#2618#2752#0" expanded="true" />
             <element signature="e#2741#2742#0" expanded="true" />
@@ -1570,7 +1551,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1667#1709#0" expanded="true" />
-            <element signature="e#2339#2572#0" expanded="true" />
             <element signature="e#2553#2554#0" expanded="true" />
             <element signature="e#2618#2752#0" expanded="true" />
             <element signature="e#2741#2742#0" expanded="true" />
@@ -1601,7 +1581,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1667#1709#0" expanded="true" />
-            <element signature="e#2339#2572#0" expanded="true" />
             <element signature="e#2553#2554#0" expanded="true" />
             <element signature="e#2618#2752#0" expanded="true" />
             <element signature="e#2741#2742#0" expanded="true" />
@@ -1632,7 +1611,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1667#1709#0" expanded="true" />
-            <element signature="e#2339#2572#0" expanded="true" />
             <element signature="e#2553#2554#0" expanded="true" />
             <element signature="e#2618#2752#0" expanded="true" />
             <element signature="e#2741#2742#0" expanded="true" />
@@ -1663,7 +1641,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1667#1709#0" expanded="true" />
-            <element signature="e#2339#2572#0" expanded="true" />
             <element signature="e#2553#2554#0" expanded="true" />
             <element signature="e#2618#2752#0" expanded="true" />
             <element signature="e#2741#2742#0" expanded="true" />
@@ -1835,30 +1812,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_gpstracker.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.6666667" vertical-offset="642" max-vertical-offset="1802">
-          <caret line="42" column="46" selection-start-line="42" selection-start-column="46" selection-end-line="42" selection-end-column="46" />
-          <folding>
-            <element signature="e#3890#3915#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/websmithing/gpstracker/LocationService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2014" max-vertical-offset="3094">
-          <caret line="164" column="50" selection-start-line="164" selection-start-column="50" selection-end-line="164" selection-end-column="50" />
-          <folding>
-            <element signature="e#7546#7547#0" expanded="true" />
-            <element signature="e#7590#7591#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
@@ -1867,14 +1820,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_gpstracker.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.110939905" vertical-offset="642" max-vertical-offset="1802">
+          <caret line="42" column="46" selection-start-line="42" selection-start-column="46" selection-end-line="42" selection-end-column="46" />
+          <folding>
+            <element signature="e#3890#3915#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/websmithing/gpstracker/GpsTrackerActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3923077" vertical-offset="1054" max-vertical-offset="5032">
-          <caret line="77" column="32" selection-start-line="77" selection-start-column="32" selection-end-line="77" selection-end-column="32" />
+        <state vertical-scroll-proportion="-0.65384614" vertical-offset="1054" max-vertical-offset="5032">
+          <caret line="63" column="29" selection-start-line="63" selection-start-column="29" selection-end-line="63" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1667#1709#0" expanded="true" />
-            <element signature="e#2339#2572#0" expanded="true" />
             <element signature="e#2553#2554#0" expanded="true" />
             <element signature="e#2618#2752#0" expanded="true" />
             <element signature="e#2741#2742#0" expanded="true" />
@@ -1886,6 +1851,17 @@
             <element signature="e#9511#9538#0" expanded="true" />
             <element signature="e#9943#9966#0" expanded="true" />
             <element signature="e#10157#10181#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/websmithing/gpstracker/LocationService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.65665233" vertical-offset="1938" max-vertical-offset="3094">
+          <caret line="166" column="73" selection-start-line="166" selection-start-column="73" selection-end-line="166" selection-end-column="73" />
+          <folding>
+            <element signature="e#7547#7548#0" expanded="true" />
+            <element signature="e#7591#7592#0" expanded="true" />
           </folding>
         </state>
       </provider>
