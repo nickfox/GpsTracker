@@ -39,9 +39,6 @@ public class LocationService extends Service implements
     private boolean currentlyProcessingLocation = false;
     private LocationRequest locationRequest;
     private LocationClient locationClient;
-    private Location previousLocation;
-    private float totalDistanceInMeters = 0.0f;
-    private boolean firstTimeGettingPosition = true;
 
     @Override
     public void onCreate() {
@@ -66,13 +63,6 @@ public class LocationService extends Service implements
 
         currentlyProcessingLocation = true;
 
-        // totalDistanceInMeters = 0.0f;
-
-        locationRequest = LocationRequest.create();
-        locationRequest.setInterval(1000); // milliseconds
-        locationRequest.setFastestInterval(1000); // the fastest rate in milliseconds at which your app can handle location updates
-        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-
         if (GooglePlayServicesUtil.isGooglePlayServicesAvailable(this) == ConnectionResult.SUCCESS) {
             locationClient = new LocationClient(this,this,this);
 
@@ -90,14 +80,27 @@ public class LocationService extends Service implements
         dateFormat.setTimeZone(TimeZone.getDefault());
         Date date = new Date(location.getTime());
 
+        SharedPreferences sharedPreferences = this.getSharedPreferences("com.websmithing.gpstracker.prefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        float totalDistanceInMeters = sharedPreferences.getFloat("totalDistanceInMeters", 0f);
+        boolean firstTimeGettingPosition = sharedPreferences.getBoolean("firstTimeGettingPosition", true);
+
         if (firstTimeGettingPosition) {
-            firstTimeGettingPosition = false;
+            editor.putBoolean("firstTimeGettingPosition", false);
+            editor.putFloat("previousLatitude", (float)location.getLatitude());
+            editor.putFloat("previousLongitude", (float)location.getLongitude());
+            editor.commit();
         } else {
+            Location previousLocation = new Location("");
+            previousLocation.setLatitude(sharedPreferences.getFloat("previousLatitude", 0f));
+            previousLocation.setLongitude(sharedPreferences.getFloat("previousLongitude", 0f));
+
             float distance = location.distanceTo(previousLocation);
             totalDistanceInMeters += distance;
+            editor.putFloat("totalDistanceInMeters", totalDistanceInMeters);
+            editor.commit();
         }
-
-        previousLocation = location;
 
         RequestParams requestParams = new RequestParams();
         requestParams.put("latitude", Double.toString(location.getLatitude()));
@@ -115,8 +118,6 @@ public class LocationService extends Service implements
         } else {
             requestParams.put("distance", 0); // in miles
         }
-
-        SharedPreferences sharedPreferences = this.getSharedPreferences("com.websmithing.gpstracker.prefs", Context.MODE_PRIVATE);
 
         // phoneNumber is just an identifying string in the database, can be any identifier.
         requestParams.put("phonenumber", sharedPreferences.getString("userName", ""));
@@ -143,11 +144,6 @@ public class LocationService extends Service implements
     @Override
     public void onDestroy() {
         super.onDestroy();
-
-        if (locationClient != null && locationClient.isConnected()) {
-            locationClient.removeLocationUpdates(this);
-            locationClient.disconnect();
-        }
     }
 
     @Override
@@ -163,13 +159,16 @@ public class LocationService extends Service implements
             // we have our desired accuracy of 100 meters so lets quit this service,
             // onDestroy will be called and stop our location uodates
             if (location.getAccuracy() < 100.0f) {
-                SharedPreferences sharedPreferences = this.getSharedPreferences("com.websmithing.gpstracker.prefs", Context.MODE_PRIVATE);
-                String sessionID = sharedPreferences.getString("sessionID", "");
-
-                if (sessionID.trim().length() != 0) {
-                    sendLocationDataToWebsite(location);
-                }
+                stopLocationUpdates();
+                sendLocationDataToWebsite(location);
             }
+        }
+    }
+
+    private void stopLocationUpdates() {
+        if (locationClient != null && locationClient.isConnected()) {
+            locationClient.removeLocationUpdates(this);
+            locationClient.disconnect();
         }
     }
 
@@ -181,6 +180,11 @@ public class LocationService extends Service implements
     @Override
     public void onConnected(Bundle bundle) {
         Log.d(TAG, "onConnected");
+
+        locationRequest = LocationRequest.create();
+        locationRequest.setInterval(1000); // milliseconds
+        locationRequest.setFastestInterval(1000); // the fastest rate in milliseconds at which your app can handle location updates
+        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 
         locationClient.requestLocationUpdates(locationRequest, this);
     }

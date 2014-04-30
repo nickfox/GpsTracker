@@ -154,6 +154,8 @@ public class GpsTrackerActivity extends ActionBarActivity {
 
             currentlyTracking = true;
             editor.putBoolean("currentlyTracking", true);
+            editor.putFloat("totalDistanceInMeters", 0f);
+            editor.putBoolean("firstTimeGettingPosition", true);
             editor.putString("sessionID",  UUID.randomUUID().toString());
         }
 
