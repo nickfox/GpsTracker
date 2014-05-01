@@ -1,4 +1,4 @@
-![gpstracker](https://raw2.github.com/nickfox/GpsTracker/master/gpstracker_small.png)GpsTracker v3.2.0
+![gpstracker](https://raw2.github.com/nickfox/GpsTracker/master/gpstracker_small.png)GpsTracker v3.2.1
 -------------
 
 ##### Google Map Gps Cell Phone Tracker
@@ -19,6 +19,11 @@ https://www.websmithing.com/2014/01/20/quick-start-guide-for-gpstracker-3/
 
 #### Changelog
 
+*************
+
+May 1, 2014 - v3.2.1
+
+This version changes the UI of the android app from two buttons (Save and Track) to one button (Track).
 
 *************
 
