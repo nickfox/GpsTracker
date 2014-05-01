@@ -23,7 +23,6 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 
 import java.util.UUID;
 
-
 public class GpsTrackerActivity extends ActionBarActivity {
     private static final String TAG = "GpsTrackerActivity";
 
