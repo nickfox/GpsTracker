@@ -42,6 +42,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9fe415d5-9929-47d9-9a7a-de7d3ea04176" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/websmithing/gpstracker/LocationService.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/websmithing/gpstracker/LocationService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="GpsTracker.iws" />
@@ -115,11 +116,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LocationService.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="LocationService.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/websmithing/gpstracker/LocationService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5833333" vertical-offset="1224" max-vertical-offset="3094">
-              <caret line="116" column="91" selection-start-line="116" selection-start-column="70" selection-end-line="116" selection-end-column="91" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1224" max-vertical-offset="3111">
+              <caret line="103" column="0" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="765">
+              <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build.gradle" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.3536" vertical-offset="0" max-vertical-offset="625">
+              <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -553,7 +574,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="4190375454000" />
+        <entry key="$PROJECT_DIR$" value="4190472784000" />
         <entry key="$PROJECT_DIR$/gradle" value="1387345486000" />
         <entry key="$USER_HOME$/Downloads/GpsTracker/phoneClients/android" value="1387345487000" />
       </map>
@@ -904,9 +925,9 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_gpstracker.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/websmithing/gpstracker/GpsTrackerActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/websmithing/gpstracker/LocationService.java" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
       </list>
     </option>
   </component>
@@ -1788,22 +1809,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
-          <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.086440675" vertical-offset="119" max-vertical-offset="765">
-          <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/websmithing/gpstracker/GpsTrackerBootReceiver.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.1088" vertical-offset="0" max-vertical-offset="625">
@@ -1821,8 +1826,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/websmithing/gpstracker/LocationService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5833333" vertical-offset="1224" max-vertical-offset="3094">
-          <caret line="116" column="91" selection-start-line="116" selection-start-column="70" selection-end-line="116" selection-end-column="91" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1224" max-vertical-offset="3111">
+          <caret line="103" column="0" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="765">
+          <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3536" vertical-offset="0" max-vertical-offset="625">
+          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
           <folding />
         </state>
       </provider>
