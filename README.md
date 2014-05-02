@@ -1,4 +1,4 @@
-![gpstracker](https://raw2.github.com/nickfox/GpsTracker/master/gpstracker_small.png)GpsTracker v3.2.1
+![gpstracker](https://raw2.github.com/nickfox/GpsTracker/master/gpstracker_small.png)Gps Tracker v3.2.1
 -------------
 
 ##### Google Map Gps Cell Phone Tracker
@@ -11,7 +11,7 @@ If you need help, please go to:
 
 https://www.websmithing.com/gps-tracker/
 
-Here is a quick start guide to help you set up GpsTracker:
+Here is a quick start guide to help you set up Gps Tracker:
 
 https://www.websmithing.com/2014/01/20/quick-start-guide-for-gpstracker-3/
 
@@ -42,7 +42,7 @@ Version 3.1.0 updates the php server code from google maps 2 to 3 and now uses j
 
 Jan 14, 2014 - v3.0.0
 
-Version 3.0.0 of GpsTracker is complete. This was a very big change from the last version. It's been updated with ios, android, windowsPhone and java me/j2me phone clients and the servers have all been updated as well. Please let me know how it works, good or bad and create an issue if you find a problem. Thanks and enjoy the software, Nick.
+Version 3.0.0 of Gps Tracker is complete. This was a very big change from the last version. It's been updated with ios, android, windowsPhone and java me/j2me phone clients and the servers have all been updated as well. Please let me know how it works, good or bad and create an issue if you find a problem. Thanks and enjoy the software, Nick.
 
 ps. I will be writing tutorials and documentation shortly.
 
