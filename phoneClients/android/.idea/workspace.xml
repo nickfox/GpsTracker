@@ -42,7 +42,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9fe415d5-9929-47d9-9a7a-de7d3ea04176" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/websmithing/gpstracker/LocationService.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/websmithing/gpstracker/LocationService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="GpsTracker.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -130,8 +129,8 @@
       <file leaf-file-name="LocationService.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/websmithing/gpstracker/LocationService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3888889" vertical-offset="1343" max-vertical-offset="3094">
-              <caret line="116" column="63" selection-start-line="116" selection-start-column="63" selection-end-line="116" selection-end-column="63" />
+            <state vertical-scroll-proportion="0.3611111" vertical-offset="1343" max-vertical-offset="3094">
+              <caret line="115" column="33" selection-start-line="115" selection-start-column="33" selection-end-line="115" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -1833,8 +1832,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/websmithing/gpstracker/LocationService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3888889" vertical-offset="1343" max-vertical-offset="3094">
-          <caret line="116" column="63" selection-start-line="116" selection-start-column="63" selection-end-line="116" selection-end-column="63" />
+        <state vertical-scroll-proportion="0.3611111" vertical-offset="1343" max-vertical-offset="3094">
+          <caret line="115" column="33" selection-start-line="115" selection-start-column="33" selection-end-line="115" selection-end-column="33" />
           <folding />
         </state>
       </provider>

@@ -113,7 +113,7 @@ public class LocationService extends Service implements
 
         requestParams.put("locationmethod", location.getProvider());
 
-        if (sharedPreferences.getFloat("totalDistanceInMeters", 0f) > 0) {
+        if (totalDistanceInMeters > 0) {
             requestParams.put("distance", totalDistanceInMeters / 1609); // in miles,
         } else {
             requestParams.put("distance", 0); // in miles
