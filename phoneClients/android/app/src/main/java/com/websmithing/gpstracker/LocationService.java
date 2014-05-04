@@ -88,9 +88,6 @@ public class LocationService extends Service implements
 
         if (firstTimeGettingPosition) {
             editor.putBoolean("firstTimeGettingPosition", false);
-            editor.putFloat("previousLatitude", (float)location.getLatitude());
-            editor.putFloat("previousLongitude", (float)location.getLongitude());
-            editor.commit();
         } else {
             Location previousLocation = new Location("");
             previousLocation.setLatitude(sharedPreferences.getFloat("previousLatitude", 0f));
@@ -99,8 +96,11 @@ public class LocationService extends Service implements
             float distance = location.distanceTo(previousLocation);
             totalDistanceInMeters += distance;
             editor.putFloat("totalDistanceInMeters", totalDistanceInMeters);
-            editor.commit();
         }
+
+        editor.putFloat("previousLatitude", (float)location.getLatitude());
+        editor.putFloat("previousLongitude", (float)location.getLongitude());
+        editor.commit();
 
         RequestParams requestParams = new RequestParams();
         requestParams.put("latitude", Double.toString(location.getLatitude()));
@@ -114,8 +114,7 @@ public class LocationService extends Service implements
         requestParams.put("locationmethod", location.getProvider());
 
         if (sharedPreferences.getFloat("totalDistanceInMeters", 0f) > 0) {
-            requestParams.put("distance", sharedPreferences.getFloat("" +
-                    "", 0f) / 1609); // in miles,
+            requestParams.put("distance", totalDistanceInMeters / 1609); // in miles,
         } else {
             requestParams.put("distance", 0); // in miles
         }
