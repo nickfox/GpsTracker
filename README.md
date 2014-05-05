@@ -1,4 +1,4 @@
-![gpstracker](https://raw2.github.com/nickfox/GpsTracker/master/gpstracker_small.png)Gps Tracker v3.2.1
+![gpstracker](https://raw2.github.com/nickfox/GpsTracker/master/gpstracker_small.png)Gps Tracker v3.2.2
 -------------
 
 ##### Google Map Gps Cell Phone Tracker
@@ -18,6 +18,12 @@ https://www.websmithing.com/2014/01/20/quick-start-guide-for-gpstracker-3/
 *************
 
 #### Changelog
+
+*************
+
+May 5, 2014 - v3.2.2
+
+This version fixes the total distance traveled in the android app.
 
 *************
 
