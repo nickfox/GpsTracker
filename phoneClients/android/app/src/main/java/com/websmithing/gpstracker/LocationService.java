@@ -84,6 +84,7 @@ public class LocationService extends Service implements
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
         float totalDistanceInMeters = sharedPreferences.getFloat("totalDistanceInMeters", 0f);
+
         boolean firstTimeGettingPosition = sharedPreferences.getBoolean("firstTimeGettingPosition", true);
 
         if (firstTimeGettingPosition) {
@@ -114,7 +115,7 @@ public class LocationService extends Service implements
         requestParams.put("locationmethod", location.getProvider());
 
         if (totalDistanceInMeters > 0) {
-            requestParams.put("distance", totalDistanceInMeters / 1609); // in miles,
+            requestParams.put("distance", Float.toString(totalDistanceInMeters / 1609)); // in miles,
         } else {
             requestParams.put("distance", 0); // in miles
         }
