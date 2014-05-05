@@ -27,8 +27,11 @@ This version changes the UI of the android app from two buttons (Save and Track)
 
 ![gpstrackerandroid](https://www.websmithing.com/images/gpstracker3.2.1.png)
 
-and the android version ends up in Google Play:
-![gpstrackergoogleplay](https://play.google.com/store/apps/details?id=com.websmithing.gpstracker)
+
+and the android version is now in Google Play:
+
+
+https://play.google.com/store/apps/details?id=com.websmithing.gpstracker
 
 *************
 
