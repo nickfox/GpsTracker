@@ -25,6 +25,8 @@ May 1, 2014 - v3.2.1
 
 This version changes the UI of the android app from two buttons (Save and Track) to one button (Track).
 
+(https://www.websmithing.com/images/gpstracker3.2.1.png)
+
 *************
 
 Apr 20, 2014 - v3.2.0
