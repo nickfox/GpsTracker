@@ -52,6 +52,7 @@ public class LocationService extends Service implements
         // if we are currently trying to get a location and the alarm manager has called this again,
         // no need to start processing a new location.
         if (!currentlyProcessingLocation) {
+            currentlyProcessingLocation = true;
             startTracking();
         }
 
@@ -60,8 +61,6 @@ public class LocationService extends Service implements
 
     private void startTracking() {
         Log.d(TAG, "startTracking");
-
-        currentlyProcessingLocation = true;
 
         if (GooglePlayServicesUtil.isGooglePlayServicesAvailable(this) == ConnectionResult.SUCCESS) {
             locationClient = new LocationClient(this,this,this);
