@@ -224,11 +224,7 @@ function getCompassImage(azimuth) {
 
 function deleteRoute() {
     if (hasMap()) {
-		
-		// comment out these two lines to get delete working
-		var answer = confirm("Disabled here on test website, this works fine.");
-		return false;
-		
+				
         var answer = confirm("This will permanently delete this route\n from the database. Do you want to delete?");
         if (answer){
             showWaitImage('Deleting route...');
