@@ -1,4 +1,8 @@
-The php version of GpsTracker is now updated to v3 of google maps and jquery. If you want to turn off the advertisement in the map, then change line 8 of google.js to disabled:
+The php version of GpsTracker is now updated to v3 of google maps and jquery. The database file is in the mysql directory and this needs to be installed from the command line, please read the quick start guide to see how to do that:
+
+https://www.websmithing.com/2014/01/20/quick-start-guide-for-gpstracker-3/#phpserver
+
+If you want to turn off the advertisement in the map, then change line 8 of google.js to disabled:
 
     var adsense_status = 'disabled';
 
