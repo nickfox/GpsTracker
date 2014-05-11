@@ -1,3 +1,7 @@
-The php version of GpsTracker is now updated to v3 of google maps and jquery. Please note that this is a __breaking change__ since xml has been updated to json. Changes have been made to the prcGetRoutes, prcGetRouteForMap and prcDeleteRoute in the mysql database and in the client side javascript.
+The php version of GpsTracker is now updated to v3 of google maps and jquery. If you want to turn off the advertisement in the map, then change line 8 of google.js to disabled:
 
-Also please note that the websmithing.com website is now using https.
+    var adsense_status = 'disabled';
+
+https://github.com/nickfox/GpsTracker/blob/master/servers/php/javascript/leaflet-plugins/google.js
+
+If you want continue using adverstising, then change the channelNumber and publisherID on lines 186 and 187 to your own adsense information.
