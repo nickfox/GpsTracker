@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.5.35, for debian-linux-gnu (i686)
 --
--- Host: localhost    Database: gpstracker2
+-- Host: localhost    Database: gpstracker
 -- ------------------------------------------------------
 -- Server version	5.5.35-0ubuntu0.12.04.2
 
@@ -54,7 +54,7 @@ INSERT INTO `gpslocations` VALUES (45,'2014-03-03 13:22:10',47.475931,-122.02111
 UNLOCK TABLES;
 
 --
--- Dumping routines for database 'gpstracker2'
+-- Dumping routines for database 'gpstracker'
 --
 /*!50003 DROP PROCEDURE IF EXISTS `prcDeleteRoute` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -66,7 +66,7 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `prcDeleteRoute`(
+CREATE DEFINER=`gpstracker_user`@`localhost` PROCEDURE `prcDeleteRoute`(
 _sessionID VARCHAR(50),
 _phoneNumber VARCHAR(50))
 BEGIN
@@ -111,7 +111,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `prcGetRouteForMap`(
+CREATE DEFINER=`gpstracker_user`@`localhost` PROCEDURE `prcGetRouteForMap`(
 _sessionID VARCHAR(50),
 _phoneNumber VARCHAR(50))
 BEGIN
@@ -137,7 +137,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `prcGetRoutes`()
+CREATE DEFINER=`gpstracker_user`@`localhost` PROCEDURE `prcGetRoutes`()
 BEGIN
   CREATE TEMPORARY TABLE tempRoutes (
     sessionID VARCHAR(50),
