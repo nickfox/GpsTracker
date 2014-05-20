@@ -216,7 +216,7 @@ public class GpsTrackerActivity extends ActionBarActivity {
 
     private void displayUserSettings() {
         SharedPreferences sharedPreferences = this.getSharedPreferences("com.websmithing.gpstracker.prefs", Context.MODE_PRIVATE);
-        int interval = sharedPreferences.getInt("intervalInMinutes", 1);
+        intervalInMinutes = sharedPreferences.getInt("intervalInMinutes", 1);
 
         switch (intervalInMinutes) {
             case 1:
