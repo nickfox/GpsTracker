@@ -1,11 +1,11 @@
-![gpstracker](https://raw2.github.com/nickfox/GpsTracker/master/gpstracker_small.png)Gps Tracker v3.2.2
+![gpstracker](https://raw2.github.com/nickfox/GpsTracker/master/gpstracker_small.png)Gps Tracker v3.2.3
 -------------
 
 ##### Google Map Gps Cell Phone Tracker
 
 This project allows you to track cell phones periodically. For instance every minute or every five minutes. You can watch the cell phone being tracked in real time using google maps and you can store and reload routes easily.
 
-You have the choice of two server stacks. Either using asp.net and sql server or using php and mysql. Historically, devs have downloaded the asp.net server project 2 to 1 over the php project. I have included both now in the same download but you only need to use one.
+You have the choice of two server stacks. Either using asp.net and sql server or using php and mysql. Both are now in the same download but you only need to use one.
 
 If you need help, please go to:
 
@@ -18,6 +18,12 @@ https://www.websmithing.com/2014/01/20/quick-start-guide-for-gpstracker-3/
 *************
 
 #### Changelog
+
+*************
+
+Jun 6, 2014 - v3.2.3
+
+This version fixes the zoom buttons on the google map which was causing the app to freeze and updates leaflet to version 0.7.3. This version is now free from all known errors.
 
 *************
 
