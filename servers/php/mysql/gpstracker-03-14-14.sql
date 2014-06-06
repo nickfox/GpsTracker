@@ -66,7 +66,7 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`gpstracker_user`@`localhost` PROCEDURE `prcDeleteRoute`(
+CREATE DEFINER=`root`@`localhost` PROCEDURE `prcDeleteRoute`(
 _sessionID VARCHAR(50),
 _phoneNumber VARCHAR(50))
 BEGIN
@@ -111,7 +111,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`gpstracker_user`@`localhost` PROCEDURE `prcGetRouteForMap`(
+CREATE DEFINER=`root`@`localhost` PROCEDURE `prcGetRouteForMap`(
 _sessionID VARCHAR(50),
 _phoneNumber VARCHAR(50))
 BEGIN
@@ -137,7 +137,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`gpstracker_user`@`localhost` PROCEDURE `prcGetRoutes`()
+CREATE DEFINER=`root`@`localhost` PROCEDURE `prcGetRoutes`()
 BEGIN
   CREATE TEMPORARY TABLE tempRoutes (
     sessionID VARCHAR(50),

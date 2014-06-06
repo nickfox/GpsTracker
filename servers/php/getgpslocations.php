@@ -1,9 +1,13 @@
 <?php
+
     include 'dbconnect.php';
+    
+    isset($_GET['sessionID']) ? $sessionID = $_GET['sessionID'] : $sessionID = '0';
+    isset($_GET['phoneNumber']) ? $phoneNumber = $_GET['phoneNumber'] : $phoneNumber = '0';
 
-    $query = 'CALL prcGetRoutes();';
-
-    $json = '{ "routes": [';
+    $query = 'CALL prcGetRouteForMap(\'' . $sessionID . '\',\''  . $phoneNumber  . '\')';
+    
+    $json = '{ "locations": [';
 
     // execute query
     if ($mysqli->multi_query($query)) {
@@ -16,13 +20,12 @@
                 }
                 $result->close();
             }
-                        
         } while ($mysqli->next_result());
     }
     else {
         die('error: '  . $mysqli->error);
     }
-    
+
     $json = rtrim($json, ",");
     $json .= '] }';
 

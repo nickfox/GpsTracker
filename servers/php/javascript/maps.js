@@ -88,7 +88,11 @@ function loadGPSLocations(json) {
 
             // need to get your own bing maps key, http://www.microsoft.com/maps/create-a-bing-maps-key.aspx
             var bingMapsLayer = new L.BingLayer("AnH1IKGCBwAiBWfYAHMtIfIhMVybHFx2GxsReNP5W0z6P8kRa67_QwhM4PglI9yL");
-            var googleMapsLayer = new L.Google('ROADMAP', {mapOptions:{styles:{}}});
+            var googleMapsLayer = new L.Google('ROADMAP');
+            
+            // this fixes the zoom buttons from freezing
+            // https://github.com/shramov/leaflet-plugins/issues/62
+            L.polyline([[0, 0], ]).addTo(map);
 
             // this sets which map layer will first be displayed, go ahead and change it to bingMapsLayer or openStreetMapsLayer to see
             map.addLayer(googleMapsLayer);
@@ -224,7 +228,11 @@ function getCompassImage(azimuth) {
 
 function deleteRoute() {
     if (hasMap()) {
-				
+		
+		// comment out these two lines to get delete working
+		var answer = confirm("Disabled here on test website, this works fine.");
+		return false;
+		
         var answer = confirm("This will permanently delete this route\n from the database. Do you want to delete?");
         if (answer){
             showWaitImage('Deleting route...');
