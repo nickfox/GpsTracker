@@ -104,28 +104,7 @@ function loadGPSLocations(json) {
                 'OpenStreetMaps':openStreetMapsLayer
             }, {}));
         }
-        /*
 
-            // note: replace this adsense publisher ID and channel with your own.
-            var publisherID = 'pub-7095775186404141';
-            var channel = '6961715451';
-            var adUnitDiv = document.createElement('div');
-            var adUnitOptions = {
-              format: google.maps.adsense.AdFormat.HALF_BANNER,
-              position: google.maps.ControlPosition.TOP_CENTER,
-              backgroundColor: '#c4d4f3',
-              borderColor: '#e5ecf9',
-              titleColor: '#0000cc',
-              textColor: '#000000',
-              urlColor: '#009900',
-              publisherId: publisherID,
-              channelNumber: channel,
-              map: map,
-              visible: true
-            };
-            var adUnit = new google.maps.adsense.AdUnit(adUnitDiv, adUnitOptions);
-
-        */
             var finalLocation = false;
             var counter = 0;
 
