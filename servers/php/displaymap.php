@@ -8,12 +8,10 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="//maps.google.com/maps/api/js?v=3&sensor=false&libraries=adsense"></script>
     <script src="javascript/maps.js"></script>
-    <script src="javascript/leaflet-0.7.3/leaflet-src.js"></script>
-    <!-- <script src="javascript/leaflet-0.8-dev/leaflet-src.js"></script> -->
+    <script src="javascript/leaflet-0.7.3/leaflet.js"></script>
     <script src="javascript/leaflet-plugins/google.js"></script>
     <script src="javascript/leaflet-plugins/bing.js"></script>
     <link href="javascript/leaflet-0.7.3/leaflet.css" rel="stylesheet" type="text/css" />
-    <!-- <link href="javascript/leaflet-0.8-dev/leaflet.css" rel="stylesheet" type="text/css" /> -->
     <link href="styles/styles.css" rel="stylesheet" type="text/css" />
 	
     <script type="text/javascript">
