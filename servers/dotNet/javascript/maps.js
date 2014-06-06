@@ -34,7 +34,7 @@ function loadRoutes(json) {
 function getRouteForMap() {
     if (hasMap()) {
         showWaitImage('Getting map...');
-        var url = 'GetRouteForMap.aspx' + routeSelect.options[routeSelect.selectedIndex].value;
+        var url = 'getrouteformap.aspx' + routeSelect.options[routeSelect.selectedIndex].value;
 
         //console.log("testing route: " + routeSelect.options[routeSelect.selectedIndex].value);
 
@@ -88,7 +88,11 @@ function loadGPSLocations(json) {
 
             // need to get your own bing maps key, http://www.microsoft.com/maps/create-a-bing-maps-key.aspx
             var bingMapsLayer = new L.BingLayer("AnH1IKGCBwAiBWfYAHMtIfIhMVybHFx2GxsReNP5W0z6P8kRa67_QwhM4PglI9yL");
-            var googleMapsLayer = new L.Google('ROADMAP', {mapOptions:{styles:{}}});
+            var googleMapsLayer = new L.Google('ROADMAP');
+            
+            // this fixes the zoom buttons from freezing
+            // https://github.com/shramov/leaflet-plugins/issues/62
+            L.polyline([[0, 0], ]).addTo(map);
 
             // this sets which map layer will first be displayed, go ahead and change it to bingMapsLayer or openStreetMapsLayer to see
             map.addLayer(googleMapsLayer);
@@ -100,28 +104,7 @@ function loadGPSLocations(json) {
                 'OpenStreetMaps':openStreetMapsLayer
             }, {}));
         }
-        /*
 
-            // note: replace this adsense publisher ID and channel with your own.
-            var publisherID = 'pub-7095775186404141';
-            var channel = '6961715451';
-            var adUnitDiv = document.createElement('div');
-            var adUnitOptions = {
-              format: google.maps.adsense.AdFormat.HALF_BANNER,
-              position: google.maps.ControlPosition.TOP_CENTER,
-              backgroundColor: '#c4d4f3',
-              borderColor: '#e5ecf9',
-              titleColor: '#0000cc',
-              textColor: '#000000',
-              urlColor: '#009900',
-              publisherId: publisherID,
-              channelNumber: channel,
-              map: map,
-              visible: true
-            };
-            var adUnit = new google.maps.adsense.AdUnit(adUnitDiv, adUnitOptions);
-
-        */
             var finalLocation = false;
             var counter = 0;
 
@@ -224,11 +207,15 @@ function getCompassImage(azimuth) {
 
 function deleteRoute() {
     if (hasMap()) {
-				
+		
+		// comment out these two lines to get delete working
+		var answer = confirm("Disabled here on test website, this works fine.");
+		return false;
+		
         var answer = confirm("This will permanently delete this route\n from the database. Do you want to delete?");
         if (answer){
             showWaitImage('Deleting route...');
-            var url = 'DeleteRoute.aspx' + routeSelect.options[routeSelect.selectedIndex].value;
+            var url = 'deleteroute.aspx' + routeSelect.options[routeSelect.selectedIndex].value;
 
             $.ajax({
                    url: url,
@@ -252,7 +239,7 @@ function deleteRouteResponse() {
     routeSelect.length = 0;
 
     $.ajax({
-           url: 'GetRoutes.aspx',
+           url: 'getroutes.aspx',
            type: 'GET',
            success: function(data) {
               loadRoutes(data);

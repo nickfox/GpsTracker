@@ -7,19 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
  
-    <script src="javascript/custom-google-loader-1.0.0.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//maps.google.com/maps/api/js?v=3&sensor=false&libraries=adsense"></script>
     <script src="javascript/maps.js"></script>
-    <script src="javascript/leaflet-0.7.2/leaflet.js"></script>
+    <script src="javascript/leaflet-0.7.3/leaflet.js"></script>
     <script src="javascript/leaflet-plugins/google.js"></script>
     <script src="javascript/leaflet-plugins/bing.js"></script>
-    <link href="javascript/leaflet-0.7.2/leaflet.css" rel="stylesheet" type="text/css" />
+    <link href="javascript/leaflet-0.7.3/leaflet.css" rel="stylesheet" type="text/css" />
     <link href="styles/styles.css" rel="stylesheet" type="text/css" />
 	
     <script type="text/javascript">
         //<![CDATA[
-
-        google.load('jquery', '1.11.0');
-
         var routeSelect;
         var refreshSelect;
         var messages;
