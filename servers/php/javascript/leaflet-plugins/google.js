@@ -5,7 +5,7 @@ https://github.com/robertharm/leaflet-plugins
 License in same folder as this file
 */
 
-var adsense_status = 'enabled';
+var adsense_status = 'disabled';
 
 L.Google = L.Class.extend( {
 	includes: L.Mixin.Events,
@@ -203,8 +203,8 @@ L.Google = L.Class.extend( {
     	  user_adsense.titleColor = "#0000cc";
     	  user_adsense.textColor = "#000000";
     	  user_adsense.urlColor = "#009900";
-    	  user_adsense.channelNumber = "6961715451";
-    	  user_adsense.publisherID = "pub-7095775186404141";
+    	  user_adsense.channelNumber = "YOUR_CHANNEL_NUMBER";
+    	  user_adsense.publisherID = "YOUR_PUBLISHER_ID";
 
     	  var adUnitOptions = {
     	    format: user_adsense.format,
