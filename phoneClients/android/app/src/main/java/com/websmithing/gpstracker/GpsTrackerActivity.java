@@ -110,6 +110,9 @@ public class GpsTrackerActivity extends ActionBarActivity {
         gpsTrackerIntent = new Intent(context, GpsTrackerAlarmReceiver.class);
         pendingIntent = PendingIntent.getBroadcast(context, 0, gpsTrackerIntent, 0);
 
+        SharedPreferences sharedPreferences = this.getSharedPreferences("com.websmithing.gpstracker.prefs", Context.MODE_PRIVATE);
+        intervalInMinutes = sharedPreferences.getInt("intervalInMinutes", 1);
+
         alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
                 SystemClock.elapsedRealtime(),
                 intervalInMinutes * 60000, // 60000 = 1 minute
