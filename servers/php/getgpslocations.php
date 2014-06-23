@@ -20,7 +20,7 @@
                 }
                 $result->close();
             }
-        } while ($mysqli->next_result());
+        } while ($mysqli->more_results() && $mysqli->next_result());
     }
     else {
         die('error: '  . $mysqli->error);
