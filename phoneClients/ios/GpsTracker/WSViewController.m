@@ -9,13 +9,15 @@
 #import "WSViewController.h"
 #import <CoreLocation/CoreLocation.h>
 #import "AFHTTPRequestOperationManager.h"
+#import "UIColor+HexColor.h"
+#import "CustomButton.h"
 
 @interface WSViewController () <CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *latitudeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *longitudeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *accuracyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timestampLabel;
-@property (weak, nonatomic) IBOutlet UIButton *trackingButton;
+@property (weak, nonatomic) IBOutlet CustomButton *trackingButton;
 @property (weak, nonatomic) IBOutlet UILabel *accuracyLevelLabel;
 @property (weak, nonatomic) IBOutlet UILabel *sessionIDLabel;
 @end
@@ -36,6 +38,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.trackingButton setButtonColor:@"#ff0033" andHighLightColor:@"#ff7691" andTextColor:@"#FFFFFF" andHighlightTextColor:@"#333333"];
+    
+    // here is the red color, #ff0033 and its highlight, #ff7691
+    // here is the green color, #33ffcc and it's highlight, #a9ffe9
+    
     currentlyTracking = NO;
     timeIntervalInSeconds = 60; // change this to the time interval you want
 }
@@ -76,13 +84,25 @@
 - (IBAction)handleTrackingButton:(id)sender
 {
     if (currentlyTracking) {
-        [self stopTracking];
+        //[self stopTracking];
         currentlyTracking = NO;
-        [self.trackingButton setTitle:@"start tracking" forState:UIControlStateNormal];
+ 
+        [self.trackingButton setButtonColor:@"#ff0033" andHighLightColor:@"#ff7691" andTextColor:@"#FFFFFF" andHighlightTextColor:@"#333333"];
+        
+        // here is the red color, #ff0033 and its highlight, #ff7691
+        // here is the green color, #33ffcc and it's highlight, #a9ffe9
+        
+        [self.trackingButton setTitle:@"Tracking is Off" forState:UIControlStateNormal];
     } else {
-        [self startTracking];
+        //[self startTracking];
         currentlyTracking = YES;
-        [self.trackingButton setTitle:@"stop tracking" forState:UIControlStateNormal];
+        
+        [self.trackingButton setButtonColor:@"#33ffcc" andHighLightColor:@"#a9ffe9" andTextColor:@"#333333" andHighlightTextColor:@"#999999"];
+        
+        // here is the red color, #ff0033 and its highlight, #ff7691
+        // here is the green color, #33ffcc and it's highlight, #a9ffe9
+        
+        [self.trackingButton setTitle:@"Tracking is On" forState:UIControlStateNormal];
     }
 }
 

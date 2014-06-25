@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		88051648195AB5EB0069FAC6 /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 88051647195AB5EB0069FAC6 /* CustomButton.m */; };
+		8805164B195ABC2C0069FAC6 /* UIColor+HexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8805164A195ABC2C0069FAC6 /* UIColor+HexColor.m */; };
 		8884704B1874EB9400867228 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8884704A1874EB9400867228 /* Foundation.framework */; };
 		8884704D1874EB9400867228 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8884704C1874EB9400867228 /* CoreGraphics.framework */; };
 		8884704F1874EB9400867228 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8884704E1874EB9400867228 /* UIKit.framework */; };
@@ -22,6 +24,10 @@
 
 /* Begin PBXFileReference section */
 		6C8880B2EE17432CA6FDD050 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		88051646195AB5EB0069FAC6 /* CustomButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomButton.h; sourceTree = "<group>"; };
+		88051647195AB5EB0069FAC6 /* CustomButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomButton.m; sourceTree = "<group>"; };
+		88051649195ABC2C0069FAC6 /* UIColor+HexColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexColor.h"; sourceTree = "<group>"; };
+		8805164A195ABC2C0069FAC6 /* UIColor+HexColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexColor.m"; sourceTree = "<group>"; };
 		888470471874EB9400867228 /* GpsTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GpsTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8884704A1874EB9400867228 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8884704C1874EB9400867228 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -37,9 +43,6 @@
 		888470601874EB9400867228 /* WSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WSViewController.m; sourceTree = "<group>"; };
 		888470621874EB9400867228 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		888470691874EB9400867228 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		888470711874EB9400867228 /* GpsTrackerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GpsTrackerTests-Info.plist"; sourceTree = "<group>"; };
-		888470731874EB9400867228 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		888470751874EB9400867228 /* GpsTrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GpsTrackerTests.m; sourceTree = "<group>"; };
 		8884707F1875826600867228 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		BE3B3497D30F48C2ADC3BCE7 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -64,7 +67,6 @@
 			isa = PBXGroup;
 			children = (
 				888470501874EB9400867228 /* GpsTracker */,
-				8884706F1874EB9400867228 /* GpsTrackerTests */,
 				888470491874EB9400867228 /* Frameworks */,
 				888470481874EB9400867228 /* Products */,
 				BE3B3497D30F48C2ADC3BCE7 /* Pods.xcconfig */,
@@ -100,6 +102,10 @@
 				8884705C1874EB9400867228 /* Main.storyboard */,
 				8884705F1874EB9400867228 /* WSViewController.h */,
 				888470601874EB9400867228 /* WSViewController.m */,
+				88051646195AB5EB0069FAC6 /* CustomButton.h */,
+				88051647195AB5EB0069FAC6 /* CustomButton.m */,
+				88051649195ABC2C0069FAC6 /* UIColor+HexColor.h */,
+				8805164A195ABC2C0069FAC6 /* UIColor+HexColor.m */,
 				888470621874EB9400867228 /* Images.xcassets */,
 				888470511874EB9400867228 /* Supporting Files */,
 			);
@@ -113,24 +119,6 @@
 				888470531874EB9400867228 /* InfoPlist.strings */,
 				888470561874EB9400867228 /* main.m */,
 				888470581874EB9400867228 /* GpsTracker-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		8884706F1874EB9400867228 /* GpsTrackerTests */ = {
-			isa = PBXGroup;
-			children = (
-				888470751874EB9400867228 /* GpsTrackerTests.m */,
-				888470701874EB9400867228 /* Supporting Files */,
-			);
-			path = GpsTrackerTests;
-			sourceTree = "<group>";
-		};
-		888470701874EB9400867228 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				888470711874EB9400867228 /* GpsTrackerTests-Info.plist */,
-				888470721874EB9400867228 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -245,6 +233,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88051648195AB5EB0069FAC6 /* CustomButton.m in Sources */,
+				8805164B195ABC2C0069FAC6 /* UIColor+HexColor.m in Sources */,
 				8884705B1874EB9400867228 /* WSAppDelegate.m in Sources */,
 				888470571874EB9400867228 /* main.m in Sources */,
 				888470611874EB9400867228 /* WSViewController.m in Sources */,
@@ -268,14 +258,6 @@
 				8884705D1874EB9400867228 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		888470721874EB9400867228 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				888470731874EB9400867228 /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -362,6 +344,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GpsTracker/GpsTracker-Prefix.pch";
 				INFOPLIST_FILE = "GpsTracker/GpsTracker-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -376,6 +359,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GpsTracker/GpsTracker-Prefix.pch";
 				INFOPLIST_FILE = "GpsTracker/GpsTracker-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
