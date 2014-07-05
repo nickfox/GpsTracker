@@ -160,7 +160,7 @@ L.Google = L.Class.extend( {
 		var _center = new google.maps.LatLng(center.lat, center.lng);
 
 		this._google.setCenter(_center);
-		this._google.setZoom(this._map.getZoom());
+		this._google.setZoom(Math.round(this._map.getZoom()));
 
 		this._checkZoomLevels();
 	},
