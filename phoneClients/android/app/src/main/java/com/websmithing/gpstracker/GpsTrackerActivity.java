@@ -170,7 +170,9 @@ public class GpsTrackerActivity extends ActionBarActivity {
             return false;
         }
 
-        checkIfWebsiteIsReachable();
+        if (!currentlyTracking) {
+            checkIfWebsiteIsReachable();
+        }
 
         SharedPreferences sharedPreferences = this.getSharedPreferences("com.websmithing.gpstracker.prefs", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
