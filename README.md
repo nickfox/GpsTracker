@@ -1,6 +1,15 @@
 ![gpstracker](https://raw2.github.com/nickfox/GpsTracker/master/gpstracker_small.png)Gps Tracker v3.2.4
 -------------
 
+**Just a quick note, Aug 26, 2014**
+
+There is a responsive front-end using bootstrap in the bootstrap branch. This will be brought into the master branch as soon as I am done making it. You are free to use it now. I am using it on websmithing.com as my test pages and they are working fine.
+
+The dark theme is displaymap.php and the light theme is displaymap-light.php. 
+
+*************
+
+
 ##### Google Map Gps Cell Phone Tracker
 
 This project allows you to track cell phones periodically. For instance every minute or every five minutes. You can watch the cell phone being tracked in real time using google maps and you can store and reload routes easily.
