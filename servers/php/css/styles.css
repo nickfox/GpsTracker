@@ -1,0 +1,252 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+#gpstracker {
+    position:relative;
+    top: 10px;
+    width:97%;
+    border:1px solid #909090;
+    margin: 0 auto;
+    padding: 0;
+    /*background-color:#CCEDFF;*/
+    background-color:rgba(0,0,0,0.8);
+    font-family: helvetica, arial, sans-serif;
+    font-size: 15px;
+}
+
+#map-canvas {
+    top: 15px;
+    width: 95%;
+    height:400px;
+    /*background-color:#FFF !important;*/
+    background-color:rgba(0,0,0,0.5);
+    border:1px solid #909090;
+	overflow: hidden !important;
+	padding: 0px !important;
+	margin: 0 auto;  
+	word-wrap: normal;	    
+}
+
+#map-canvas img {
+	background-color: transparent !important;
+	max-width: 99999px !important;  	/* Some themes have max-width/max-height set, some phones can't accept max-width: auto. */
+	max-height: none !important;
+	visibility: inherit !important;
+	padding: 0px !important;
+	margin: 0px 20px 0px 0px !important;
+	box-shadow: none !important;		/* 2012 adds box shadow to all images */
+	border-radius: 0px !important;		/* 2012 adds border-radius to all images */
+}
+
+#hal-image {
+    width:37px;
+    height:37px;
+    vertical-align:middle;
+    margin-bottom:5px;   
+}
+
+#gps_info_table {
+    border-spacing: 0;
+    border-collapse: separate;   
+}
+
+#gps_info_table td {
+    padding: 0;
+    text-align: right;   
+}
+
+#messages {
+    position:relative;
+    top: 7px;
+    width:95%;
+    margin: 0 auto;
+    margin-bottom:7px;
+}
+
+#top-messages {
+    display:table;
+    float:right;
+    text-align:right;
+    margin-top:10px;
+    width:50%;
+    min-width:50%;
+    color:#33ffcc !important;
+}
+
+#selectRoute {
+    position:relative;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+}
+
+#timer-countdown {
+    color:#F00;
+}
+
+#top-label {
+    color:#33ff66;
+    margin-right:3px;
+}
+
+.bottom-label {
+    color:#33ff66;
+    margin-right:3px;
+}
+
+#autorefresh {
+    position:relative;
+    float: right;
+    right: 17px;
+    width: 110px;
+    height:37px;
+    margin-top: 25px;
+    border:1px;
+    border-style:solid;
+    border-color:#555;
+    color:#000 !important;
+    background:#33ffcc  !important;            
+}
+
+#refresh {
+    position:relative;
+    float: right;
+    width: 110px;
+    height:37px;
+    margin-top: 25px;
+    border:1px;
+    border-style:solid;
+    border-color:#555;
+    color:#000;
+    background:#33ffcc  !important;             
+} 
+
+#delete {
+    position:relative;
+    float: right;
+    right: 33px;
+    width: 110px;
+    height:37px;
+    margin-top: 25px;
+    border:1px;
+    border-style:solid;
+    border-color:#555;
+    color:#000;
+    background:#33ffcc  !important;             
+} 
+
+#remaining-time {
+    position:relative;
+    float:left;
+    width: 400px;
+    margin-top:3px;
+    /* background:#33ffcc; */     
+}
+
+/* Minimum width of 600 pixels for desktop */
+@media screen and (min-width: 600px) {
+    #bottom-messages {
+        width:95%;
+        margin: 0 auto;        
+    }
+    #time-messages {
+        position:relative;
+        float:left;
+        top: 20px;
+        max-width:250px;
+    }
+    
+    #gpstracker {
+        height:525px;
+    }
+}
+
+/* Maximum width of 599 pixels for phones */
+@media screen and (max-width: 599px) {
+    #time-messages {
+        position:relative;
+        float:left;
+        left: 10px;
+        top: 20px;
+        max-width:250px;
+    }
+    
+    #refresh {
+        clear:both;
+        margin-top: 37px   !important;
+    } 
+    
+    #autorefresh {
+        clear:left;
+        margin-top: 37px  !important;
+    }
+    
+    #gpstracker {
+        height:527px;
+    }
+}
+
+
+/*
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: arial, helvetica, sans-serif;
+     font-size: 17px;
+}
+#test {
+    position:absolute;
+    left: 750px;
+    top: 50px;
+    width:400px;
+}
+#messages {
+    position:absolute;
+    left: 10px;
+    top: 10px;
+    width:950px;
+}
+#map {
+    position:absolute;
+    left: 10px;
+    top: 40px;
+    width:700px;
+    height:450px;
+    border:1px;
+    border-style:solid;
+    background-color:#FFF;
+}
+#selectRoute {
+    position:absolute;
+    left: 10px;
+    top: 510px;
+    width: 600px;
+}
+#selectRefresh {
+    position:absolute;
+    left: 10px;
+    top: 550px;
+    width: 250px;
+}
+#selectZoomLevel {
+    position:absolute;
+    left: 360px;
+    top: 550px;
+    width: 250px;
+}
+#delete {
+    position:absolute;
+    left: 637px;
+    top: 510px;
+    width: 75px;
+}
+#refresh {
+    position:absolute;
+    left: 637px;
+    top: 550px;
+    width: 75px;    
+}
+*/

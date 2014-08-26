@@ -3,6 +3,13 @@
 
 ##### Google Map Gps Cell Phone Tracker
 
+
+**Just a quick note**
+
+There is a responsive front-end using bootstrap in the bootstrap branch. This will be brought into the master branch as soon as I am done making it. You are free to use it now. I am using it on websmithing.com as my test pages and they are working fine.
+
+**Aug 26, 2014**
+
 This project allows you to track cell phones periodically. For instance every minute or every five minutes. You can watch the cell phone being tracked in real time using google maps and you can store and reload routes easily.
 
 You have the choice of two server stacks. Either using asp.net and sql server or using php and mysql. Both are now in the same download but you only need to use one.

@@ -11,7 +11,7 @@
     <script src="js/leaflet-0.7.3/leaflet.js"></script>
     <script src="js/leaflet-plugins/google.js"></script>
     <script src="js/leaflet-plugins/bing.js"></script>
-    <link href="css/dark.css" rel="stylesheet" type="text/css" />
+    <link href="css/light.css" rel="stylesheet" type="text/css" />
     <link href="js/leaflet-0.7.3/leaflet.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
@@ -20,7 +20,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-4" id="toplogo">
-                <img src="https://www.mycelltracker.com/gpstracker-man.png" alt="hal" id="halimage" >GpsTracker
+                <img src="images/gpstracker-man-blue.png" alt="hal" id="halimage" >GpsTracker
             </div>
             <div class="col-sm-8 paddingright15" id="messages"></div>
         </div>
