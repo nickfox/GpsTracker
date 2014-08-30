@@ -10,6 +10,21 @@ There is a responsive front-end using bootstrap in the bootstrap branch. This wi
 
 The dark theme is displaymap.php and the light theme is displaymap-light.php. 
 
+If you want to use that branch, you need to add this stored procedure to your database:
+
+
+DROP PROCEDURE IF EXISTS prcGetAllRoutesForMap;
+DELIMITER //
+CREATE PROCEDURE prcGetAllRoutesForMap()
+BEGIN
+  SELECT distinct(sessionId), max(gpsTime) gpsTime,
+  CONCAT('{ "latitude":"', CAST(latitude AS CHAR),'", "longitude":"', CAST(longitude AS CHAR), '", "speed":"', CAST(speed AS CHAR), '", "direction":"', CAST(direction AS CHAR), '", "distance":"', CAST(distance AS CHAR), '", "locationMethod":"', locationMethod, '", "gpsTime":"', DATE_FORMAT(gpsTime, '%b %e %Y %h:%i%p'), '", "phoneNumber":"', phoneNumber, '", "sessionID":"', CAST(sessionID AS CHAR), '", "accuracy":"', CAST(accuracy AS CHAR), '", "extraInfo":"', extraInfo, '" }') json
+  FROM gpslocations
+  WHERE sessionID != '0' && CHAR_LENGTH(sessionID) != 0
+  GROUP BY sessionID;
+END//
+DELIMITER ;
+
 *************
 
 This project allows you to track cell phones periodically. For instance every minute or every five minutes. You can watch the cell phone being tracked in real time using google maps and you can store and reload routes easily.
