@@ -6,6 +6,7 @@
     var intervalID = 0;
     var zoom = 12;
     
+    getAllRoutesForMap();
     load();
     
     $("#routeSelect").change(function() {
@@ -30,7 +31,25 @@
         } else {
             turnOnAutoRefresh();                     
         }
-    });        
+    }); 
+    
+    function getAllRoutesForMap() {
+        // when the page first loads, get the routes from the DB and load them into the dropdown box.           
+        $.ajax({
+            url: 'getallroutesformap.php',
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                // console.log(JSON.stringify(data));
+                loadGPSLocations(data);
+        },
+        error: function (xhr, status, errorThrown) {
+            //console.log("responseText in error: " + xhr.responseText);
+            console.log("error status: " + xhr.status);
+            console.log("errorThrown: " + errorThrown);
+        }
+        });
+    }           
         
     function load() {
         // when the page first loads, get the routes from the DB and load them into the dropdown box.           
@@ -161,25 +180,30 @@
 
                 var finalLocation = false;
                 var counter = 0;
+                
+                var locationArray = [];
             
                 // iterate through the locations and create map markers for each location
                 $(json.locations).each(function(key, value){
+                    var latitude =  $(this).attr('latitude');
+                    var longitude = $(this).attr('longitude');
+                    var tempLocation = new L.LatLng(latitude, longitude);
+                    
+                    locationArray.push(tempLocation);
+
                     counter++;
 
                     // want to set the map center on the last location
                     if (counter == $(json.locations).length) {
-                        var longitude = $(this).attr('longitude');
-                        var latitude =  $(this).attr('latitude');
-                    
-                        gpsTrackerMap.setView(new L.LatLng(latitude, longitude), zoom);
+                        gpsTrackerMap.setView(tempLocation, zoom);
                         finalLocation = true;
                     
                         displayCityName(latitude, longitude);
                     }
 
                     var marker = createMarker(
-                        $(this).attr('latitude'),
-                        $(this).attr('longitude'),
+                        latitude,
+                        longitude,
                         $(this).attr('speed'),
                         $(this).attr('direction'),
                         $(this).attr('distance'),
@@ -191,6 +215,10 @@
                         $(this).attr('extraInfo'),
                         gpsTrackerMap, finalLocation);
                 });
+                
+                // fit markers within window
+                var bounds = new L.LatLngBounds(locationArray);
+                gpsTrackerMap.fitBounds(bounds);
             }
     }
 
