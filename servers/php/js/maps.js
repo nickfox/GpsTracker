@@ -21,9 +21,13 @@
     });
        
     $("#refresh").click(function() {
-        if (hasMap()) {
-            getRouteForMap();
-        } 
+        if (viewingAllRoutes) {
+            getAllRoutesForMap(); 
+        } else {
+            if (hasMap()) {
+                getRouteForMap();
+            }             
+        }
     });
        
     $("#delete").click(function() {
@@ -377,16 +381,21 @@
     function turnOnAutoRefresh() {
         console.log('turnOnAutoRefresh');
     
-        if (hasMap()) {
+       // if (hasMap()) {
             showMessage('Auto Refresh On (1 min).'); 
             $('#autorefresh').val('Auto Refresh - On');
             autoRefresh = true;
     
             clearInterval(intervalID);
-            intervalID = setInterval(getRouteForMap, 60 * 1000); // one minute 
-        } else {
-            showMessage('Please select a route first.');            
-        }           
+            
+            if (viewingAllRoutes) {
+                intervalID = setInterval(getAllRoutesForMap, 60 * 1000); // one minute 
+            } else {
+                intervalID = setInterval(getRouteForMap, 60 * 1000);          
+            } 
+      //  } else {
+      //      showMessage('Please select a route first.');            
+      //  }           
     }
 
     function deleteRoute() {
@@ -435,8 +444,7 @@
     function showMessage(message) {
         // if we show a message like start auto refresh, we want to put back our current address afterwards
         var tempMessage =  $('#messages').html();
-        console.log("tempMessage: " + tempMessage + " message: " + message);
-
+        
         $('#messages').html(message);
         setTimeout(function() {
             $('#messages').html(tempMessage);
