@@ -5,12 +5,17 @@
     var autoRefresh = false;
     var intervalID = 0;
     var zoom = 12;
+    var sessionIDArray;
+    
+    var viewingAllRoutes = false;
     
     getAllRoutesForMap();
     load();
     
     $("#routeSelect").change(function() {
         if (hasMap()) {
+            viewingAllRoutes = false;
+            
             getRouteForMap();
         } 
     });
@@ -33,8 +38,17 @@
         }
     }); 
     
+    $("#viewall").click(function() {
+        getAllRoutesForMap();
+    });
+    
     function getAllRoutesForMap() {
-        // when the page first loads, get the routes from the DB and load them into the dropdown box.           
+        // when the page first loads, get the routes from the DB and load them into the dropdown box.
+        
+        viewingAllRoutes = true;
+        routeSelect.selectedIndex = 0;
+        showPermanentMessage('Please select a route below.');
+                   
         $.ajax({
             url: 'getallroutesformap.php',
             type: 'GET',
@@ -80,13 +94,18 @@
             option.innerHTML = 'Select Route...';
             routeSelect.appendChild(option);
 
+            // when a user taps on a marker, the position of the sessionID in this array is the position of the route
+            // in the dropdown box. it's used below to set the index of the dropdown box when the map is changed
+            sessionIDArray = [];
+            
             // iterate through the routes and load them into the dropdwon box.
             $(json.routes).each(function(key, value){
                 var option = document.createElement('option');
                 option.setAttribute('value', '?sessionID=' + $(this).attr('sessionID')
                                 + '&phoneNumber=' + $(this).attr('phoneNumber'));
 
-                var shortSessionID = $(this).attr('sessionID').substring(0,5);
+                sessionIDArray.push($(this).attr('sessionID'));
+
                 option.innerHTML = $(this).attr('phoneNumber') + " " + $(this).attr('times');
                 routeSelect.appendChild(option);
             });
@@ -180,17 +199,16 @@
 
                 var finalLocation = false;
                 var counter = 0;
-                
                 var locationArray = [];
-            
+                
                 // iterate through the locations and create map markers for each location
                 $(json.locations).each(function(key, value){
                     var latitude =  $(this).attr('latitude');
                     var longitude = $(this).attr('longitude');
+                    var sessionID = $(this).attr('sessionID');
                     var tempLocation = new L.LatLng(latitude, longitude);
                     
-                    locationArray.push(tempLocation);
-
+                    locationArray.push(tempLocation);                    
                     counter++;
 
                     // want to set the map center on the last location
@@ -198,12 +216,15 @@
                         gpsTrackerMap.setView(tempLocation, zoom);
                         finalLocation = true;
                     
-                        displayCityName(latitude, longitude);
+                        if (!viewingAllRoutes) {
+                            displayCityName(latitude, longitude);
+                        }
                     }
 
                     var marker = createMarker(
                         latitude,
                         longitude,
+                        sessionID,
                         $(this).attr('speed'),
                         $(this).attr('direction'),
                         $(this).attr('distance'),
@@ -222,7 +243,7 @@
             }
     }
 
-    function createMarker(latitude, longitude, speed, direction, distance, locationMethod, gpsTime,
+    function createMarker(latitude, longitude, sessionID, speed, direction, distance, locationMethod, gpsTime,
                           phoneNumber, sessionID, accuracy, extraInfo, map, finalLocation) {
         var iconUrl;
 
@@ -239,7 +260,7 @@
                 shadowSize:   [22, 20],
                 iconAnchor:   [6, 20],
                 shadowAnchor: [6, 20],
-                popupAnchor:  [-3, -76]
+                popupAnchor:  [-3, -25]
         });
 
         var lastMarker = "</td></tr>";
@@ -261,12 +282,44 @@
             "<tr><td align=right>User Name:&nbsp;</td><td>" + phoneNumber + "</td><td>&nbsp;</td></tr>" +
             "<tr><td align=right>Accuracy:&nbsp;</td><td>" + accuracy + " ft</td><td>&nbsp;</td></tr></table>";
 
+
+        var gpstrackerMarker;
+        var title = phoneNumber + " - " + gpsTime
+
         // make sure the final red marker always displays on top 
         if (finalLocation) {
-            L.marker(new L.LatLng(latitude, longitude), {icon: markerIcon, zIndexOffset: 999}).bindPopup(popupWindowText).addTo(map);
+            gpstrackerMarker = new L.marker(new L.LatLng(latitude, longitude), {title: title, icon: markerIcon, zIndexOffset: 999}).bindPopup(popupWindowText).addTo(map);
         } else {
-            L.marker(new L.LatLng(latitude, longitude), {icon: markerIcon}).bindPopup(popupWindowText).addTo(map);
+            gpstrackerMarker = new L.marker(new L.LatLng(latitude, longitude), {title: title, icon: markerIcon}).bindPopup(popupWindowText).addTo(map);
         }
+        
+        // if we are viewing all routes, we want to go to a route when a user taps on a marker instead of displaying popupWindow
+        if (viewingAllRoutes) {
+            gpstrackerMarker.unbindPopup();
+            
+            gpstrackerMarker.on("click", function() {        
+                var url = 'getrouteformap.php?sessionID=' + sessionID + "&phoneNumber=" + phoneNumber;
+
+                viewingAllRoutes = false;
+ 
+                var indexOfRouteInRouteSelectDropdwon = sessionIDArray.indexOf(sessionID) + 1;
+                routeSelect.selectedIndex = indexOfRouteInRouteSelectDropdwon;
+
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data) {
+                        loadGPSLocations(data);
+                    },
+                    error: function (xhr, status, errorThrown) {
+                        console.log("responseText: " + xhr.responseText);
+                        console.log("status: " + xhr.status);
+                        console.log("errorThrown: " + errorThrown);
+                    }
+                 });
+            }); // on click
+        } 
     }
 
     // this chooses the proper image for our litte compass in the popup window

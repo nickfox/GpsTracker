@@ -2,7 +2,7 @@
     include 'dbconnect.php';
 
     $query = 'CALL prcGetRoutes();';
-    
+
     $json = '{ "routes": [';
 
     // execute query

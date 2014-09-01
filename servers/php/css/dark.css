@@ -13,7 +13,7 @@ body {
 .col-sm-2 {
     height: 50px;           
 }
-.col-sm-4 {  
+.col-sm-3 {  
     height: 50px;
     margin-bottom: 10px;          
 }
@@ -47,22 +47,28 @@ body {
     color: #000; 
 }
 #autorefresh {
-    width: 205px;
+    width: 100%;
     height: 44px;
-    background-color: #33ffcc;
-    color: #000;        
+    background-color: #33ffcc;    
+    color: #000;       
 }
 #delete {
-    width: 205px;
+    width: 100%;
     height: 44px;
-    background-color: #33ffcc;
-    color: #000;               
+    background-color: #33ffcc;    
+    color: #000;                   
 }
 #refresh {
-    width: 205px;
-    height: 44px; 
-    background-color: #33ffcc;
-    color: #000; 
+    width: 100%;
+    height: 44px;
+    background-color: #33ffcc;     
+    color: #000;   
+}
+#viewall {
+    width: 100%;
+    height: 44px;
+    background-color: #33ffcc;     
+    color: #000;   
 }
 .deletediv {
     text-align: center;
@@ -73,23 +79,41 @@ body {
 .refreshdiv {
     text-align: center;
 }
+.viewalldiv {
+    text-align: center;
+}
 @media only screen and (min-width : 768px) {
     .container {
         margin-top: 25px;
     }
+    #autorefresh {
+        width: 150px;      
+    }
+    #delete {
+        width: 150px;                  
+    }
+    #refresh {
+        width: 150px; 
+    }
+    #viewall {
+        width: 150px; 
+    }
     .deletediv {
         text-align: left;
     }
-
     .autorefreshdiv {
         text-align: center;
     }
 
     .refreshdiv {
+        text-align: center;
+    }
+    
+    .viewalldiv {
         text-align: right;
         padding-right: 15px;
     }    
-}      
+}        
 #map-canvas {
     border: 1px solid #000;
     width: 100%;
