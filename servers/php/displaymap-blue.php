@@ -22,7 +22,7 @@
         use cerulean for light, slate for dark, superhero for blue
     -->    
     
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/slate/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/superhero/bootstrap.min.css">
     <link rel="stylesheet" href="css/dark.css">
             
 </head>

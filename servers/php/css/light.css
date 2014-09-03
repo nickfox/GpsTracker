@@ -1,15 +1,18 @@
 
+body {
+   /* background-color: #ccc; */
+}
+
 .container {
-    background-color: #D8D8D8;
-    border: 1px solid #000;
+    /* background-color: #272b30; for slate */
+    border: 1px solid #aaa;
     margin-top: 10px;
 }
 .col-sm-2 {
     height: 50px;           
 }
 .col-sm-3 {  
-    height: 50px;
-    margin-bottom: 10px;          
+    height: 50px;        
 }
 .col-sm-6 { 
     height: 50px;          
@@ -20,44 +23,35 @@
 .col-sm-10 {
     height: 50px;           
 }
-.paddingright15 { 
-    padding-right: 15px; 
-}
-#mapdiv { 
-    height: 475px;
-}
 #toplogo {
     padding-top: 10px;
-    color: #000; 
 }
 #messages {
-    padding-top: 17px;
-    text-align: right;       
+    padding-top: 19px;
+    text-align: right;
+    margin: 0px 0px 10px 0px;
+    clear:right;       
 }
 #routeSelect {
     width: 100%;
-    color: #000;
-    background-color: #E8E8E8;  
+    margin-bottom:5px;
+    /* background-color: #ccc; */
 }
 #autorefresh {
-    width: 100%;
-    height: 44px;
-    color: #000;       
+    width: 100%;  
+    margin-bottom:5px;
 }
 #delete {
-    width: 100%;
-    height: 44px;
-    color: #000;                   
+    width: 100%;                
+    margin-bottom:5px;
 }
 #refresh {
-    width: 100%;
-    height: 44px; 
-    color: #000;   
+    width: 100%;   
+    margin-bottom:5px;
 }
 #viewall {
-    width: 100%;
-    height: 44px; 
-    color: #000;   
+    width: 100%;   
+    margin-bottom:5px;
 }
 .deletediv {
     text-align: center;
@@ -75,18 +69,7 @@
     .container {
         margin-top: 25px;
     }
-    #autorefresh {
-        width: 150px;      
-    }
-    #delete {
-        width: 150px;                  
-    }
-    #refresh {
-        width: 150px; 
-    }
-    #viewall {
-        width: 150px; 
-    }
+
     .deletediv {
         text-align: left;
     }
@@ -106,17 +89,23 @@
 #map-canvas {
     border: 1px solid #000;
     width: 100%;
-    height: 460px;
-    background-color: #E8E8E8;     
+    height: 460px;    
 }
-#blankrow {
-    background-color: transparent;
+#mapdiv { 
+    height: 475px;
 }
 #selectdiv {
     height: 50px;
 }
 #halimage {
+    float:left;
     width: 37px;
     height: 37px;
-    vertical-align: middle;
+    padding-left: 40px;
+    margin-bottom: 5px;
+    background: url('../images/gpstracker-man-blue-37.png')  no-repeat; 
+}
+#gpstrackertext {
+    position:relative;
+    margin-top:10px;
 }

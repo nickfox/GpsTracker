@@ -9,6 +9,12 @@
     
     var viewingAllRoutes = false;
     
+    //var bodyBackgroundColor = $('body').css('backgroundColor');
+    //$('.container').css('background-color', bodyBackgroundColor);
+    //$('body').css('background-color', '#ccc');
+    
+    // $('head').append('<link rel="stylesheet" href="style2.css" type="text/css" />');
+    
     getAllRoutesForMap();
     load();
     
@@ -51,7 +57,7 @@
         
         viewingAllRoutes = true;
         routeSelect.selectedIndex = 0;
-        showPermanentMessage('Please select a route below.');
+        showPermanentMessage('Please select a route below');
                    
         $.ajax({
             url: 'getallroutesformap.php',
@@ -88,7 +94,7 @@
     
     function loadRoutes(json) {
         if (json.length == 0) {
-            showPermanentMessage('There are no routes available to view.');
+            showPermanentMessage('There are no routes available to view');
             map.innerHTML = '';
         }
         else {
@@ -117,7 +123,7 @@
             // need to reset this for firefox
             routeSelect.selectedIndex = 0;
 
-            showPermanentMessage('Please select a route below.');
+            showPermanentMessage('Please select a route below');
         }
     }
 
@@ -165,7 +171,7 @@
 
     function loadGPSLocations(json) {
         if (json.length == 0) {
-            showPermanentMessage('There is no tracking data to view.');
+            showPermanentMessage('There is no tracking data to view');
             map.innerHTML = '';
         }
         else {
@@ -371,7 +377,7 @@
 
     function turnOffAutoRefresh() {
         console.log('turnOffAutoRefresh');
-        showMessage('Auto Refresh Off.');
+        showMessage('Auto Refresh Off');
         $('#autorefresh').val('Auto Refresh - Off');
     
         autoRefresh = false;
@@ -381,21 +387,17 @@
     function turnOnAutoRefresh() {
         console.log('turnOnAutoRefresh');
     
-       // if (hasMap()) {
-            showMessage('Auto Refresh On (1 min).'); 
-            $('#autorefresh').val('Auto Refresh - On');
-            autoRefresh = true;
-    
-            clearInterval(intervalID);
-            
-            if (viewingAllRoutes) {
-                intervalID = setInterval(getAllRoutesForMap, 60 * 1000); // one minute 
-            } else {
-                intervalID = setInterval(getRouteForMap, 60 * 1000);          
-            } 
-      //  } else {
-      //      showMessage('Please select a route first.');            
-      //  }           
+        showMessage('Auto Refresh On (1 min)'); 
+        $('#autorefresh').val('Auto Refresh - On');
+        autoRefresh = true;
+
+        clearInterval(intervalID);
+        
+        if (viewingAllRoutes) {
+            intervalID = setInterval(getAllRoutesForMap, 60 * 1000); // one minute 
+        } else {
+            intervalID = setInterval(getRouteForMap, 60 * 1000);          
+        }          
     }
 
     function deleteRoute() {
