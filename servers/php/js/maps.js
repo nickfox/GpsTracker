@@ -8,13 +8,7 @@
     var sessionIDArray;
     
     var viewingAllRoutes = false;
-    
-    //var bodyBackgroundColor = $('body').css('backgroundColor');
-    //$('.container').css('background-color', bodyBackgroundColor);
-    //$('body').css('background-color', '#ccc');
-    
-    // $('head').append('<link rel="stylesheet" href="style2.css" type="text/css" />');
-    
+        
     getAllRoutesForMap();
     load();
     
@@ -51,6 +45,13 @@
     $("#viewall").click(function() {
         getAllRoutesForMap();
     });
+    
+    function setTheme() {
+        //var bodyBackgroundColor = $('body').css('backgroundColor');
+        //$('.container').css('background-color', bodyBackgroundColor);
+        //$('body').css('background-color', '#ccc');
+        // $('head').append('<link rel="stylesheet" href="style2.css" type="text/css" />');        
+    }
     
     function getAllRoutesForMap() {
         // when the page first loads, get the routes from the DB and load them into the dropdown box.
@@ -92,7 +93,7 @@
         });
     }    
     
-    function loadRoutes(json) {
+    function loadRoutes(json) {        
         if (json.length == 0) {
             showPermanentMessage('There are no routes available to view');
             map.innerHTML = '';
@@ -128,7 +129,10 @@
     }
 
     // this will get the map and route, the route is selected from the dropdown box
+    
     function getRouteForMap() {
+        
+        
         if (hasMap()) {
         
             // get selected index
@@ -153,10 +157,11 @@
                        console.log("errorThrown: " + errorThrown);
                     }
                });
-        }
-        else {
-            alert("Please select a route before trying to refresh map.");
-        }
+        
+        } 
+        // else {
+        //    alert("Please select a route before trying to refresh map.");
+        // }
     }
 
     // check to see if we have a map loaded, don't want to autorefresh or delete without it
@@ -223,7 +228,7 @@
 
                     // want to set the map center on the last location
                     if (counter == $(json.locations).length) {
-                        gpsTrackerMap.setView(tempLocation, zoom);
+                        //gpsTrackerMap.setView(tempLocation, zoom);  if using fixed zoom
                         finalLocation = true;
                     
                         if (!viewingAllRoutes) {
@@ -283,7 +288,7 @@
         // convert from meters to feet
         accuracy = parseInt(accuracy * 3.28);
 
-        var popupWindowText = "<table border=0 style=\"font-size:95%;font-family:arial,helvetica,sans-serif;\">" +
+        var popupWindowText = "<table border=0 style=\"font-size:95%;font-family:arial,helvetica,sans-serif;color:#000;\">" +
             "<tr><td align=right>&nbsp;</td><td>&nbsp;</td><td rowspan=2 align=right>" +
             "<img src=images/" + getCompassImage(direction) + ".jpg alt= />" + lastMarker +
             "<tr><td align=right>Speed:&nbsp;</td><td>" + speed +  " mph</td></tr>" +
