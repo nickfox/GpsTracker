@@ -255,6 +255,11 @@
                 // fit markers within window
                 var bounds = new L.LatLngBounds(locationArray);
                 gpsTrackerMap.fitBounds(bounds);
+                
+                // restarting interval here in case we are coming from viewing all routes
+                if (autoRefresh) {
+                    restartInterval();
+                } 
             }
     }
 
@@ -319,6 +324,10 @@
  
                 var indexOfRouteInRouteSelectDropdwon = sessionIDArray.indexOf(sessionID) + 1;
                 routeSelect.selectedIndex = indexOfRouteInRouteSelectDropdwon;
+
+                if (autoRefresh) {
+                    restartInterval(); 
+                }
 
                 $.ajax({
                     url: url,
@@ -396,6 +405,14 @@
         $('#autorefresh').val('Auto Refresh - On');
         autoRefresh = true;
 
+        restartInterval();         
+    }
+    
+    function restartInterval() {
+        // remember that if someone is viewing all routes and then switches to a single route
+        // while autorefresh is on then the setInterval is going to be running with getAllRoutesForMap
+        // and not getRouteForMap 
+
         clearInterval(intervalID);
         
         if (viewingAllRoutes) {
@@ -421,6 +438,7 @@
                        type: 'GET',
                        success: function() {
                           deleteRouteResponse();
+                          getAllRoutesForMap();
                        }
                    });
             }
