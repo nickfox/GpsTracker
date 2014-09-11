@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Gps Tracker</string>
-    <string name="default_upload_website">https://www.websmithing.com/gpstracker/updatelocation.php</string>
+    <string name="default_upload_website">https://www.websmithing.com/gpstracker2/updatelocation.php</string>
 
     <string name="tracking_is_off">Tracking is Off</string>
     <string name="tracking_is_on">Tracking is On</string>
@@ -14,10 +14,7 @@
 
     <string name="user_name">user name</string>
     <string name="upload_website">upload website</string>
-    <string name="upload_frequency">How often to update website. Updating more often wears down the battery faster. Update every:</string>
+    <string name="upload_frequency">Update website every:</string>
     <string name="one_minute">1 minute</string>
     <string name="five_minutes">5 minutes</string>
-    <string name="fifteen_minutes">15 minutes</string>
-    <string name="thirty_minutes">30 minutes</string>
-    <string name="one_hour">1 hour</string>
 </resources>

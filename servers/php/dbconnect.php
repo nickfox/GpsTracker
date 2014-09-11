@@ -1,15 +1,15 @@
 <?php
 
-$dbhost = 'localhost';
 $dbuser = 'gpstracker_user';
 $dbpass = 'gpstracker';
-$dbname = 'gpstracker';
+$params = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, 
+                PDO::ATTR_EMULATE_PREPARES => false, 
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC);
 
-$mysqli = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
+$pdo = new PDO('mysql:host=localhost;dbname=gpstracker2;charset=utf8', $dbuser, $dbpass, $params);
 
-if (mysqli_connect_errno()) {
-	echo "Connection failed: " . mysqli_connect_error();
-	exit();
+if (version_compare(PHP_VERSION, '5.3.6', '<')) {
+    $pdo->exec('set names utf8');
 }
 
 ?>

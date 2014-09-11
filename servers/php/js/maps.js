@@ -4,13 +4,11 @@
     var map = document.getElementById('map-canvas');
     var autoRefresh = false;
     var intervalID = 0;
-    var zoom = 12;
     var sessionIDArray;
-    
     var viewingAllRoutes = false;
         
     getAllRoutesForMap();
-    load();
+    loadRoutesIntoDropdownBox();
     
     $("#routeSelect").change(function() {
         if (hasMap()) {
@@ -45,17 +43,8 @@
     $("#viewall").click(function() {
         getAllRoutesForMap();
     });
-    
-    function setTheme() {
-        //var bodyBackgroundColor = $('body').css('backgroundColor');
-        //$('.container').css('background-color', bodyBackgroundColor);
-        //$('body').css('background-color', '#ccc');
-        // $('head').append('<link rel="stylesheet" href="style2.css" type="text/css" />');        
-    }
-    
-    function getAllRoutesForMap() {
-        // when the page first loads, get the routes from the DB and load them into the dropdown box.
         
+    function getAllRoutesForMap() {
         viewingAllRoutes = true;
         routeSelect.selectedIndex = 0;
         showPermanentMessage('Please select a route below');
@@ -65,19 +54,16 @@
             type: 'GET',
             dataType: 'json',
             success: function(data) {
-                // console.log(JSON.stringify(data));
                 loadGPSLocations(data);
         },
         error: function (xhr, status, errorThrown) {
-            //console.log("responseText in error: " + xhr.responseText);
             console.log("error status: " + xhr.status);
             console.log("errorThrown: " + errorThrown);
         }
         });
     }           
         
-    function load() {
-        // when the page first loads, get the routes from the DB and load them into the dropdown box.           
+    function loadRoutesIntoDropdownBox() {      
         $.ajax({
             url: 'getroutes.php',
             type: 'GET',
@@ -128,19 +114,10 @@
         }
     }
 
-    // this will get the map and route, the route is selected from the dropdown box
-    
-    function getRouteForMap() {
-        
-        
+    function getRouteForMap() { 
         if (hasMap()) {
-        
-            // get selected index
             // console.log($("#routeSelect").prop("selectedIndex"));
 
-            // get selected value
-            // use this instead $('#routeSelect').val();
-        
            var url = 'getrouteformap.php' + routeSelect.options[routeSelect.selectedIndex].value;
            // console.log("testing route: " + $('#routeSelect').val());
 
@@ -159,9 +136,6 @@
                });
         
         } 
-        // else {
-        //    alert("Please select a route before trying to refresh map.");
-        // }
     }
 
     // check to see if we have a map loaded, don't want to autorefresh or delete without it
@@ -180,7 +154,6 @@
             map.innerHTML = '';
         }
         else {
-            // make sure we only create map object once
             if (map.id == 'map-canvas') {
                 // clear any old map objects
                 document.getElementById('map-canvas').outerHTML = "<div id='map-canvas'></div>";
@@ -201,10 +174,10 @@
                 // https://github.com/shramov/leaflet-plugins/issues/62
                 L.polyline([[0, 0], ]).addTo(gpsTrackerMap);
 
-                // this sets which map layer will first be displayed, go ahead and change it to bingMapsLayer or openStreetMapsLayer to see
+                // this sets which map layer will first be displayed
                 gpsTrackerMap.addLayer(googleMapsLayer);
 
-                // this is the switcher control to switch between map types (upper right hand corner of map)
+                // this is the switcher control to switch between map types
                 gpsTrackerMap.addControl(new L.Control.Layers({
                     'Bing Maps':bingMapsLayer,
                     'Google Maps':googleMapsLayer,
@@ -346,7 +319,6 @@
         } 
     }
 
-    // this chooses the proper image for our litte compass in the popup window
     function getCompassImage(azimuth) {
         if ((azimuth >= 337 && azimuth <= 360) || (azimuth >= 0 && azimuth < 23))
                 return "compassN";
@@ -426,8 +398,8 @@
         if (hasMap()) {
 		
     		// comment out these two lines to get delete working
-    		var answer = confirm("Disabled here on test website, this works fine.");
-    		return false;
+    		// var answer = confirm("Disabled here on test website, this works fine.");
+    		// return false;
 		
             var answer = confirm("This will permanently delete this route\n from the database. Do you want to delete?");
             if (answer){
@@ -489,6 +461,13 @@
             }
         }
         return str;
+    }
+    
+    function setTheme() {
+        //var bodyBackgroundColor = $('body').css('backgroundColor');
+        //$('.container').css('background-color', bodyBackgroundColor);
+        //$('body').css('background-color', '#ccc');
+        // $('head').append('<link rel="stylesheet" href="style2.css" type="text/css" />');        
     }
 });
 

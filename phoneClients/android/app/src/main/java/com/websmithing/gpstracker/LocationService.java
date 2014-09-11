@@ -158,7 +158,7 @@ public class LocationService extends Service implements
 
             // we have our desired accuracy of 100 meters so lets quit this service,
             // onDestroy will be called and stop our location uodates
-            if (location.getAccuracy() < 100.0f) {
+            if (location.getAccuracy() < 500.0f) {
                 stopLocationUpdates();
                 sendLocationDataToWebsite(location);
             }

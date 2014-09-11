@@ -88,15 +88,6 @@ public class GpsTrackerActivity extends ActionBarActivity {
             case R.id.i5:
                 editor.putInt("intervalInMinutes", 5);
                 break;
-            case R.id.i15:
-                editor.putInt("intervalInMinutes", 15);
-                break;
-            case R.id.i30:
-                editor.putInt("intervalInMinutes", 30);
-                break;
-            case R.id.i60:
-                editor.putInt("intervalInMinutes", 60);
-                break;
         }
 
         editor.commit();
@@ -184,15 +175,6 @@ public class GpsTrackerActivity extends ActionBarActivity {
             case R.id.i5:
                 editor.putInt("intervalInMinutes", 5);
                 break;
-            case R.id.i15:
-                editor.putInt("intervalInMinutes", 15);
-                break;
-            case R.id.i30:
-                editor.putInt("intervalInMinutes", 30);
-                break;
-            case R.id.i60:
-                editor.putInt("intervalInMinutes", 60);
-                break;
         }
 
         editor.putString("userName", txtUserName.getText().toString().trim());
@@ -229,15 +211,6 @@ public class GpsTrackerActivity extends ActionBarActivity {
                 break;
             case 5:
                 intervalRadioGroup.check(R.id.i5);
-                break;
-            case 15:
-                intervalRadioGroup.check(R.id.i15);
-                break;
-            case 30:
-                intervalRadioGroup.check(R.id.i30);
-                break;
-            case 60:
-                intervalRadioGroup.check(R.id.i60);
                 break;
         }
 
