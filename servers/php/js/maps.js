@@ -1,6 +1,5 @@
 ﻿jQuery(document).ready(function($) {
     var routeSelect = document.getElementById('routeSelect');
-    var messages = document.getElementById('messages');
     var map = document.getElementById('map-canvas');
     var autoRefresh = false;
     var intervalID = 0;
@@ -82,7 +81,6 @@
     function loadRoutes(json) {        
         if (json.length == 0) {
             showPermanentMessage('There are no routes available to view');
-            map.innerHTML = '';
         }
         else {
             // create the first option of the dropdown box
@@ -272,7 +270,7 @@
             "<tr><td align=right>Speed:&nbsp;</td><td>" + speed +  " mph</td></tr>" +
             "<tr><td align=right>Distance:&nbsp;</td><td>" + distance +  " mi</td><td>&nbsp;</td></tr>" +
             "<tr><td align=right>Time:&nbsp;</td><td colspan=2>" + gpsTime +  "</td></tr>" +
-            "<tr><td align=right>User Name:&nbsp;</td><td>" + phoneNumber + "</td><td>&nbsp;</td></tr>" +
+            "<tr><td align=right>Name:&nbsp;</td><td>" + phoneNumber + "</td><td>&nbsp;</td></tr>" +
             "<tr><td align=right>Accuracy:&nbsp;</td><td>" + accuracy + " ft</td><td>&nbsp;</td></tr></table>";
 
 
