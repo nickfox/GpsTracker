@@ -7,7 +7,7 @@
     $json = '{ "routes": [';
 
     foreach ($stmt as $row) {
-        $json .= $row['json'];
+        $json .= $row[0];
         $json .= ',';
     }
    

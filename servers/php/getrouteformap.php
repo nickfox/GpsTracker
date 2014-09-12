@@ -10,7 +10,7 @@
     $json = '{ "locations": [';
 
     foreach ($stmt as $row) {
-        $json .= $row['json'];
+        $json .= $row[0];
         $json .= ',';
     }
 
@@ -19,6 +19,5 @@
 
     header('Content-Type: application/json');
     echo $json;
-    
-    // echo '{ "locations": [] }';
+
 ?>

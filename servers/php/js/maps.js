@@ -96,8 +96,8 @@
             // iterate through the routes and load them into the dropdwon box.
             $(json.routes).each(function(key, value){
                 var option = document.createElement('option');
-                option.setAttribute('value', '?sessionID=' + $(this).attr('sessionID')
-                                + '&phoneNumber=' + $(this).attr('phoneNumber'));
+                option.setAttribute('value', '?sessionid=' + $(this).attr('sessionID')
+                                + '&phonenumber=' + $(this).attr('phoneNumber'));
 
                 sessionIDArray.push($(this).attr('sessionID'));
 
@@ -117,7 +117,7 @@
             // console.log($("#routeSelect").prop("selectedIndex"));
 
            var url = 'getrouteformap.php' + routeSelect.options[routeSelect.selectedIndex].value;
-           // console.log("testing route: " + $('#routeSelect').val());
+           console.log("testing route: " + $('#routeSelect').val());
 
             $.ajax({
                    url: url,
@@ -136,17 +136,9 @@
         } 
     }
 
-    // check to see if we have a map loaded, don't want to autorefresh or delete without it
-    function hasMap() {
-        if (routeSelect.selectedIndex == 0) { // means no map
-            return false;
-        }
-        else {
-            return true;
-        }
-    }
-
     function loadGPSLocations(json) {
+        // console.log(JSON.stringify(json));
+        
         if (json.length == 0) {
             showPermanentMessage('There is no tracking data to view');
             map.innerHTML = '';
@@ -289,7 +281,7 @@
             gpstrackerMarker.unbindPopup();
             
             gpstrackerMarker.on("click", function() {        
-                var url = 'getrouteformap.php?sessionID=' + sessionID + "&phoneNumber=" + phoneNumber;
+                var url = 'getrouteformap.php?sessionid=' + sessionID + "&phonenumber=" + phoneNumber;
 
                 viewingAllRoutes = false;
  
@@ -336,6 +328,16 @@
                 return "compassNW";
 
         return "";
+    }
+    
+    // check to see if we have a map loaded, don't want to autorefresh or delete without it
+    function hasMap() {
+        if (routeSelect.selectedIndex == 0) { // means no map
+            return false;
+        }
+        else {
+            return true;
+        }
     }
 
     function displayCityName(latitude, longitude) {
