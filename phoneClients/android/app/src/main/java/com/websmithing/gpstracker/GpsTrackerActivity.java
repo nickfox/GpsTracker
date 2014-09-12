@@ -237,7 +237,7 @@ public class GpsTrackerActivity extends ActionBarActivity {
             @Override
             public void onFailure(int statusCode, org.apache.http.Header[] headers, byte[] errorResponse, Throwable e) {
                 Toast.makeText(getApplicationContext(), R.string.reachability_error, Toast.LENGTH_LONG).show();
-                Log.e(TAG, "checkIfWebsiteIsReachable onFailure statusCode: " + statusCode);
+                LoopjHttpClient.debugLoopJ(TAG, "checkIfWebsiteIsReachable", errorResponse, headers, statusCode, e);
             }
         });
     }

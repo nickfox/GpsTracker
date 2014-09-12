@@ -105,7 +105,9 @@ public class LocationService extends Service implements
         RequestParams requestParams = new RequestParams();
         requestParams.put("latitude", Double.toString(location.getLatitude()));
         requestParams.put("longitude", Double.toString(location.getLongitude()));
-        requestParams.put("speed", Double.toString(location.getSpeed())); // in miles per hour
+
+        Double speedInMilesPerHour = location.getSpeed()* 2.2369;
+        requestParams.put("speed",  Integer.toString(speedInMilesPerHour.intValue()));
 
         try {
             requestParams.put("date", URLEncoder.encode(dateFormat.format(date), "UTF-8"));
@@ -122,10 +124,17 @@ public class LocationService extends Service implements
         // phoneNumber is just an identifying string in the database, can be any identifier.
         requestParams.put("phonenumber", sharedPreferences.getString("userName", ""));
         requestParams.put("sessionid", sharedPreferences.getString("sessionID", "")); // uuid
-        requestParams.put("accuracy", Float.toString(location.getAccuracy())); // in meters
-        requestParams.put("extrainfo",  Double.toString(location.getAltitude()));
+
+        Double accuracyInFeet = location.getAccuracy()* 3.28;
+        requestParams.put("accuracy",  Integer.toString(accuracyInFeet.intValue()));
+
+        Double altitudeInFeet = location.getAltitude() * 3.28;
+        requestParams.put("extrainfo",  Integer.toString(altitudeInFeet.intValue()));
+
         requestParams.put("eventtype", "android");
-        requestParams.put("direction", Float.toString(location.getBearing()));
+
+        Float direction = location.getBearing();
+        requestParams.put("direction",  Integer.toString(direction.intValue()));
 
         LoopjHttpClient.post(sharedPreferences.getString("defaultUploadWebsite", defaultUploadWebsite), requestParams, new AsyncHttpResponseHandler() {
             @Override
@@ -135,7 +144,7 @@ public class LocationService extends Service implements
             }
             @Override
             public void onFailure(int statusCode, org.apache.http.Header[] headers, byte[] errorResponse, Throwable e) {
-                Log.e(TAG, "sendLocationDataToWebsite onFailure statusCode: " + statusCode);
+                LoopjHttpClient.debugLoopJ(TAG, "sendLocationDataToWebsite", errorResponse, headers, statusCode, e);
                 stopSelf();
             }
         });
