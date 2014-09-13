@@ -71,7 +71,6 @@
             loadRoutes(data);
         },
         error: function (xhr, status, errorThrown) {
-            console.log("responseText: " + xhr.responseText);
             console.log("status: " + xhr.status);
             console.log("errorThrown: " + errorThrown);
         }
@@ -96,8 +95,7 @@
             // iterate through the routes and load them into the dropdwon box.
             $(json.routes).each(function(key, value){
                 var option = document.createElement('option');
-                option.setAttribute('value', '?sessionid=' + $(this).attr('sessionID')
-                                + '&phonenumber=' + $(this).attr('phoneNumber'));
+                option.setAttribute('value', '?sessionid=' + $(this).attr('sessionID'));
 
                 sessionIDArray.push($(this).attr('sessionID'));
 
@@ -116,8 +114,7 @@
         if (hasMap()) {
             // console.log($("#routeSelect").prop("selectedIndex"));
 
-           var url = 'getrouteformap.php' + routeSelect.options[routeSelect.selectedIndex].value;
-           console.log("testing route: " + $('#routeSelect').val());
+           var url = 'getrouteformap.php' + $('#routeSelect').val();
 
             $.ajax({
                    url: url,
@@ -127,7 +124,6 @@
                       loadGPSLocations(data);
                    },
                    error: function (xhr, status, errorThrown) {
-                       console.log("responseText: " + xhr.responseText);
                        console.log("status: " + xhr.status);
                        console.log("errorThrown: " + errorThrown);
                     }
@@ -281,7 +277,7 @@
             gpstrackerMarker.unbindPopup();
             
             gpstrackerMarker.on("click", function() {        
-                var url = 'getrouteformap.php?sessionid=' + sessionID + "&phonenumber=" + phoneNumber;
+                var url = 'getrouteformap.php?sessionid=' + sessionID;
 
                 viewingAllRoutes = false;
  
@@ -300,7 +296,6 @@
                         loadGPSLocations(data);
                     },
                     error: function (xhr, status, errorThrown) {
-                        console.log("responseText: " + xhr.responseText);
                         console.log("status: " + xhr.status);
                         console.log("errorThrown: " + errorThrown);
                     }
@@ -346,15 +341,12 @@
         var latlng = new google.maps.LatLng(lat, lng);
         reverseGeocoder = new google.maps.Geocoder();
         reverseGeocoder.geocode({'latLng': latlng}, function(results, status) {
-    
-        if (status == google.maps.GeocoderStatus.OK) {
-              // results[0] is full address
-              if (results[1]) {
-                  reverseGeocoderResult = results[1].formatted_address; 
-                  showPermanentMessage(reverseGeocoderResult);
-              } else {
-                  console.log('No results found');
-              }
+            if (status == google.maps.GeocoderStatus.OK) {
+                // results[0] is full address
+                if (results[1]) {
+                    reverseGeocoderResult = results[1].formatted_address; 
+                    showPermanentMessage(reverseGeocoderResult);
+                }
             } else {
                 console.log('Geocoder failed due to: ' + status);
             }
@@ -381,7 +373,7 @@
     }
     
     function restartInterval() {
-        // remember that if someone is viewing all routes and then switches to a single route
+        // if someone is viewing all routes and then switches to a single route
         // while autorefresh is on then the setInterval is going to be running with getAllRoutesForMap
         // and not getRouteForMap 
 
@@ -403,7 +395,7 @@
 		
             var answer = confirm("This will permanently delete this route\n from the database. Do you want to delete?");
             if (answer){
-                var url = 'deleteroute.php' + routeSelect.options[routeSelect.selectedIndex].value;
+                var url = 'deleteroute.php' + $('#routeSelect').val();
 
                 $.ajax({
                        url: url,

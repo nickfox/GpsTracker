@@ -19,7 +19,6 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.loopj.android.http.AsyncHttpResponseHandler;
 
 import java.util.UUID;
 

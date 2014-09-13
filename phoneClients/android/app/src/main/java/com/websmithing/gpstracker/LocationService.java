@@ -102,7 +102,7 @@ public class LocationService extends Service implements
         editor.putFloat("previousLongitude", (float)location.getLongitude());
         editor.commit();
 
-        RequestParams requestParams = new RequestParams();
+        final RequestParams requestParams = new RequestParams();
         requestParams.put("latitude", Double.toString(location.getLatitude()));
         requestParams.put("longitude", Double.toString(location.getLongitude()));
 
@@ -136,15 +136,19 @@ public class LocationService extends Service implements
         Float direction = location.getBearing();
         requestParams.put("direction",  Integer.toString(direction.intValue()));
 
-        LoopjHttpClient.post(sharedPreferences.getString("defaultUploadWebsite", defaultUploadWebsite), requestParams, new AsyncHttpResponseHandler() {
+        LoopjHttpClient test = new LoopjHttpClient();
+
+        final String uploadWebsite = sharedPreferences.getString("defaultUploadWebsite", defaultUploadWebsite);
+
+        LoopjHttpClient.get(uploadWebsite, requestParams, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, org.apache.http.Header[] headers, byte[] responseBody) {
-                Log.e(TAG, "sendLocationDataToWebsite onSuccess statusCode: " + statusCode);
+                LoopjHttpClient.debugLoopJ(TAG, "sendLocationDataToWebsite - success", uploadWebsite, requestParams, responseBody, headers, statusCode, null);
                 stopSelf();
             }
             @Override
             public void onFailure(int statusCode, org.apache.http.Header[] headers, byte[] errorResponse, Throwable e) {
-                LoopjHttpClient.debugLoopJ(TAG, "sendLocationDataToWebsite", errorResponse, headers, statusCode, e);
+                LoopjHttpClient.debugLoopJ(TAG, "sendLocationDataToWebsite - failure", uploadWebsite, requestParams, errorResponse, headers, statusCode, e);
                 stopSelf();
             }
         });

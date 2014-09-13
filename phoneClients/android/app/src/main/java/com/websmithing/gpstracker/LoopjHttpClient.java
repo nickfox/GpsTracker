@@ -21,7 +21,10 @@ public class LoopjHttpClient {
         client.post(url, requestParams, responseHandler);
     }
 
-    public static void debugLoopJ(String TAG, String methodName, byte[] response, Header[] headers, int statusCode, Throwable t) {
+    public static void debugLoopJ(String TAG, String methodName,String url, RequestParams requestParams, byte[] response, Header[] headers, int statusCode, Throwable t) {
+
+        Log.e(TAG, client.getUrlWithQueryString(false, url, requestParams));
+
         if (headers != null) {
             Log.e(TAG, methodName)
             ;
@@ -38,7 +41,7 @@ public class LoopjHttpClient {
             Log.e(TAG, "StatusCode: " + statusCode);
 
             if (response != null) {
-                Log.e(TAG, "Resposne: " + new String(response));
+                Log.e(TAG, "Response: " + new String(response));
             }
 
         }
