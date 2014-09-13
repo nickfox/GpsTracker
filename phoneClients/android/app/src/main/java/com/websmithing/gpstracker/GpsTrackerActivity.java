@@ -19,7 +19,6 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.loopj.android.http.AsyncHttpResponseHandler;
 
 import java.util.UUID;
 
@@ -88,18 +87,9 @@ public class GpsTrackerActivity extends ActionBarActivity {
             case R.id.i5:
                 editor.putInt("intervalInMinutes", 5);
                 break;
-            case R.id.i15:
-                editor.putInt("intervalInMinutes", 15);
-                break;
-            case R.id.i30:
-                editor.putInt("intervalInMinutes", 30);
-                break;
-            case R.id.i60:
-                editor.putInt("intervalInMinutes", 60);
-                break;
         }
 
-        editor.commit();
+        editor.apply();
     }
 
     private void startAlarmManager() {
@@ -142,16 +132,12 @@ public class GpsTrackerActivity extends ActionBarActivity {
         }
 
         if (currentlyTracking) {
-            Toast.makeText(getApplicationContext(), R.string.tracking_has_now_stopped, Toast.LENGTH_LONG).show();
-
             cancelAlarmManager();
 
             currentlyTracking = false;
             editor.putBoolean("currentlyTracking", false);
             editor.putString("sessionID", "");
         } else {
-            Toast.makeText(getApplicationContext(), R.string.tracking_has_now_started, Toast.LENGTH_LONG).show();
-
             startAlarmManager();
 
             currentlyTracking = true;
@@ -161,17 +147,13 @@ public class GpsTrackerActivity extends ActionBarActivity {
             editor.putString("sessionID",  UUID.randomUUID().toString());
         }
 
-        editor.commit();
+        editor.apply();
         setTrackingButtonState();
     }
 
     private boolean saveUserSettings() {
         if (textFieldsAreEmptyOrHaveSpaces()) {
             return false;
-        }
-
-        if (!currentlyTracking) {
-            checkIfWebsiteIsReachable();
         }
 
         SharedPreferences sharedPreferences = this.getSharedPreferences("com.websmithing.gpstracker.prefs", Context.MODE_PRIVATE);
@@ -184,21 +166,12 @@ public class GpsTrackerActivity extends ActionBarActivity {
             case R.id.i5:
                 editor.putInt("intervalInMinutes", 5);
                 break;
-            case R.id.i15:
-                editor.putInt("intervalInMinutes", 15);
-                break;
-            case R.id.i30:
-                editor.putInt("intervalInMinutes", 30);
-                break;
-            case R.id.i60:
-                editor.putInt("intervalInMinutes", 60);
-                break;
         }
 
         editor.putString("userName", txtUserName.getText().toString().trim());
         editor.putString("defaultUploadWebsite", txtWebsite.getText().toString().trim());
 
-        editor.commit();
+        editor.apply();
 
         return true;
     }
@@ -230,15 +203,6 @@ public class GpsTrackerActivity extends ActionBarActivity {
             case 5:
                 intervalRadioGroup.check(R.id.i5);
                 break;
-            case 15:
-                intervalRadioGroup.check(R.id.i15);
-                break;
-            case 30:
-                intervalRadioGroup.check(R.id.i30);
-                break;
-            case 60:
-                intervalRadioGroup.check(R.id.i60);
-                break;
         }
 
         txtWebsite.setText(sharedPreferences.getString("defaultUploadWebsite", defaultUploadWebsite));
@@ -253,20 +217,6 @@ public class GpsTrackerActivity extends ActionBarActivity {
             Toast.makeText(getApplicationContext(), R.string.google_play_services_unavailable, Toast.LENGTH_LONG).show();
             return false;
         }
-    }
-
-    private void checkIfWebsiteIsReachable() {
-        LoopjHttpClient.get(defaultUploadWebsite, null, new AsyncHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, org.apache.http.Header[] headers, byte[] responseBody) {
-                Log.e(TAG, "checkIfWebsiteIsReachable onSuccess statusCode: " + statusCode);
-            }
-            @Override
-            public void onFailure(int statusCode, org.apache.http.Header[] headers, byte[] errorResponse, Throwable e) {
-                Toast.makeText(getApplicationContext(), R.string.reachability_error, Toast.LENGTH_LONG).show();
-                Log.e(TAG, "checkIfWebsiteIsReachable onFailure statusCode: " + statusCode);
-            }
-        });
     }
 
     private void setTrackingButtonState() {

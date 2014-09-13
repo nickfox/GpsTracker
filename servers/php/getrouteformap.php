@@ -1,29 +1,16 @@
 <?php
-
     include 'dbconnect.php';
     
-    isset($_GET['sessionID']) ? $sessionID = $_GET['sessionID'] : $sessionID = '0';
-    isset($_GET['phoneNumber']) ? $phoneNumber = $_GET['phoneNumber'] : $phoneNumber = '0';
-
-    $query = 'CALL prcGetRouteForMap(\'' . $sessionID . '\',\''  . $phoneNumber  . '\')';
+    $sessionid   = isset($_GET['sessionid']) ? $_GET['sessionid'] : '0';
+    
+    $stmt = $pdo->prepare('CALL prcGetRouteForMap(:sessionID)');     
+    $stmt->execute(array(':sessionID' => $sessionid));
     
     $json = '{ "locations": [';
 
-    // execute query
-    if ($mysqli->multi_query($query)) {
-
-        do {  // build our json array
-            if ($result = $mysqli->store_result()) {
-                while ($row = $result->fetch_row()) {
-                    $json .= $row[0];
-                    $json .= ',';
-                }
-                $result->close();
-            }
-        } while ($mysqli->more_results() && $mysqli->next_result());
-    }
-    else {
-        die('error: '  . $mysqli->error);
+    foreach ($stmt as $row) {
+        $json .= $row[0];
+        $json .= ',';
     }
 
     $json = rtrim($json, ",");
@@ -32,5 +19,4 @@
     header('Content-Type: application/json');
     echo $json;
 
-    $mysqli->close();
 ?>

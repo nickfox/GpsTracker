@@ -1,48 +1,51 @@
 <?php
     include 'dbconnect.php';
     
-    // use this to return form variables to phone
-    //var_dump($_POST);
-    //die();
+    $latitude       = isset($_POST['latitude']) ? $_POST['latitude'] : '0.0';
+    $longitude      = isset($_POST['longitude']) ? $_POST['longitude'] : '0.0';
+    $speed          = isset($_POST['speed']) ? $_POST['speed'] : '0';
+    $direction      = isset($_POST['direction']) ? $_POST['direction'] : '0';
+    $distance       = isset($_POST['distance']) ? $_POST['distance'] : '0';
+    $date           = isset($_POST['date']) ? $_POST['date'] : '0000-00-00 00:00:00';
+    $date           = urldecode($date);
+    $locationmethod = isset($_POST['locationmethod']) ? $_POST['locationmethod'] : '';
+    $locationmethod = urldecode($locationmethod);
+    $phonenumber    = isset($_POST['phonenumber']) ? $_POST['phonenumber'] : '';
+    $sessionid      = isset($_POST['sessionid']) ? $_POST['sessionid'] : '0';
+    $accuracy       = isset($_POST['accuracy']) ? $_POST['accuracy'] : '0';
+    $extrainfo      = isset($_POST['extrainfo']) ? $_POST['extrainfo'] : '';
+    $eventtype      = isset($_POST['eventtype']) ? $_POST['eventtype'] : '';
 
     // from the phone
-    isset($_POST['latitude']) ? $latitude = $_POST['latitude'] : $latitude = '0';
-    isset($_POST['longitude']) ? $longitude = $_POST['longitude'] : $longitude = '0';
-    isset($_POST['speed']) ? $speed = $_POST['speed'] : $speed = '0';
-    isset($_POST['direction']) ? $direction = $_POST['direction'] : $direction = '0';
-    isset($_POST['distance']) ? $distance = $_POST['distance'] : $distance = '0';
-    isset($_POST['date']) ? $date = $_POST['date'] : $date = '0000-00-00 00:00:00';
-    $date = urldecode($date);
-    isset($_POST['locationmethod']) ? $locationMethod = $_POST['locationmethod'] : $locationMethod = '0';
-    $locationMethod = urldecode($locationMethod);
-    isset($_POST['phonenumber']) ? $phoneNumber = $_POST['phonenumber'] : $phoneNumber = '0';
-    isset($_POST['sessionid']) ? $sessionID = $_POST['sessionid'] : $sessionID = '0';
-    isset($_POST['accuracy']) ? $accuracy = $_POST['accuracy'] : $accuracy = '0';
-    isset($_POST['extrainfo']) ? $extraInfo = $_POST['extrainfo'] : $extraInfo = '0';
-    isset($_POST['eventtype']) ? $eventType = $_POST['eventtype'] : $eventType = '0';
+    $params = array(':latitude'        => $latitude,
+                    ':longitude'       => $longitude,
+                    ':speed'           => $speed,
+                    ':direction'       => $direction,
+                    ':distance'        => $distance,
+                    ':date'            => $date,
+                    ':locationmethod'  => $locationmethod,
+                    ':phonenumber'     => $phonenumber,
+                    ':sessionid'       => $sessionid,
+                    ':accuracy'        => $accuracy,
+                    ':extrainfo'       => $extrainfo,
+                    ':eventtype'       => $eventtype
+                );
 
-    // save the gps location to the database
-    // i'm not to worried about sql injection here since i'm calling a stored procedure here
-    $query = 'CALL prcSaveGPSLocation(\''
-      . $latitude  . '\',\''
-      . $longitude  . '\',\''
-      . $speed  . '\',\''
-      . $direction  . '\',\''
-      . $distance  . '\',\''
-      . $date  . '\',\''
-      . $locationMethod  . '\',\''
-      . $phoneNumber  . '\',\''
-      . $sessionID  . '\',\''
-      . $accuracy  . '\',\''
-      . $extraInfo . '\',\''
-      . $eventType . '\')';
+    $stmt = $pdo->prepare('CALL prcSaveGPSLocation(
+                          :latitude, 
+                          :longitude, 
+                          :speed, 
+                          :direction, 
+                          :distance, 
+                          :date, 
+                          :locationmethod, 
+                          :phonenumber, 
+                          :sessionid, 
+                          :accuracy, 
+                          :extrainfo, 
+                          :eventtype);'
+                      );
       
-    if (!$mysqli->multi_query($query)) {
-        die('$mysqli->multi_query: '  . $mysqli->error);
-    }
-
-    $mysqli->close();
-
-    echo '0';
-    
+    $stmt->execute($params);
+    echo '0';    
 ?>

@@ -11,13 +11,13 @@
     <script src="js/leaflet-0.7.3/leaflet.js"></script>
     <script src="js/leaflet-plugins/google.js"></script>
     <script src="js/leaflet-plugins/bing.js"></script>
-    <link rel="stylesheet" href="js/leaflet-0.7.3/leaflet.css">    
-    <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> -->    
+    <link rel="stylesheet" href="js/leaflet-0.7.3/leaflet.css">
+    <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> -->
     <!-- 
         to change themes, select a theme here:  http://www.bootstrapcdn.com/#bootswatch_tab 
         and then change the word after 3.2.0 in the following link to the new theme name
     -->    
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/cerulean/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/superhero/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
             
 </head>
@@ -25,7 +25,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-4" id="toplogo">
-                <img id="halimage" src="images/gpstracker-man-blue-37.png">GpsTracker
+                <img id="halimage" src="images/gpstracker-man-37.png">GpsTracker
             </div>
             <div class="col-sm-8" id="messages"></div>
         </div>

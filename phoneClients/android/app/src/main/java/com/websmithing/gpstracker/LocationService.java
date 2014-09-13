@@ -100,12 +100,14 @@ public class LocationService extends Service implements
 
         editor.putFloat("previousLatitude", (float)location.getLatitude());
         editor.putFloat("previousLongitude", (float)location.getLongitude());
-        editor.commit();
+        editor.apply();
 
-        RequestParams requestParams = new RequestParams();
+        final RequestParams requestParams = new RequestParams();
         requestParams.put("latitude", Double.toString(location.getLatitude()));
         requestParams.put("longitude", Double.toString(location.getLongitude()));
-        requestParams.put("speed", Double.toString(location.getSpeed())); // in miles per hour
+
+        Double speedInMilesPerHour = location.getSpeed()* 2.2369;
+        requestParams.put("speed",  Integer.toString(speedInMilesPerHour.intValue()));
 
         try {
             requestParams.put("date", URLEncoder.encode(dateFormat.format(date), "UTF-8"));
@@ -122,20 +124,29 @@ public class LocationService extends Service implements
         // phoneNumber is just an identifying string in the database, can be any identifier.
         requestParams.put("phonenumber", sharedPreferences.getString("userName", ""));
         requestParams.put("sessionid", sharedPreferences.getString("sessionID", "")); // uuid
-        requestParams.put("accuracy", Float.toString(location.getAccuracy())); // in meters
-        requestParams.put("extrainfo",  Double.toString(location.getAltitude()));
-        requestParams.put("eventtype", "android");
-        requestParams.put("direction", Float.toString(location.getBearing()));
 
-        LoopjHttpClient.post(sharedPreferences.getString("defaultUploadWebsite", defaultUploadWebsite), requestParams, new AsyncHttpResponseHandler() {
+        Double accuracyInFeet = location.getAccuracy()* 3.28;
+        requestParams.put("accuracy",  Integer.toString(accuracyInFeet.intValue()));
+
+        Double altitudeInFeet = location.getAltitude() * 3.28;
+        requestParams.put("extrainfo",  Integer.toString(altitudeInFeet.intValue()));
+
+        requestParams.put("eventtype", "android");
+
+        Float direction = location.getBearing();
+        requestParams.put("direction",  Integer.toString(direction.intValue()));
+
+        final String uploadWebsite = sharedPreferences.getString("defaultUploadWebsite", defaultUploadWebsite);
+
+        LoopjHttpClient.get(uploadWebsite, requestParams, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, org.apache.http.Header[] headers, byte[] responseBody) {
-                Log.e(TAG, "sendLocationDataToWebsite onSuccess statusCode: " + statusCode);
+                LoopjHttpClient.debugLoopJ(TAG, "sendLocationDataToWebsite - success", uploadWebsite, requestParams, responseBody, headers, statusCode, null);
                 stopSelf();
             }
             @Override
             public void onFailure(int statusCode, org.apache.http.Header[] headers, byte[] errorResponse, Throwable e) {
-                Log.e(TAG, "sendLocationDataToWebsite onFailure statusCode: " + statusCode);
+                LoopjHttpClient.debugLoopJ(TAG, "sendLocationDataToWebsite - failure", uploadWebsite, requestParams, errorResponse, headers, statusCode, e);
                 stopSelf();
             }
         });
@@ -158,7 +169,7 @@ public class LocationService extends Service implements
 
             // we have our desired accuracy of 100 meters so lets quit this service,
             // onDestroy will be called and stop our location uodates
-            if (location.getAccuracy() < 100.0f) {
+            if (location.getAccuracy() < 500.0f) {
                 stopLocationUpdates();
                 sendLocationDataToWebsite(location);
             }

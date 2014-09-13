@@ -1,0 +1,104 @@
+body {
+   /* background-color: #ccc; */
+}
+.container {
+    border: 1px solid #aaa;
+    margin-top: 10px;
+}
+.routeSelectDark {
+   background-color: #ccc;
+}
+.col-sm-2 {
+    height: 50px;           
+}
+.col-sm-3 {  
+    height: 50px;        
+}
+.col-sm-6 { 
+    height: 50px;          
+}
+.col-sm-8 {  
+    height: 50px;          
+}
+.col-sm-10 {
+    height: 50px;           
+}
+#toplogo {
+    padding-top: 10px;
+}
+#messages {
+    padding-top: 19px;
+    text-align: right;
+    margin: 0px 0px 10px 0px;     
+}
+#routeSelect {
+    width: 100%;
+    color: #000;
+    margin-bottom:5px;
+    /* background-color: #ccc; */
+}
+#autorefresh {
+    width: 100%;  
+    margin-bottom:5px;
+}
+#delete {
+    width: 100%;                
+    margin-bottom:5px;
+}
+#refresh {
+    width: 100%;   
+    margin-bottom:5px;
+}
+#viewall {
+    width: 100%;   
+    margin-bottom:5px;
+}
+.deletediv {
+    text-align: center;
+}
+.autorefreshdiv {
+    text-align: center;
+}
+.refreshdiv {
+    text-align: center;
+}
+.viewalldiv {
+    text-align: center;
+}
+@media only screen and (min-width : 768px) {
+    .container {
+        margin-top: 25px;
+    }
+
+    .deletediv {
+        text-align: left;
+    }
+    .autorefreshdiv {
+        text-align: center;
+    }
+
+    .refreshdiv {
+        text-align: center;
+    }
+    
+    .viewalldiv {
+        text-align: right;
+    }    
+}      
+#map-canvas {
+    border: 1px solid #000;
+    width: 100%;
+    height: 460px;    
+}
+#mapdiv { 
+    height: 475px;
+}
+#selectdiv {
+       margin-bottom: 10px;
+}
+#halimage {
+    vertical-align:middle;
+    width: 37px;
+    height: 37px;
+    margin-bottom: 5px;
+}
