@@ -199,6 +199,7 @@ _eventType VARCHAR(50)
 BEGIN
   INSERT INTO gpslocations (latitude, longitude, speed, direction, distance, gpsTime, locationMethod, phoneNumber,  sessionID, accuracy, extraInfo, eventType)
   VALUES (_lat, _lng, _mph, _direction, _distance, _date, _locationMethod, _phoneNumber, _sessionID, _accuracy, _extraInfo, _eventType);
+  SELECT NOW();
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;

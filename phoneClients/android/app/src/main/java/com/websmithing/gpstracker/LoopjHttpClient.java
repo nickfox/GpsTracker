@@ -8,6 +8,9 @@ import com.loopj.android.http.RequestParams;
 
 import org.apache.http.Header;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.Locale;
 
 public class LoopjHttpClient {
@@ -23,25 +26,24 @@ public class LoopjHttpClient {
 
     public static void debugLoopJ(String TAG, String methodName,String url, RequestParams requestParams, byte[] response, Header[] headers, int statusCode, Throwable t) {
 
-        Log.e(TAG, client.getUrlWithQueryString(false, url, requestParams));
+        Log.d(TAG, client.getUrlWithQueryString(false, url, requestParams));
 
         if (headers != null) {
-            Log.e(TAG, methodName)
-            ;
-            Log.e(TAG, "Return Headers:");
+            Log.e(TAG, methodName);
+            Log.d(TAG, "Return Headers:");
             for (Header h : headers) {
                 String _h = String.format(Locale.US, "%s : %s", h.getName(), h.getValue());
-                Log.e(TAG, _h);
+                Log.d(TAG, _h);
             }
 
             if (t != null) {
-                Log.e(TAG, "Throwable:" + t);
+                Log.d(TAG, "Throwable:" + t);
             }
 
             Log.e(TAG, "StatusCode: " + statusCode);
 
             if (response != null) {
-                Log.e(TAG, "Response: " + new String(response));
+                Log.d(TAG, "Response: " + new String(response));
             }
 
         }

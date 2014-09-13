@@ -100,7 +100,7 @@ public class LocationService extends Service implements
 
         editor.putFloat("previousLatitude", (float)location.getLatitude());
         editor.putFloat("previousLongitude", (float)location.getLongitude());
-        editor.commit();
+        editor.apply();
 
         final RequestParams requestParams = new RequestParams();
         requestParams.put("latitude", Double.toString(location.getLatitude()));
@@ -136,14 +136,12 @@ public class LocationService extends Service implements
         Float direction = location.getBearing();
         requestParams.put("direction",  Integer.toString(direction.intValue()));
 
-        LoopjHttpClient test = new LoopjHttpClient();
-
         final String uploadWebsite = sharedPreferences.getString("defaultUploadWebsite", defaultUploadWebsite);
 
         LoopjHttpClient.get(uploadWebsite, requestParams, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, org.apache.http.Header[] headers, byte[] responseBody) {
-                // LoopjHttpClient.debugLoopJ(TAG, "sendLocationDataToWebsite - success", uploadWebsite, requestParams, responseBody, headers, statusCode, null);
+                LoopjHttpClient.debugLoopJ(TAG, "sendLocationDataToWebsite - success", uploadWebsite, requestParams, responseBody, headers, statusCode, null);
                 stopSelf();
             }
             @Override
