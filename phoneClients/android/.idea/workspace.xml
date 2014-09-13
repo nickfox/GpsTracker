@@ -41,7 +41,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9fe415d5-9929-47d9-9a7a-de7d3ea04176" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/websmithing/gpstracker/GpsTrackerActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/websmithing/gpstracker/GpsTrackerActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="GpsTracker.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -107,11 +108,12 @@
       <file leaf-file-name="GpsTrackerActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/websmithing/gpstracker/GpsTrackerActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.423077" vertical-offset="138" max-vertical-offset="4165">
-              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1372" max-vertical-offset="4165">
+              <caret line="104" column="0" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
               <folding>
-                <element signature="e#6860#6861#0" expanded="true" />
-                <element signature="e#6927#6928#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#6857#6858#0" expanded="true" />
+                <element signature="e#6924#6925#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -120,11 +122,9 @@
       <file leaf-file-name="LocationService.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/websmithing/gpstracker/LocationService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.3076923" vertical-offset="2329" max-vertical-offset="3672">
-              <caret line="139" column="0" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="41.846153" vertical-offset="1275" max-vertical-offset="3672">
+              <caret line="11" column="34" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="34" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -132,7 +132,7 @@
       <file leaf-file-name="strings.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.15088758" vertical-offset="0" max-vertical-offset="374">
+            <state vertical-scroll-proportion="0.11263736" vertical-offset="10" max-vertical-offset="374">
               <caret line="3" column="80" selection-start-line="3" selection-start-column="80" selection-end-line="3" selection-end-column="80" />
               <folding />
             </state>
@@ -142,8 +142,8 @@
       <file leaf-file-name="LoopjHttpClient.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/websmithing/gpstracker/LoopjHttpClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="782">
-              <caret line="35" column="29" selection-start-line="35" selection-start-column="29" selection-end-line="35" selection-end-column="29" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="782">
+              <caret line="34" column="91" selection-start-line="34" selection-start-column="91" selection-end-line="34" selection-end-column="91" />
               <folding />
             </state>
           </provider>
@@ -957,10 +957,10 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_gpstracker.xml" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/websmithing/gpstracker/GpsTrackerActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/websmithing/gpstracker/LocationService.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/websmithing/gpstracker/LoopjHttpClient.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/websmithing/gpstracker/GpsTrackerActivity.java" />
       </list>
     </option>
   </component>
@@ -1452,7 +1452,7 @@
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15818584" sideWeight="0.5017857" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4579646" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.5707814" sideWeight="0.4981685" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.54133636" sideWeight="0.4981685" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32929516" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2495333" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1535,8 +1535,9 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="1263" max-vertical-offset="4709">
           <caret line="103" column="5" selection-start-line="103" selection-start-column="5" selection-end-line="103" selection-end-column="5" />
           <folding>
-            <element signature="e#6860#6861#0" expanded="true" />
-            <element signature="e#6927#6928#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#6857#6858#0" expanded="true" />
+            <element signature="e#6924#6925#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1553,8 +1554,9 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4709">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#6860#6861#0" expanded="true" />
-            <element signature="e#6927#6928#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#6857#6858#0" expanded="true" />
+            <element signature="e#6924#6925#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1564,8 +1566,9 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4641">
           <caret line="143" column="0" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
           <folding>
-            <element signature="e#6860#6861#0" expanded="true" />
-            <element signature="e#6927#6928#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#6857#6858#0" expanded="true" />
+            <element signature="e#6924#6925#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1582,8 +1585,9 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="2652" max-vertical-offset="5083">
           <caret line="156" column="57" selection-start-line="156" selection-start-column="11" selection-end-line="156" selection-end-column="57" />
           <folding>
-            <element signature="e#6860#6861#0" expanded="true" />
-            <element signature="e#6927#6928#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#6857#6858#0" expanded="true" />
+            <element signature="e#6924#6925#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1607,8 +1611,9 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="4420" max-vertical-offset="4726">
           <caret line="260" column="6" selection-start-line="260" selection-start-column="6" selection-end-line="260" selection-end-column="6" />
           <folding>
-            <element signature="e#6860#6861#0" expanded="true" />
-            <element signature="e#6927#6928#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#6857#6858#0" expanded="true" />
+            <element signature="e#6924#6925#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1668,8 +1673,9 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="2635" max-vertical-offset="4233">
           <caret line="172" column="27" selection-start-line="172" selection-start-column="27" selection-end-line="172" selection-end-column="27" />
           <folding>
-            <element signature="e#6860#6861#0" expanded="true" />
-            <element signature="e#6927#6928#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#6857#6858#0" expanded="true" />
+            <element signature="e#6924#6925#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1691,8 +1697,9 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="4165">
           <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
           <folding>
-            <element signature="e#6860#6861#0" expanded="true" />
-            <element signature="e#6927#6928#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#6857#6858#0" expanded="true" />
+            <element signature="e#6924#6925#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1714,8 +1721,9 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="425" max-vertical-offset="4165">
           <caret line="31" column="6" selection-start-line="31" selection-start-column="6" selection-end-line="31" selection-end-column="6" />
           <folding>
-            <element signature="e#6860#6861#0" expanded="true" />
-            <element signature="e#6927#6928#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#6857#6858#0" expanded="true" />
+            <element signature="e#6924#6925#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1737,8 +1745,9 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="4165">
           <caret line="31" column="6" selection-start-line="31" selection-start-column="6" selection-end-line="31" selection-end-column="6" />
           <folding>
-            <element signature="e#6860#6861#0" expanded="true" />
-            <element signature="e#6927#6928#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#6857#6858#0" expanded="true" />
+            <element signature="e#6924#6925#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1930,38 +1939,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/websmithing/gpstracker/LoopjHttpClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="782">
+          <caret line="34" column="91" selection-start-line="34" selection-start-column="91" selection-end-line="34" selection-end-column="91" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/websmithing/gpstracker/GpsTrackerActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.423077" vertical-offset="138" max-vertical-offset="4165">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1372" max-vertical-offset="4165">
+          <caret line="104" column="0" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
           <folding>
-            <element signature="e#6860#6861#0" expanded="true" />
-            <element signature="e#6927#6928#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#6857#6858#0" expanded="true" />
+            <element signature="e#6924#6925#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/websmithing/gpstracker/LocationService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.3076923" vertical-offset="2329" max-vertical-offset="3672">
-          <caret line="139" column="0" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/websmithing/gpstracker/LoopjHttpClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="782">
-          <caret line="35" column="29" selection-start-line="35" selection-start-column="29" selection-end-line="35" selection-end-column="29" />
+        <state vertical-scroll-proportion="41.846153" vertical-offset="1275" max-vertical-offset="3672">
+          <caret line="11" column="34" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="34" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.15088758" vertical-offset="0" max-vertical-offset="374">
+        <state vertical-scroll-proportion="0.11263736" vertical-offset="10" max-vertical-offset="374">
           <caret line="3" column="80" selection-start-line="3" selection-start-column="80" selection-end-line="3" selection-end-column="80" />
           <folding />
         </state>

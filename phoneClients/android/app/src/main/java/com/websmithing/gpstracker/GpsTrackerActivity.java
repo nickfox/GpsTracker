@@ -89,7 +89,7 @@ public class GpsTrackerActivity extends ActionBarActivity {
                 break;
         }
 
-        editor.commit();
+        editor.apply();
     }
 
     private void startAlarmManager() {
@@ -147,7 +147,7 @@ public class GpsTrackerActivity extends ActionBarActivity {
             editor.putString("sessionID",  UUID.randomUUID().toString());
         }
 
-        editor.commit();
+        editor.apply();
         setTrackingButtonState();
     }
 
@@ -171,7 +171,7 @@ public class GpsTrackerActivity extends ActionBarActivity {
         editor.putString("userName", txtUserName.getText().toString().trim());
         editor.putString("defaultUploadWebsite", txtWebsite.getText().toString().trim());
 
-        editor.commit();
+        editor.apply();
 
         return true;
     }
