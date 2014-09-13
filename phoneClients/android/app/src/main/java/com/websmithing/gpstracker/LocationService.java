@@ -143,7 +143,7 @@ public class LocationService extends Service implements
         LoopjHttpClient.get(uploadWebsite, requestParams, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, org.apache.http.Header[] headers, byte[] responseBody) {
-                LoopjHttpClient.debugLoopJ(TAG, "sendLocationDataToWebsite - success", uploadWebsite, requestParams, responseBody, headers, statusCode, null);
+                // LoopjHttpClient.debugLoopJ(TAG, "sendLocationDataToWebsite - success", uploadWebsite, requestParams, responseBody, headers, statusCode, null);
                 stopSelf();
             }
             @Override
