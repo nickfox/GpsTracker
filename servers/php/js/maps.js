@@ -278,8 +278,6 @@
             gpstrackerMarker.on("click", function() {        
                 var url = 'getrouteformap.php?sessionid=' + sessionID;
 
-                console.log(url);
-
                 viewingAllRoutes = false;
  
                 var indexOfRouteInRouteSelectDropdwon = sessionIDArray.indexOf(sessionID) + 1;
@@ -355,7 +353,6 @@
     }
 
     function turnOffAutoRefresh() {
-        console.log('turnOffAutoRefresh');
         showMessage('Auto Refresh Off');
         $('#autorefresh').val('Auto Refresh - Off');
     
@@ -364,8 +361,6 @@
     }
 
     function turnOnAutoRefresh() {
-        console.log('turnOnAutoRefresh');
-    
         showMessage('Auto Refresh On (1 min)'); 
         $('#autorefresh').val('Auto Refresh - On');
         autoRefresh = true;
