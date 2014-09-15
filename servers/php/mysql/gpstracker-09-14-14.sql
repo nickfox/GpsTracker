@@ -92,7 +92,7 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `prcGetAllRoutesForMap`()
 BEGIN
   SELECT DISTINCT(sessionId), MAX(gpsTime) gpsTime, 
-  CONCAT('{ "latitude":"', CAST(latitude AS CHAR),'", "longitude":"', CAST(longitude AS CHAR), '", "speed":"', CAST(speed AS CHAR), '", "direction":"', CAST(direction AS CHAR), '", "distance":"', CAST(distance AS CHAR), '", "locationMethod":"', locationMethod, '", "gpsTime":"', DATE_FORMAT(gpsTime, '%b %e %Y %h:%i%p'), '", "phoneNumber":"', phoneNumber, '", "sessionID":"', CAST(sessionID AS CHAR), '", "accuracy":"', CAST(accuracy AS CHAR), '", "extraInfo":"', extraInfo, '" }') json
+  CONCAT('{ "latitude":"', CAST(latitude AS CHAR),'", "longitude":"', CAST(longitude AS CHAR), '", "speed":"', CAST(speed AS CHAR), '", "direction":"', CAST(direction AS CHAR), '", "distance":"', CAST(distance AS CHAR), '", "locationMethod":"', locationMethod, '", "gpsTime":"', DATE_FORMAT(gpsTime, '%b %e %Y %h:%i%p'), '", "userName":"', userName, '", "phoneNumber":"', phoneNumber, '", "sessionID":"', CAST(sessionID AS CHAR), '", "accuracy":"', CAST(accuracy AS CHAR), '", "extraInfo":"', extraInfo, '" }') json
   FROM gpslocations
   WHERE sessionID != '0' && CHAR_LENGTH(sessionID) != 0 && gpstime != '0000-00-00 00:00:00'
   GROUP BY sessionID;
@@ -115,8 +115,7 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `prcGetRouteForMap`(
 _sessionID VARCHAR(50))
 BEGIN
-  SELECT
-  CONCAT('{ "latitude":"', CAST(latitude AS CHAR),'", "longitude":"', CAST(longitude AS CHAR), '", "speed":"', CAST(speed AS CHAR), '", "direction":"', CAST(direction AS CHAR), '", "distance":"', CAST(distance AS CHAR), '", "locationMethod":"', locationMethod, '", "gpsTime":"', DATE_FORMAT(gpsTime, '%b %e %Y %h:%i%p'), '", "phoneNumber":"', phoneNumber, '", "sessionID":"', CAST(sessionID AS CHAR), '", "accuracy":"', CAST(accuracy AS CHAR), '", "extraInfo":"', extraInfo, '" }') json
+  SELECT CONCAT('{ "latitude":"', CAST(latitude AS CHAR),'", "longitude":"', CAST(longitude AS CHAR), '", "speed":"', CAST(speed AS CHAR), '", "direction":"', CAST(direction AS CHAR), '", "distance":"', CAST(distance AS CHAR), '", "locationMethod":"', locationMethod, '", "gpsTime":"', DATE_FORMAT(gpsTime, '%b %e %Y %h:%i%p'), '", "userName":"', userName, '", "phoneNumber":"', phoneNumber, '", "sessionID":"', CAST(sessionID AS CHAR), '", "accuracy":"', CAST(accuracy AS CHAR), '", "extraInfo":"', extraInfo, '" }') json
   FROM gpslocations
   WHERE sessionID = _sessionID
   ORDER BY lastupdate;
@@ -136,32 +135,32 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`gpstracker_user`@`localhost` PROCEDURE `prcGetRoutes`()
+CREATE DEFINER=`root`@`localhost` PROCEDURE `prcGetRoutes`()
 BEGIN
   CREATE TEMPORARY TABLE tempRoutes (
     sessionID VARCHAR(50),
-    phoneNumber VARCHAR(50),
+    userName VARCHAR(50),
     startTime DATETIME,
     endTime DATETIME)
   ENGINE = MEMORY;
 
-  INSERT INTO tempRoutes (sessionID, phoneNumber)
-  SELECT DISTINCT sessionID, phoneNumber
+  INSERT INTO tempRoutes (sessionID, userName)
+  SELECT DISTINCT sessionID, userName
   FROM gpslocations;
 
   UPDATE tempRoutes tr
   SET startTime = (SELECT MIN(gpsTime) FROM gpslocations gl
   WHERE gl.sessionID = tr.sessionID
-  AND gl.phoneNumber = tr.phoneNumber);
+  AND gl.userName = tr.userName);
 
   UPDATE tempRoutes tr
   SET endTime = (SELECT MAX(gpsTime) FROM gpslocations gl
   WHERE gl.sessionID = tr.sessionID
-  AND gl.phoneNumber = tr.phoneNumber);
+  AND gl.userName = tr.userName);
 
   SELECT
 
-  CONCAT('{ "sessionID": "', CAST(sessionID AS CHAR),  '", "phoneNumber": "', phoneNumber, '", "times": "(', DATE_FORMAT(startTime, '%b %e %Y %h:%i%p'), ' - ', DATE_FORMAT(endTime, '%b %e %Y %h:%i%p'), ')" }') json
+  CONCAT('{ "sessionID": "', CAST(sessionID AS CHAR),  '", "userName": "', userName, '", "times": "(', DATE_FORMAT(startTime, '%b %e %Y %h:%i%p'), ' - ', DATE_FORMAT(endTime, '%b %e %Y %h:%i%p'), ')" }') json
   FROM tempRoutes
   ORDER BY startTime DESC;
 
@@ -182,24 +181,24 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`gpstracker_user`@`localhost` PROCEDURE `prcSaveGPSLocation`(
-_lat VARCHAR(45),
-_lng VARCHAR(45),
-_mph VARCHAR(45),
-_direction VARCHAR(45),
-_distance VARCHAR(45),
-_date VARCHAR(100),
+CREATE DEFINER=`root`@`localhost` PROCEDURE `prcSaveGPSLocation`(
+_lat VARCHAR(15),
+_lng VARCHAR(15),
+_mph VARCHAR(15),
+_direction VARCHAR(15),
+_distance VARCHAR(15),
+_date VARCHAR(50),
 _locationMethod VARCHAR(100),
-_phoneNumber VARCHAR(20),
+_userName VARCHAR(50),
+_phoneNumber VARCHAR(50),
 _sessionID VARCHAR(50),
-_accuracy VARCHAR(20),
+_accuracy VARCHAR(15),
 _extraInfo VARCHAR(255),
 _eventType VARCHAR(50)
 )
 BEGIN
-  INSERT INTO gpslocations (latitude, longitude, speed, direction, distance, gpsTime, locationMethod, phoneNumber,  sessionID, accuracy, extraInfo, eventType)
-  VALUES (_lat, _lng, _mph, _direction, _distance, _date, _locationMethod, _phoneNumber, _sessionID, _accuracy, _extraInfo, _eventType);
-  
+  INSERT INTO gpslocations (latitude, longitude, speed, direction, distance, gpsTime, locationMethod, userName, phoneNumber,  sessionID, accuracy, extraInfo, eventType)
+  VALUES (_lat, _lng, _mph, _direction, _distance, _date, _locationMethod, _userName, _phoneNumber, _sessionID, _accuracy, _extraInfo, _eventType);
   SELECT NOW();
 END ;;
 DELIMITER ;
@@ -217,4 +216,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-09-12 18:15:37
+-- Dump completed on 2014-09-14 18:38:51

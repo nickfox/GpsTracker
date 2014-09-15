@@ -99,7 +99,7 @@
 
                 sessionIDArray.push($(this).attr('sessionID'));
 
-                option.innerHTML = $(this).attr('phoneNumber') + " " + $(this).attr('times');
+                option.innerHTML = $(this).attr('userName') + " " + $(this).attr('times');
                 routeSelect.appendChild(option);
             });
 
@@ -204,7 +204,7 @@
                         $(this).attr('distance'),
                         $(this).attr('locationMethod'),
                         $(this).attr('gpsTime'),
-                        $(this).attr('phoneNumber'),
+                        $(this).attr('userName'),
                         $(this).attr('sessionID'),
                         $(this).attr('accuracy'),
                         $(this).attr('extraInfo'),
@@ -223,7 +223,7 @@
     }
 
     function createMarker(latitude, longitude, sessionID, speed, direction, distance, locationMethod, gpsTime,
-                          phoneNumber, sessionID, accuracy, extraInfo, map, finalLocation) {
+                          userName, sessionID, accuracy, extraInfo, map, finalLocation) {
         var iconUrl;
 
         if (finalLocation) {
@@ -258,12 +258,12 @@
             "<tr><td align=right>Speed:&nbsp;</td><td>" + speed +  " mph</td></tr>" +
             "<tr><td align=right>Distance:&nbsp;</td><td>" + distance +  " mi</td><td>&nbsp;</td></tr>" +
             "<tr><td align=right>Time:&nbsp;</td><td colspan=2>" + gpsTime +  "</td></tr>" +
-            "<tr><td align=right>Name:&nbsp;</td><td>" + phoneNumber + "</td><td>&nbsp;</td></tr>" +
+            "<tr><td align=right>Name:&nbsp;</td><td>" + userName + "</td><td>&nbsp;</td></tr>" +
             "<tr><td align=right>Accuracy:&nbsp;</td><td>" + accuracy + " ft</td><td>&nbsp;</td></tr></table>";
 
 
         var gpstrackerMarker;
-        var title = phoneNumber + " - " + gpsTime
+        var title = userName + " - " + gpsTime
 
         // make sure the final red marker always displays on top 
         if (finalLocation) {
@@ -278,6 +278,8 @@
             
             gpstrackerMarker.on("click", function() {        
                 var url = 'getrouteformap.php?sessionid=' + sessionID;
+
+                console.log(url);
 
                 viewingAllRoutes = false;
  
@@ -390,8 +392,8 @@
         if (hasMap()) {
 		
     		// comment out these two lines to get delete working
-    		// var answer = confirm("Disabled here on test website, this works fine.");
-    		// return false;
+    		var answer = confirm("Disabled here on test website, this works fine.");
+    		return false;
 		
             var answer = confirm("This will permanently delete this route\n from the database. Do you want to delete?");
             if (answer){

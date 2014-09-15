@@ -9,7 +9,7 @@
     $json = '{ "locations": [';
 
     foreach ($stmt as $row) {
-        $json .= $row[0];
+        $json .= $row['json'];
         $json .= ',';
     }
 

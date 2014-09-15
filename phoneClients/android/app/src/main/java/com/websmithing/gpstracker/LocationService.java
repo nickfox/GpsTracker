@@ -121,8 +121,8 @@ public class LocationService extends Service implements
             requestParams.put("distance", 0); // in miles
         }
 
-        // phoneNumber is just an identifying string in the database, can be any identifier.
-        requestParams.put("phonenumber", sharedPreferences.getString("userName", ""));
+        requestParams.put("username", sharedPreferences.getString("userName", ""));
+        requestParams.put("phonenumber", "867-5309"); // not being used but is fully functional
         requestParams.put("sessionid", sharedPreferences.getString("sessionID", "")); // uuid
 
         Double accuracyInFeet = location.getAccuracy()* 3.28;
@@ -141,7 +141,7 @@ public class LocationService extends Service implements
         LoopjHttpClient.get(uploadWebsite, requestParams, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, org.apache.http.Header[] headers, byte[] responseBody) {
-                LoopjHttpClient.debugLoopJ(TAG, "sendLocationDataToWebsite - success", uploadWebsite, requestParams, responseBody, headers, statusCode, null);
+                // LoopjHttpClient.debugLoopJ(TAG, "sendLocationDataToWebsite - success", uploadWebsite, requestParams, responseBody, headers, statusCode, null);
                 stopSelf();
             }
             @Override
