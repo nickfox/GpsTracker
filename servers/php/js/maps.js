@@ -1,4 +1,5 @@
 ﻿jQuery(document).ready(function($) {
+    'use strict';
     var routeSelect = document.getElementById('routeSelect');
     var map = document.getElementById('map-canvas');
     var autoRefresh = false;
@@ -179,7 +180,6 @@
                 $(json.locations).each(function(key, value){
                     var latitude =  $(this).attr('latitude');
                     var longitude = $(this).attr('longitude');
-                    var sessionID = $(this).attr('sessionID');
                     var tempLocation = new L.LatLng(latitude, longitude);
                     
                     locationArray.push(tempLocation);                    
@@ -198,7 +198,6 @@
                     var marker = createMarker(
                         latitude,
                         longitude,
-                        sessionID,
                         $(this).attr('speed'),
                         $(this).attr('direction'),
                         $(this).attr('distance'),
@@ -222,7 +221,7 @@
             }
     }
 
-    function createMarker(latitude, longitude, sessionID, speed, direction, distance, locationMethod, gpsTime,
+    function createMarker(latitude, longitude, speed, direction, distance, locationMethod, gpsTime,
                           userName, sessionID, accuracy, extraInfo, map, finalLocation) {
         var iconUrl;
 
@@ -263,7 +262,7 @@
 
 
         var gpstrackerMarker;
-        var title = userName + " - " + gpsTime
+        var title = userName + " - " + gpsTime;
 
         // make sure the final red marker always displays on top 
         if (finalLocation) {
@@ -341,12 +340,12 @@
         var lat = parseFloat(latitude);
         var lng = parseFloat(longitude);
         var latlng = new google.maps.LatLng(lat, lng);
-        reverseGeocoder = new google.maps.Geocoder();
+        var reverseGeocoder = new google.maps.Geocoder();
         reverseGeocoder.geocode({'latLng': latlng}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
                 // results[0] is full address
                 if (results[1]) {
-                    reverseGeocoderResult = results[1].formatted_address; 
+                    var reverseGeocoderResult = results[1].formatted_address; 
                     showPermanentMessage(reverseGeocoderResult);
                 }
             } else {
@@ -392,7 +391,7 @@
         if (hasMap()) {
 		
     		// comment out these two lines to get delete working
-    		var answer = confirm("Disabled here on test website, this works fine.");
+    		confirm("Disabled here on test website, this works fine.");
     		return false;
 		
             var answer = confirm("This will permanently delete this route\n from the database. Do you want to delete?");
