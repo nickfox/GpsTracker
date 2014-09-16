@@ -9,114 +9,53 @@
  
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="//maps.google.com/maps/api/js?v=3&sensor=false&libraries=adsense"></script>
-    <script src="javascript/maps.js"></script>
-    <script src="javascript/leaflet-0.7.3/leaflet.js"></script>
-    <script src="javascript/leaflet-plugins/google.js"></script>
-    <script src="javascript/leaflet-plugins/bing.js"></script>
-    <link href="javascript/leaflet-0.7.3/leaflet.css" rel="stylesheet" type="text/css" />
-    <link href="styles/styles.css" rel="stylesheet" type="text/css" />
-	
-    <script type="text/javascript">
-        //<![CDATA[
-        var routeSelect;
-        var refreshSelect;
-        var messages;
-        var map;
-        var intervalID;
-        var newInterval;
-        var currentInterval;
-        var zoomLevelSelect;
-        var zoomLevel;
-
-        function load() {
-            // the code to process the data is in the javascript/maps.js file
-
-            routeSelect = document.getElementById('selectRoute');
-            refreshSelect = document.getElementById('selectRefresh');
-            zoomLevelSelect = document.getElementById('selectZoomLevel');
-            messages = document.getElementById('messages');
-            map = document.getElementById('map');
-
-            intervalID = 0;
-            newInterval = 0;
-            currentInterval = 0;
-            zoomLevel = 12;
-
-            zoomLevelSelect.selectedIndex = 11;
-            refreshSelect.selectedIndex = 0;
-            showWaitImage('Loading routes...');
-            var i = 0;
-
-            // when the page first loads, get the routes from the DB and load them into the dropdown box.           
-            $.ajax({
-                url: 'GetRoutes.aspx',
-                type: 'GET',
-                dataType: 'json',
-                success: function (data) {
-                    //console.log("success loadRoutes"); 
-                    loadRoutes(data);
-                },
-                error: function (xhr, status, errorThrown) {
-                    console.log("responseText: " + xhr.responseText);
-                    console.log("status: " + xhr.status);
-                    console.log("errorThrown: " + errorThrown);
-                }
-            });
-        }
-        //]]>
-     </script>
-
+    <script src="js/maps.js"></script>
+    <script src="js/leaflet-0.7.3/leaflet.js"></script>
+    <script src="js/leaflet-plugins/google.js"></script>
+    <script src="js/leaflet-plugins/bing.js"></script>
+    <link href="js/leaflet-0.7.3/leaflet.css" rel="stylesheet" type="text/css" />
+    <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> -->    
+    <!-- 
+        to change themes, select a theme here:  http://www.bootstrapcdn.com/#bootswatch_tab 
+        and then change the word after 3.2.0 in the following link to the new theme name
+    -->    
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/cerulean/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+            
 </head>
-<body  onload="load()">    
-    <div id="messages">GpsTracker</div>
-    <div id="map"></div>
-
-    <select id="selectRoute" onchange="getRouteForMap();" tabindex="1"></select>
-
-    <select id="selectRefresh" onchange="autoRefresh();" tabindex="2">
-        <option value ="0">Auto Refresh - Off</option>
-        <option value ="60">Auto Refresh - 1 minute</option>
-        <option value ="120">Auto Refresh - 2 minutes</option>
-        <option value ="180">Auto Refresh - 3 minutes</option>
-        <option value ="300">Auto Refresh - 5 minutes</option>
-        <option value ="600">Auto Refresh - 10 minutes</option>
-    </select>
-
-    <select id="selectZoomLevel" onchange="changeZoomLevel();" tabindex="3">
-        <option value ="1">Zoom Level - 1</option>
-        <option value ="2">Zoom Level - 2</option>
-        <option value ="3">Zoom Level - 3</option>
-        <option value ="4">Zoom Level - 4</option>
-        <option value ="5">Zoom Level - 5</option>
-        <option value ="6">Zoom Level - 6</option>
-        <option value ="7">Zoom Level - 7</option>
-        <option value ="8">Zoom Level - 8</option>
-        <option value ="9">Zoom Level - 9</option>
-        <option value ="10">Zoom Level - 10</option>
-        <option value ="11">Zoom Level - 11</option>
-        <option value ="12">Zoom Level - 12</option>
-        <option value ="13">Zoom Level - 13</option>
-        <option value ="14">Zoom Level - 14</option>
-        <option value ="15">Zoom Level - 15</option>
-        <option value ="16">Zoom Level - 16</option>
-        <option value ="17">Zoom Level - 17</option>
-    </select>
-
-    <input type="button" id="delete" value="Delete" onclick="deleteRoute()" tabindex="4">
-    <input type="button" id="refresh" value="Refresh" onclick="getRouteForMap()" tabindex="5">
-
-     <div id="test"><== after you select a route below, check out the different map providers here. I'm using google maps, bing maps and OpenStreetMaps but there are many more providers.
-   </div>
-
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4" id="toplogo">
+                <img id="halimage" src="images/gpstracker-man-blue-37.png">GpsTracker
+            </div>
+            <div class="col-sm-8" id="messages"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12" id="mapdiv">
+                <div id="map-canvas"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12" id="selectdiv">
+                <select id="routeSelect" tabindex="1"></select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 deletediv">
+                <input type="button" id="delete" value="Delete" tabindex="2" class="btn btn-primary">
+            </div>
+            <div class="col-sm-3 autorefreshdiv">
+                <input type="button" id="autorefresh" value="Auto Refresh - Off" tabindex="3" class="btn btn-primary">
+            </div>
+            <div class="col-sm-3 refreshdiv">
+                <input type="button" id="refresh" value="Refresh" tabindex="4" class="btn btn-primary">
+            </div>
+            <div class="col-sm-3 viewalldiv">
+                <input type="button" id="viewall" value="View All" tabindex="5" class="btn btn-primary">
+            </div>
+        </div>
+    </div>       
 </body>
 </html>
-
-
-
-
-
-
-   
-
-
-
+    

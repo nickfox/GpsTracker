@@ -9,15 +9,17 @@ public partial class DeleteRoute : System.Web.UI.Page
         string sessionID = Request.QueryString["sessionID"];
         string phoneNumber = Request.QueryString["phoneNumber"];
 
-        // our helper class to get data
-        DbXmlReader reader = new DbXmlReader();
-
-        Response.AppendHeader("Content-Type", "text/xml");
-
-        // actually we are getting a response back here, but the result will be a deleted route on the webpage
-        Response.Write(reader.getXmlString("prcDeleteRoute",
-            new SqlParameter("@sessionID", sessionID),
-            new SqlParameter("@phoneNumber", phoneNumber)));
-
+        DbWriter writer = new DbWriter();
+        
+        try {
+            writer.updateDB("prcDeleteRoute",
+                new SqlParameter("@sessionID", sessionID),
+                new SqlParameter("@phoneNumber", phoneNumber));
+        }
+        catch (Exception ex) {
+            Response.Write(ex.Message);
+        }
+    
+        Response.Write("0");
     }
 }
