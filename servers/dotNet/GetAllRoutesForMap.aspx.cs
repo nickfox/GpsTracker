@@ -6,9 +6,6 @@ public partial class GetAllRoutesForMap : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        string sessionID = Request.QueryString["sessionID"];
-        string phoneNumber = Request.QueryString["phoneNumber"];
-
         // our helper class to get data
         DbJsonReader reader = new DbJsonReader();
 

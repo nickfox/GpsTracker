@@ -50,7 +50,7 @@
         showPermanentMessage('Please select a route below');
                    
         $.ajax({
-            url: 'getallroutesformap.aspx',
+            url: 'GetAllRoutesForMap.aspx',
             type: 'GET',
             dataType: 'json',
             success: function(data) {
@@ -65,7 +65,7 @@
         
     function loadRoutesIntoDropdownBox() {      
         $.ajax({
-            url: 'getroutes.aspx',
+            url: 'GetRoutes.aspx',
             type: 'GET',
             dataType: 'json',
             success: function(data) {
@@ -115,7 +115,7 @@
         if (hasMap()) {
             // console.log($("#routeSelect").prop("selectedIndex"));
 
-           var url = 'getrouteformap.aspx' + $('#routeSelect').val();
+           var url = 'GetRouteForMap.aspx' + $('#routeSelect').val();
 
             $.ajax({
                    url: url,
@@ -276,7 +276,7 @@
             gpstrackerMarker.unbindPopup();
             
             gpstrackerMarker.on("click", function() {        
-                var url = 'getrouteformap.aspx?sessionid=' + sessionID;
+                var url = 'GetRouteForMap.aspx?sessionid=' + sessionID;
 
                 viewingAllRoutes = false;
  
@@ -391,7 +391,9 @@
 		
             var answer = confirm("This will permanently delete this route\n from the database. Do you want to delete?");
             if (answer){
-                var url = 'deleteroute.aspx' + $('#routeSelect').val();
+                var url = 'DeleteRoute.aspx' + $('#routeSelect').val();
+
+                console.log(url);
 
                 $.ajax({
                        url: url,
@@ -417,7 +419,7 @@
         document.getElementById('map-canvas').outerHTML = "<div id='map-canvas'></div>";
 
         $.ajax({
-               url: 'getroutes.aspx',
+               url: 'GetRoutes.aspx',
                type: 'GET',
                success: function(data) {
                   loadRoutes(data);
