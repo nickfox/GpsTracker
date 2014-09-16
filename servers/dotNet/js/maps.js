@@ -50,14 +50,14 @@
         showPermanentMessage('Please select a route below');
                    
         $.ajax({
-            url: 'getallroutesformap.php',
+            url: 'getallroutesformap.aspx',
             type: 'GET',
             dataType: 'json',
             success: function(data) {
                 loadGPSLocations(data);
         },
         error: function (xhr, status, errorThrown) {
-            console.log("error status: " + xhr.status);
+            console.log("error status: " + status);
             console.log("errorThrown: " + errorThrown);
         }
         });
@@ -65,14 +65,14 @@
         
     function loadRoutesIntoDropdownBox() {      
         $.ajax({
-            url: 'getroutes.php',
+            url: 'getroutes.aspx',
             type: 'GET',
             dataType: 'json',
             success: function(data) {
             loadRoutes(data);
         },
         error: function (xhr, status, errorThrown) {
-            console.log("status: " + xhr.status);
+            console.log("status: " + status);
             console.log("errorThrown: " + errorThrown);
         }
         });
@@ -115,7 +115,7 @@
         if (hasMap()) {
             // console.log($("#routeSelect").prop("selectedIndex"));
 
-           var url = 'getrouteformap.php' + $('#routeSelect').val();
+           var url = 'getrouteformap.aspx' + $('#routeSelect').val();
 
             $.ajax({
                    url: url,
@@ -125,7 +125,7 @@
                       loadGPSLocations(data);
                    },
                    error: function (xhr, status, errorThrown) {
-                       console.log("status: " + xhr.status);
+                       console.log("status: " + status);
                        console.log("errorThrown: " + errorThrown);
                     }
                });
@@ -276,7 +276,7 @@
             gpstrackerMarker.unbindPopup();
             
             gpstrackerMarker.on("click", function() {        
-                var url = 'getrouteformap.php?sessionid=' + sessionID;
+                var url = 'getrouteformap.aspx?sessionid=' + sessionID;
 
                 viewingAllRoutes = false;
  
@@ -295,7 +295,7 @@
                         loadGPSLocations(data);
                     },
                     error: function (xhr, status, errorThrown) {
-                        console.log("status: " + xhr.status);
+                        console.log("status: " + status);
                         console.log("errorThrown: " + errorThrown);
                     }
                  });
@@ -391,7 +391,7 @@
 		
             var answer = confirm("This will permanently delete this route\n from the database. Do you want to delete?");
             if (answer){
-                var url = 'deleteroute.php' + $('#routeSelect').val();
+                var url = 'deleteroute.aspx' + $('#routeSelect').val();
 
                 $.ajax({
                        url: url,
@@ -417,7 +417,7 @@
         document.getElementById('map-canvas').outerHTML = "<div id='map-canvas'></div>";
 
         $.ajax({
-               url: 'getroutes.php',
+               url: 'getroutes.aspx',
                type: 'GET',
                success: function(data) {
                   loadRoutes(data);

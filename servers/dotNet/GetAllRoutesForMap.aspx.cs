@@ -14,8 +14,6 @@ public partial class GetAllRoutesForMap : System.Web.UI.Page
 
         Response.AppendHeader("Content-Type", "application/json");
 
-        Response.Write(reader.getJsonString("prcGetAllRoutesForMap", "locations", 
-            new SqlParameter("@sessionID", sessionID),
-            new SqlParameter("@phoneNumber", phoneNumber)));
+        Response.Write(reader.getJsonString("prcGetAllRoutesForMap", "locations"));
     }
 }
