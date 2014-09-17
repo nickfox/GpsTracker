@@ -20,7 +20,7 @@ public class DbWriter
     /// </summary>
     public string updateDB(string storedProcedureName, params SqlParameter[] spParameterList)
     {
-        string identityColumnID = "0";
+        string returnValue = "0";
         SqlDataReader sqlDataReader = null;;
         SqlConnection sqlConnection = null;
 
@@ -47,13 +47,12 @@ public class DbWriter
             sqlConnection.Open();
             sqlDataReader = cmd.ExecuteReader();
 
-            // if we have successfully executed the stored procedure then 
-            // get the identityColumnID from the DB
             if (sqlDataReader.Read())
             {
-                identityColumnID = sqlDataReader.GetInt32(0).ToString();
+                returnValue = sqlDataReader.GetString(0);
             }
         } catch (Exception e) {
+            returnValue = "updateDB error: " + e.Message;
             Console.WriteLine("updateDB error: " + e.Message);
         } finally {
             if (sqlConnection != null)
@@ -66,7 +65,7 @@ public class DbWriter
             }
         }
 
-        return identityColumnID;
+        return returnValue;
     }
 
     private string GetConnectionString()

@@ -8,30 +8,34 @@ using System.Data.SqlClient;
 public partial class UpdateLocation : System.Web.UI.Page {
 
     protected void Page_Load(object sender, EventArgs e) {
-        string latitude = Request.Form["latitude"];
-        string longitude = Request.Form["longitude"];
-        string speed = Request.Form["speed"];
-        string direction = Request.Form["direction"];
-        string distance = Request.Form["distance"];
-        string date = Server.UrlDecode(Request.Form["date"]);
+
+        // http://localhost/gpstracker/UpdateLocation.aspx?longitude=-122.0214996&latitude=47.4758847&extrainfo=0&username=momo&distance=0.012262854&date=2014-09-16%2B17%253A49%253A57&direction=0&accuracy=65&phonenumber=867-5309&eventtype=android&sessionid=0a6dfd74-df4d-466e-b1b8-23234ef57512&speed=0&locationmethod=fused
+
+        string latitude = Request.QueryString["latitude"];
+        string longitude = Request.QueryString["longitude"];
+        string speed = Request.QueryString["speed"];
+        string direction = Request.QueryString["direction"];
+        string distance = Request.QueryString["distance"];
+        string date = Server.UrlDecode(Request.QueryString["date"]);
 
         // convert to DateTime format
         date = convertFromMySqlDate(date);
 
-        string locationMethod = Server.UrlDecode(Request.Form["locationmethod"]);
-        string phoneNumber = Request.Form["phonenumber"];
-        string sessionID = Request.Form["sessionid"];
-        string accuracy = Request.Form["accuracy"];
-        string eventType = Request.Form["eventtype"];
-        string extraInfo = Request.Form["extrainfo"];
+        string locationMethod = Server.UrlDecode(Request.QueryString["locationmethod"]);
+        string phoneNumber = Request.QueryString["phonenumber"];
+        string userName = Request.QueryString["username"];
+        string sessionID = Request.QueryString["sessionid"];
+        string accuracy = Request.QueryString["accuracy"];
+        string eventType = Request.QueryString["eventtype"];
+        string extraInfo = Request.QueryString["extrainfo"];
 
         // our helper class to update the database
         DbWriter dbw = new DbWriter();
-
+        string returnValue = "";
         try {
 
             // update the database with our GPS data from the phone
-            dbw.updateDB("prcSaveGPSLocation",
+            returnValue = dbw.updateDB("prcSaveGPSLocation",
                 new SqlParameter("@latitude", latitude),
                 new SqlParameter("@longitude", longitude),
                 new SqlParameter("@speed", speed),
@@ -40,14 +44,18 @@ public partial class UpdateLocation : System.Web.UI.Page {
                 new SqlParameter("@date", date),
                 new SqlParameter("@locationMethod", locationMethod),
                 new SqlParameter("@phoneNumber", phoneNumber),
+                new SqlParameter("@userName", userName),
                 new SqlParameter("@sessionID", sessionID),
                 new SqlParameter("@accuracy", accuracy),
                 new SqlParameter("@eventType", eventType),
                 new SqlParameter("@extraInfo", extraInfo));
+
         }
         catch (Exception ex) {
             Response.Write(ex.Message);
         }
+
+        Response.Write(date + ": " +  returnValue);
     }
 
     // convert to datetime string
