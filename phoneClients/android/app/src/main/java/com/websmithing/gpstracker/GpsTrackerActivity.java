@@ -111,12 +111,6 @@ public class GpsTrackerActivity extends ActionBarActivity {
 
     private void cancelAlarmManager() {
         Log.d(TAG, "cancelAlarmManager");
-/*
-        if (alarmManager != null) {
-            alarmManager.cancel(pendingIntent);
-            alarmManager = null;
-        }
-*/
 
         Context context = getBaseContext();
         Intent gpsTrackerIntent = new Intent(context, GpsTrackerAlarmReceiver.class);
