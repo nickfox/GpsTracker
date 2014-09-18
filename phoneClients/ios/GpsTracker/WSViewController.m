@@ -13,13 +13,10 @@
 #import "CustomButton.h"
 
 @interface WSViewController () <CLLocationManagerDelegate>
-@property (weak, nonatomic) IBOutlet UILabel *latitudeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *longitudeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *accuracyLabel;
-@property (weak, nonatomic) IBOutlet UILabel *timestampLabel;
 @property (weak, nonatomic) IBOutlet CustomButton *trackingButton;
-@property (weak, nonatomic) IBOutlet UILabel *accuracyLevelLabel;
-@property (weak, nonatomic) IBOutlet UILabel *sessionIDLabel;
+@property (weak, nonatomic) IBOutlet UITextField *uploadWebsiteTextField;
+@property (weak, nonatomic) IBOutlet UITextField *userNameTextField;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *intervalControl;
 @end
 
 @implementation WSViewController
@@ -64,10 +61,6 @@
     increasedAccuracy = YES;
     firstTimeGettingPosition = YES;
     lastWebsiteUpdateTime = [NSDate date]; // new timestamp
-    [self updateAccuracyLevel:@"high"];
-
-    NSString *shortSessionID = [[guid UUIDString] substringToIndex:5];
-    [self sessionIDLabel].text = [NSString stringWithFormat:@"phoneNumber: iosUser-%@", shortSessionID];
     
     [locationManager startUpdatingLocation];
 }
@@ -75,8 +68,7 @@
 - (void)stopTracking
 {
     NSLog(@"stop tracking");
-    
-    [self sessionIDLabel].text = @"phoneNumber:";
+
     [locationManager stopUpdatingLocation];
     locationManager = nil;
 }
@@ -87,7 +79,9 @@
         //[self stopTracking];
         currentlyTracking = NO;
  
+        // set to RED
         [self.trackingButton setButtonColor:@"#ff0033" andHighLightColor:@"#ff7691" andTextColor:@"#FFFFFF" andHighlightTextColor:@"#333333"];
+        [self.trackingButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         
         // here is the red color, #ff0033 and its highlight, #ff7691
         // here is the green color, #33ffcc and it's highlight, #a9ffe9
@@ -97,7 +91,9 @@
         //[self startTracking];
         currentlyTracking = YES;
         
-        [self.trackingButton setButtonColor:@"#33ffcc" andHighLightColor:@"#a9ffe9" andTextColor:@"#333333" andHighlightTextColor:@"#999999"];
+        // set to GREEN
+        [self.trackingButton setButtonColor:@"#33ffcc" andHighLightColor:@"#a9ffe9" andTextColor:@"#000000" andHighlightTextColor:@"#999999"];
+        [self.trackingButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         
         // here is the red color, #ff0033 and its highlight, #ff7691
         // here is the green color, #33ffcc and it's highlight, #a9ffe9
@@ -111,7 +107,6 @@
    locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers;
     locationManager.distanceFilter = 5;
     increasedAccuracy = NO;
-    [self updateAccuracyLevel:@"low"];
 }
 
 - (void)increaseTrackingAccuracy
@@ -119,7 +114,6 @@
     locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
     locationManager.distanceFilter = 0;
     increasedAccuracy = YES;
-    [self updateAccuracyLevel:@"high"];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
@@ -171,24 +165,6 @@
     NSString *trackingAccuracy = (increasedAccuracy) ? @"high" : @"low";
     NSLog(@"tracking accuracy: %@ lat/lng: %f/%f accuracy: %dm", trackingAccuracy, location.coordinate.latitude, location.coordinate.longitude, (int)location.horizontalAccuracy);
     
-    if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
-        [self updateUIWithLocationData:location];
-    }
-}
-
-- (void)updateAccuracyLevel:(NSString *)accuracyLevel
-{
-    [self accuracyLevelLabel].text= [NSString stringWithFormat:@"accuracy level: %@", accuracyLevel];
-}
-
-- (void)updateUIWithLocationData:(CLLocation *)location
-{
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"dd/MM/yyyy HH:mm"];
-    [self timestampLabel].text = [NSString stringWithFormat:@"timestamp: %@",[dateFormatter stringFromDate:location.timestamp]];
-    [self latitudeLabel].text = [NSString stringWithFormat:@"latitude: %f", location.coordinate.latitude];
-    [self longitudeLabel].text = [NSString stringWithFormat:@"longitude: %f", location.coordinate.longitude];
-    [self accuracyLabel].text= [NSString stringWithFormat:@"accuracy: %dm", (int)location.horizontalAccuracy];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
@@ -219,7 +195,7 @@
                                  @"eventtype": @"ios",
                                  @"direction": direction};
     
-    [manager POST:defaultUploadWebsite parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager GET:defaultUploadWebsite parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"location sent to website.");
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"AFHTTPRequestOperation Error: %@", [error description]);
