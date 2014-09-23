@@ -47,6 +47,15 @@
 
     currentlyTracking = NO;
     timeIntervalInSeconds = 60; // change this to the time interval you want
+    
+    
+    BOOL appIDIsSet = [[NSUserDefaults standardUserDefaults] boolForKey:@"appIDIsSet"];
+    
+    if (!appIDIsSet) {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"appIDIsSet"];
+        [[NSUserDefaults standardUserDefaults] setObject:[[NSUUID UUID] UUIDString] forKey:@"appID"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
 }
 
 - (void)startTracking
@@ -207,8 +216,8 @@
                                  @"date": date,
                                  @"locationmethod": @"n/a",
                                  @"distance": distance,
-                                 @"username": @"iosUser137",
-                                 @"phonenumber": @"iosUser137",
+                                 @"username": @"iosUser01",
+                                 @"phonenumber": [[NSUserDefaults standardUserDefaults] stringForKey:@"appID"],
                                  @"sessionid": sessionID,
                                  @"extrainfo": extraInfo,
                                  @"accuracy": accuracy,

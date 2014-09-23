@@ -42,7 +42,6 @@
 		8884705F1874EB9400867228 /* WSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WSViewController.h; sourceTree = "<group>"; };
 		888470601874EB9400867228 /* WSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WSViewController.m; sourceTree = "<group>"; };
 		888470621874EB9400867228 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		888470691874EB9400867228 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		8884707F1875826600867228 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		BE3B3497D30F48C2ADC3BCE7 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -88,7 +87,6 @@
 				8884704A1874EB9400867228 /* Foundation.framework */,
 				8884704C1874EB9400867228 /* CoreGraphics.framework */,
 				8884704E1874EB9400867228 /* UIKit.framework */,
-				888470691874EB9400867228 /* XCTest.framework */,
 				6C8880B2EE17432CA6FDD050 /* libPods.a */,
 			);
 			name = Frameworks;

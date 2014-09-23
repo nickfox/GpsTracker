@@ -40,15 +40,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: com.websmithing.gpstracker" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fe415d5-9929-47d9-9a7a-de7d3ea04176" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/model_data.bin" afterPath="$PROJECT_DIR$/build/intermediates/model_data.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/websmithing/gpstracker/GpsTrackerActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/websmithing/gpstracker/GpsTrackerActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/websmithing/gpstracker/LocationService.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/websmithing/gpstracker/LocationService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ios/GpsTracker/WSViewController.m" afterPath="$PROJECT_DIR$/../ios/GpsTracker/WSViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="9fe415d5-9929-47d9-9a7a-de7d3ea04176" name="Default" comment="" />
     <ignored path="GpsTracker.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -110,11 +102,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="GpsTrackerActivity.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="GpsTrackerActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/websmithing/gpstracker/GpsTrackerActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="4046">
-              <caret line="63" column="69" selection-start-line="63" selection-start-column="69" selection-end-line="63" selection-end-column="69" />
+            <state vertical-scroll-proportion="0.6764706" vertical-offset="323" max-vertical-offset="4046">
+              <caret line="62" column="50" selection-start-line="62" selection-start-column="31" selection-end-line="62" selection-end-column="50" />
               <folding>
                 <element signature="e#2657#2890#0" expanded="true" />
                 <element signature="e#2871#2872#0" expanded="true" />
@@ -123,10 +115,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LocationService.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="LocationService.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/websmithing/gpstracker/LocationService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5882353" vertical-offset="1462" max-vertical-offset="3281">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1462" max-vertical-offset="3281">
               <caret line="129" column="0" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
               <folding>
                 <element signature="e#1640#1682#0" expanded="true" />
@@ -951,8 +943,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1680" />
-    <option name="y" value="22" />
+    <option name="x" value="55" />
+    <option name="y" value="183" />
     <option name="width" value="1671" />
     <option name="height" value="1009" />
   </component>
@@ -1422,7 +1414,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1680" y="22" width="1671" height="1009" extended-state="0" />
+    <frame x="55" y="183" width="1671" height="1009" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1920,17 +1912,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/websmithing/gpstracker/GpsTrackerActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="4046">
-          <caret line="63" column="69" selection-start-line="63" selection-start-column="69" selection-end-line="63" selection-end-column="69" />
-          <folding>
-            <element signature="e#2657#2890#0" expanded="true" />
-            <element signature="e#2871#2872#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.23011844" vertical-offset="0" max-vertical-offset="591">
@@ -1941,10 +1922,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/websmithing/gpstracker/LocationService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5882353" vertical-offset="1462" max-vertical-offset="3281">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1462" max-vertical-offset="3281">
           <caret line="129" column="0" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
           <folding>
             <element signature="e#1640#1682#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/websmithing/gpstracker/GpsTrackerActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6764706" vertical-offset="323" max-vertical-offset="4046">
+          <caret line="62" column="50" selection-start-line="62" selection-start-column="31" selection-end-line="62" selection-end-column="50" />
+          <folding>
+            <element signature="e#2657#2890#0" expanded="true" />
+            <element signature="e#2871#2872#0" expanded="true" />
           </folding>
         </state>
       </provider>
