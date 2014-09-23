@@ -122,7 +122,7 @@ public class LocationService extends Service implements
         }
 
         requestParams.put("username", sharedPreferences.getString("userName", ""));
-        requestParams.put("phonenumber", "867-5309"); // not being used but is fully functional
+        requestParams.put("phonenumber", sharedPreferences.getString("appID", "")); // uuid
         requestParams.put("sessionid", sharedPreferences.getString("sessionID", "")); // uuid
 
         Double accuracyInFeet = location.getAccuracy()* 3.28;

@@ -30,17 +30,21 @@
     NSDate *lastWebsiteUpdateTime;
     int timeIntervalInSeconds;
     bool increasedAccuracy;
+    NSString *defaultUploadWebsite;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
+    // use the websmithing defaultUploadWebsite for testing, change the userName parameter to something you
+	// know and then check your location with your browser here: https://www.websmithing.com/gpstracker/displaymap.php
+	
+    defaultUploadWebsite = @"https://www.websmithing.com/gpstracker/updatelocation.php";
+    self.uploadWebsiteTextField.text = defaultUploadWebsite;
+    
     [self.trackingButton setButtonColor:@"#ff0033" andHighLightColor:@"#ff7691" andTextColor:@"#FFFFFF" andHighlightTextColor:@"#333333"];
-    
-    // here is the red color, #ff0033 and its highlight, #ff7691
-    // here is the green color, #33ffcc and it's highlight, #a9ffe9
-    
+
     currentlyTracking = NO;
     timeIntervalInSeconds = 60; // change this to the time interval you want
 }
@@ -52,7 +56,7 @@
     locationManager = [[CLLocationManager alloc] init];
     locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
     locationManager.distanceFilter = 0; // meters
-    //locationManager.pausesLocationUpdatesAutomatically = NO; // YES is default
+    locationManager.pausesLocationUpdatesAutomatically = NO; // YES is default
     locationManager.activityType = CLActivityTypeAutomotiveNavigation;
     locationManager.delegate = self;
     
@@ -65,6 +69,9 @@
     [locationManager startUpdatingLocation];
 }
 
+
+
+
 - (void)stopTracking
 {
     NSLog(@"stop tracking");
@@ -73,10 +80,27 @@
     locationManager = nil;
 }
 
+- (void)checkTextFields {
+    NSLog(@"check Text Fields");
+    
+    NSString *uploadWebsite = [self.uploadWebsiteTextField.text stringByTrimmingCharactersInSet:
+                               [NSCharacterSet whitespaceCharacterSet]];
+    
+    NSString *userName = [self.userNameTextField.text stringByTrimmingCharactersInSet:
+                               [NSCharacterSet whitespaceCharacterSet]];
+    
+    if (uploadWebsite.length == 0 || userName.length == 0) {
+        NSLog(@"make your user name longer.");
+    } else {
+        NSLog(@"it's ok.");
+    }
+    
+}
+
 - (IBAction)handleTrackingButton:(id)sender
 {
     if (currentlyTracking) {
-        //[self stopTracking];
+        [self stopTracking];
         currentlyTracking = NO;
  
         // set to RED
@@ -88,16 +112,14 @@
         
         [self.trackingButton setTitle:@"Tracking is Off" forState:UIControlStateNormal];
     } else {
-        //[self startTracking];
+        [self startTracking];
         currentlyTracking = YES;
+        
+        [self checkTextFields];
         
         // set to GREEN
         [self.trackingButton setButtonColor:@"#33ffcc" andHighLightColor:@"#a9ffe9" andTextColor:@"#000000" andHighlightTextColor:@"#999999"];
         [self.trackingButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        
-        // here is the red color, #ff0033 and its highlight, #ff7691
-        // here is the green color, #33ffcc and it's highlight, #a9ffe9
-        
         [self.trackingButton setTitle:@"Tracking is On" forState:UIControlStateNormal];
     }
 }
@@ -126,7 +148,7 @@
     NSTimeInterval secondsSinceLastWebsiteUpdate = fabs([lastWebsiteUpdateTime timeIntervalSinceNow]);
     if (firstTimeGettingPosition || (secondsSinceLastWebsiteUpdate > timeIntervalInSeconds)) { // currently one minute
         
-        if (location.horizontalAccuracy < 100.0 && location.coordinate.latitude != 0 && location.coordinate.longitude != 0) {
+        if (location.horizontalAccuracy < 500.0 && location.coordinate.latitude != 0 && location.coordinate.longitude != 0) {
             
             if (increasedAccuracy) {
                 [self reduceTrackingAccuracy];
@@ -174,10 +196,7 @@
 
 - (void)updateWebsiteWithLatitde:(NSString *)latitude longitude:(NSString *)longitude speed:(NSString *)speed date:(NSString *)date distance:(NSString *)distance sessionID:(NSString *)sessionID accuracy:(NSString *)accuracy extraInfo:(NSString *)extraInfo direction:(NSString *)direction
 {
-	// use the websmithing defaultUploadWebsite for testing, change the *phoneNumber* form variable to something you
-	// know and then check your location with your browser here: https://www.websmithing.com/gpstracker/displaymap.php
-	
-    NSString *defaultUploadWebsite = @"https://www.websmithing.com/gpstracker/updatelocation.php";
+
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
@@ -188,7 +207,8 @@
                                  @"date": date,
                                  @"locationmethod": @"n/a",
                                  @"distance": distance,
-                                 @"phonenumber": @"iosUser",
+                                 @"username": @"iosUser137",
+                                 @"phonenumber": @"iosUser137",
                                  @"sessionid": sessionID,
                                  @"extrainfo": extraInfo,
                                  @"accuracy": accuracy,

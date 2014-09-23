@@ -8,8 +8,8 @@ android {
         applicationId "com.websmithing.gpstracker"
         minSdkVersion 10
         targetSdkVersion 20
-        versionCode 9
-        versionName "3.2.9"
+        versionCode 10
+        versionName "3.3.0"
     }
     buildTypes {
         release {

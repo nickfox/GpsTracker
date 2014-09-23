@@ -57,6 +57,15 @@ public class GpsTrackerActivity extends ActionBarActivity {
         SharedPreferences sharedPreferences = this.getSharedPreferences("com.websmithing.gpstracker.prefs", Context.MODE_PRIVATE);
         currentlyTracking = sharedPreferences.getBoolean("currentlyTracking", false);
 
+        boolean firstTimeLoadindApp = sharedPreferences.getBoolean("firstTimeLoadindApp", true);
+        if (firstTimeLoadindApp) {
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean("firstTimeLoadindApp", false);
+            editor.putString("appID",  UUID.randomUUID().toString());
+            editor.apply();
+        }
+
+
         intervalRadioGroup.setOnCheckedChangeListener(
                 new RadioGroup.OnCheckedChangeListener() {
                     @Override
