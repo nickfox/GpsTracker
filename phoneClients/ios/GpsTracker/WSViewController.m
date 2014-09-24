@@ -50,7 +50,6 @@
     
     
     BOOL appIDIsSet = [[NSUserDefaults standardUserDefaults] boolForKey:@"appIDIsSet"];
-    
     if (!appIDIsSet) {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"appIDIsSet"];
         [[NSUserDefaults standardUserDefaults] setObject:[[NSUUID UUID] UUIDString] forKey:@"appID"];

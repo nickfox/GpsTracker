@@ -56,7 +56,7 @@ public class LocationService extends Service implements
             startTracking();
         }
 
-        return START_STICKY;
+        return START_NOT_STICKY;
     }
 
     private void startTracking() {
@@ -207,10 +207,16 @@ public class LocationService extends Service implements
     @Override
     public void onDisconnected() {
         Log.e(TAG, "onDisconnected");
+
+        stopLocationUpdates();
+        stopSelf();
     }
 
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
         Log.e(TAG, "onConnectionFailed");
+
+        stopLocationUpdates();
+        stopSelf();
     }
 }
