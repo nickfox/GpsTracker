@@ -1,27 +1,9 @@
-![gpstracker](https://raw2.github.com/nickfox/GpsTracker/master/gpstracker_small.png)Gps Tracker v3.2.4
+![gpstracker](https://raw2.github.com/nickfox/GpsTracker/master/gpstracker_small.png)Gps Tracker v4.0.0
 -------------
-
-**Just a quick note, Aug 26, 2014**
-
-There is a responsive front-end using bootstrap in the bootstrap branch. This will be brought into the master branch as soon as I am done making it. You are free to use it now. I am using it on websmithing.com as my test pages and they are working fine.
-
-The dark theme is displaymap.php and the light theme is displaymap-light.php. 
-
-*************
-
 
 ##### Google Map Gps Cell Phone Tracker
 
-
-**Just a quick note, Aug 26, 2014**
-
-There is a responsive front-end using bootstrap in the bootstrap branch. This will be brought into the master branch as soon as I am done making it. You are free to use it now. I am using it on websmithing.com as my test pages and they are working fine.
-
-The dark theme is displaymap.php and the light theme is displaymap-light.php.
-
-*************
-
-This project allows you to track cell phones periodically. For instance every minute or every five minutes. You can watch the cell phone being tracked in real time using google maps and you can store and reload routes easily.
+This project allows you to track cell phones periodically. For instance every minute or every five minutes. You can watch the cell phone being tracked in real time using google maps and you can store and reload routes easily. The map display page is built using bootstrap which makes the page responsive and also uses bootswatch which gives you the choice of 17 differeent themes. There are 4 clients, ios, android, windows phone and java me. 
 
 You have the choice of two server stacks. Either using asp.net and sql server or using php and mysql. Both are now in the same download but you only need to use one.
 
@@ -36,6 +18,12 @@ https://www.websmithing.com/2014/01/20/quick-start-guide-for-gpstracker-3/
 *************
 
 #### Changelog
+
+*************
+
+Sep 25, 2014 - v4.0.0
+
+Gps Tracker now has a responsive design using bootstrap. The phone clients are now using GET request again to make troubleshooting easier.
 
 *************
 

@@ -1,12 +1,8 @@
-PLEASE NOTE - THIS APP IS CURRENTLY BEING REWRITTEN, IT IS NOT FULLY FUNCTIONAL, June 25, 2014.
+PLEASE NOTE - THIS APP IS CURRENTLY BEING REWRITTEN.
 
-Please download the latest release of GpsTracker for a fully functional version.
+It is functional but only the start tracking button is working. The values for default upload website and username must be hardcoded in WSViewController.m.
 
-https://github.com/nickfox/GpsTracker/releases
-
-I am currently updating the UI and it should be done within a couple of days.
-
-this is the ios client for gpstracker. Remember that you need to open this project with GpsTracker.xcworkspace since you are using AFNetworking cocoapods.
+Remember that you need to open this project with GpsTracker.xcworkspace since you are using AFNetworking cocoapods.
 
 use the websmithing defaultUploadWebsite:
 
