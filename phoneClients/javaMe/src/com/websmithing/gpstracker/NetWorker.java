@@ -28,7 +28,7 @@ public class NetWorker {
 
         try{
             httpConnection = (HttpConnection)Connector.open(uploadWebsite);
-            httpConnection.setRequestMethod(HttpConnection.POST);
+            httpConnection.setRequestMethod(HttpConnection.GET);
             httpConnection.setRequestProperty("User-Agent", "Profile/MIDP-1.0 Configuration/CLDC-1.0");
             httpConnection.setRequestProperty("Content-Language", "en-US");
             httpConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
