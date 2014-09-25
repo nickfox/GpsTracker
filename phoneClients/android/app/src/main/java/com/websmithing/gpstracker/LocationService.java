@@ -167,7 +167,7 @@ public class LocationService extends Service implements
         if (location != null) {
             Log.e(TAG, "position: " + location.getLatitude() + ", " + location.getLongitude() + " accuracy: " + location.getAccuracy());
 
-            // we have our desired accuracy of 100 meters so lets quit this service,
+            // we have our desired accuracy of 500 meters so lets quit this service,
             // onDestroy will be called and stop our location uodates
             if (location.getAccuracy() < 500.0f) {
                 stopLocationUpdates();
@@ -195,7 +195,7 @@ public class LocationService extends Service implements
         locationRequest = LocationRequest.create();
         locationRequest.setInterval(1000); // milliseconds
         locationRequest.setFastestInterval(1000); // the fastest rate in milliseconds at which your app can handle location updates
-        locationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
+        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 
         locationClient.requestLocationUpdates(locationRequest, this);
     }
