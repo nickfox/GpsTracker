@@ -32,13 +32,16 @@ Sep 25, 2014 - v4.0.0
 Gps Tracker now has a responsive design using bootstrap. The phone clients are now using GET request again to make troubleshooting easier. Here are 3 out of the available 17 themes.
 
 the light one:
-![gpstrackerandroid](https://www.websmithing.com/images/gpstracker-light.png)
+
+![gpstrackerandroid](https://www.websmithing.com/images/gpstracker-light.jpg)
 
 the dark one:
-![gpstrackerandroid](https://www.websmithing.com/images/gpstracker-dark.png)
+
+![gpstrackerandroid](https://www.websmithing.com/images/gpstracker-dark.jpg)
 
 the cool blue one:
-![gpstrackerandroid](https://www.websmithing.com/images/gpstracker-blue.png)
+
+![gpstrackerandroid](https://www.websmithing.com/images/gpstracker-blue.jpg)
 
 *************
 
