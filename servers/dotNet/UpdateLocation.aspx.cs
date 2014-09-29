@@ -53,8 +53,13 @@ public partial class UpdateLocation : System.Web.UI.Page {
         string distance = Request.QueryString["distance"];
         string date = Server.UrlDecode(Request.QueryString["date"]);
 
-        // convert to DateTime format
-        date = convertFromMySqlDate(date);
+        DateTime tempDateTime;
+        bool result3 = DateTime.TryParse(date, out tempDateTime);
+        if (!result3)
+        {
+            tempDateTime = DateTime.Now;
+        }
+
         string locationMethod = Server.UrlDecode(Request.QueryString["locationmethod"]);
         string phoneNumber = Request.QueryString["phonenumber"];
         string accuracy = Request.QueryString["accuracy"];
@@ -73,7 +78,8 @@ public partial class UpdateLocation : System.Web.UI.Page {
                 new SqlParameter("@speed", speed),
                 new SqlParameter("@direction", direction),
                 new SqlParameter("@distance", distance),
-                new SqlParameter("@date", date),
+                new SqlParameter("@date", tempDateTime),
+
                 new SqlParameter("@locationMethod", locationMethod),
                 new SqlParameter("@phoneNumber", phoneNumber),
                 new SqlParameter("@userName", userName),
@@ -88,12 +94,5 @@ public partial class UpdateLocation : System.Web.UI.Page {
         }
 
         Response.Write(returnValue);
-    }
-
-    // convert to datetime string
-    private string convertFromMySqlDate(string date) {
-        DateTime dt = DateTime.ParseExact(date, "yyyy-MM-dd HH:mm:ss",
-        System.Globalization.CultureInfo.InvariantCulture);
-        return dt.ToString();
     }
 }
