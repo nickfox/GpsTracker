@@ -1,23 +1,35 @@
 <?php
     include 'dbconnect.php';
     
-    $latitude       = isset($_GET['latitude']) ? $_GET['latitude'] : '0.0';
-    $longitude      = isset($_GET['longitude']) ? $_GET['longitude'] : '0.0';
-    $speed          = isset($_GET['speed']) ? $_GET['speed'] : '0';
-    $direction      = isset($_GET['direction']) ? $_GET['direction'] : '0';
-    $distance       = isset($_GET['distance']) ? $_GET['distance'] : '0';
+    $latitude       = isset($_GET['latitude']) ? $_GET['latitude'] : 0;
+    $longitude      = isset($_GET['longitude']) ? $_GET['longitude'] : 0;
+    $speed          = isset($_GET['speed']) ? $_GET['speed'] : 0;
+    $direction      = isset($_GET['direction']) ? $_GET['direction'] : 0;
+    $distance       = isset($_GET['distance']) ? $_GET['distance'] : 0;
     $date           = isset($_GET['date']) ? $_GET['date'] : '0000-00-00 00:00:00';
     $date           = urldecode($date);
     $locationmethod = isset($_GET['locationmethod']) ? $_GET['locationmethod'] : '';
     $locationmethod = urldecode($locationmethod);
-    $username       = isset($_GET['username']) ? $_GET['username'] : '';
+    $username       = isset($_GET['username']) ? $_GET['username'] : 0;
     $phonenumber    = isset($_GET['phonenumber']) ? $_GET['phonenumber'] : '';
-    $sessionid      = isset($_GET['sessionid']) ? $_GET['sessionid'] : '0';
-    $accuracy       = isset($_GET['accuracy']) ? $_GET['accuracy'] : '0';
+    $sessionid      = isset($_GET['sessionid']) ? $_GET['sessionid'] : 0;
+    $accuracy       = isset($_GET['accuracy']) ? $_GET['accuracy'] : 0;
     $extrainfo      = isset($_GET['extrainfo']) ? $_GET['extrainfo'] : '';
     $eventtype      = isset($_GET['eventtype']) ? $_GET['eventtype'] : '';
+    
+    // doing some validation here
+    if ($latitude == 0 && $longitude == 0) {
+        exit('-1');
+    }
 
-    // from the phone
+    if ($sessionid == 0) {
+        exit('-2');
+    }
+    
+    if ($username == 0) {
+        exit('-3');   
+    }
+
     $params = array(':latitude'        => $latitude,
                     ':longitude'       => $longitude,
                     ':speed'           => $speed,
