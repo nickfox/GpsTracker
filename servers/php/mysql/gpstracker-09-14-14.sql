@@ -187,7 +187,7 @@ _longitude DECIMAL(10,7),
 _speed INT(10),
 _direction INT(10),
 _distance DECIMAL(10,1),
-_gpsTime TIMESTAMP,
+_date TIMESTAMP,
 _locationMethod VARCHAR(50),
 _userName VARCHAR(50),
 _phoneNumber VARCHAR(50),
@@ -198,7 +198,7 @@ _eventType VARCHAR(50)
 )
 BEGIN
    INSERT INTO gpslocations (latitude, longitude, speed, direction, distance, gpsTime, locationMethod, userName, phoneNumber,  sessionID, accuracy, extraInfo, eventType)
-   VALUES (_latitude, _longitude, _speed, _direction, _distance, _gpsTime, _locationMethod, _userName, _phoneNumber, _sessionID, _accuracy, _extraInfo, _eventType);
+   VALUES (_latitude, _longitude, _speed, _direction, _distance, _date, _locationMethod, _userName, _phoneNumber, _sessionID, _accuracy, _extraInfo, _eventType);
    SELECT NOW();
 END ;;
 DELIMITER ;
