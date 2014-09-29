@@ -1,4 +1,3 @@
-
 using System;
 using System.IO;
 using System.Net;
@@ -13,6 +12,42 @@ public partial class UpdateLocation : System.Web.UI.Page {
 
         string latitude = Request.QueryString["latitude"];
         string longitude = Request.QueryString["longitude"];
+        string sessionID = Request.QueryString["sessionid"];
+        string userName = Request.QueryString["username"];
+
+        Decimal latDecimal;
+        bool result = Decimal.TryParse(latitude, out latDecimal);
+        if (!result)
+        {
+            latDecimal = 0.0M;
+        }
+
+        // do a little validation
+        Decimal lngDecimal;
+        bool result2 = Decimal.TryParse(longitude, out lngDecimal);
+        if (!result2)
+        {
+            lngDecimal = 0.0M;
+        }
+
+        if (latDecimal == 0.0M && lngDecimal == 0.0M)
+        {
+            Response.Write("-1");
+            return;
+        }
+
+        if (sessionID.Trim().Length == 0)
+        {
+            Response.Write("-2");
+            return;
+        }
+
+        if (userName.Trim().Length == 0)
+        {
+            Response.Write("-3");
+            return;
+        }
+
         string speed = Request.QueryString["speed"];
         string direction = Request.QueryString["direction"];
         string distance = Request.QueryString["distance"];
@@ -20,11 +55,8 @@ public partial class UpdateLocation : System.Web.UI.Page {
 
         // convert to DateTime format
         date = convertFromMySqlDate(date);
-
         string locationMethod = Server.UrlDecode(Request.QueryString["locationmethod"]);
         string phoneNumber = Request.QueryString["phonenumber"];
-        string userName = Request.QueryString["username"];
-        string sessionID = Request.QueryString["sessionid"];
         string accuracy = Request.QueryString["accuracy"];
         string eventType = Request.QueryString["eventtype"];
         string extraInfo = Request.QueryString["extrainfo"];
@@ -36,8 +68,8 @@ public partial class UpdateLocation : System.Web.UI.Page {
 
             // update the database with our GPS data from the phone
             returnValue = dbw.updateDB("prcSaveGPSLocation",
-                new SqlParameter("@latitude", latitude),
-                new SqlParameter("@longitude", longitude),
+                new SqlParameter("@latitude", latDecimal),
+                new SqlParameter("@longitude", lngDecimal),
                 new SqlParameter("@speed", speed),
                 new SqlParameter("@direction", direction),
                 new SqlParameter("@distance", distance),
@@ -55,7 +87,7 @@ public partial class UpdateLocation : System.Web.UI.Page {
             Response.Write(ex.Message);
         }
 
-        Response.Write(date + ": " +  returnValue);
+        Response.Write(returnValue);
     }
 
     // convert to datetime string
