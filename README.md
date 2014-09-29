@@ -1,4 +1,4 @@
-![gpstracker](https://raw2.github.com/nickfox/GpsTracker/master/gpstracker_small.png)Gps Tracker v4.0.0
+![gpstracker](https://raw2.github.com/nickfox/GpsTracker/master/gpstracker_small.png)Gps Tracker v4.0.1
 -------------
 
 ##### Google Map Gps Cell Phone Tracker
@@ -18,6 +18,12 @@ https://www.websmithing.com/2014/01/20/quick-start-guide-for-gpstracker-3/
 *************
 
 #### Changelog
+
+*************
+
+Sep 29, 2014 - v4.0.1
+
+Added some validation to updatelocation page.
 
 *************
 
