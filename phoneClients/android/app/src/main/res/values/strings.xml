@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Gps Tracker</string>
-    <string name="default_upload_website">http://192.168.1.8/gpstracker/updatelocation.aspx</string>
+    <string name="default_upload_website">https://www.websmithing.com/gpstracker/updatelocation.php</string>
     <string name="tracking_is_off">Tracking is Off</string>
     <string name="tracking_is_on">Tracking is On</string>
     <string name="user_needs_to_restart_tracking">Please restart tracking to change the time interval.</string>
