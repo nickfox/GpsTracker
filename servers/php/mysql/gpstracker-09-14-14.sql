@@ -25,8 +25,8 @@ DROP TABLE IF EXISTS `gpslocations`;
 CREATE TABLE `gpslocations` (
   `GPSLocationID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `lastUpdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `latitude` decimal(10,6) NOT NULL DEFAULT '0.000000',
-  `longitude` decimal(10,6) NOT NULL DEFAULT '0.000000',
+  `latitude` decimal(10,7) NOT NULL DEFAULT '0.0000000',
+  `longitude` decimal(10,7) NOT NULL DEFAULT '0.0000000',
   `phoneNumber` varchar(50) NOT NULL DEFAULT '',
   `userName` varchar(50) NOT NULL DEFAULT '',
   `sessionID` varchar(50) NOT NULL DEFAULT '',
@@ -182,24 +182,24 @@ DELIMITER ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `prcSaveGPSLocation`(
-_lat VARCHAR(15),
-_lng VARCHAR(15),
-_mph VARCHAR(15),
-_direction VARCHAR(15),
-_distance VARCHAR(15),
-_date VARCHAR(50),
-_locationMethod VARCHAR(100),
+_latitude DECIMAL(10,7),
+_longitude DECIMAL(10,7),
+_speed INT(10),
+_direction INT(10),
+_distance DECIMAL(10,1),
+_gpsTime TIMESTAMP,
+_locationMethod VARCHAR(50),
 _userName VARCHAR(50),
 _phoneNumber VARCHAR(50),
 _sessionID VARCHAR(50),
-_accuracy VARCHAR(15),
+_accuracy INT(10),
 _extraInfo VARCHAR(255),
 _eventType VARCHAR(50)
 )
 BEGIN
-  INSERT INTO gpslocations (latitude, longitude, speed, direction, distance, gpsTime, locationMethod, userName, phoneNumber,  sessionID, accuracy, extraInfo, eventType)
-  VALUES (_lat, _lng, _mph, _direction, _distance, _date, _locationMethod, _userName, _phoneNumber, _sessionID, _accuracy, _extraInfo, _eventType);
-  SELECT NOW();
+   INSERT INTO gpslocations (latitude, longitude, speed, direction, distance, gpsTime, locationMethod, userName, phoneNumber,  sessionID, accuracy, extraInfo, eventType)
+   VALUES (_latitude, _longitude, _speed, _direction, _distance, _gpsTime, _locationMethod, _userName, _phoneNumber, _sessionID, _accuracy, _extraInfo, _eventType);
+   SELECT NOW();
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
