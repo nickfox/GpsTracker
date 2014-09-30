@@ -22,14 +22,6 @@
         exit('-1');
     }
 
-    if ($sessionid == 0) {
-        exit('-2');
-    }
-    
-    if ($username == 0) {
-        exit('-3');   
-    }
-
     $params = array(':latitude'        => $latitude,
                     ':longitude'       => $longitude,
                     ':speed'           => $speed,
