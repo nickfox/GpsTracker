@@ -1,15 +1,8 @@
-PLEASE NOTE - THIS APP IS CURRENTLY BEING REWRITTEN.
+This is the ios client for gpstracker. Remember that you need to open this project with GpsTracker.xcworkspace since you are using AFNetworking cocoapods. Don't forget to install your pod before using this.
 
-It is functional but only the start tracking button is working. The values for default upload website and username must be hardcoded in WSViewController.m.
 
-Remember that you need to open this project with GpsTracker.xcworkspace since you are using AFNetworking cocoapods.
+In order to use this, you need to change the username on line 197 of WSViewController.m. Then test the app on the websmithing website:
 
-use the websmithing defaultUploadWebsite:
-
-https://www.websmithing.com/gpstracker/updatelocation.php
-
-for testing 
-
-change the *phoneNumber* form variable to something you know and then check your location with your browser here: 
- 
 https://www.websmithing.com/gpstracker/displaymap.php
+
+Once you have tested the app on websmithing, you need to update your own website by changing line 186, defaultUploadWebsite to your own website. Don't forget to change from http to https if you are not using ssl.
