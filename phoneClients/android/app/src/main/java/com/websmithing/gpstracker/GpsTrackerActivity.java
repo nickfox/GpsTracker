@@ -253,7 +253,7 @@ public class GpsTrackerActivity extends ActionBarActivity {
     @Override
     public void onResume() {
         Log.d(TAG, "onResume");
-        super.onResume();  // Always call the superclass method first
+        super.onResume(); 
 
         displayUserSettings();
         setTrackingButtonState();
@@ -261,7 +261,6 @@ public class GpsTrackerActivity extends ActionBarActivity {
 
     @Override
     protected void onStop() {
-        Log.d(TAG, "onStop");
         super.onStop();
     }
 }
