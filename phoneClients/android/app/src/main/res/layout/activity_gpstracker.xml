@@ -83,6 +83,7 @@
         android:background="@drawable/red_tracking_button"
         android:text="@string/tracking_is_off"
         android:id="@+id/trackingButton"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:height="50dip" />
     </LinearLayout>
 </RelativeLayout>
