@@ -1,4 +1,4 @@
-![gpstracker](https://raw2.github.com/nickfox/GpsTracker/master/gpstracker_small.png)Gps Tracker v4.0.1
+![gpstracker](https://raw.githubusercontent.com/nickfox/GpsTracker/master/gpstracker_small.png)Gps Tracker v4.0.1
 -------------
 
 ##### Google Map Gps Cell Phone Tracker
