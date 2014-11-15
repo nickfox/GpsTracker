@@ -1,4 +1,4 @@
-![gpstracker](https://raw.githubusercontent.com/nickfox/GpsTracker/master/gpstracker_small.png)Gps Tracker v4.0.1
+![gpstracker](https://raw.githubusercontent.com/nickfox/GpsTracker/master/gpstracker_small.png)Gps Tracker v4.0.2
 -------------
 
 ##### Google Map Gps Cell Phone Tracker
@@ -18,6 +18,12 @@ https://www.websmithing.com/2014/01/20/quick-start-guide-for-gpstracker-3/
 *************
 
 #### Changelog
+
+*************
+
+Nov 15, 2014 - v4.0.2
+
+Fixed prcGetAllRoutesForMap, thanks Hristo
 
 *************
 
