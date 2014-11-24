@@ -354,7 +354,7 @@
 
     function turnOffAutoRefresh() {
         showMessage('Auto Refresh Off');
-        $('#autorefresh').val('Auto Refresh - Off');
+        $('#autorefresh').val('Auto Refresh Off');
     
         autoRefresh = false;
         clearInterval(intervalID);         
@@ -362,7 +362,7 @@
 
     function turnOnAutoRefresh() {
         showMessage('Auto Refresh On (1 min)'); 
-        $('#autorefresh').val('Auto Refresh - On');
+        $('#autorefresh').val('Auto Refresh On');
         autoRefresh = true;
 
         restartInterval();         
@@ -386,8 +386,8 @@
         if (hasMap()) {
 		
     		// comment out these two lines to get delete working
-    		confirm("Disabled here on test website, this works fine.");
-    		return false;
+    		// confirm("Disabled here on test website, this works fine.");
+    		// return false;
 		
             var answer = confirm("This will permanently delete this route\n from the database. Do you want to delete?");
             if (answer){
