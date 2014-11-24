@@ -13,8 +13,7 @@
     <script src="js/leaflet-0.7.3/leaflet.js"></script>
     <script src="js/leaflet-plugins/google.js"></script>
     <script src="js/leaflet-plugins/bing.js"></script>
-    <link href="js/leaflet-0.7.3/leaflet.css" rel="stylesheet" type="text/css" />
-    <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> -->    
+    <link href="js/leaflet-0.7.3/leaflet.css" rel="stylesheet" type="text/css" /> 
     <!-- 
         to change themes, select a theme here:  http://www.bootstrapcdn.com/#bootswatch_tab 
         and then change the word after 3.2.0 in the following link to the new theme name
