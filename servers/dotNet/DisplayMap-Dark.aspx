@@ -19,12 +19,12 @@
         to change themes, select a theme here:  http://www.bootstrapcdn.com/#bootswatch_tab 
         and then change the word after 3.2.0 in the following link to the new theme name
     -->    
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/darkly/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.0/darkly/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
             
 </head>
 <body>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-sm-4" id="toplogo">
                 <img id="halimage" src="images/gpstracker-man-blue-37.png">GpsTracker
@@ -46,7 +46,7 @@
                 <input type="button" id="delete" value="Delete" tabindex="2" class="btn btn-primary">
             </div>
             <div class="col-sm-3 autorefreshdiv">
-                <input type="button" id="autorefresh" value="Auto Refresh - Off" tabindex="3" class="btn btn-primary">
+                <input type="button" id="autorefresh" value="Auto Refresh Off" tabindex="3" class="btn btn-primary">
             </div>
             <div class="col-sm-3 refreshdiv">
                 <input type="button" id="refresh" value="Refresh" tabindex="4" class="btn btn-primary">

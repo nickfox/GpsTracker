@@ -354,7 +354,7 @@
 
     function turnOffAutoRefresh() {
         showMessage('Auto Refresh Off');
-        $('#autorefresh').val('Auto Refresh - Off');
+        $('#autorefresh').val('Auto Refresh Off');
     
         autoRefresh = false;
         clearInterval(intervalID);         
@@ -362,7 +362,7 @@
 
     function turnOnAutoRefresh() {
         showMessage('Auto Refresh On (1 min)'); 
-        $('#autorefresh').val('Auto Refresh - On');
+        $('#autorefresh').val('Auto Refresh On');
         autoRefresh = true;
 
         restartInterval();         
