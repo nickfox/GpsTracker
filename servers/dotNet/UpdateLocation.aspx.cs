@@ -11,10 +11,13 @@ public partial class UpdateLocation : System.Web.UI.Page {
         // http://localhost/gpstracker/UpdateLocation.aspx?longitude=-122.0214996&latitude=47.4758847&extrainfo=0&username=momo&distance=0.012262854&date=2014-09-16%2B17%253A49%253A57&direction=0&accuracy=65&phonenumber=867-5309&eventtype=android&sessionid=0a6dfd74-df4d-466e-b1b8-23234ef57512&speed=0&locationmethod=fused
 
         string latitude = Request.QueryString["latitude"];
+        latitude = latitude.Replace(",", "."); // to handle European locale decimals
         string longitude = Request.QueryString["longitude"];
+        longitude = longitude.Replace(",", ".");
         string sessionID = Request.QueryString["sessionid"];
         string userName = Request.QueryString["username"];
 
+        // do a little validation
         Decimal latDecimal;
         bool result = Decimal.TryParse(latitude, out latDecimal);
         if (!result)
@@ -22,7 +25,6 @@ public partial class UpdateLocation : System.Web.UI.Page {
             latDecimal = 0.0M;
         }
 
-        // do a little validation
         Decimal lngDecimal;
         bool result2 = Decimal.TryParse(longitude, out lngDecimal);
         if (!result2)
@@ -50,6 +52,15 @@ public partial class UpdateLocation : System.Web.UI.Page {
 
         string speed = Request.QueryString["speed"];
         string direction = Request.QueryString["direction"];
+        direction = direction.Replace(",", ".");
+
+        Decimal directionDecimal;
+        bool result4 = Decimal.TryParse(latitude, out directionDecimal);
+        if (!result4)
+        {
+            directionDecimal = 0.0M;
+        }
+
         string distance = Request.QueryString["distance"];
         string date = Server.UrlDecode(Request.QueryString["date"]);
 
@@ -76,7 +87,7 @@ public partial class UpdateLocation : System.Web.UI.Page {
                 new SqlParameter("@latitude", latDecimal),
                 new SqlParameter("@longitude", lngDecimal),
                 new SqlParameter("@speed", speed),
-                new SqlParameter("@direction", direction),
+                new SqlParameter("@direction", directionDecimal),
                 new SqlParameter("@distance", distance),
                 new SqlParameter("@date", tempDateTime),
 
