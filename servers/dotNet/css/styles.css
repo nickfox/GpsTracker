@@ -3,7 +3,7 @@
 }
 .container-fluid {
     border: 1px solid #aaa;
-    margin-top: 10px;
+    margin: 10px;
 }
 .routeSelectDark {
    background-color: #ccc;
