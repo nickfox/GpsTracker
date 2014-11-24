@@ -5,7 +5,7 @@ https://github.com/robertharm/leaflet-plugins
 License in same folder as this file
 */
 
-var adsense_status = 'enabled';
+var adsense_status = 'disabled';
 
 L.Google = L.Class.extend( {
 	includes: L.Mixin.Events,
