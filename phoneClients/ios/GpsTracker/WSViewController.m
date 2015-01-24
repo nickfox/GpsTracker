@@ -39,6 +39,11 @@
     currentlyTracking = NO;
     timeIntervalInSeconds = 60; // change this to the time interval you want
     
+    if ([locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
+        [self requestAlwaysAuthorization];
+    }
+    
+    
     BOOL appIDIsSet = [[NSUserDefaults standardUserDefaults] boolForKey:@"appIDIsSet"];
     if (!appIDIsSet) {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"appIDIsSet"];
@@ -216,5 +221,31 @@
 {
     [super didReceiveMemoryWarning];
 }
+
+
+- (void)requestAlwaysAuthorization
+{
+    CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
+    
+    // If the status is denied or only granted for when in use, display an alert
+    if (status == kCLAuthorizationStatusAuthorizedWhenInUse || status == kCLAuthorizationStatusDenied) {
+        NSString *title;
+        title = (status == kCLAuthorizationStatusDenied) ? @"Location services are off" : @"Background location is not enabled";
+        NSString *message = @"To use background location you must turn on 'Always' in the Location Services Settings";
+        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title
+                                                            message:message
+                                                           delegate:self
+                                                  cancelButtonTitle:@"Cancel"
+                                                  otherButtonTitles:@"Settings", nil];
+        [alertView show];
+    }
+    // The user has not enabled any location services. Request background authorization.
+    else if (status == kCLAuthorizationStatusNotDetermined) {
+        [locationManager requestAlwaysAuthorization];
+    }
+}
+
+
 
 @end
