@@ -2,17 +2,17 @@
 <pre-dex-items>
 
     <item
-        dex="/Users/nickfox/Documents/GpsTracker/phoneClients/android/app/build/intermediates/pre-dexed/debug/support-annotations-20.0.0-bca9cd8c8082330ef7549e0398af852faae531fd.jar"
-        jar="/Applications/Android Studio.app/sdk/extras/android/m2repository/com/android/support/support-annotations/20.0.0/support-annotations-20.0.0.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="9d9013e9ff35fc3756411e62873c363c70c638fa"/>
-    <item
         dex="/Users/nickfox/Documents/GpsTracker/phoneClients/android/app/build/intermediates/pre-dexed/debug/classes-2992ab2d49d77d0e7128006f2c19df0eb378e94d.jar"
         jar="/Users/nickfox/Documents/GpsTracker/phoneClients/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/20.0.0/classes.jar"
         jumboMode="false"
         revision="20.0.0"
         sha1="f21927d22fe31889ecce94dd697a2e75b137e0ef"/>
+    <item
+        dex="/Users/nickfox/Documents/GpsTracker/phoneClients/android/app/build/intermediates/pre-dexed/debug/support-annotations-20.0.0-1b22c473daca5f12bb12a5c9e0531cfb8f8288fc.jar"
+        jar="/Users/nickfox/Downloads/android-sdk/extras/android/m2repository/com/android/support/support-annotations/20.0.0/support-annotations-20.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="9d9013e9ff35fc3756411e62873c363c70c638fa"/>
     <item
         dex="/Users/nickfox/Documents/GpsTracker/phoneClients/android/app/build/intermediates/pre-dexed/debug/internal_impl-20.0.0-ca3881bd02c084775cb2d45f06dffa0e20555b28.jar"
         jar="/Users/nickfox/Documents/GpsTracker/phoneClients/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/libs/internal_impl-20.0.0.jar"

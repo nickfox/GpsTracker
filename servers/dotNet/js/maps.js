@@ -4,7 +4,7 @@
     var map = document.getElementById('map-canvas');
     var autoRefresh = false;
     var intervalID = 0;
-    var sessionIDArray;
+    var sessionIDArray = [];
     var viewingAllRoutes = false;
         
     getAllRoutesForMap();
