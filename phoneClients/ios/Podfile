@@ -1,2 +1,3 @@
+source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '7.0'
-pod "AFNetworking/NSURLConnection", "~> 2.4"
+pod 'AFNetworking', '~> 2.5'
