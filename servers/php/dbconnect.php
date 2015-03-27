@@ -1,7 +1,7 @@
 <?php
 
-$dbuser = 'gpstracker_user';
-$dbpass = 'gpstracker';
+$dbuser = 'gpstraker_user';
+$dbpass = 'ofi';
 $params = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, 
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC);
 
