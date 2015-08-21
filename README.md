@@ -6,9 +6,11 @@
 This project allows you to track cell phones periodically. For instance every minute or every five minutes. You can watch the cell phone being tracked in real time using Google Maps and you can store and reload routes easily. The map display page is built using bootstrap which makes the page responsive and also uses bootswatch which gives you the choice of 17 different themes. There are 4 clients, iOS, Android, Windows Phone and Java ME. 
 
 You have the choice of two server stacks. Either using:
+
 1.  ASP.NET with SQL Server
 
    or
+
 2.  using PHP with your choice of:
   * MySQL
   * PostgreSQL
