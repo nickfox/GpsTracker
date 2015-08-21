@@ -9,7 +9,7 @@
     $direction      = isset($_GET['direction']) ? $_GET['direction'] : 0;
     $distance       = isset($_GET['distance']) ? $_GET['distance'] : '0';
     $distance       = (float)str_replace(",", ".", $distance);
-    $date           = isset($_GET['date']) ? $_GET['date'] : '0000-00-00 00:00:00';
+    $date           = isset($_GET['date']) ? $_GET['date'] : '0001-01-01 00:00:00';
     $date           = urldecode($date);
     $locationmethod = isset($_GET['locationmethod']) ? $_GET['locationmethod'] : '';
     $locationmethod = urldecode($locationmethod);
@@ -40,7 +40,9 @@
                     ':eventtype'       => $eventtype
                 );
 
-    $stmt = $pdo->prepare('CALL prcSaveGPSLocation(
+    switch ($dbType) {
+        case DB_MYSQL:
+            $stmt = $pdo->prepare( $sqlFunctionCallMethod.'prcSaveGPSLocation(
                           :latitude, 
                           :longitude, 
                           :speed, 
@@ -55,7 +57,12 @@
                           :extrainfo, 
                           :eventtype);'
                       );
-      
+            break;
+        case DB_POSTGRESQL:
+        case DB_SQLITE3:
+            $stmt = $pdo->prepare('INSERT INTO gpslocations (latitude, longitude, speed, direction, distance, gpsTime, locationMethod, userName, phoneNumber,  sessionID, accuracy, extraInfo, eventType) VALUES (:latitude, :longitude, :speed, :direction, :distance, :date, :locationmethod, :username, :phonenumber, :sessionid, :accuracy, :extrainfo, :eventtype)');
+            break;
+    }  
     $stmt->execute($params);
     $timestamp = $stmt->fetchColumn();
     echo $timestamp;    

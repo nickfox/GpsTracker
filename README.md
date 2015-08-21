@@ -1,11 +1,24 @@
 ![gpstracker](https://raw.githubusercontent.com/nickfox/GpsTracker/master/gpstracker_small.png)Gps Tracker v4.0.3
 -------------
 
-##### Google Map Gps Cell Phone Tracker
+##### Google Map Gps Cell Phone Tracker Server
 
-This project allows you to track cell phones periodically. For instance every minute or every five minutes. You can watch the cell phone being tracked in real time using google maps and you can store and reload routes easily. The map display page is built using bootstrap which makes the page responsive and also uses bootswatch which gives you the choice of 17 differeent themes. There are 4 clients, ios, android, windows phone and java me. 
+This project allows you to track cell phones periodically. For instance every minute or every five minutes. You can watch the cell phone being tracked in real time using Google Maps and you can store and reload routes easily. The map display page is built using bootstrap which makes the page responsive and also uses bootswatch which gives you the choice of 17 different themes. There are 4 clients, iOS, Android, Windows Phone and Java ME. 
 
-You have the choice of two server stacks. Either using asp.net and sql server or using php and mysql. Both are now in the same download but you only need to use one.
+You have the choice of two server stacks. Either using:
+1.  ASP.NET with SQL Server
+
+   or
+2.  using PHP with your choice of:
+  * MySQL
+  * PostgreSQL
+  * SQLite
+
+Both stacks are now in the same download but you only need to use one.
+
+By default the Tracker server is set up to use the included SQLite database.  If you want to use one of the other supported database systems, edit the dbconnect.php file included with the Tracker Server. 
+
+**Note:** This is only the server portion of the system.  You will also need a client app running on your phone.  Have a look at the Quick Start Guide in the link below for information on how to get the client apps.
 
 If you need help, please go to:
 
