@@ -8,7 +8,7 @@ This project allows you to track cell phones periodically. For instance every mi
 You have the choice of two server stacks.  You can choose one of:
 
 1.  ASP.NET with SQL Server
-2.  using PHP with your choice of:
+2.  PHP with your choice of:
   * MySQL
   * PostgreSQL
   * SQLite
