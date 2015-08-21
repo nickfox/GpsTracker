@@ -1,4 +1,4 @@
-The database file is in the sqlserver or mysql directory and this needs to be restored, please read the quick start guide to see how to do that:
+If you are planning to use the default database, SQLite, the database is ready to go and no importing or configuring is necessary. If you want to use one of the other supported databases, the database import file is in the sqlserver, mysql, or PostgreSQL directory.  This needs to be imported into your empty database.  Please read the quick start guide to see how to do that:
 
 https://www.websmithing.com/2014/01/20/quick-start-guide-for-gpstracker-3/#aspnetserver
 
