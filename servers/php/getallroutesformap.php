@@ -1,8 +1,17 @@
 <?php
 
     include 'dbconnect.php';
-    
-    $stmt = $pdo->prepare('CALL prcGetAllRoutesForMap();');
+
+    switch ($dbType) {
+        case DB_MYSQL:
+            $stmt = $pdo->prepare('CALL prcGetAllRoutesForMap();');
+            break;
+        case DB_POSTGRESQL:
+        case DB_SQLITE3:
+            $stmt = $pdo->prepare('select * from v_GetAllRoutesForMap;');
+            break;
+    }
+
     $stmt->execute();
 
     $json = '{ "locations": [';

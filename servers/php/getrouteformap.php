@@ -2,8 +2,17 @@
     include 'dbconnect.php';
     
     $sessionid   = isset($_GET['sessionid']) ? $_GET['sessionid'] : '0';
-    
-    $stmt = $pdo->prepare('CALL prcGetRouteForMap(:sessionID)');     
+
+    switch ($dbType) {
+        case DB_MYSQL:
+            $stmt = $pdo->prepare('CALL prcGetRouteForMap(:sessionID)');     
+            break;
+        case DB_POSTGRESQL:
+        case DB_SQLITE3:
+            $stmt = $pdo->prepare("select * from v_GetRouteForMap where sessionID = :sessionID");
+            break;
+    }
+
     $stmt->execute(array(':sessionID' => $sessionid));
     
     $json = '{ "locations": [';
