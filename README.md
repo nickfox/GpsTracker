@@ -15,9 +15,7 @@ You have the choice of two server stacks.  You can choose one of:
 
 Both stacks are now in the same download but you only need to use one.
 
-By default the Tracker server is set up to use the included SQLite database.  If you want to use one of the other supported database systems, edit the dbconnect.php file included with the Tracker Server. 
-
-**Note:** This is only the server portion of the system.  You will also need a client app running on your phone.  Have a look at the Quick Start Guide in the link below for information on how to get the client apps.
+By default the Tracker server is set up to use the included SQLite database.  If you want to use one of the other supported database systems, edit the dbconnect.php file. 
 
 If you need help, please go to:
 
