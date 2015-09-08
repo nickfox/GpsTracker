@@ -117,7 +117,7 @@
     NSTimeInterval secondsSinceLastWebsiteUpdate = fabs([lastWebsiteUpdateTime timeIntervalSinceNow]);
     if (firstTimeGettingPosition || (secondsSinceLastWebsiteUpdate > timeIntervalInSeconds)) { // currently one minute
         
-        if (location.horizontalAccuracy < 100.0 && location.coordinate.latitude != 0 && location.coordinate.longitude != 0) {
+        if (location.horizontalAccuracy < 500.0 && location.coordinate.latitude != 0 && location.coordinate.longitude != 0) {
             
             if (increasedAccuracy) {
                 [self reduceTrackingAccuracy];
