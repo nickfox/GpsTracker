@@ -36,6 +36,7 @@ https://www.websmithing.com/2014/01/20/quick-start-guide-for-gpstracker-3/
 Sep 8, 2015 - v4.0.4
 
 Added support for Sqlite and PostgreSQL, thanks Brent Fraser
+
 fixed prcGetAllRoutesForMap regression error 
 
 *************
