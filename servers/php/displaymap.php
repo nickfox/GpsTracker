@@ -16,7 +16,7 @@
         to change themes, select a theme here:  http://www.bootstrapcdn.com/#bootswatch_tab 
         and then change the word after 3.2.0 in the following link to the new theme name
     -->    
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.0/cerulean/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.5/cerulean/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
             
 </head>
