@@ -10,10 +10,10 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="//maps.google.com/maps/api/js?v=3&sensor=false&libraries=adsense"></script>
     <script src="js/maps.js"></script>
-    <script src="js/leaflet-0.7.3/leaflet.js"></script>
+    <script src="js/leaflet-0.7.5/leaflet.js"></script>
     <script src="js/leaflet-plugins/google.js"></script>
     <script src="js/leaflet-plugins/bing.js"></script>
-    <link href="js/leaflet-0.7.3/leaflet.css" rel="stylesheet" type="text/css" />  
+    <link href="js/leaflet-0.7.5/leaflet.css" rel="stylesheet" type="text/css" />  
     <!-- 
         to change themes, select a theme here:  http://www.bootstrapcdn.com/#bootswatch_tab 
         and then change the word after 3.2.0 in the following link to the new theme name
