@@ -10,11 +10,11 @@ import android.os.IBinder;
 import android.util.Log;
 
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesClient;
 import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.google.android.gms.location.LocationClient;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
@@ -25,9 +25,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 
+//import com.google.android.gms.common.GooglePlayServicesUtil;
+
 public class LocationService extends Service implements
-        GooglePlayServicesClient.ConnectionCallbacks,
-        GooglePlayServicesClient.OnConnectionFailedListener,
+        GoogleApiClient.ConnectionCallbacks,
+        GoogleApiClient.OnConnectionFailedListener,
         LocationListener {
 
     private static final String TAG = "LocationService";
@@ -38,7 +40,7 @@ public class LocationService extends Service implements
 
     private boolean currentlyProcessingLocation = false;
     private LocationRequest locationRequest;
-    private LocationClient locationClient;
+    private GoogleApiClient googleApiClient;
 
     @Override
     public void onCreate() {
@@ -63,10 +65,15 @@ public class LocationService extends Service implements
         Log.d(TAG, "startTracking");
 
         if (GooglePlayServicesUtil.isGooglePlayServicesAvailable(this) == ConnectionResult.SUCCESS) {
-            locationClient = new LocationClient(this,this,this);
 
-            if (!locationClient.isConnected() || !locationClient.isConnecting()) {
-                locationClient.connect();
+            googleApiClient = new GoogleApiClient.Builder(this)
+                    .addApi(LocationServices.API)
+                    .addConnectionCallbacks(this)
+                    .addOnConnectionFailedListener(this)
+                    .build();
+
+            if (!googleApiClient.isConnected() || !googleApiClient.isConnecting()) {
+                googleApiClient.connect();
             }
         } else {
             Log.e(TAG, "unable to connect to google play services.");
@@ -140,12 +147,12 @@ public class LocationService extends Service implements
 
         LoopjHttpClient.get(uploadWebsite, requestParams, new AsyncHttpResponseHandler() {
             @Override
-            public void onSuccess(int statusCode, org.apache.http.Header[] headers, byte[] responseBody) {
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody) {
                 LoopjHttpClient.debugLoopJ(TAG, "sendLocationDataToWebsite - success", uploadWebsite, requestParams, responseBody, headers, statusCode, null);
                 stopSelf();
             }
             @Override
-            public void onFailure(int statusCode, org.apache.http.Header[] headers, byte[] errorResponse, Throwable e) {
+            public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] errorResponse, Throwable e) {
                 LoopjHttpClient.debugLoopJ(TAG, "sendLocationDataToWebsite - failure", uploadWebsite, requestParams, errorResponse, headers, statusCode, e);
                 stopSelf();
             }
@@ -177,9 +184,8 @@ public class LocationService extends Service implements
     }
 
     private void stopLocationUpdates() {
-        if (locationClient != null && locationClient.isConnected()) {
-            locationClient.removeLocationUpdates(this);
-            locationClient.disconnect();
+        if (googleApiClient != null && googleApiClient.isConnected()) {
+            googleApiClient.disconnect();
         }
     }
 
@@ -197,19 +203,8 @@ public class LocationService extends Service implements
         locationRequest.setFastestInterval(1000); // the fastest rate in milliseconds at which your app can handle location updates
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 
-        locationClient.requestLocationUpdates(locationRequest, this);
-    }
-
-    /**
-     * Called by Location Services if the connection to the
-     * location client drops because of an error.
-     */
-    @Override
-    public void onDisconnected() {
-        Log.e(TAG, "onDisconnected");
-
-        stopLocationUpdates();
-        stopSelf();
+        LocationServices.FusedLocationApi.requestLocationUpdates(
+                googleApiClient, locationRequest, this);
     }
 
     @Override
@@ -218,5 +213,10 @@ public class LocationService extends Service implements
 
         stopLocationUpdates();
         stopSelf();
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+        Log.e(TAG, "GoogleApiClient connection has been suspend");
     }
 }

@@ -2,40 +2,46 @@
 <pre-dex-items>
 
     <item
-        dex="/Users/nickfox/Documents/GpsTracker/phoneClients/android/app/build/intermediates/pre-dexed/debug/classes-2992ab2d49d77d0e7128006f2c19df0eb378e94d.jar"
-        jar="/Users/nickfox/Documents/GpsTracker/phoneClients/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/20.0.0/classes.jar"
+        dex="/Users/nickfox/Documents/GpsTracker/phoneClients/android/app/build/intermediates/pre-dexed/debug/classes-bc7276e207c388c1ffc462377361848ec5fd9207.jar"
+        jar="/Users/nickfox/Documents/GpsTracker/phoneClients/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
         jumboMode="false"
-        revision="20.0.0"
-        sha1="f21927d22fe31889ecce94dd697a2e75b137e0ef"/>
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7"/>
     <item
-        dex="/Users/nickfox/Documents/GpsTracker/phoneClients/android/app/build/intermediates/pre-dexed/debug/support-annotations-20.0.0-1b22c473daca5f12bb12a5c9e0531cfb8f8288fc.jar"
-        jar="/Users/nickfox/Downloads/android-sdk/extras/android/m2repository/com/android/support/support-annotations/20.0.0/support-annotations-20.0.0.jar"
+        dex="/Users/nickfox/Documents/GpsTracker/phoneClients/android/app/build/intermediates/pre-dexed/debug/android-async-http-1.4.9-1210b179d208c510c26079fa73449404e5234ac1.jar"
+        jar="/Users/nickfox/.gradle/caches/modules-2/files-2.1/com.loopj.android/android-async-http/1.4.9/386a4339ffe52d5d63e80f9bed8d2b1d1a418249/android-async-http-1.4.9.jar"
         jumboMode="false"
-        revision="20.0.0"
-        sha1="9d9013e9ff35fc3756411e62873c363c70c638fa"/>
+        revision="21.1.2"
+        sha1="386a4339ffe52d5d63e80f9bed8d2b1d1a418249"/>
     <item
-        dex="/Users/nickfox/Documents/GpsTracker/phoneClients/android/app/build/intermediates/pre-dexed/debug/internal_impl-20.0.0-ca3881bd02c084775cb2d45f06dffa0e20555b28.jar"
-        jar="/Users/nickfox/Documents/GpsTracker/phoneClients/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/libs/internal_impl-20.0.0.jar"
+        dex="/Users/nickfox/Documents/GpsTracker/phoneClients/android/app/build/intermediates/pre-dexed/debug/httpclient-4.3.6-79a9d97f5c0edd01c4cabf7ed6658ec7e694e2a8.jar"
+        jar="/Users/nickfox/.gradle/caches/modules-2/files-2.1/cz.msebera.android/httpclient/4.3.6/526a9f794eab830eae4f23a62c572878b3f491ab/httpclient-4.3.6.jar"
         jumboMode="false"
-        revision="20.0.0"
-        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d"/>
+        revision="21.1.2"
+        sha1="526a9f794eab830eae4f23a62c572878b3f491ab"/>
     <item
-        dex="/Users/nickfox/Documents/GpsTracker/phoneClients/android/app/build/intermediates/pre-dexed/debug/android-async-http-1.4.6-89e4f8be48f84b12ba5f93bf4a2497888f47ffc5.jar"
-        jar="/Users/nickfox/.gradle/caches/modules-2/files-2.1/com.loopj.android/android-async-http/1.4.6/a845a88238be0b5be9d238652c1bc0605ef91f52/android-async-http-1.4.6.jar"
+        dex="/Users/nickfox/Documents/GpsTracker/phoneClients/android/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-7f2ff693aae0031bb67c23b9b73362cd6f285b0a.jar"
+        jar="/Users/nickfox/Documents/GpsTracker/phoneClients/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
         jumboMode="false"
-        revision="20.0.0"
-        sha1="a845a88238be0b5be9d238652c1bc0605ef91f52"/>
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03"/>
     <item
-        dex="/Users/nickfox/Documents/GpsTracker/phoneClients/android/app/build/intermediates/pre-dexed/debug/classes-6e8361d1a0ef3742303aed44c40b34741251419e.jar"
-        jar="/Users/nickfox/Documents/GpsTracker/phoneClients/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/4.3.23/classes.jar"
+        dex="/Users/nickfox/Documents/GpsTracker/phoneClients/android/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-8081d1abc51296323f5ad1f5f9eaeeed092f0e7f.jar"
+        jar="/Users/nickfox/Downloads/android-sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
         jumboMode="false"
-        revision="20.0.0"
-        sha1="7676c0cb230efa6ac41c47867d372ed5913029d4"/>
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35"/>
     <item
-        dex="/Users/nickfox/Documents/GpsTracker/phoneClients/android/app/build/intermediates/pre-dexed/debug/classes-42cd9e4e0fa94e5658b4c8e6429d4c5bbf19fe14.jar"
-        jar="/Users/nickfox/Documents/GpsTracker/phoneClients/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/classes.jar"
+        dex="/Users/nickfox/Documents/GpsTracker/phoneClients/android/app/build/intermediates/pre-dexed/debug/classes-3c24bd043118f5c2d7930559fdc532d1ab152644.jar"
+        jar="/Users/nickfox/Documents/GpsTracker/phoneClients/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
         jumboMode="false"
-        revision="20.0.0"
-        sha1="8694693636ab36910c8100ce527c258ff3ebece0"/>
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8"/>
+    <item
+        dex="/Users/nickfox/Documents/GpsTracker/phoneClients/android/app/build/intermediates/pre-dexed/debug/classes-31e3d8b67e26b111b32c205771b4c6e59f13f248.jar"
+        jar="/Users/nickfox/Documents/GpsTracker/phoneClients/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="dd9247ea0fabe8ee479638c4b4a23e93752be256"/>
 
 </pre-dex-items>
