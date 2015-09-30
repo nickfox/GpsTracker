@@ -154,7 +154,7 @@
                 {attribution:'&copy;2014 <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'});
 
                 // need to get your own bing maps key, http://www.microsoft.com/maps/create-a-bing-maps-key.aspx
-                // var bingMapsLayer = new L.BingLayer("AnH1IKGCBwAiBWfYAHMtIfIhMVybHFx2GxsReNP5W0z6P8kRa67_QwhM4PglI9yL");
+                // var bingMapsLayer = new L.BingLayer("GetAKey");
                 var googleMapsLayer = new L.Google('ROADMAP');
             
                 // this fixes the zoom buttons from freezing
