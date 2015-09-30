@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pre-dex-items>
+
+    <item
+        dex="/Users/nickfox/Documents/GpsTracker-for-WordPress/android-wp/app/build/intermediates/pre-dexed/debug/classes-a4849152f55d4f2465517b5206a8267e5175f57f.jar"
+        jar="/Users/nickfox/Documents/GpsTracker-for-WordPress/android-wp/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8"/>
+    <item
+        dex="/Users/nickfox/Documents/GpsTracker-for-WordPress/android-wp/app/build/intermediates/pre-dexed/debug/classes-a3fd1e92a9e47699f30ccab1fc8beb3e00e40245.jar"
+        jar="/Users/nickfox/Documents/GpsTracker-for-WordPress/android-wp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7"/>
+    <item
+        dex="/Users/nickfox/Documents/GpsTracker-for-WordPress/android-wp/app/build/intermediates/pre-dexed/debug/android-async-http-1.4.9-1210b179d208c510c26079fa73449404e5234ac1.jar"
+        jar="/Users/nickfox/.gradle/caches/modules-2/files-2.1/com.loopj.android/android-async-http/1.4.9/386a4339ffe52d5d63e80f9bed8d2b1d1a418249/android-async-http-1.4.9.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="386a4339ffe52d5d63e80f9bed8d2b1d1a418249"/>
+    <item
+        dex="/Users/nickfox/Documents/GpsTracker-for-WordPress/android-wp/app/build/intermediates/pre-dexed/debug/httpclient-4.3.6-79a9d97f5c0edd01c4cabf7ed6658ec7e694e2a8.jar"
+        jar="/Users/nickfox/.gradle/caches/modules-2/files-2.1/cz.msebera.android/httpclient/4.3.6/526a9f794eab830eae4f23a62c572878b3f491ab/httpclient-4.3.6.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="526a9f794eab830eae4f23a62c572878b3f491ab"/>
+    <item
+        dex="/Users/nickfox/Documents/GpsTracker-for-WordPress/android-wp/app/build/intermediates/pre-dexed/debug/classes-ecf92faf104fbae51992dfd85b43f8adc87df0f1.jar"
+        jar="/Users/nickfox/Documents/GpsTracker-for-WordPress/android-wp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="dd9247ea0fabe8ee479638c4b4a23e93752be256"/>
+    <item
+        dex="/Users/nickfox/Documents/GpsTracker-for-WordPress/android-wp/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-8081d1abc51296323f5ad1f5f9eaeeed092f0e7f.jar"
+        jar="/Users/nickfox/Downloads/android-sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35"/>
+    <item
+        dex="/Users/nickfox/Documents/GpsTracker-for-WordPress/android-wp/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-bb12e4957b8710fcfaf510d2e0d71b817f03dac8.jar"
+        jar="/Users/nickfox/Documents/GpsTracker-for-WordPress/android-wp/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03"/>
+
+</pre-dex-items>
