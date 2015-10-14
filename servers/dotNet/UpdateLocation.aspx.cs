@@ -61,7 +61,8 @@ public partial class UpdateLocation : System.Web.UI.Page {
             directionDecimal = 0.0M;
         }
 
-        string distance = Request.QueryString["distance"];
+        //sometimes in eu phones you get this with a comma 
+        string distance = Request.QueryString["distance"].Replace(",", ".");
         string date = Server.UrlDecode(Request.QueryString["date"]);
 
         DateTime tempDateTime;
