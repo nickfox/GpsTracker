@@ -4,6 +4,8 @@ tk103-server.php is the actual server. I will explain in a tutorial how it works
 
 socket-client.php can be used to test the server but is not required once the server is setup and running properly.
 
+The gps-tracker directory has the wordpress plugin that is used to view the gps locations from the client. Please note that this is a specialized version of the wordpress plugin that ONLY works with the tk103-server and tk103 clients. This version of the plugin will NOT work with the wordpress android client.
+
 this is a log of 3 gps data points received from the ODB gps device we were testing.
 
 root@gps-tracker:~/gps-tracker# php tk103-server.php
