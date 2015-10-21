@@ -1,0 +1,117 @@
+/* This stylesheet is used to style the public-facing components of the plugin. */
+
+
+#gpstracker {
+    position:relative;
+    left: 0px;
+    top: 0px;
+    width:620px;
+    height:500px;
+    border:1px;
+    border-style:solid;
+    margin: 0;
+    padding: 0;
+    background-color:#CCEDFF;
+}
+
+#gps_info_table {
+    border-spacing: 0;
+    border-collapse: separate;   
+}
+
+#gps_info_table td {
+    padding: 0;
+    text-align: right;   
+}
+
+#messages {
+    position:relative;
+    left: 10px;
+    top: 10px;
+    width:950px;
+}
+#gpstracker-map-canvas {
+    position:relative;
+    left: 10px;
+    top: 10px;
+    width: 598px;
+    height:400px;
+    border:1px;
+    border-style:solid;
+    background-color:#FFF !important;
+    
+	overflow: hidden !important;
+	padding: 0px !important;
+	margin: 0px; 
+	word-wrap: normal;			        /* 2013 sets break-word, which interferes w/Google copyright in IE only */
+}
+
+#gpstracker-map-canvas img {
+	background-color: transparent !important;
+	max-width: 99999px !important;  	/* Some themes have max-width/max-height set, some phones can't accept max-width: auto. */
+	max-height: none !important;
+	visibility: inherit !important;
+	padding: 0px !important;
+	margin: 0px !important;
+	box-shadow: none !important;		/* 2012 adds box shadow to all images */
+	border-radius: 0px !important;		/* 2012 adds border-radius to all images */
+}
+
+#selectRoute {
+    position:relative;
+    left: 10px;
+    top: 15px;
+    width: 600px;
+    border:1px;
+    border-style:solid;
+    border-color:#555;
+    padding:0px;
+}
+
+#delete {
+    position:relative;
+    float: left;
+    left: 10px;
+    top: 20px;
+    width: 25%;
+    padding: 1px;
+    margin: 0px;
+    border:1px  
+    border-style:solid;
+    border-color:#555;    
+}
+
+#autoRefresh {
+    position:relative;
+    float: right;
+    right: 10px;
+    top: 20px;
+    width: 25%;
+    padding: 1px;
+    margin: 0px 10px 0px 0px;
+    border:1px;
+    border-style:solid;
+    border-color:#555;
+    white-space: nowrap;            
+}
+
+#refresh {
+    position:relative;
+    float: right;
+    right: 10px;
+    top: 20px;
+    width: 25%;
+    padding: 1px;
+    margin: 0px;
+    border:1px;
+    border-style:solid;
+    border-color:#555;            
+}
+
+#waitImage{
+    position: absolute;
+    display: block;
+    margin: 0 auto;
+    top:200px;
+    left:290px;
+}
