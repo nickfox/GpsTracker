@@ -1,5 +1,8 @@
 Please note that I have included 2 PDF manuals within this directory. The first, gps306a_b-user manual, is the actual manual that came with the device we were testing. The second, coban GPRS protocol, is NOT the manual for the device but it is for a very similar device. The reason I have included it is because it explains the gprs protocol and messages very well and is useful knowledge.
 
+tk103-server.php is the actual server. I will explain in a tutorial how it works.
+
+socket-client.php can be used to test the server but is not required once the server is setup and running properly.
 
 this is a log of 3 gps data points received from the ODB gps device we were testing.
 
