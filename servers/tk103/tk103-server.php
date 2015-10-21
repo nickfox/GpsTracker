@@ -32,7 +32,7 @@ while (true) {
             //print remote client information, ip and port number
             echo 'new connection: ' . stream_socket_get_name($new_client, true) . "\n";
 
-          $client_socks[] = $new_client;
+            $client_socks[] = $new_client;
             echo "total clients: ". count($client_socks) . "\n";
 
             // $output = "hello new client.\n";
@@ -49,77 +49,76 @@ while (true) {
         
         echo "data: " . $data . "\n";
 
-		$tk103_data = explode( ',', $data);
-		$response = "";		
+        $tk103_data = explode( ',', $data);
+        $response = "";		
 
         switch (count($tk103_data)) {
             case 1: // 359710049095095 -> heartbeat requires "ON" response
-				$response = "ON";
+                $response = "ON";
                 echo "sent ON to client\n";
-            break;
+                break;
             case 3: // ##,imei:359710049095095,A -> this requires a "LOAD" response
-				if ($tk103_data[0] == "##") {
-					$response = "LOAD";
+                if ($tk103_data[0] == "##") {
+                    $response = "LOAD";
                     echo "sent LOAD to client\n";
-				}
-            break;
-            case 19: // imei:359710049095095,tracker,151006012336,,F,172337.000,A,5105.9792,N,11404.9599,W,0.01,322.56,,0,0,,,  -> this is our gps data
-				$imei = substr($tk103_data[0], 5);
-				$alarm = $tk103_data[1];
-				$gps_time = nmea_to_mysql_time($tk103_data[2]);
-				$latitude = degree_to_decimal($tk103_data[7], $tk103_data[8]);				
-				$longitude = degree_to_decimal($tk103_data[9], $tk103_data[10]);
-				$speed_in_knots = $tk103_data[11];
-				$speed_in_mph = 1.15078 * $speed_in_knots;
-				$bearing = $tk103_data[12];			
+                }
+                break;
+                case 19: // imei:359710049095095,tracker,151006012336,,F,172337.000,A,5105.9792,N,11404.9599,W,0.01,322.56,,0,0,,,  -> this is our gps data
+                $imei = substr($tk103_data[0], 5);
+                $alarm = $tk103_data[1];
+                $gps_time = nmea_to_mysql_time($tk103_data[2]);
+                $latitude = degree_to_decimal($tk103_data[7], $tk103_data[8]);				
+                $longitude = degree_to_decimal($tk103_data[9], $tk103_data[10]);
+                $speed_in_knots = $tk103_data[11];
+                $speed_in_mph = 1.15078 * $speed_in_knots;
+                $bearing = $tk103_data[12];			
 
-				insert_location_into_db($pdo, $imei, $gps_time, $latitude, $longitude, $speed_in_mph, $bearing);
+                insert_location_into_db($pdo, $imei, $gps_time, $latitude, $longitude, $speed_in_mph, $bearing);
 
+                if ($alarm == "help me") {
+                    $response = "**,imei:" + $imei + ",E;";
+                }
+                break;
+            }
 
-				if ($alarm == "help me") {
-					$response = "**,imei:" + $imei + ",E;";
-				}
-            break;
+            if (!$data) {
+                unset($client_socks[ array_search($sock, $client_socks) ]);
+                @fclose($sock);
+                echo "client disconnected. total clients: ". count($client_socks) . "\n";
+                continue;
+            }
+
+            //send the message back to client
+            if (sizeof($response) > 0) {
+                fwrite($sock, $response);
+            }
         }
-
-        if (!$data) {
-            unset($client_socks[ array_search($sock, $client_socks) ]);
-            @fclose($sock);
-            echo "client disconnected. total clients: ". count($client_socks) . "\n";
-            continue;
-        }
-
-        //send the message back to client
-        if (sizeof($response) > 0) {
-        	fwrite($sock, $response);
-	}
-    }
 } // end while loop
 
 function insert_location_into_db($pdo, $imei, $gps_time, $latitude, $longitude,$speed_in_mph, $bearing) {
 
-	$params = array(':latitude'          => $latitude, 
-                    ':longitude'         => $longitude,
-                    ':user_name'         => "tk103-user",
-                    ':phone_number'      => $imei,
-                    ':session_id'        => "1",
-                    ':speed'             => $speed_in_mph,
-                    ':direction'         => $bearing,
-                    ':distance'          => "0",
-                    ':gps_time'          => $gps_time,
-                    ':location_method'   => "",
-                    ':accuracy'          => "0",
-                    ':extra_info'        => "",
-                    ':event_type'        => "tk103");
+    $params = array(':latitude'     => $latitude, 
+                ':longitude'        => $longitude,
+                ':user_name'        => "tk103-user",
+                ':phone_number'     => $imei,
+                ':session_id'       => "1",
+                ':speed'            => $speed_in_mph,
+                ':direction'        => $bearing,
+                ':distance'         => "0",
+                ':gps_time'         => $gps_time,
+                ':location_method'  => "",
+                ':accuracy'         => "0",
+                ':extra_info'       => "",
+                ':event_type'       => "tk103");
 
-	// PLEASE NOTE, I am hardcoding the wordpress table prefix (wp_) until I can find a better way
-	
-	$stmt = $pdo->prepare('CALL wp_save_gps_location(
-				:latitude, 
+                // PLEASE NOTE, I am hardcoding the wordpress table prefix (wp_) until I can find a better way
+
+    $stmt = $pdo->prepare('CALL wp_save_gps_location(
+                :latitude, 
                 :longitude, 
                 :user_name,
-				:phone_number,
-				:session_id, 
+                :phone_number,
+                :session_id, 
                 :speed,
                 :direction, 
                 :distance, 
@@ -128,32 +127,32 @@ function insert_location_into_db($pdo, $imei, $gps_time, $latitude, $longitude,$
                 :accuracy, 
                 :extra_info, 
                 :event_type);');
-    
-	$stmt->execute($params);
-	$timestamp = $stmt->fetchColumn();
-	// echo "inserted into db: " . $timestamp . "\n";
+
+    $stmt->execute($params);
+    $timestamp = $stmt->fetchColumn();
+    // echo "inserted into db: " . $timestamp . "\n";
 }
 
 function nmea_to_mysql_time($date_time){
-	$year = substr($date_time,0,2);
-	$month = substr($date_time,2,2);
-	$day = substr($date_time,4,2);
-        $hour = substr($date_time,6,2);
-    	$minute = substr($date_time,8,2);
-    	$second = substr($date_time,10,2);
-		
-    	return date("Y-m-d H:i:s", mktime($hour,$minute,$second,$month,$day,$year));
+    $year = substr($date_time,0,2);
+    $month = substr($date_time,2,2);
+    $day = substr($date_time,4,2);
+    $hour = substr($date_time,6,2);
+    $minute = substr($date_time,8,2);
+    $second = substr($date_time,10,2);
+
+    return date("Y-m-d H:i:s", mktime($hour,$minute,$second,$month,$day,$year));
 }
-           
+
 function degree_to_decimal($coordinates_in_degrees, $direction){
-    	$degrees = (int)($coordinates_in_degrees / 100); 
-    	$minutes = $coordinates_in_degrees - ($degrees * 100);
-    	$seconds = $minutes / 60;
-    	$coordinates_in_decimal = $degrees + $seconds;
-    		
-        if (($direction == "S") || ($direction == "W")) {
-        	$coordinates_in_decimal = $coordinates_in_decimal * (-1);
-    	}
-            
-       	return number_format($coordinates_in_decimal, 6,'.','');
+    $degrees = (int)($coordinates_in_degrees / 100); 
+    $minutes = $coordinates_in_degrees - ($degrees * 100);
+    $seconds = $minutes / 60;
+    $coordinates_in_decimal = $degrees + $seconds;
+
+    if (($direction == "S") || ($direction == "W")) {
+        $coordinates_in_decimal = $coordinates_in_decimal * (-1);
+    }
+
+    return number_format($coordinates_in_decimal, 6,'.','');
 }
