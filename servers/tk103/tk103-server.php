@@ -12,40 +12,40 @@ if ($server === false) {
     die("stream_socket_server error: $errorMessage");
 }
 
-$client_socks = array();
+$client_sockets = array();
 
 while (true) {
     // prepare readable sockets
-    $read_socks = $client_socks;
-    $read_socks[] = $server;
+    $read_sockets = $client_sockets;
+    $read_sockets[] = $server;
 
     // start reading and use a large timeout
-    if(!stream_select($read_socks, $write, $except, 300000)) {
+    if(!stream_select($read_sockets, $write, $except, 300000)) {
         die('stream_select error.');
     }
 
     // new client
-    if(in_array($server, $read_socks)) {
+    if(in_array($server, $read_sockets)) {
         $new_client = stream_socket_accept($server);
 
         if ($new_client) {
             //print remote client information, ip and port number
             echo 'new connection: ' . stream_socket_get_name($new_client, true) . "\n";
 
-            $client_socks[] = $new_client;
-            echo "total clients: ". count($client_socks) . "\n";
+            $client_sockets[] = $new_client;
+            echo "total clients: ". count($client_sockets) . "\n";
 
             // $output = "hello new client.\n";
             // fwrite($new_client, $output);
         }
 
         //delete the server socket from the read sockets
-        unset($read_socks[ array_search($server, $read_socks) ]);
+        unset($read_sockets[ array_search($server, $read_sockets) ]);
     }
 
     // message from existing client
-    foreach ($read_socks as $sock) {
-        $data = fread($sock, 128);
+    foreach ($read_sockets as $socket) {
+        $data = fread($socket, 128);
         
         echo "data: " . $data . "\n";
 
@@ -82,15 +82,15 @@ while (true) {
             }
 
             if (!$data) {
-                unset($client_socks[ array_search($sock, $client_socks) ]);
-                @fclose($sock);
-                echo "client disconnected. total clients: ". count($client_socks) . "\n";
+                unset($client_sockets[ array_search($socket, $client_sockets) ]);
+                @fclose($socket);
+                echo "client disconnected. total clients: ". count($client_sockets) . "\n";
                 continue;
             }
 
             //send the message back to client
             if (sizeof($response) > 0) {
-                fwrite($sock, $response);
+                fwrite($socket, $response);
             }
         }
 } // end while loop
