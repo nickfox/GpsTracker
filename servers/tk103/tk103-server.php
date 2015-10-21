@@ -63,7 +63,7 @@ while (true) {
                     echo "sent LOAD to client\n";
                 }
                 break;
-                case 19: // imei:359710049095095,tracker,151006012336,,F,172337.000,A,5105.9792,N,11404.9599,W,0.01,322.56,,0,0,,,  -> this is our gps data
+            case 19: // imei:359710049095095,tracker,151006012336,,F,172337.000,A,5105.9792,N,11404.9599,W,0.01,322.56,,0,0,,,  -> this is our gps data
                 $imei = substr($tk103_data[0], 5);
                 $alarm = $tk103_data[1];
                 $gps_time = nmea_to_mysql_time($tk103_data[2]);
