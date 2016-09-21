@@ -11,10 +11,10 @@ $dbType = DB_SQLITE3;
 // if your database is DB_SQLITE3, you need to set the path to your database file:
 $pathToSQLite = 'sqlite\gpstracker.sqlite';
 
-// ======== End of user-configurable variables =======================
-
 $dbuser = 'gpstracker_user';
 $dbpass = 'gpstracker';
+
+// ======== End of user-configurable variables =======================
 
 $params = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, 
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC);
@@ -33,4 +33,3 @@ switch ($dbType) {
         $sqlFunctionCallMethod = 'select ';
         break;
 }
-?>
