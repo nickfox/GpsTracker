@@ -66,4 +66,4 @@
     $stmt->execute($params);
     $timestamp = $stmt->fetchColumn();
     echo $timestamp;    
-?>
+

@@ -1,47 +1,284 @@
 <?xml version="1.0" encoding="utf-8"?>
-<pre-dex-items>
+<items version="2" >
 
     <item
-        dex="/Users/nickfox/Documents/GpsTracker/phoneClients/android/app/build/intermediates/pre-dexed/debug/classes-bc7276e207c388c1ffc462377361848ec5fd9207.jar"
-        jar="/Users/nickfox/Documents/GpsTracker/phoneClients/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
+        is-multidex="false"
+        jar="C:\Users\Klaus\.gradle\caches\modules-2\files-2.1\com.loopj.android\android-async-http\1.4.9\386a4339ffe52d5d63e80f9bed8d2b1d1a418249\android-async-http-1.4.9.jar"
         jumboMode="false"
-        revision="21.1.2"
-        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7"/>
+        optimize="true"
+        revision="23.0.2"
+        sha1="386a4339ffe52d5d63e80f9bed8d2b1d1a418249">
+        <dex dex="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\pre-dexed\debug\android-async-http-1.4.9_e9d770d80ca6295dff184bf1dc3436bf06b63d0b.jar" />
+    </item>
     <item
-        dex="/Users/nickfox/Documents/GpsTracker/phoneClients/android/app/build/intermediates/pre-dexed/debug/android-async-http-1.4.9-1210b179d208c510c26079fa73449404e5234ac1.jar"
-        jar="/Users/nickfox/.gradle/caches/modules-2/files-2.1/com.loopj.android/android-async-http/1.4.9/386a4339ffe52d5d63e80f9bed8d2b1d1a418249/android-async-http-1.4.9.jar"
+        is-multidex="false"
+        jar="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\23.0.0\jars\classes.jar"
         jumboMode="false"
-        revision="21.1.2"
-        sha1="386a4339ffe52d5d63e80f9bed8d2b1d1a418249"/>
+        optimize="true"
+        revision="23.0.2"
+        sha1="d358b3dd49a7c67844622dcbc9cf4339e13952ce">
+        <dex dex="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\pre-dexed\debug\com.android.support-mediarouter-v7-23.0.0_1817951e91ef8b47c80565e84ac6016d15236c38.jar" />
+    </item>
     <item
-        dex="/Users/nickfox/Documents/GpsTracker/phoneClients/android/app/build/intermediates/pre-dexed/debug/httpclient-4.3.6-79a9d97f5c0edd01c4cabf7ed6658ec7e694e2a8.jar"
-        jar="/Users/nickfox/.gradle/caches/modules-2/files-2.1/cz.msebera.android/httpclient/4.3.6/526a9f794eab830eae4f23a62c572878b3f491ab/httpclient-4.3.6.jar"
+        is-multidex="false"
+        jar="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\8.4.0\jars\classes.jar"
         jumboMode="false"
-        revision="21.1.2"
-        sha1="526a9f794eab830eae4f23a62c572878b3f491ab"/>
+        optimize="true"
+        revision="23.0.2"
+        sha1="1c9f35e952b212c843f7bd2c7eec8e82ad95602e">
+        <dex dex="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-analytics-8.4.0_af2c8503e056f1edaac5d16ef1a477394132e844.jar" />
+    </item>
     <item
-        dex="/Users/nickfox/Documents/GpsTracker/phoneClients/android/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-7f2ff693aae0031bb67c23b9b73362cd6f285b0a.jar"
-        jar="/Users/nickfox/Documents/GpsTracker/phoneClients/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
+        is-multidex="false"
+        jar="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\8.4.0\jars\classes.jar"
         jumboMode="false"
-        revision="21.1.2"
-        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03"/>
+        optimize="true"
+        revision="23.0.2"
+        sha1="b82b8e847173c28efffcd291b2a0b1ae9ad17fa4">
+        <dex dex="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-identity-8.4.0_7e45ca15589d7f0080efc90e06ed75aa05236d4c.jar" />
+    </item>
     <item
-        dex="/Users/nickfox/Documents/GpsTracker/phoneClients/android/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-8081d1abc51296323f5ad1f5f9eaeeed092f0e7f.jar"
-        jar="/Users/nickfox/Downloads/android-sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
+        is-multidex="false"
+        jar="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\8.4.0\jars\classes.jar"
         jumboMode="false"
-        revision="21.1.2"
-        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35"/>
+        optimize="true"
+        revision="23.0.2"
+        sha1="9cad249cf62751a323d9af568caf12284b7d6062">
+        <dex dex="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-nearby-8.4.0_f6bc7ee0bfe71c8d2c0ea099fd10e0d0c353dedc.jar" />
+    </item>
     <item
-        dex="/Users/nickfox/Documents/GpsTracker/phoneClients/android/app/build/intermediates/pre-dexed/debug/classes-3c24bd043118f5c2d7930559fdc532d1ab152644.jar"
-        jar="/Users/nickfox/Documents/GpsTracker/phoneClients/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
+        is-multidex="false"
+        jar="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\8.4.0\jars\classes.jar"
         jumboMode="false"
-        revision="21.1.2"
-        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8"/>
+        optimize="true"
+        revision="23.0.2"
+        sha1="a8412b654dab86d57bf90683367488211c8a81f1">
+        <dex dex="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-location-8.4.0_2d3d52ea3a1e5cd5532f64e69881c99d9fdd0758.jar" />
+    </item>
     <item
-        dex="/Users/nickfox/Documents/GpsTracker/phoneClients/android/app/build/intermediates/pre-dexed/debug/classes-31e3d8b67e26b111b32c205771b4c6e59f13f248.jar"
-        jar="/Users/nickfox/Documents/GpsTracker/phoneClients/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.5.87/classes.jar"
+        is-multidex="false"
+        jar="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\8.4.0\jars\classes.jar"
         jumboMode="false"
-        revision="21.1.2"
-        sha1="dd9247ea0fabe8ee479638c4b4a23e93752be256"/>
+        optimize="true"
+        revision="23.0.2"
+        sha1="9fe026fb4c7fce21bc5142f6e1bdf844f28061ac">
+        <dex dex="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-appinvite-8.4.0_7ee4e836cb96a909c5331f2d818b3f7a25b39d54.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="8e673cdfadd8f2d98fdb2fda2285c30f6e449782">
+        <dex dex="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-basement-8.4.0_395f8070007c6a881a29a2cf7826d94a5d3adda1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-drive\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="b36f30ac5ee5d5214f4b1e2ac49f11889d58e71a">
+        <dex dex="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-drive-8.4.0_ff34fe1e113210a1b8bac70a003a3e613865a56a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="2d7fe76982677315c4dc4edfb459c8ca718a9d4c">
+        <dex dex="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-gcm-8.4.0_7af95d07c0b5d87eff720246b087f0f8e1150bad.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="b5e7892fb0708e792e0e933c4c0a0ca0ac7831fb">
+        <dex dex="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-ads-8.4.0_8f7e0a28dbe2716c148c82ed37be97ec40757b8d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wallet\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="f2df436a8f02ce7e4d7d209671fc45f97c470f0e">
+        <dex dex="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-wallet-8.4.0_ecbe966f850357cb620ef66fce815e4bb3035fcb.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="08d34b2d135c1cc96ab506fd8bf6916d1e2f391a">
+        <dex dex="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-panorama-8.4.0_80d05b2b92001f472a2c4e4d32733c9bb9cafc7f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
+        <dex dex="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.1.1_6a3f184c3c9f87f669402dca7793244aaf50e396.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\libs\internal_impl-23.1.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
+        <dex dex="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.1_4edaa36c166b69f329105d53233b2a2816f17f01.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="1a78298e7724d5440d210bcb946b3493250d354d">
+        <dex dex="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-plus-8.4.0_e43404d8121d9d7baf6617026d6d6a3c539bb68c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\23.0.0\jars\libs\internal_impl-23.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="03d38bb042efe3e5ce27ba66b729a9523c36d8fe">
+        <dex dex="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\pre-dexed\debug\internal_impl-23.0.0_734e8ffc1c75a1b49cb1866eb6fe2eeb7e636a4e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="e167a34eaca0b31704212f43f9576ea84e05046f">
+        <dex dex="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-wearable-8.4.0_ec3a86782acd9688636d95d42a8a0a8a739c974e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-measurement\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="613298b7aa012f121ce542881c0a599ebd8078f2">
+        <dex dex="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-measurement-8.4.0_e1841a1575a7a46ed5e9878f35b9a702bdc335be.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Klaus\.gradle\caches\modules-2\files-2.1\cz.msebera.android\httpclient\4.3.6\526a9f794eab830eae4f23a62c572878b3f491ab\httpclient-4.3.6.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="526a9f794eab830eae4f23a62c572878b3f491ab">
+        <dex dex="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\pre-dexed\debug\httpclient-4.3.6_e95757b2c756dbd06b1a0f16307079e8d2cdaae3.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="04de44f90606c77f3b28cf44861f306290505aac">
+        <dex dex="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-maps-8.4.0_cb4a31c3c80b1d829ea6c406f25da8040bf75682.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-auth\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="966e5771a5a2ebfb31bf00d7cd6cd2546d245517">
+        <dex dex="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-auth-8.4.0_1e16d32e6ecd2fcf7d3514989eae2e828321aa6b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-vision\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="dfecc4d835cdabcdecf7e95f0d20a3ef1e9d8ef4">
+        <dex dex="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-vision-8.4.0_72b190a8b79d725ca9e0b370898164c8f2388d19.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="0194a7409c40de94fb539d4ad9928ec5d47afeb7">
+        <dex dex="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-safetynet-8.4.0_4a6cadd49e939e2c300f5139bc684b61adf2828d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="65d086ee9daaf87b5af62ad24471edafa433354c">
+        <dex dex="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-appindexing-8.4.0_168b952da054085e3646d9110af9b3c135647f0c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="551e78f21acf69ebfb489c0e79647824c838013e">
+        <dex dex="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-cast-8.4.0_5780fdeb1aba76b41e1dd58a6ee8d7ffa6fc7101.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="fef2b3e4b6b1b0e5fe7b69fa137a5fa55a3182ab">
+        <dex dex="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-base-8.4.0_3f27fe4b33900efb3a8a7d39f235038e60645849.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Klaus\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.1\support-annotations-23.1.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
+        <dex dex="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\pre-dexed\debug\support-annotations-23.1.1_c8a08a655a92d26fbc12b00f4415479f62040f1a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="c54246475c1bb64ac6857d1320364bfbfeda2c46">
+        <dex dex="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-fitness-8.4.0_65923a84299d571cf0a10b35970aacdcc00234a6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
+        <dex dex="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-23.1.1_7e32446101a5bf4dadb4d245faf0adad76798440.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="3a364cc6b698d1b3b2d284f64618daaa7fe77ddf">
+        <dex dex="C:\xampp\htdocs\GpsTracker\phoneClients\android\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-games-8.4.0_b85d3b00587b95d6fb3838e06da35595c10e6558.jar" />
+    </item>
 
-</pre-dex-items>
+</items>
