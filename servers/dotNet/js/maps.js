@@ -147,29 +147,37 @@
            
                 // use leaflet (http://leafletjs.com/) to create our map and map layers
                 var gpsTrackerMap = new L.map('map-canvas');
-            
+
+                // this fixes the zoom buttons from freezing
+                // https://github.com/shramov/leaflet-plugins/issues/62
+                L.polyline([[0, 0], ]).addTo(gpsTrackerMap);
+                
+                // this is the switcher control to switch between map types (upper right hand corner of map)
+                var layerSwitcher =  new L.Control.Layers({}, {});  // add basemap layers below
+				layerSwitcher.addTo(gpsTrackerMap);
+
+                // ------ OpenStreetMap basemap: ------
                 var openStreetMapsURL = ('https:' == document.location.protocol ? 'https://' : 'http://') +
                  '{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
                 var openStreetMapsLayer = new L.TileLayer(openStreetMapsURL,
                 {attribution:'&copy;2014 <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'});
+                layerSwitcher.addBaseLayer(openStreetMapsLayer, "OpenStreetMap");
 
-                // need to get your own bing maps key, http://www.microsoft.com/maps/create-a-bing-maps-key.aspx
-                // var bingMapsLayer = new L.BingLayer("GetAKey");
-                var googleMapsLayer = new L.Google('ROADMAP');
-            
-                // this fixes the zoom buttons from freezing
-                // https://github.com/shramov/leaflet-plugins/issues/62
-                L.polyline([[0, 0], ]).addTo(gpsTrackerMap);
+                // ------ OpenCycleMap basemap: ------
+                var openCycleMapsURL = ('https:' == document.location.protocol ? 'https://' : 'http://') +
+                 '{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png';
+                var openCycleMapsLayer = new L.TileLayer(openCycleMapsURL,
+                {attribution:'&copy;2014 <a href="http://opencyclemap.org">OpenCycleMap</a> contributors'});
+                layerSwitcher.addBaseLayer(openCycleMapsLayer, "OpenCycleMap");
 
-                // this sets which map layer will first be displayed
-                gpsTrackerMap.addLayer(googleMapsLayer);
+                // ------ Google basemap: ------
+                if (typeof google != "undefined") {
+                    var googleMapsLayer = new L.Google('ROADMAP');
+                    layerSwitcher.addBaseLayer(googleMapsLayer, "Google Maps");
+                };            
 
-                // this is the switcher control to switch between map types
-                gpsTrackerMap.addControl(new L.Control.Layers({
-                    // 'Bing Maps':bingMapsLayer,
-                    'Google Maps':googleMapsLayer,
-                    'OpenStreetMaps':openStreetMapsLayer
-                }, {}));
+                // this sets which map layer will be displayed by default,
+                gpsTrackerMap.addLayer(openStreetMapsLayer);
             }
 
                 var finalLocation = false;
@@ -337,19 +345,21 @@
     function displayCityName(latitude, longitude) {
         var lat = parseFloat(latitude);
         var lng = parseFloat(longitude);
-        var latlng = new google.maps.LatLng(lat, lng);
-        var reverseGeocoder = new google.maps.Geocoder();
-        reverseGeocoder.geocode({'latLng': latlng}, function(results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-                // results[0] is full address
-                if (results[1]) {
-                    var reverseGeocoderResult = results[1].formatted_address; 
-                    showPermanentMessage(reverseGeocoderResult);
+        if (typeof google != "undefined") {
+            var latlng = new google.maps.LatLng(lat, lng);
+            var reverseGeocoder = new google.maps.Geocoder();
+            reverseGeocoder.geocode({'latLng': latlng}, function(results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    // results[0] is full address
+                    if (results[1]) {
+                        var reverseGeocoderResult = results[1].formatted_address; 
+                        showPermanentMessage(reverseGeocoderResult);
+                    }
+                } else {
+                    console.log('Geocoder failed due to: ' + status);
                 }
-            } else {
-                console.log('Geocoder failed due to: ' + status);
-            }
-        });
+            });
+        }
     }
 
     function turnOffAutoRefresh() {

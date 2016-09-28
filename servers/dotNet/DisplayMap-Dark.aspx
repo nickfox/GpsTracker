@@ -8,7 +8,9 @@
     <meta charset="utf-8">
  
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="//maps.google.com/maps/api/js?v=3&sensor=false&libraries=adsense"></script>
+<!--    
+    <script src="//maps.google.com/maps/api/js?v=3"></script>
+-->    
     <script src="js/maps.js"></script>
     <script src="js/leaflet-0.7.5/leaflet.js"></script>
     <script src="js/leaflet-plugins/google.js"></script>
