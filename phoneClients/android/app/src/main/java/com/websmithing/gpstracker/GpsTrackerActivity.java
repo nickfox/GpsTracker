@@ -8,7 +8,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.SystemClock;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -22,16 +22,16 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 
 import java.util.UUID;
 
-public class GpsTrackerActivity extends ActionBarActivity {
+public class GpsTrackerActivity extends AppCompatActivity {
     private static final String TAG = "GpsTrackerActivity";
 
     // use the websmithing defaultUploadWebsite for testing and then check your
     // location with your browser here: https://www.websmithing.com/gpstracker/displaymap.php
     private String defaultUploadWebsite;
 
-    private static EditText txtUserName;
-    private static EditText txtWebsite;
-    private static Button trackingButton;
+    private EditText txtUserName;
+    private EditText txtWebsite;
+    private Button trackingButton;
 
     private boolean currentlyTracking;
     private RadioGroup intervalRadioGroup;
@@ -44,7 +44,11 @@ public class GpsTrackerActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gpstracker);
+        setContentView(R.layout.activity_gps_tracker);
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.mipmap.ic_launcher);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
 
         defaultUploadWebsite = getString(R.string.default_upload_website);
 
@@ -57,10 +61,10 @@ public class GpsTrackerActivity extends ActionBarActivity {
         SharedPreferences sharedPreferences = this.getSharedPreferences("com.websmithing.gpstracker.prefs", Context.MODE_PRIVATE);
         currentlyTracking = sharedPreferences.getBoolean("currentlyTracking", false);
 
-        boolean firstTimeLoadindApp = sharedPreferences.getBoolean("firstTimeLoadindApp", true);
-        if (firstTimeLoadindApp) {
+        boolean firstTimeLoadingApp = sharedPreferences.getBoolean("firstTimeLoadingApp", true);
+        if (firstTimeLoadingApp) {
             SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putBoolean("firstTimeLoadindApp", false);
+            editor.putBoolean("firstTimeLoadingApp", false);
             editor.putString("appID",  UUID.randomUUID().toString());
             editor.apply();
         }
