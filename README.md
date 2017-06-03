@@ -1,4 +1,4 @@
-![gpstracker](https://raw.githubusercontent.com/nickfox/GpsTracker/master/gpstracker_small.png)Gps Tracker v5.1.2
+![gpstracker](https://raw.githubusercontent.com/nickfox/GpsTracker/master/gpstracker_small.png)Gps Tracker v5.1.3
 -------------
 
 ##### Google Map Gps Cell Phone Tracker
@@ -20,9 +20,9 @@ All 3 stacks are in the same download but you only need to use one.
 
 By default the Tracker server is set up to use the included SQLite database.  If you want to use one of the other supported database systems, edit the dbconnect.php file. 
 
-If you need help, please try our new help forum:
+If you need help, please go to:
 
-https://www.websmithing.com/forums/
+https://www.websmithing.com/gps-tracker/
 
 Here is a quick start guide to help you set up Gps Tracker:
 
@@ -32,6 +32,11 @@ https://www.websmithing.com/2014/01/20/quick-start-guide-for-gpstracker-3/
 
 #### Changelog
 
+Jun 3, 2017 - v5.1.3
+
+Got rid of help forum, it cut my adsense revenue in half.
+
+*************
 
 Jul 11, 2016 - v5.1.2
 
