@@ -40,7 +40,7 @@ Got rid of help forum, it cut my adsense revenue in half.
 
 Jul 11, 2016 - v5.1.2
 
-Updating documentation to show new help forum, https://www.websmithing.com/forums/
+Updating documentation to show new help forum.
 
 *************
 
