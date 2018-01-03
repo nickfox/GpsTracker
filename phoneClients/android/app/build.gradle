@@ -2,13 +2,14 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "23.0.2"
+    buildToolsVersion "26.0.2"
     defaultConfig {
         applicationId "com.websmithing.gpstracker"
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 15
         versionName "4.0.5"
+        multiDexEnabled true
     }
     buildTypes {
         release {
