@@ -4,9 +4,12 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -33,6 +36,7 @@ public class LocationService extends Service implements
         LocationListener {
 
     private static final String TAG = "LocationService";
+    private static int PERMISSION_ACCESS_FINE_LOCATION = 1;
 
     // use the websmithing defaultUploadWebsite for testing and then check your
     // location with your browser here: https://www.websmithing.com/gpstracker/displaymap.php
@@ -64,7 +68,7 @@ public class LocationService extends Service implements
     private void startTracking() {
         Log.d(TAG, "startTracking");
 
-        if (GooglePlayServicesUtil.isGooglePlayServicesAvailable(this) == ConnectionResult.SUCCESS) {
+       // if (GooglePlayServicesUtil.isGooglePlayServicesAvailable(this) == ConnectionResult.SUCCESS) {
 
             googleApiClient = new GoogleApiClient.Builder(this)
                     .addApi(LocationServices.API)
@@ -75,9 +79,9 @@ public class LocationService extends Service implements
             if (!googleApiClient.isConnected() || !googleApiClient.isConnecting()) {
                 googleApiClient.connect();
             }
-        } else {
-            Log.e(TAG, "unable to connect to google play services.");
-        }
+        //} else {
+        //    Log.e(TAG, "unable to connect to google play services.");
+        //}
     }
 
     protected void sendLocationDataToWebsite(Location location) {
@@ -203,8 +207,11 @@ public class LocationService extends Service implements
         locationRequest.setFastestInterval(1000); // the fastest rate in milliseconds at which your app can handle location updates
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 
-        LocationServices.FusedLocationApi.requestLocationUpdates(
-                googleApiClient, locationRequest, this);
+        try {
+            LocationServices.FusedLocationApi.requestLocationUpdates(googleApiClient, locationRequest, this);
+        } catch (SecurityException se) {
+            Log.e(TAG, "Go into settings and find Gps Tracker app and enable Location.");
+        }
     }
 
     @Override
@@ -217,6 +224,6 @@ public class LocationService extends Service implements
 
     @Override
     public void onConnectionSuspended(int i) {
-        Log.e(TAG, "GoogleApiClient connection has been suspend");
+        Log.e(TAG, "GoogleApiClient connection has been suspended.");
     }
 }

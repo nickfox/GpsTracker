@@ -1,14 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "23.0.2"
+    compileSdkVersion 26
     defaultConfig {
         applicationId "com.websmithing.gpstracker"
         minSdkVersion 15
-        targetSdkVersion 25
-        versionCode 15
-        versionName "4.0.5"
+        targetSdkVersion 26
+        versionCode 16
+        versionName "4.0.7"
     }
     buildTypes {
         release {
@@ -19,8 +18,9 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:25.0.0'
-    compile 'com.google.android.gms:play-services:9.8.0'
-    compile 'com.loopj.android:android-async-http:1.4.9'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.google.android.gms:play-services-location:11.8.0'
+    implementation 'com.loopj.android:android-async-http:1.4.9'
 }

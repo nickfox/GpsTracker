@@ -18,6 +18,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 
 import java.util.UUID;
@@ -233,9 +234,12 @@ public class GpsTrackerActivity extends AppCompatActivity {
     }
 
     private boolean checkIfGooglePlayEnabled() {
-        if (GooglePlayServicesUtil.isGooglePlayServicesAvailable(this) == ConnectionResult.SUCCESS) {
+
+        if (GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(this) == ConnectionResult.SUCCESS) {
             return true;
         } else {
+
+            Log.e(TAG, String.valueOf(GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(this)) );
             Log.e(TAG, "unable to connect to google play services.");
             Toast.makeText(getApplicationContext(), R.string.google_play_services_unavailable, Toast.LENGTH_LONG).show();
             return false;
