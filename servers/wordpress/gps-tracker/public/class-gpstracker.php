@@ -200,7 +200,7 @@ class Gps_Tracker {
 	 * @since 1.0.0
 	 */
 	public function enqueue_scripts() {     
-        wp_enqueue_script( $this->plugin_slug . '-gpstracker-google-maps', '//maps.google.com/maps/api/js?v=3&sensor=false&libraries=adsense', array(), self::VERSION );
+//        wp_enqueue_script( $this->plugin_slug . '-gpstracker-google-maps', '//maps.google.com/maps/api/js?v=3&sensor=false&libraries=adsense', array(), self::VERSION );
         wp_enqueue_script( $this->plugin_slug . '-gpstracker-map-js', plugins_url( 'assets/js/gpstracker-map.js', __FILE__ ), array('jquery'), self::VERSION );
         wp_enqueue_script( $this->plugin_slug . '-gpstracker-leaflet-js', plugins_url( 'assets/js/leaflet-0.7.5/leaflet.js', __FILE__ ), array('jquery'), self::VERSION );
         wp_enqueue_script( $this->plugin_slug . '-gpstracker-google-js', plugins_url( 'assets/js/leaflet-plugins/google.js', __FILE__ ), array('jquery'), self::VERSION );
