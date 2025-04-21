@@ -27,7 +27,7 @@ GPS Tracker consists of three main components:
 2. **Server**: PHP/JS backend that receives, stores, and processes location updates
 3. **Web Interface**: Responsive dashboard for viewing real-time and historical tracking data
 
-![Architecture Diagram](https://raw.githubusercontent.com/nickfox/GpsTracker/master/gpstracker_architecture.png)
+![gpstrackerandroid](https://www.websmithing.com/images/gpstracker-dark.jpg)
 
 ## Features
 
