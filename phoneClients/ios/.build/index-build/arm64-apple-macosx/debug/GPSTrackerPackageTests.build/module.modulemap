@@ -1,0 +1,4 @@
+module GPSTrackerPackageTests {
+    header "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTrackerPackageTests.build/GPSTrackerPackageTests-Swift.h"
+    requires objc
+}

@@ -1,0 +1,11 @@
+{
+  "": {
+    "swift-dependencies": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTrackerTests.build/master.swiftdeps"
+  },
+  "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/GPSTrackerTests/GPSTrackerTests.swift": {
+    "dependencies": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTrackerTests.build/GPSTrackerTests.d",
+    "object": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTrackerTests.build/GPSTrackerTests.swift.o",
+    "swiftmodule": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTrackerTests.build/GPSTrackerTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTrackerTests.build/GPSTrackerTests.swiftdeps"
+  }
+}

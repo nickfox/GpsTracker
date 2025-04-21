@@ -1,26 +1,112 @@
-apply plugin: 'com.android.application'
+// # android/app/build.gradle
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
 
 android {
-    compileSdkVersion 26
+    namespace "com.websmithing.gpstracker2"
+    compileSdk 34
+
     defaultConfig {
-        applicationId "com.websmithing.gpstracker"
-        minSdkVersion 15
-        targetSdkVersion 26
-        versionCode 16
-        versionName "4.0.7"
+        applicationId "com.websmithing.gpstracker2"
+        minSdk 21
+        targetSdk 34
+        versionCode 1
+        versionName "1.0.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            // applicationVariants.all { variant ->
+            //     variant.outputs.all {
+            //         outputFileName = "gpstracker-${variant.name}-${variant.versionName}.apk"
+            //     }
+            // }
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = '11'
+    }
+    buildFeatures {
+        buildConfig true
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
     }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    implementation 'com.google.android.gms:play-services-location:11.8.0'
-    implementation 'com.loopj.android:android-async-http:1.4.9'
+    // AndroidX Core and Kotlin extensions
+    implementation 'androidx.core:core-ktx:1.12.0'
+
+    // AndroidX UI Components
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'com.google.android.material:material:1.11.0'
+
+    // Google Play Services Location
+    implementation 'com.google.android.gms:play-services-location:21.2.0'
+
+    // Networking (Retrofit, OkHttp, Gson Converter)
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.11.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.11.0' // Optional
+
+    // Kotlin Standard Library
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+
+    // WorkManager (REMOVED - Using Foreground Service now)
+    // implementation "androidx.work:work-runtime-ktx:2.9.0"
+
+    // ViewModel KTX for MVVM
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0"
+    implementation "androidx.activity:activity-ktx:1.8.2"
+
+    // Hilt for Dependency Injection
+    implementation "com.google.dagger:hilt-android:2.50"
+    kapt "com.google.dagger:hilt-compiler:2.50"
+    // Hilt integration for WorkManager (REMOVED)
+    // implementation "androidx.hilt:hilt-work:1.2.0"
+
+    // Timber for logging
+    implementation 'com.jakewharton.timber:timber:5.0.1'
+
+    // Test Dependencies (Commented out for initial build)
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.mockito.kotlin:mockito-kotlin:5.3.1'
+    testImplementation 'androidx.arch.core:core-testing:2.2.0'
+    testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
+    testImplementation 'org.mockito:mockito-inline:5.2.0' // Needed for mocking final classes/methods if required
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.8.0'
+    testImplementation 'androidx.test:core-ktx:1.6.0' // Provides extensions for testing
+    // testImplementation "androidx.work:work-testing:2.9.0" // WorkManager testing (REMOVED)
+    kaptTest 'com.google.dagger:hilt-compiler:2.50' // Needed for Hilt in unit tests
+
+    // AndroidTest Dependencies (Commented out for initial build)
+    // androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    // androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    // androidTestImplementation 'com.google.dagger:hilt-android-testing:2.50'
+    // kaptAndroidTest 'com.google.dagger:hilt-compiler:2.50'
+}
+
+// Apply Kapt plugin after dependencies block
+kapt {
+    correctErrorTypes true
 }

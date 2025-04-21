@@ -1,0 +1,95 @@
+{
+  "": {
+    "swift-dependencies": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/master.swiftdeps"
+  },
+  "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/GPSTracker/GPSTrackerApp.swift": {
+    "dependencies": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/GPSTrackerApp.d",
+    "object": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/GPSTrackerApp.swift.o",
+    "swiftmodule": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/GPSTrackerApp~partial.swiftmodule",
+    "swift-dependencies": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/GPSTrackerApp.swiftdeps"
+  },
+  "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/GPSTracker/Model/DataModels.swift": {
+    "dependencies": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/DataModels.d",
+    "object": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/DataModels.swift.o",
+    "swiftmodule": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/DataModels~partial.swiftmodule",
+    "swift-dependencies": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/DataModels.swiftdeps"
+  },
+  "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/GPSTracker/Repository/LocationRepository.swift": {
+    "dependencies": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/LocationRepository.d",
+    "object": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/LocationRepository.swift.o",
+    "swiftmodule": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/LocationRepository~partial.swiftmodule",
+    "swift-dependencies": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/LocationRepository.swiftdeps"
+  },
+  "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/GPSTracker/Repository/SettingsRepository.swift": {
+    "dependencies": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/SettingsRepository.d",
+    "object": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/SettingsRepository.swift.o",
+    "swiftmodule": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/SettingsRepository~partial.swiftmodule",
+    "swift-dependencies": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/SettingsRepository.swiftdeps"
+  },
+  "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/GPSTracker/Service/APIService.swift": {
+    "dependencies": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/APIService.d",
+    "object": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/APIService.swift.o",
+    "swiftmodule": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/APIService~partial.swiftmodule",
+    "swift-dependencies": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/APIService.swiftdeps"
+  },
+  "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/GPSTracker/Service/LocationService.swift": {
+    "dependencies": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/LocationService.d",
+    "object": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/LocationService.swift.o",
+    "swiftmodule": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/LocationService~partial.swiftmodule",
+    "swift-dependencies": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/LocationService.swiftdeps"
+  },
+  "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/GPSTracker/Service/PersistenceService.swift": {
+    "dependencies": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/PersistenceService.d",
+    "object": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/PersistenceService.swift.o",
+    "swiftmodule": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/PersistenceService~partial.swiftmodule",
+    "swift-dependencies": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/PersistenceService.swiftdeps"
+  },
+  "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/GPSTracker/Utils/LoggingUtils.swift": {
+    "dependencies": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/LoggingUtils.d",
+    "object": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/LoggingUtils.swift.o",
+    "swiftmodule": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/LoggingUtils~partial.swiftmodule",
+    "swift-dependencies": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/LoggingUtils.swiftdeps"
+  },
+  "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/GPSTracker/View/ContentView.swift": {
+    "dependencies": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/ContentView.d",
+    "object": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/ContentView.swift.o",
+    "swiftmodule": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/ContentView~partial.swiftmodule",
+    "swift-dependencies": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/ContentView.swiftdeps"
+  },
+  "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/GPSTracker/View/ControlView.swift": {
+    "dependencies": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/ControlView.d",
+    "object": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/ControlView.swift.o",
+    "swiftmodule": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/ControlView~partial.swiftmodule",
+    "swift-dependencies": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/ControlView.swiftdeps"
+  },
+  "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/GPSTracker/View/MapView.swift": {
+    "dependencies": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/MapView.d",
+    "object": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/MapView.swift.o",
+    "swiftmodule": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/MapView~partial.swiftmodule",
+    "swift-dependencies": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/MapView.swiftdeps"
+  },
+  "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/GPSTracker/View/MockDependencies.swift": {
+    "dependencies": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/MockDependencies.d",
+    "object": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/MockDependencies.swift.o",
+    "swiftmodule": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/MockDependencies~partial.swiftmodule",
+    "swift-dependencies": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/MockDependencies.swiftdeps"
+  },
+  "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/GPSTracker/View/SettingsView.swift": {
+    "dependencies": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/SettingsView.d",
+    "object": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/SettingsView.swift.o",
+    "swiftmodule": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/SettingsView~partial.swiftmodule",
+    "swift-dependencies": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/SettingsView.swiftdeps"
+  },
+  "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/GPSTracker/View/StatsView.swift": {
+    "dependencies": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/StatsView.d",
+    "object": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/StatsView.swift.o",
+    "swiftmodule": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/StatsView~partial.swiftmodule",
+    "swift-dependencies": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/StatsView.swiftdeps"
+  },
+  "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/GPSTracker/ViewModel/TrackingViewModel.swift": {
+    "dependencies": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/TrackingViewModel.d",
+    "object": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/TrackingViewModel.swift.o",
+    "swiftmodule": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/TrackingViewModel~partial.swiftmodule",
+    "swift-dependencies": "/Users/nickfox137/Documents/gpstracker-clients/gpstracker-ios/GPSTracker/.build/index-build/arm64-apple-macosx/debug/GPSTracker.build/TrackingViewModel.swiftdeps"
+  }
+}

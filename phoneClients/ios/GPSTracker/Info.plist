@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- App Metadata -->
+    <key>CFBundleIdentifier</key>
+    <string>com.websmithing.gpstracker2</string>
+    <key>CFBundleName</key>
+    <string>GPSTracker</string>
+    <key>CFBundleDisplayName</key>
+    <string>GPSTracker</string>
+    <key>CFBundleVersion</key>
+    <string>2.0</string>
+    <key>CFBundleShortVersionString</key>
+    <string>2.0</string>
+    <key>UIRequiredDeviceCapabilities</key>
+    <array>
+        <string>gps</string>
+        <string>location-services</string>
+    </array>
+    <key>UISupportedInterfaceOrientations</key>
+    <array>
+        <string>UIInterfaceOrientationPortrait</string>
+    </array>
+    
+    <!-- Status Bar Customization -->
+    <key>UIStatusBarStyle</key>
+    <string>UIStatusBarStyleLightContent</string>
+    <key>UIViewControllerBasedStatusBarAppearance</key>
+    <false/>
+
+    <!-- Location Permissions -->
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>This app uses your location to track your movements while you use it.</string>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>This app requires continuous location access to track your movements, even when the app is in the background.</string>
+    <key>NSLocationUsageDescription</key>
+    <string>This app uses your location for GPS tracking.</string>
+
+    <!-- Background Modes for Location -->
+    <key>UIBackgroundModes</key>
+    <array>
+        <string>location</string>
+    </array>
+</dict>
+</plist>

@@ -1,167 +1,199 @@
-![gpstracker](https://raw.githubusercontent.com/nickfox/GpsTracker/master/gpstracker_small.png)Gps Tracker v5.1.4
--------------
+# THE ORIGINAL GPS TRACKER v7.0.0
 
-##### Google Map Gps Cell Phone Tracker
+![GPS Tracker](https://raw.githubusercontent.com/nickfox/GpsTracker/master/gpstracker_small.png)
 
-Now available as a Wordpress plugin and Android client!
+## The Most Popular Open Source GPS Tracking System
+*[Over 2.2 million downloads](https://sourceforge.net/projects/gpsmapper/files/stats/timeline?dates=2000-01-21+to+2025-04-21) • [800+ GitHub stars](https://github.com/nickfox/GpsTracker) • Active since 2007*
 
-This project allows you to track cell phones periodically. For instance every minute or every five minutes. You can watch the cell phone being tracked in real time using Google Maps (and other map providers such as OpenStreetMaps) and you can store and reload routes easily. The map display page is built using bootstrap which makes the page responsive and also uses bootswatch which gives you the choice of 17 different themes. There are 4 clients, iOS, Android, Windows Phone and Java ME. 
+GPS Tracker is a complete GPS tracking system that allows you to track mobile devices in real-time using Google or Open Street Maps and other map providers. This project has been actively maintained since 2007, with Version 7 representing a complete rewrite of the core components with modern code practices and frameworks.
 
-You have the following choices server side:
+## What's New in Version 7
 
-1.  ASP.NET with SQL Server
-2.  PHP with your choice of:
-  * MySQL
-  * PostgreSQL
-  * SQLite
-3.  Wordpress plugin with Android client
+Version 7 is a major update with complete rewrites of the three primary components:
 
-All 3 stacks are in the same download but you only need to use one.
+**Live Demo**: View the tracking system in action at [https://www.websmithing.com/gpstracker/map](https://www.websmithing.com/gpstracker/map)
 
-By default the Tracker server is set up to use the included SQLite database.  If you want to use one of the other supported database systems, edit the dbconnect.php file. 
+- **PHP/JS Server**: Modernized with clean architecture and responsive design
+- **Android Client**: Completely rewritten in Kotlin with MVVM architecture
+- **iOS Client**: New Swift implementation with SwiftUI and MVVM architecture
 
-If you need help, please go to:
+All components feature production-quality code with comprehensive inline documentation. This rewrite was done with the assistance of Google Gemini Pro 2.5 exp 03-25.
 
-https://www.websmithing.com/gps-tracker/
+## System Architecture
 
-Here is a quick start guide to help you set up Gps Tracker:
+GPS Tracker consists of three main components:
 
-https://www.websmithing.com/2014/01/20/quick-start-guide-for-gpstracker-3/
+1. **Mobile Clients**: Native apps for iOS and Android that capture location data
+2. **Server**: PHP/JS backend that receives, stores, and processes location updates
+3. **Web Interface**: Responsive dashboard for viewing real-time and historical tracking data
 
-*************
+![Architecture Diagram](https://raw.githubusercontent.com/nickfox/GpsTracker/master/gpstracker_architecture.png)
 
-#### Changelog
+## Features
 
-Jan 25, 2018 - v5.1.4
+- Real-time tracking with customizable update intervals
+- Background tracking on mobile devices
+- Multiple map providers (Google Maps, OpenStreetMaps, etc.)
+- Responsive web interface using modern frameworks
+- Comprehensive route history and playback
+- Distance, speed, and battery level tracking
+- Support for multiple devices and users
+- Free and open source
 
-Updated android client to android studio 3.0.1 and SDK 26. Please note that if you use Google maps, you now need to get an API key from Google.
+## Installation Instructions
 
-https://developers.google.com/maps/documentation/javascript/get-api-key
+### PHP/JS Server
 
-*************
+#### Requirements
+- PHP 7.4+
+- MySQL, PostgreSQL, or SQLite database
+- Apache or Nginx web server
 
-Jun 3, 2017 - v5.1.3
+#### Apache Installation
 
-Got rid of help forum, it cut my adsense revenue in half.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/nickfox/GpsTracker.git
+   ```
 
-*************
+2. Copy the server files to your web directory:
+   ```bash
+   cp -r GpsTracker/server/php/* /var/www/html/gpstracker/
+   ```
 
-Jul 11, 2016 - v5.1.2
+3. Set proper permissions:
+   ```bash
+   chmod -R 755 /var/www/html/gpstracker/
+   chown -R www-data:www-data /var/www/html/gpstracker/
+   ```
 
-Updating documentation to show new help forum.
+4. Configure your database in `dbconnect.php`:
+   ```php
+   // For MySQL
+   $pdo = new PDO('mysql:host=localhost;dbname=gpstracker', 'username', 'password');
+   
+   // For PostgreSQL
+   $pdo = new PDO('pgsql:host=localhost;dbname=gpstracker', 'username', 'password');
+   
+   // For SQLite (default)
+   $pdo = new PDO('sqlite:./gpstracker.db');
+   ```
 
-*************
+5. Set up the database by visiting:
+   ```
+   http://your-server/gpstracker/install.php
+   ```
 
-Apr 2, 2016 - v5.1.1
+6. Remove the installation file:
+   ```bash
+   rm /var/www/html/gpstracker/install.php
+   ```
 
-Updated gradle in android client
+#### Nginx Installation
 
-*************
+1. Follow steps 1-4 from the Apache installation.
 
-Oct 21, 2015 - v5.1.0
+2. Add this to your Nginx server configuration:
+   ```nginx
+   server {
+       listen 80;
+       server_name your-domain.com;
+       root /var/www/html/gpstracker;
+       index index.php index.html;
 
-Added TK-103 server
+       location / {
+           try_files $uri $uri/ /index.php?$query_string;
+       }
 
-*************
+       location ~ \.php$ {
+           include snippets/fastcgi-php.conf;
+           fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;
+       }
 
-Sep 30, 2015 - v5.0.0
+       location ~ /\.ht {
+           deny all;
+       }
+   }
+   ```
 
-Added Wordpress plugin and Android client
+3. Restart Nginx:
+   ```bash
+   sudo systemctl restart nginx
+   ```
 
-*************
+4. Continue with steps 5-6 from the Apache installation.
 
-Sep 8, 2015 - v4.0.4
+### Android Client
 
-Added support for Sqlite and PostgreSQL, thanks Brent Fraser
+#### Requirements
+- Android Studio 4.0+
+- Android SDK 21+
 
-fixed prcGetAllRoutesForMap regression error 
+#### Installation (Android app coming soon to Google Play)
 
-*************
+1. Open Android Studio
 
-Nov 24, 2014 - v4.0.3
+2. Select "Open an existing project"
 
-Added European decimal handling to updatelocation, thanks Wim
+3. Navigate to `GpsTracker/clients/android-kotlin`
 
-*************
+4. Update the server URL in `Constants.kt`:
+   ```kotlin
+   const val SERVER_URL = "http://your-server.com/gpstracker"
+   ```
 
-Nov 15, 2014 - v4.0.2
+5. Build and run the application on your device
 
-Fixed prcGetAllRoutesForMap, thanks Hristo
+### iOS Client
 
-*************
+#### Requirements
+- Xcode 16.2+
+- iOS 15.0+
+- Swift 5.8+
 
-Sep 29, 2014 - v4.0.1
+#### Installation
 
-Added some validation to updatelocation page.
+1. Open Xcode
 
-*************
+2. Select "Open a project or file"
 
-Sep 25, 2014 - v4.0.0
+3. Navigate to `GpsTracker/clients/ios-swift/GPSTracker.xcodeproj`
 
-Gps Tracker now has a responsive design using bootstrap. The phone clients are now using GET request again to make troubleshooting easier. Here are 3 out of the available 17 themes.
+4. Update the server URL in `APIService.swift`:
+   ```swift
+   private var baseURL: URL {
+       return URL(string: "http://your-server.com/gpstracker/api/location")!
+   }
+   ```
 
-the light one:
+5. Build and run the application on your device
 
-![gpstrackerandroid](https://www.websmithing.com/images/gpstracker-light.jpg)
+## Legacy Components
 
-the dark one:
+The following components from previous versions are still available but are not actively maintained:
 
-![gpstrackerandroid](https://www.websmithing.com/images/gpstracker-dark.jpg)
+- ASP.NET with SQL Server backend
+- Windows Phone client
+- Java ME client
+- WordPress plugin (with Android client)
 
-the cool blue one:
+## Contributing
 
-![gpstrackerandroid](https://www.websmithing.com/images/gpstracker-blue.jpg)
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-*************
+## License
 
-Jun 12, 2014 - v3.2.4
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-Fixed android intervals not working above one minute and removed adsense ads publisher id.
+## Project History
 
-*************
+GPS Tracker began in 2007 and has grown into one of the most popular open source GPS tracking solutions worldwide, with over 2.2 million downloads since its initial release. It has been used in fleet management, personal safety applications, research projects, and many other scenarios across the globe.
 
-Jun 6, 2014 - v3.2.3
+## Contact
 
-This version fixes the zoom buttons on the google map which was causing the app to freeze and updates leaflet to version 0.7.3. This version is now free from all known errors.
+Nick Fox - [Website](https://www.websmithing.com) - [GitHub](https://github.com/nickfox)
 
-*************
+## Acknowledgements
 
-May 5, 2014 - v3.2.2
-
-This version fixes the total distance traveled in the android app.
-
-*************
-
-May 1, 2014 - v3.2.1
-
-This version changes the UI of the android app from two buttons (Save and Track) to one button (Track).
-
-![gpstrackerandroid](https://raw.githubusercontent.com/nickfox/GpsTracker/master/phoneClients/android/gpstracker3.2.1.png)
-
-
-and the android version is now in Google Play:
-
-
-https://play.google.com/store/apps/details?id=com.websmithing.gpstracker
-
-*************
-
-Apr 20, 2014 - v3.2.0
-
-Some pretty major changes here. The android app now has google play location services running in a background service. Also updates will restart if phone is rebooted. The servers are both now using json and jquery. Xml is gone forever. Both servers now support multiple map types. It's currently set up for google maps, bing maps and OpenStreetMaps. 
-
-
-*************
-
-Feb 11, 2014 - v3.1.0
-
-Version 3.1.0 updates the php server code from google maps 2 to 3 and now uses jquery. There was a bug in the delete route stored procedure (the sessionID parameter was to small and was causing the delete to fail silently). 
-
-*************
-
-Jan 14, 2014 - v3.0.0
-
-Version 3.0.0 of Gps Tracker is complete. This was a very big change from the last version. It's been updated with ios, android, windowsPhone and java me/j2me phone clients and the servers have all been updated as well. Please let me know how it works, good or bad and create an issue if you find a problem. Thanks and enjoy the software, Nick.
-
-ps. I will be writing tutorials and documentation shortly.
-
+- Thanks to the millions of users worldwide
+- Thanks to all contributors who have helped improve this project over the years

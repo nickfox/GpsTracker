@@ -1,0 +1,42 @@
+/* Dark theme styles */
+
+:root {
+    --border-color: #444;
+}
+
+body {
+    background-color: #222;
+    color: #eee;
+}
+
+.container-fluid {
+    background-color: #333;
+    border-color: var(--border-color);
+}
+
+#map-canvas {
+    border-color: var(--border-color);
+}
+
+/* Override map controls for better visibility in dark mode */
+.leaflet-control-layers,
+.leaflet-control-zoom {
+    background-color: #333 !important;
+    color: #eee !important;
+    border-color: #555 !important;
+}
+
+.leaflet-control-layers-toggle,
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+    background-color: #444 !important;
+    color: #eee !important;
+}
+
+/* Make popups dark too */
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+    background-color: #333 !important;
+    color: #eee !important;
+    border-color: #555 !important;
+}

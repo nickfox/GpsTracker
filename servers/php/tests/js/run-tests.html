@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPS Tracker Map Provider Tests</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .console {
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            margin: 20px 0;
+            height: 300px;
+            overflow-y: auto;
+        }
+        .success {
+            color: #4CAF50;
+        }
+        .error {
+            color: #F44336;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>GPS Tracker Map Provider Tests</h1>
+        
+        <button id="run-tests">Run Tests</button>
+        
+        <div class="console" id="console-output"></div>
+    </div>
+    
+    <!-- Mock of Leaflet and other dependencies -->
+    <script>
+        // Mock L (Leaflet)
+        const L = {
+            map: () => ({}),
+            tileLayer: () => ({}),
+            control: {
+                layers: () => ({})
+            },
+            polyline: () => ({
+                addTo: () => ({})
+            }),
+            TileLayer: function() {
+                return {};
+            },
+            Google: function() {
+                return {};
+            },
+            Layer: {
+                extend: (obj) => obj
+            },
+            Control: {
+                Layers: function() {
+                    return {};
+                }
+            },
+            Util: {
+                setOptions: () => {},
+                stamp: () => Math.floor(Math.random() * 1000000)
+            },
+            DomUtil: {
+                TRANSFORM: 1,
+                create: () => ({}),
+                setOpacity: () => {}
+            },
+            DomEvent: {
+                on: () => {},
+                off: () => {}
+            },
+            Browser: {
+                any3d: true
+            }
+        };
+        
+        // Mock jQuery
+        const $ = () => ({
+            on: () => {},
+            each: () => {},
+            click: () => {},
+            change: () => {}
+        });
+        $.ajax = () => {};
+        
+        // Override console methods to write to our console div
+        const consoleOutput = document.getElementById('console-output');
+        const originalConsole = {
+            log: console.log,
+            error: console.error,
+            warn: console.warn,
+            assert: console.assert
+        };
+        
+        console.log = function(...args) {
+            originalConsole.log(...args);
+            consoleOutput.innerHTML += `<div>${args.join(' ')}</div>`;
+        };
+        
+        console.error = function(...args) {
+            originalConsole.error(...args);
+            consoleOutput.innerHTML += `<div class="error">${args.join(' ')}</div>`;
+        };
+        
+        console.warn = function(...args) {
+            originalConsole.warn(...args);
+            consoleOutput.innerHTML += `<div style="color:#FFC107">${args.join(' ')}</div>`;
+        };
+        
+        console.assert = function(condition, ...args) {
+            originalConsole.assert(condition, ...args);
+            if (!condition) {
+                consoleOutput.innerHTML += `<div class="error">Assertion failed: ${args.join(' ')}</div>`;
+            } else {
+                consoleOutput.innerHTML += `<div class="success">Assertion passed: ${args.join(' ')}</div>`;
+            }
+        };
+    </script>
+    
+    <!-- Include app.js -->
+    <script src="../../assets/js/app.js"></script>
+    
+    <!-- Include test script -->
+    <script src="map-provider-test.js"></script>
+    
+    <script>
+        document.getElementById('run-tests').addEventListener('click', function() {
+            consoleOutput.innerHTML = ''; // Clear previous output
+            runTests();
+        });
+    </script>
+</body>
+</html>

@@ -3,17 +3,68 @@
     <string name="app_name">Gps Tracker</string>
     <string name="default_upload_website">https://www.websmithing.com/gpstracker/updatelocation.php</string>
 
-    <string name="tracking_is_off">Tracking is Off</string>
-    <string name="tracking_is_on">Tracking is On</string>
+    <string name="tracking_is_off">Start Tracking</string>
+    <string name="tracking_is_on">Stop Tracking</string>
     <string name="user_needs_to_restart_tracking">Please restart tracking to change the time interval.</string>
     <string name="reachability_error">Cannot reach the website that you have entered. Did you spell it correctly? Does your website use http or https?</string>
-    <string name="textfields_empty_or_spaces">Please fill in both fields. User names cannot have a space.</string>
+    <string name="textfields_empty_or_spaces">Please check the highlighted fields. Inputs cannot be empty or contain spaces.</string> <!-- Updated -->
     <string name="google_play_services_unavailable">Please go into Settings > Apps and enable Google Play Services.</string>
     <string name="location_unavailable">Please go into Settings > Apps and enable Location.</string>
+
+    <!-- Input Validation -->
+    <string name="username_error_spaces">Username cannot contain spaces.</string>
+    <string name="username_error_empty">Username cannot be empty.</string>
+    <string name="website_error_empty">Website URL cannot be empty.</string>
+    <string name="website_error_spaces">Website URL cannot contain spaces.</string>
+
+    <!-- Permissions -->
+    <string name="permission_rationale_foreground_location_title">Location Permission Needed</string>
+    <string name="permission_rationale_foreground_location_message">This app needs access to your location to track your position.</string>
+    <string name="permission_rationale_background_location_title">Background Location Permission Needed</string>
+    <string name="permission_rationale_background_location_message">To track your location even when the app is closed or not in use, please grant "Allow all the time" permission.</string>
+    <string name="permission_rationale_background_location_pre_request">This app collects location data to enable tracking even when the app is closed or not in use. This requires the "Allow all the time" location permission. Please grant this on the next screen.</string>
+    <string name="permission_denied_foreground_location">Foreground location permission denied. Tracking cannot start.</string>
+    <string name="permission_denied_background_location">Background location permission denied. Tracking may stop when the app is closed.</string>
+    <string name="permission_button_grant">Grant</string>
+    <string name="permission_button_deny">Deny</string>
+    <string name="permission_button_settings">Settings</string>
+    <string name="permission_button_continue">Continue</string>
+    <string name="permission_button_cancel">Cancel</string>
+
+    <!-- Other UI Messages -->
+    <string name="interval_changed_restarting_worker">Interval updated. Restarting background tracking task.</string>
+    <string name="upload_failed_error">Location upload failed. Check connection or settings.</string> <!-- Added -->
     <string name="user_name">user name</string>
     <string name="upload_website">upload website</string>
     <string name="upload_frequency">Update website every:</string>
     <string name="one_minute">1 minute</string>
     <string name="five_minutes">5 minutes</string>
     <string name="fifteen_minutes">15 minutes</string>
+
+    <!-- New UI Display Strings -->
+    <string name="lat_lon_format">Lat: %1$s Lon: %2$s</string>
+    <string name="speed_format_kmh">Speed: %.1f km/h</string>
+    <string name="altitude_format">Altitude: %.0f m</string>
+    <string name="accuracy_format">Accuracy: %.0f m</string>
+    <string name="bearing_format">Bearing: %.0f°</string>
+    <string name="distance_format_km">Distance: %s km</string>
+    <string name="signal_strength_format">GPS Signal: %s</string>
+
+    <string name="lat_lon_default">Lat: -- Lon: --</string>
+    <string name="speed_default">Speed: -- km/h</string>
+    <string name="altitude_default">Altitude: -- m</string>
+    <string name="accuracy_default">Accuracy: -- m</string>
+    <string name="bearing_default">Bearing: --°</string>
+    <string name="distance_default">Distance: -- km</string>
+    <string name="signal_strength_default">GPS Signal: --</string>
+
+    <string name="upload_status_idle">Last Update: Idle</string>
+    <string name="upload_status_success">Last Update: %1$s (Success)</string>
+    <string name="upload_status_failure">Last Update: %1$s (Failed: %2$s)</string>
+
+    <string name="signal_unknown">Unknown</string>
+    <string name="signal_excellent">Excellent</string>
+    <string name="signal_good">Good</string>
+    <string name="signal_fair">Fair</string>
+    <string name="signal_poor">Poor</string>
 </resources>
