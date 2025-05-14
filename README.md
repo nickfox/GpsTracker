@@ -58,7 +58,7 @@ GPS Tracker consists of three main components:
 
 2. Copy the server files to your web directory:
    ```bash
-   cp -r GpsTracker/server/php/* /var/www/html/gpstracker/
+   cp -r GpsTracker/servers/php/* /var/www/html/gpstracker/
    ```
 
 3. Set proper permissions:
@@ -67,27 +67,53 @@ GPS Tracker consists of three main components:
    chown -R www-data:www-data /var/www/html/gpstracker/
    ```
 
-4. Configure your database in `dbconnect.php`:
-   ```php
-   // For MySQL
-   $pdo = new PDO('mysql:host=localhost;dbname=gpstracker', 'username', 'password');
-   
-   // For PostgreSQL
-   $pdo = new PDO('pgsql:host=localhost;dbname=gpstracker', 'username', 'password');
-   
-   // For SQLite (default)
-   $pdo = new PDO('sqlite:./gpstracker.db');
-   ```
-
-5. Set up the database by visiting:
-   ```
-   http://your-server/gpstracker/install.php
-   ```
-
-6. Remove the installation file:
+4. Configure your environment settings:
    ```bash
-   rm /var/www/html/gpstracker/install.php
+   # Copy the sample environment file
+   cp .env.example .env
+   
+   # Edit the .env file with your settings
+   vim .env  # or use your preferred text editor
    ```
+   
+   The `.env` file contains all necessary configuration options with helpful comments. Key settings to configure:
+   
+   - Database connection (MySQL, PostgreSQL, or SQLite)
+   - Map provider (OpenStreetMap by default, or Google Maps with API key)
+   - Application settings like debug mode and timezone
+   - Measurement units (miles/kilometers)
+
+5. Create the database schema:
+   - For SQLite: The database file will be created automatically in the `sqlite` directory
+   - For MySQL/PostgreSQL: Create the database manually before running the application:
+     ```sql
+     CREATE TABLE locations (
+         id INT AUTO_INCREMENT PRIMARY KEY,
+         device_id VARCHAR(50) NOT NULL,
+         latitude DECIMAL(10, 8) NOT NULL,
+         longitude DECIMAL(11, 8) NOT NULL,
+         speed DECIMAL(5, 2),
+         heading INT,
+         altitude DECIMAL(7, 2),
+         accuracy DECIMAL(6, 2),
+         event_time DATETIME NOT NULL,
+         battery_level INT,
+         app_version VARCHAR(10),
+         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+     );
+     
+     CREATE TABLE routes (
+         id INT AUTO_INCREMENT PRIMARY KEY,
+         device_id VARCHAR(50) NOT NULL,
+         route_name VARCHAR(100) NOT NULL,
+         route_color VARCHAR(7) DEFAULT '#0000FF',
+         start_time DATETIME NOT NULL,
+         end_time DATETIME,
+         distance DECIMAL(10, 2) DEFAULT 0,
+         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+     );
+     ```
 
 #### Nginx Installation
 
@@ -121,7 +147,7 @@ GPS Tracker consists of three main components:
    sudo systemctl restart nginx
    ```
 
-4. Continue with steps 5-6 from the Apache installation.
+4. Continue with step 5 from the Apache installation.
 
 ### Android Client
 
@@ -135,7 +161,7 @@ GPS Tracker consists of three main components:
 
 2. Select "Open an existing project"
 
-3. Navigate to `GpsTracker/clients/android-kotlin`
+3. Navigate to `GpsTracker/phoneClients/android-kotlin`
 
 4. Update the server URL in `Constants.kt`:
    ```kotlin
@@ -157,7 +183,7 @@ GPS Tracker consists of three main components:
 
 2. Select "Open a project or file"
 
-3. Navigate to `GpsTracker/clients/ios-swift/GPSTracker.xcodeproj`
+3. Navigate to `GpsTracker/phoneClients/ios-swift/GPSTracker.xcodeproj`
 
 4. Update the server URL in `APIService.swift`:
    ```swift

@@ -1,14 +1,25 @@
 /vendor/
 /node_modules/
 
+# Environment files
+.env
 .env.backup
+.env.local
 .phpunit.result.cache
+
+# Composer files
 composer.phar
+
+# IDE files
 .idea/
 .vscode/
+
+# Logs and databases
 *.log
 *.sqlite
 /logs/*
 !logs/.gitkeep
+
+# OS files
 .DS_Store
 Thumbs.db
