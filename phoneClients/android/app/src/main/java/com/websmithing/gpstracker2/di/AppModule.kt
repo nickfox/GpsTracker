@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import com.websmithing.gpstracker2.network.ApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

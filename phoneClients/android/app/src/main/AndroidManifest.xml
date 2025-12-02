@@ -24,20 +24,31 @@
     <application
         android:name=".GpsTrackerApplication"
         android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/Theme.AppTheme">
+
+        <activity
+            android:name=".TrackerSettingsActivity"
+            android:exported="false" />
 
         <activity
             android:name=".GpsTrackerActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".SplashActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:screenOrientation="portrait" >
+            android:theme="@style/Theme.AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -48,4 +59,5 @@
             android:foregroundServiceType="location" />
 
     </application>
+
 </manifest>

@@ -4,13 +4,12 @@ package com.websmithing.gpstracker2
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
-import com.websmithing.gpstracker2.BuildConfig
 
 /**
  * Main application class for the GPS Tracker app.
- * 
- * This class serves as the entry point for the application and handles initialization of 
- * app-wide components such as logging via Timber. It's annotated with [HiltAndroidApp] 
+ *
+ * This class serves as the entry point for the application and handles initialization of
+ * app-wide components such as logging via Timber. It's annotated with [HiltAndroidApp]
  * to enable dependency injection throughout the application.
  */
 @HiltAndroidApp
@@ -18,7 +17,7 @@ class GpsTrackerApplication : Application() {
 
     /**
      * Initializes the application when it's first created.
-     * 
+     *
      * Sets up Timber for logging with different configurations based on the build type:
      * - Debug builds: Uses [Timber.DebugTree] for detailed console logging
      * - Release builds: Placeholder for a production-appropriate logging implementation

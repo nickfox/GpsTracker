@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Waliot Tracker</string>
+    <string name="splash_subtitle">трекер</string>
+    <string name="notification_text">Идёт отслеживание местоположения…</string>
+
+    <string name="google_play_services_unavailable">Перейдите в Настройки > Приложения и включите Сервисы Google Play.</string>
+
+
+    <string name="settings_identifier">Идентификатор</string>
+    <string name="settings_server_url">Адрес сервера и порт</string>
+    <string name="settings_interval_minutes">Отправлять данные каждые, минут</string>
+    <string name="settings_interval_meters">Отправлять данные каждые, метров</string>
+    <string name="settings_language">Язык</string>
+    <string name="settings_lang_ru">Русский</string>
+    <string name="settings_lang_en">Английский</string>
+    <string name="settings_save">Сохранить</string>
+    <string name="settings_app_version">Версия приложения:</string>
+
+    <string name="upload_status_idle">ожидание</string>
+    <string name="upload_status_success">%1$s (успешно)</string>
+    <string name="upload_status_failure">%1$s (ошибка: %2$s)</string>
+
+    <string name="notify_success">Отслеживание включено</string>
+    <string name="notify_error">Перейдите в настройки приложения</string>
+
+    <string name="stats_id_specify">Укажите идентификатор</string>
+    <string name="stats_coordinates">Координаты</string>
+    <string name="stats_speed">Скорость</string>
+    <string name="stats_gsm_level">Ур. GSM</string>
+    <string name="stats_gps_signal">Сигнал GPS</string>
+    <string name="stats_updated_at">Обновление</string>
+    <string name="stats_additional_data">Дополнительные данные</string>
+    <string name="stats_accuracy">Точность</string>
+    <string name="stats_distance">Расстояние</string>
+    <string name="stats_data_buffer">Буффер данных</string>
+
+    <string name="signal_unknown">Неизвестно</string>
+    <string name="signal_excellent">Отлично</string>
+    <string name="signal_good">Хорошо</string>
+    <string name="signal_fair">Удовлетворительно</string>
+    <string name="signal_poor">Плохо</string>
+
+    <!-- Permissions -->
+    <string name="permission_rationale_foreground_location_title">Требуется разрешение на определение местоположения</string>
+    <string name="permission_rationale_foreground_location_message">Приложению требуется доступ к местоположению для отслеживания.</string>
+    <string name="permission_rationale_background_location_title">Требуется разрешение на фоновое определение местоположения</string>
+    <string name="permission_rationale_background_location_message">Чтобы отслеживать местоположение даже при закрытом приложении, предоставьте разрешение «Разрешить всегда».</string>
+    <string name="permission_rationale_background_location_pre_request">Это приложение собирает данные о местоположении для отслеживания даже при закрытом приложении. Для этого требуется разрешение «Разрешить всегда». Пожалуйста, предоставьте его на следующем экране.</string>
+    <string name="permission_denied_foreground_location">Разрешение на определение местоположения в активном режиме отклонено. Отслеживание не может быть запущено.</string>
+    <string name="permission_denied_background_location">Разрешение на фоновое определение местоположения отклонено. Отслеживание может остановиться при закрытии приложения.</string>
+    <string name="permission_button_grant">Разрешить</string>
+    <string name="permission_button_deny">Отклонить</string>
+    <string name="permission_button_settings">Настройки</string>
+    <string name="permission_button_continue">Продолжить</string>
+    <string name="permission_button_cancel">Отмена</string>
+
+
+</resources>
