@@ -18,5 +18,12 @@ interface PermissionChecker {
      *
      * @return true if either location permission is granted, false otherwise.
      */
-    fun hasLocationPermission(): Boolean
+    fun hasLocationPermissions(): Boolean
+
+    /**
+     * Checks if the app has background location permission
+     *
+     * @return True if background location permission is granted or if running on Android < Q
+     */
+    fun hasBackgroundLocationPermissions(): Boolean
 }

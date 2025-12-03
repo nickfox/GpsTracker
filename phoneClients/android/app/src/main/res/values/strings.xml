@@ -1,21 +1,46 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Gps Tracker</string>
-    <string name="default_upload_website">https://www.websmithing.com/gpstracker/updatelocation.php</string>
+    <string name="app_name">Waliot Tracker</string>
+    <string name="splash_subtitle">tracker</string>
+    <string name="notification_text">Actively tracking location...</string>
 
-    <string name="tracking_is_off">Start Tracking</string>
-    <string name="tracking_is_on">Stop Tracking</string>
-    <string name="user_needs_to_restart_tracking">Please restart tracking to change the time interval.</string>
-    <string name="reachability_error">Cannot reach the website that you have entered. Did you spell it correctly? Does your website use http or https?</string>
-    <string name="textfields_empty_or_spaces">Please check the highlighted fields. Inputs cannot be empty or contain spaces.</string> <!-- Updated -->
     <string name="google_play_services_unavailable">Please go into Settings > Apps and enable Google Play Services.</string>
-    <string name="location_unavailable">Please go into Settings > Apps and enable Location.</string>
 
-    <!-- Input Validation -->
-    <string name="username_error_spaces">Username cannot contain spaces.</string>
-    <string name="username_error_empty">Username cannot be empty.</string>
-    <string name="website_error_empty">Website URL cannot be empty.</string>
-    <string name="website_error_spaces">Website URL cannot contain spaces.</string>
+
+    <string name="settings_identifier">Identifier</string>
+    <string name="settings_server_url">URL</string>
+    <string name="settings_interval_minutes">Interval minutes</string>
+    <string name="settings_interval_meters">Interval Meters</string>
+    <string name="settings_save">Save Settings</string>
+    <string name="settings_language">Language</string>
+    <string name="settings_lang_ru">Russian</string>
+    <string name="settings_lang_en">English</string>
+    <string name="settings_app_version">App Version:</string>
+
+    <string name="notify_success">Tracking Enabled</string>
+    <string name="notify_error">Go to application settings</string>
+
+
+    <string name="stats_id_specify">Specify the ID</string>
+    <string name="stats_coordinates">Coordinates</string>
+    <string name="stats_speed">Speed</string>
+    <string name="stats_gsm_level">GSM lvl.</string>
+    <string name="stats_gps_signal">GPS signal</string>
+    <string name="stats_updated_at">Updated at</string>
+    <string name="stats_additional_data">Additional data</string>
+    <string name="stats_accuracy">Accuracy</string>
+    <string name="stats_distance">Distance</string>
+    <string name="stats_data_buffer">Data buffer</string>
+
+
+    <string name="upload_status_idle">Idle</string>
+    <string name="upload_status_success">%1$s (Success)</string>
+    <string name="upload_status_failure">%1$s (Failed: %2$s)</string>
+
+    <string name="signal_unknown">Unknown</string>
+    <string name="signal_excellent">Excellent</string>
+    <string name="signal_good">Good</string>
+    <string name="signal_fair">Fair</string>
+    <string name="signal_poor">Poor</string>
 
     <!-- Permissions -->
     <string name="permission_rationale_foreground_location_title">Location Permission Needed</string>
@@ -31,40 +56,5 @@
     <string name="permission_button_continue">Continue</string>
     <string name="permission_button_cancel">Cancel</string>
 
-    <!-- Other UI Messages -->
-    <string name="interval_changed_restarting_worker">Interval updated. Restarting background tracking task.</string>
-    <string name="upload_failed_error">Location upload failed. Check connection or settings.</string> <!-- Added -->
-    <string name="user_name">user name</string>
-    <string name="upload_website">upload website</string>
-    <string name="upload_frequency">Update website every:</string>
-    <string name="one_minute">1 minute</string>
-    <string name="five_minutes">5 minutes</string>
-    <string name="fifteen_minutes">15 minutes</string>
 
-    <!-- New UI Display Strings -->
-    <string name="lat_lon_format">Lat: %1$s Lon: %2$s</string>
-    <string name="speed_format_kmh">Speed: %.1f km/h</string>
-    <string name="altitude_format">Altitude: %.0f m</string>
-    <string name="accuracy_format">Accuracy: %.0f m</string>
-    <string name="bearing_format">Bearing: %.0f°</string>
-    <string name="distance_format_km">Distance: %s km</string>
-    <string name="signal_strength_format">GPS Signal: %s</string>
-
-    <string name="lat_lon_default">Lat: -- Lon: --</string>
-    <string name="speed_default">Speed: -- km/h</string>
-    <string name="altitude_default">Altitude: -- m</string>
-    <string name="accuracy_default">Accuracy: -- m</string>
-    <string name="bearing_default">Bearing: --°</string>
-    <string name="distance_default">Distance: -- km</string>
-    <string name="signal_strength_default">GPS Signal: --</string>
-
-    <string name="upload_status_idle">Last Update: Idle</string>
-    <string name="upload_status_success">Last Update: %1$s (Success)</string>
-    <string name="upload_status_failure">Last Update: %1$s (Failed: %2$s)</string>
-
-    <string name="signal_unknown">Unknown</string>
-    <string name="signal_excellent">Excellent</string>
-    <string name="signal_good">Good</string>
-    <string name="signal_fair">Fair</string>
-    <string name="signal_poor">Poor</string>
 </resources>

@@ -5,17 +5,17 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.websmithing.gpstracker2.data.repository.LocationRepository
-import com.websmithing.gpstracker2.data.repository.LocationRepositoryImpl
 import com.websmithing.gpstracker2.data.repository.SettingsRepository
 import com.websmithing.gpstracker2.data.repository.SettingsRepositoryImpl
+import com.websmithing.gpstracker2.data.repository.WialonIpsLocationRepositoryImpl
 import com.websmithing.gpstracker2.util.PermissionChecker
 import dagger.Module
 import dagger.Provides
-import okhttp3.OkHttpClient
-import retrofit2.Retrofit
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import okhttp3.OkHttpClient
+import retrofit2.Retrofit
 import javax.inject.Singleton
 
 /**
@@ -74,11 +74,9 @@ object RepositoryModule {
         settingsRepository: SettingsRepository,
         permissionChecker: PermissionChecker
     ): LocationRepository {
-        return LocationRepositoryImpl(
+        return WialonIpsLocationRepositoryImpl(
             context,
             fusedLocationProviderClient,
-            okHttpClient,
-            retrofitBuilder,
             settingsRepository,
             permissionChecker
         )

@@ -4,6 +4,7 @@ package com.websmithing.gpstracker2.util
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
+import android.os.Build
 import androidx.core.content.ContextCompat
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
@@ -31,11 +32,21 @@ class PermissionCheckerImpl @Inject constructor(
      *
      * @return true if either location permission is granted, false otherwise.
      */
-    override fun hasLocationPermission(): Boolean {
+    override fun hasLocationPermissions(): Boolean {
         return ContextCompat.checkSelfPermission(
             appContext, Manifest.permission.ACCESS_FINE_LOCATION
         ) == PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(
             appContext, Manifest.permission.ACCESS_COARSE_LOCATION
         ) == PackageManager.PERMISSION_GRANTED
+    }
+
+    override fun hasBackgroundLocationPermissions(): Boolean {
+            return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                ContextCompat.checkSelfPermission(
+                    appContext, Manifest.permission.ACCESS_BACKGROUND_LOCATION
+                ) == PackageManager.PERMISSION_GRANTED
+            } else {
+                true
+        }
     }
 }

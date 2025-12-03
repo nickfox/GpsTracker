@@ -19,14 +19,14 @@ interface SettingsRepository {
      * @param isTracking True if tracking is active, false otherwise
      */
     suspend fun setTrackingState(isTracking: Boolean)
-    
+
     /**
      * Provides a Flow that emits the current tracking state whenever it changes.
      *
      * @return A Flow emitting the current tracking state
      */
     fun isTracking(): Flow<Boolean>
-    
+
     /**
      * Gets the current tracking state synchronously.
      *
@@ -41,14 +41,14 @@ interface SettingsRepository {
      * @param username The username to save
      */
     suspend fun saveUsername(username: String)
-    
+
     /**
      * Provides a Flow that emits the current username whenever it changes.
      *
      * @return A Flow emitting the current username
      */
     fun getUsername(): Flow<String>
-    
+
     /**
      * Gets the current username synchronously.
      *
@@ -62,14 +62,14 @@ interface SettingsRepository {
      * @param intervalMinutes The interval in minutes between location updates
      */
     suspend fun saveTrackingInterval(intervalMinutes: Int)
-    
+
     /**
      * Provides a Flow that emits the current tracking interval whenever it changes.
      *
      * @return A Flow emitting the current tracking interval in minutes
      */
     fun getTrackingInterval(): Flow<Int>
-    
+
     /**
      * Gets the current tracking interval synchronously.
      *
@@ -83,14 +83,14 @@ interface SettingsRepository {
      * @param url The website URL to save
      */
     suspend fun saveWebsiteUrl(url: String)
-    
+
     /**
      * Provides a Flow that emits the current website URL whenever it changes.
      *
      * @return A Flow emitting the current website URL
      */
     fun getWebsiteUrl(): Flow<String>
-    
+
     /**
      * Gets the current website URL synchronously.
      *
@@ -105,12 +105,12 @@ interface SettingsRepository {
      * @param sessionId The session ID to save
      */
     suspend fun saveSessionId(sessionId: String)
-    
+
     /**
      * Clears the current session ID, typically when tracking stops.
      */
     suspend fun clearSessionId()
-    
+
     /**
      * Gets the current session ID synchronously.
      * If no session ID exists, generates and saves a new one.
@@ -134,14 +134,14 @@ interface SettingsRepository {
      * @return True if this is the first time loading, false otherwise
      */
     suspend fun isFirstTimeLoading(): Boolean
-    
+
     /**
      * Sets the first-time loading flag.
      *
      * @param isFirst True to mark as first time loading, false otherwise
      */
     suspend fun setFirstTimeLoading(isFirst: Boolean)
-    
+
     /**
      * Generates and saves a new app ID.
      * This should only be called during first-time setup.
@@ -156,7 +156,7 @@ interface SettingsRepository {
      * This resets total distance and position flags.
      */
     suspend fun resetLocationStateForNewSession()
-    
+
     /**
      * Saves the total distance traveled and position flag.
      *
@@ -164,18 +164,22 @@ interface SettingsRepository {
      * @param firstTime True if this is the first position in a tracking session
      */
     suspend fun saveDistanceAndPositionFlags(totalDistance: Float, firstTime: Boolean)
-    
+
     /**
      * Gets the total distance traveled synchronously.
      *
      * @return The total distance traveled in meters
      */
     suspend fun getTotalDistance(): Float
-    
+
     /**
      * Checks if this is the first time getting a position in the current tracking session.
      *
      * @return True if this is the first position, false otherwise
      */
     suspend fun isFirstTimeGettingPosition(): Boolean
+
+    fun saveLanguage(language: String)
+
+    fun getCurrentLanguage(): String
 }

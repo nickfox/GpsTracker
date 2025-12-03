@@ -15,7 +15,6 @@ import com.websmithing.gpstracker2.network.ApiService
 import com.websmithing.gpstracker2.util.PermissionChecker
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -117,7 +116,7 @@ class LocationRepositoryImpl @Inject constructor(
      */
     @SuppressLint("MissingPermission")
     override suspend fun getCurrentLocation(): Location? = withContext(Dispatchers.IO) {
-        if (!permissionChecker.hasLocationPermission()) {
+        if (!permissionChecker.hasLocationPermissions()) {
             Timber.e("Attempted to get location without permission")
             throw SecurityException("Location permission not granted.")
         }

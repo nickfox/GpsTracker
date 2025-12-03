@@ -6,7 +6,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.withContext
-import java.util.*
+import java.util.UUID
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -41,7 +41,7 @@ class SettingsRepositoryImpl @Inject constructor(
 
     /**
      * Provides a Flow that emits the current tracking state.
-     * 
+     *
      * Note: This is a basic implementation. For real-time updates,
      * consider using a SharedPreferenceChangeListener or DataStore.
      *
@@ -153,7 +153,7 @@ class SettingsRepositoryImpl @Inject constructor(
      */
     override suspend fun getCurrentWebsiteUrl(): String {
         return withContext(Dispatchers.IO) {
-            sharedPreferences.getString(KEY_WEBSITE_URL, "https://www.websmithing.com/gpstracker/api/locations/update") ?: "https://www.websmithing.com/gpstracker/api/locations/update"
+            sharedPreferences.getString(KEY_WEBSITE_URL, "device.waliot.com:30032") ?: "device.waliot.com:30032"
         }
     }
 
@@ -244,11 +244,11 @@ class SettingsRepositoryImpl @Inject constructor(
 
     /**
      * Internal implementation of generating and saving a new app ID.
-     * 
+     *
      * @return The newly generated app ID
      */
     private suspend fun generateAndSaveAppIdInternal(): String {
-         return withContext(Dispatchers.IO) {
+        return withContext(Dispatchers.IO) {
             val newId = UUID.randomUUID().toString()
             sharedPreferences.edit().putString(KEY_APP_ID, newId).apply()
             newId
@@ -320,6 +320,15 @@ class SettingsRepositoryImpl @Inject constructor(
         }
     }
 
+    override fun saveLanguage(language: String) {
+        sharedPreferences.edit().putString(KEY_LANGUAGE, language).apply()
+
+    }
+
+    override fun getCurrentLanguage(): String {
+        return sharedPreferences.getString(KEY_LANGUAGE, "ru") ?: "ru"
+    }
+
     /**
      * Constants used by this repository implementation
      */
@@ -330,11 +339,11 @@ class SettingsRepositoryImpl @Inject constructor(
         private const val KEY_INTERVAL_MINUTES = "intervalInMinutes"
         private const val KEY_SESSION_ID = "sessionID"
         private const val KEY_APP_ID = "appID"
-        // KEY_FIRST_TIME_LOADING is intentionally omitted as its logic is tied to KEY_APP_ID presence
         private const val KEY_TOTAL_DISTANCE = "totalDistanceInMeters"
         private const val KEY_FIRST_TIME_GETTING_POSITION = "firstTimeGettingPosition"
         private const val KEY_PREVIOUS_LATITUDE = "previousLatitude"
         private const val KEY_PREVIOUS_LONGITUDE = "previousLongitude"
         private const val KEY_WEBSITE_URL = "defaultUploadWebsite"
+        private const val KEY_LANGUAGE = "language"
     }
 }
